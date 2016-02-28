@@ -10,5 +10,6 @@ Genbu Projectでは簡単にMineCraft PEのGUIを製作できる**GUI Helper**�
 |                                                    |GPS Location                                        |
 |                                                    |Console Tools(CST)                                  |
 |                                                    |Running Rhino Tool                                  |
+|                                                    |Genbu TextEditor                                    |
 
 それぞれのプロジェクトの解説は[こちら](https://github.com/GenbuProject/Genbu-Project-Official-Site/wiki/)をご覧ください。
