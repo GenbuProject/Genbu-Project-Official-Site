@@ -1,5 +1,7 @@
-@CHARSET "UTF-8";
+#Menu {
+	background-color: linear-gradient(orange, darkorange);
+}
 
-applet {
-	border: solid black thin;
+#Menu:hover {
+	background-color: linear-gradient(lightgreen, green);
 }
