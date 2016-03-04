@@ -1,7 +1,15 @@
 #Menu {
-	background-color: linear-gradient(orange, darkorange);
+	text-align: center;
 }
 
 #Menu:hover {
 	background-color: linear-gradient(lightgreen, green);
+}
+
+#MenuItem {
+	border: solid thin black;
+}
+
+#MenuItem:hover {
+	background-color: linear-gradient(orange, darkorange);
 }
