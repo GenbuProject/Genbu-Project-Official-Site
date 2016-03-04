@@ -3,10 +3,11 @@
 }
 
 #Menu:hover {
-	background-color: linear-gradient(lightgreen, green);
+	
 }
 
 #MenuItem {
+	list-style: none;
 	border: solid thin black;
 }
 
