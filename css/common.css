@@ -1,5 +1,11 @@
 #Menu {
-	potision: absoulte;
+	position: absoulte;
 	top: 0;
 	left: 0;
+	
+	list-style: none;
+}
+
+li.MenuItem {
+	border: thin solid black;
 }
