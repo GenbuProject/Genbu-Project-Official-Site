@@ -11,5 +11,6 @@ Genbu Projectでは簡単にMineCraft PEのGUIを製作できる**GUI Helper**�
 |                                                    |Console Tools(CST)                                  |
 |                                                    |Running Rhino Tool                                  |
 |                                                    |Genbu TextEditor                                    |
+|                                                    |Java Timer                                          |
 
 それぞれのプロジェクトの解説は[こちら](https://github.com/GenbuProject/Genbu-Project-Official-Site/wiki/)をご覧ください。
