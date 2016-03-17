@@ -1,12 +1,22 @@
-#Menu {
+.ui-menu {
 	position: absoulte;
 	top: 0;
 	left: 0;
+	width: 50%;
 	
 	text-align: center;
-	list-style: none;
+	font-size: 8pt;
 }
 
-li.MenuItem {
-	border: thin solid black;
+.ui-front {
+	width: 99%;
+}
+
+.ui-widget-header {
+	width: 100%;
+}
+
+.ui-widget-header a {
+	text-align: center;
+	text-decoration: none;
 }
