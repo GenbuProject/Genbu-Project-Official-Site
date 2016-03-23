@@ -20,3 +20,11 @@
 	text-align: center;
 	text-decoration: none;
 }
+
+
+header {
+	text-align: center;
+	font-size: x-large;
+	
+	background: linear-gradient(blue, lightblue);
+}
