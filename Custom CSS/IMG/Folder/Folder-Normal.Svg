@@ -10,12 +10,12 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
-   width="500"
-   height="400"
-   viewBox="0 0 500 400"
+   width="17.5"
+   height="14"
+   viewBox="0 0 17.5 14"
    id="svg2"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="Folder.Svg">
+   sodipodi:docname="Folder-Normal.Svg">
   <metadata
      id="metadata11">
     <rdf:RDF>
@@ -52,9 +52,9 @@
      inkscape:current-layer="svg2" />
   <g
      id="icomoon-ignore"
-     transform="translate(0,-112)" />
+     transform="translate(0,-498)" />
   <path
-     d="M 406.25,400 500,153.84615 l -406.25,0 L 0,400 Z M 62.5,123.07692 0,400 0,0 l 140.625,0 62.5,61.53846 203.125,0 0,61.53846 z"
+     d="M 14.21875,14 17.5,5.38462 3.28125,5.38462 0,14 Z M 2.1875,4.30769 0,14 0,0 l 4.921875,0 2.1875,2.15385 7.109375,0 0,2.15384 z"
      id="path5"
      inkscape:connector-curvature="0" />
 </svg>
