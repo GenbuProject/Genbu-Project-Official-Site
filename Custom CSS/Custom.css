@@ -1,0 +1,31 @@
+Body {
+	Color: #EEE;
+	Font: 14px/2 "メイリオ", Meiryo, "ＭＳ Ｐゴシック", Osaka, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro";
+	BackGround: URL("IMG/Back.jpg") Repeat Scroll;
+}
+
+ContentTitle {
+	Color: Yellow;
+	Font-Size: Large;
+	Font-Weight: Bold;
+}
+
+Bold {
+    Color: DarkOrange;
+    BackGround: Green;
+    Font-Weight: Bold;
+    Border: Solid Thin LightGreen;
+    Border-Radius: 50px;
+}
+
+File, Folder {
+	BackGround: Linear-Gradient(LightGray, Gray);
+}
+
+#OverView Div {
+	Border: Thin Solid Cyan;
+}
+
+#Detail Div {
+	Border: Thin Solid Yellow;
+}
