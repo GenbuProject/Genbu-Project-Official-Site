@@ -10,9 +10,9 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
-   width="17.5"
+   width="16.799999"
    height="14"
-   viewBox="0 0 17.5 14"
+   viewBox="0 0 16.799999 14"
    id="svg2"
    inkscape:version="0.91 r13725"
    sodipodi:docname="Folder-Normal.Svg">
@@ -43,18 +43,18 @@
      inkscape:window-height="745"
      id="namedview7"
      showgrid="false"
-     inkscape:zoom="0.4609375"
-     inkscape:cx="256"
-     inkscape:cy="256"
+     inkscape:zoom="13.906433"
+     inkscape:cx="1.9442843"
+     inkscape:cy="2.9232082"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg2" />
   <g
      id="icomoon-ignore"
-     transform="translate(0,-498)" />
+     transform="translate(0,-754)" />
   <path
-     d="M 14.21875,14 17.5,5.38462 3.28125,5.38462 0,14 Z M 2.1875,4.30769 0,14 0,0 l 4.921875,0 2.1875,2.15385 7.109375,0 0,2.15384 z"
+     d="m 15.143662,12.23977 0,-8.7193 -13.4873239,0 0,8.7193 13.4873239,0 z m 0,-10.47954 C 16.050704,1.76023 16.8,2.57895 16.8,3.52047 l 0,8.7193 C 16.8,13.18129 16.050704,14 15.143662,14 L 1.6563381,14 C 0.74929576,14 0,13.18129 0,12.23977 L 0,1.76023 C 0,0.81871 0.74929576,0 1.6563381,0 L 6.7042251,0 8.4,1.76023 l 6.743662,0 z"
      id="path5"
      inkscape:connector-curvature="0" />
 </svg>
