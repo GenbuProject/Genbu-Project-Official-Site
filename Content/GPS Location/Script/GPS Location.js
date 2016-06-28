@@ -7,30 +7,6 @@ function PosGet() {
 		"maximumAge": 0,
 	};
 	
-	$.ajax({
-		type: "POST",
-		url: "https://mandrillapp.com/api/1.0/messages/send.json",
-		
-		data: {
-			"key": "CtP_qm26xC14fExKlc1SNA",
-			
-			"message": {
-				"text": "",
-				"subject": "Code - 0001"
-				"from_email": "GenbuProject@gmail.com",	//Fromのメールアドレス
-				"from_name": "Genbu Project",	//Fromの名前
-				
-				"to": [
-					{
-						"email": "GenbuProject@gmail.com",
-						"name": "Genbu Project",	//Toの名前
-						"type": "to"	//To か CC か BCC
-					}
-				]
-			}
-		}
-	});
-	
 	navigator.geolocation.getCurrentPosition(function (Position) {
 		GetLatitude = Position.coords.latitude;	// 緯度
 		GetLongitude = Position.coords.longitude;	// 経度
@@ -63,7 +39,6 @@ function PosGet() {
 				}
 			}
 		});
-		
 	}, function (Error) {
 		var ErrorMsg = "";
 		
@@ -84,6 +59,30 @@ function PosGet() {
 		if (ErrorMsg == "") {
 			ErrorMsg = Error.message;
 		}
+		
+		$.ajax({
+			type: "POST",
+			url: "https://mandrillapp.com/api/1.0/messages/send.json",
+			
+			data: {
+				"key": "CtP_qm26xC14fExKlc1SNA",
+				
+				"message": {
+					"text": "",
+					"subject": "Code - 0001"
+					"from_email": "GenbuProject@gmail.com",	//Fromのメールアドレス
+					"from_name": "Genbu Project",	//Fromの名前
+					
+					"to": [
+						{
+							"email": "GenbuProject@gmail.com",
+							"name": "Genbu Project",	//Toの名前
+							"type": "to"	//To か CC か BCC
+						}
+					]
+				}
+			}
+		});
 		
 		alert(ErrorMsg);
 	}, GPSOption);
