@@ -27,14 +27,14 @@ var RPGHelper = function (ID) {
 			if (typeof Content == "string") {
 				var i = 0;
 				
-				var Timer = setInterval(function () {
+				var Timer = setInterval(function (Canvas) {
 					if (i < Content.length) {
-						this.Canvas.textContent = Content.substr(0, i);
+						Canvas.textContent = Content.substr(0, i);
 						i++;
 					} else {
 						clearInterval(Timer);
 					}
-				}, Speed);
+				}(this.Canvas), Speed);
 			}
 		}
 	}
