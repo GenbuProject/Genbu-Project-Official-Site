@@ -18,7 +18,7 @@ var RPGHelper = function (ID) {
 		Canvas: this.Canvas,
 		
 		TypeA: function (Content, Speed) {
-			if (this.Canvas.hasAttribute("class")) {
+			if (!this.Canvas.hasAttribute("class")) {
 				this.Canvas.setAttribute("class", "RPGHelper-MsgBox-TypeA");
 			} else {
 				this.Canvas.attributes["class"].value = "RPGHelper-MsgBox-TypeA";
