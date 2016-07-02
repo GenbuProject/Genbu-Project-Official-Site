@@ -25,10 +25,10 @@ var RPGHelper = function (ID) {
 				Dialog.textContent = Content;
 			}
 			
-			Dialog.onClick = function (Canvas, Dialog) {
+			Dialog.onclick = function (Canvas, Dialog) {
 				console.log("Clicked.");
 				Canvas.removeChild(Dialog);
-			}
+			} (this.Canvas, Dialog)
 		}
 	}
 }
