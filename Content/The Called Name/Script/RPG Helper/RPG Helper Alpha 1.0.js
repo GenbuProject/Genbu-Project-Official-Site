@@ -9,8 +9,8 @@ var RPGHelper = function (ID) {
 	this.R = {
 		SPEED: {
 			SLOW: 100,
-			Normal: 80,
-			Fast: 50
+			NORMAL: 80,
+			FAST: 50
 		}
 	}
 	
