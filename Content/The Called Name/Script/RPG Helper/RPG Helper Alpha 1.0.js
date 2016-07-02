@@ -26,7 +26,8 @@ var RPGHelper = function (ID) {
 			}
 			
 			Dialog.onClick = function (Canvas, Dialog) {
-				Canvas.removeChild(Dialog)
+				console.log("Clicked.");
+				Canvas.removeChild(Dialog);
 			}
 		}
 	}
