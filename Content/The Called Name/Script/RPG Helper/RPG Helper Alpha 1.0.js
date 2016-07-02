@@ -22,7 +22,18 @@ var RPGHelper = function (ID) {
 				this.Canvas.appendChild(Dialog);
 				
 			if (typeof Content == "string") {
-				Dialog.textContent = Content;
+				var Counter = 0;
+				
+				var Timer = setInterval((function (Dialog, Counter) {
+					return function () {
+						if (Counter < Content.length) {
+							Dialog.textContent = Content.substr(0, i);
+							i++;
+						} else {
+							clearInterval(Timer);
+						}
+					}
+				})(Dialog, Counter), Speed);
 			}
 			
 			Dialog.onclick = (function (Canvas, Dialog) {
