@@ -18,26 +18,16 @@ var RPGHelper = function (ID) {
 		Canvas: this.Canvas,
 		
 		TypeA: function (Content, Speed) {
-			if (!this.Canvas.hasAttribute("class")) {
-				this.Canvas.setAttribute("class", "RPGHelper-MsgBox-TypeA");
-			} else {
-				this.Canvas.attributes["class"].value = "RPGHelper-MsgBox-TypeA";
+			var Dialog = document.createElement("RPGHelper-Dialog");
+				this.Canvas.appendChild(Dialog);
+				
+			if (typeof Content == "string") {
+				Dialog.textContent = Content;
 			}
 			
-			if (typeof Content == "string") {
-				var i = 0;
-				
-				var Timer = setInterval(function (Canvas, Content) {
-					console.log(i);
-					
-					if (i < Content.length) {
-						Canvas.textContent = Content.substr(0, i);
-						i++;
-					} else {
-						//clearInterval(Timer);
-					}
-				}(this.Canvas, Content), Speed);
-			}
+			Dialog.onClick = function (Canvas) {
+				Canvas.removeChild()
+			}(this.Canvas);
 		}
 	}
 }
