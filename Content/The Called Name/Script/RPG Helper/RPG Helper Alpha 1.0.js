@@ -28,6 +28,8 @@ var RPGHelper = function (ID) {
 				var i = 0;
 				
 				var Timer = setInterval(function (Canvas) {
+					console.log(i);
+					
 					if (i < Content.length) {
 						Canvas.textContent = Content.substr(0, i);
 						i++;
