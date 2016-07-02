@@ -27,7 +27,7 @@ var RPGHelper = function (ID) {
 			if (typeof Content == "string") {
 				var i = 0;
 				
-				var Timer = setInterval(function (Canvas) {
+				var Timer = setInterval(function (Canvas, Content) {
 					console.log(i);
 					
 					if (i < Content.length) {
@@ -36,7 +36,7 @@ var RPGHelper = function (ID) {
 					} else {
 						clearInterval(Timer);
 					}
-				}(this.Canvas), Speed);
+				}(this.Canvas, Content), Speed);
 			}
 		}
 	}
