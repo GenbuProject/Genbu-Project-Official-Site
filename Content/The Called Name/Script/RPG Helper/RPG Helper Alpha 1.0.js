@@ -34,7 +34,7 @@ var RPGHelper = function (ID) {
 						Canvas.textContent = Content.substr(0, i);
 						i++;
 					} else {
-						clearInterval(Timer);
+						//clearInterval(Timer);
 					}
 				}(this.Canvas, Content), Speed);
 			}
