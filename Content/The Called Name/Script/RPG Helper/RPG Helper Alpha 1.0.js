@@ -26,9 +26,9 @@ var RPGHelper = function (ID) {
 				
 				var Timer = setInterval((function (Dialog, Counter) {
 					return function () {
-						if (Counter < Content.length) {
-							Dialog.textContent = Content.substr(0, i);
-							i++;
+						if (Counter <= Content.length) {
+							Dialog.textContent = Content.substr(0, Counter);
+							Counter++;
 						} else {
 							clearInterval(Timer);
 						}
