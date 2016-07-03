@@ -1,5 +1,5 @@
 var RPGHelper = function (ID) {
-	this.Canvas = document.getElementById(ID);
+	this.Canvas = document.getElementsByTagName("RPGHelper-Main")[ID];
 	
 	var Style = document.createElement("Link");
 		document.head.appendChild(Style);
