@@ -2,6 +2,7 @@ var RPGHelper = function () {
 	this.Canvas = document.getElementById("RPGHelper-Main");
 		this.Canvas.style.width = this.Canvas.attributes["width"].value + "px";
 		this.Canvas.style.height = this.Canvas.attributes["height"].value + "px";
+		this.Canvas.style.position = "Relative";
 	
 	var Style = document.createElement("Link");
 		document.head.appendChild(Style);
@@ -27,17 +28,19 @@ var RPGHelper = function () {
 		
 		TypeA: function (Pos, Content, Speed) {
 			var Dialog = document.createElement("RPGHelper-Dialog");
-				Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 4 - 5) + "px";
 				this.Canvas.appendChild(Dialog);
 				
 				switch (Pos) {
 					case 0x0001:
 						Dialog.style.position = "absolute";
+						Dialog.style.top = "0px";
+						Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 4 - 5) + "px";
 						break;
 						
 					case 0x0002:
 						Dialog.style.position = "absolute";
 						Dialog.style.top = (this.Canvas.style.height.split("px")[0] - (this.Canvas.style.height.split("px")[0] / 4)) + "px";
+						Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 4 - 10) + "px";
 						break;
 						
 					case 0x0003:
