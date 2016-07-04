@@ -1,7 +1,7 @@
 var RPGHelper = function (ID) {
 	this.Canvas = document.getElementsByTagName("RPGHelper-Main")[ID];
-		this.Canvas.style.width = this.Canvas.attributes["width"].value;
-		this.Canvas.style.height = this.Canvas.attributes["height"].value;
+		this.Canvas.style.width = this.Canvas.attributes["width"].value + "px";
+		this.Canvas.style.height = this.Canvas.attributes["height"].value + "px";
 	
 	var Style = document.createElement("Link");
 		document.head.appendChild(Style);
