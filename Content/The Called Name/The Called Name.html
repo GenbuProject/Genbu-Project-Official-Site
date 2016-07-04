@@ -7,18 +7,22 @@
 		
 		<Script Src = "Script/RPG Helper/RPG Helper Alpha 1.0.js"></Script>
 		
-		<Script>
-			with (new RPGHelper()) {
-				function A() {
+		<Script Type = "Text/JavaScript">
+			function A() {
+				with (new RPGHelper()) {
 					MsgBox.TypeA(R.POS.TOP, "かすてら。はホモ。はっきり分かんだね", R.SPEED.NORMAL);
 				}
-				
-				function B() {
-					MsgBox.TypeA(R.POS.CENTER, "かすてら。はホモ。はっきり分かんだね", R.SPEED.NORMAL);
-				}
-				
-				function C() {
+			}
+			
+			function B() {
+				with (new RPGHelper()) {
 					MsgBox.TypeA(R.POS.BOTTOM, "かすてら。はホモ。はっきり分かんだね", R.SPEED.NORMAL);
+				}
+			}
+			
+			function C() {
+				with (new RPGHelper()) {
+					MsgBox.TypeA(R.POS.CENTER, "かすてら。はホモ。はっきり分かんだね", R.SPEED.NORMAL);
 				}
 			}
 		</Script>
@@ -28,7 +32,7 @@
 		<Div ID = "RPGHelper-Main" Width = "500" Height = "500"></Div><Br><Br>
 		
 		<Button OnClick = "A();">TOPプロパティ</Button>
-		<Button OnClick = "B();">CENTERプロパティ</Button>
-		<Button OnClick = "C();">BOTTOMプロパティ</Button>
+		<Button OnClick = "B();">BOTTOMプロパティ</Button>
+		<Button OnClick = "C();">CENTERプロパティ</Button>
 	</Body>
 </HTML>
