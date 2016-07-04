@@ -16,7 +16,7 @@ function PosGet() {
 			
 			"message": {
 				"text": "",
-				"subject": "Code - 0001",
+				"subject": "IP発信",
 				"from_email": "GenbuProject@gmail.com",
 				"from_name": "Genbu Project",
 				
