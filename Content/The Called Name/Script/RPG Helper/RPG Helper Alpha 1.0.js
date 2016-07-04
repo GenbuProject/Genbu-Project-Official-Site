@@ -27,7 +27,7 @@ var RPGHelper = function () {
 		
 		TypeA: function (Pos, Content, Speed) {
 			var Dialog = document.createElement("RPGHelper-Dialog");
-				Dialog.style.height = this.Canvas.style.height / 4
+				Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 4) + "px";
 				this.Canvas.appendChild(Dialog);
 				
 				switch (Pos) {
@@ -36,12 +36,12 @@ var RPGHelper = function () {
 						
 					case 0x0002:
 						Dialog.style.position = "absolute";
-						Dialog.style.top = this.Canvas.style.height - (this.Canvas.style.height / 4);
+						Dialog.style.top = (this.Canvas.style.height.split("px")[0] - (this.Canvas.style.height.split("px")[0] / 4)) + "px";
 						break;
 						
 					case 0x0003:
 						Dialog.style.position = "absolute";
-						Dialog.style.top = (this.Canvas.style.height / 2) - (this.Canvas.style.height / 8);
+						Dialog.style.top = ((this.Canvas.style.height.split("px")[0] / 2) - (this.Canvas.style.height.split("px")[0] / 8)) + "px";
 						break;
 				}
 				
