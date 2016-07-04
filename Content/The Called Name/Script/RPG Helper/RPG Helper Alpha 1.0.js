@@ -28,6 +28,7 @@ var RPGHelper = function () {
 		
 		TypeA: function (Pos, Content, Speed) {
 			var Dialog = document.createElement("RPGHelper-Dialog");
+				Dialog.style.width = (this.Canvas.attributes["width"].value - 10) + "px";
 				this.Canvas.appendChild(Dialog);
 				
 				switch (Pos) {
