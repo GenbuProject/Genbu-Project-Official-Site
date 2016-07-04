@@ -40,6 +40,7 @@ var RPGHelper = function () {
 						break;
 						
 					case 0x0003:
+						Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 2) + "px";
 						Dialog.style.position = "absolute";
 						Dialog.style.top = ((this.Canvas.style.height.split("px")[0] / 2) - (this.Canvas.style.height.split("px")[0] / 8)) + "px";
 						break;
