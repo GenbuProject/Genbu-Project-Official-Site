@@ -1,9 +1,9 @@
 #RPGHelper-Main {
-	Border: 5px Solid Gray;
+	Border: Thin Solid Gray;
 }
 
 RPGHelper-Dialog {
-	Border: Medium Double Plum;
+	Border: 5px Double Plum;
 	Border-Radius: 5px 5px 5px 5px;
 	
 	BackGround: rgba(200, 200, 200, 0.5);
