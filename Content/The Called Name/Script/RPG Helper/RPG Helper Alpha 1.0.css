@@ -3,7 +3,7 @@
 }
 
 RPGHelper-Dialog {
-	Border: 5px Double Plum;
+	Border: 5px Groove Plum;
 	Border-Radius: 5px 5px 5px 5px;
 	
 	BackGround: rgba(200, 200, 200, 0.5);
