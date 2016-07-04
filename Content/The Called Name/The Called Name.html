@@ -9,7 +9,7 @@
 		
 		<Script Type = "Text/JavaScript">
 			function Submit() {
-				var Texts = document.getElementsByTagName("TextArea")[0].textContent;
+				var Texts = document.getElementsByTagName("TextArea")[0].value;
 				
 				with (new RPGHelper()) {
 					var Lines = Texts.split("\n");
