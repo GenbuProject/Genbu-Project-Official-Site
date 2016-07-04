@@ -32,6 +32,7 @@ var RPGHelper = function () {
 				
 				switch (Pos) {
 					case 0x0001:
+						Dialog.style.position = "absolute";
 						break;
 						
 					case 0x0002:
@@ -40,9 +41,9 @@ var RPGHelper = function () {
 						break;
 						
 					case 0x0003:
-						Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 2) + "px";
 						Dialog.style.position = "absolute";
-						Dialog.style.top = ((this.Canvas.style.height.split("px")[0] / 2) - (this.Canvas.style.height.split("px")[0] / 8)) + "px";
+						Dialog.style.top = ((this.Canvas.style.height.split("px")[0] / 2) - (this.Canvas.style.height.split("px")[0] / 4)) + "px";
+						Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 2) + "px";
 						break;
 				}
 				
