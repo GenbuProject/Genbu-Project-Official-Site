@@ -1,5 +1,5 @@
 var RPGHelper = function () {
-	this.Canvas = document.getElementById("RPGHelper-Main")
+	this.Canvas = document.getElementById("RPGHelper-Main");
 		this.Canvas.style.width = this.Canvas.attributes["width"].value + "px";
 		this.Canvas.style.height = this.Canvas.attributes["height"].value + "px";
 	
