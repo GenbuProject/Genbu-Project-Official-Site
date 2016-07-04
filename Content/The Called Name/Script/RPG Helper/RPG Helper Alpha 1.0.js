@@ -7,7 +7,7 @@ var RPGHelper = function () {
 	var Style = document.createElement("Link");
 		document.head.appendChild(Style);
 		Style.setAttribute("Rel", "StyleSheet");
-		Style.setAttribute("HREF", "Script/RPG Helper/RPG Helper Alpha 1.0.js");
+		Style.setAttribute("HREF", "Script/RPG Helper/RPG Helper Alpha 1.0.css");
 		
 	this.R = {
 		SPEED: {
