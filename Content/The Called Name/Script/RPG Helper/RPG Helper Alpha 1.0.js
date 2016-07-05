@@ -7,8 +7,10 @@ var RPGHelper = function () {
 	var Counter = 0;
 	
 	for (var i = 0; i < document.head.children.length; i++) {
-		if (document.head.children[i].attributes["href"].value == "Script/RPG Helper/RPG Helper Alpha 1.0.css") {
-			Counter++;
+		if (document.head.children[i].tagName == "LINK") {
+			if (document.head.children[i].attributes["href"].value == "Script/RPG Helper/RPG Helper Alpha 1.0.css") {
+				Counter++;
+			}
 		}
 	}
 	
