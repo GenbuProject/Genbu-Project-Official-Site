@@ -1,13 +1,13 @@
 var RPGHelper = function () {
 	this.Canvas = document.getElementById("RPGHelper-Main");
-		this.Canvas.style.width = this.Canvas.attributes["Width"].value + "px";
-		this.Canvas.style.height = this.Canvas.attributes["Height"].value + "px";
+		this.Canvas.style.width = this.Canvas.attributes["width"].value + "px";
+		this.Canvas.style.height = this.Canvas.attributes["height"].value + "px";
 		this.Canvas.style.position = "Relative";
 		
 	var Counter = 0;
 	
 	for (var i = 0; i < document.head.children.length; i++) {
-		if (document.head.children[i].attributes["HREF"].value == "Script/RPG Helper/RPG Helper Alpha 1.0.css") {
+		if (document.head.children[i].attributes["href"].value == "Script/RPG Helper/RPG Helper Alpha 1.0.css") {
 			Counter++;
 		}
 	}
@@ -39,7 +39,7 @@ var RPGHelper = function () {
 		TypeA: function (Pos, Content, Speed) {
 			var Dialog = document.createElement("RPGHelper-Dialog");
 				Dialog.setAttribute("Class", "MsgBox-TypeA");
-				Dialog.style.width = (this.Canvas.attributes["Width"].value - 10) + "px";
+				Dialog.style.width = (this.Canvas.attributes["width"].value - 10) + "px";
 				this.Canvas.appendChild(Dialog);
 			
 			switch (Pos) {
