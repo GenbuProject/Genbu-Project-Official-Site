@@ -27,8 +27,8 @@ var RPGHelper = function () {
 		Canvas: this.Canvas,
 		
 		TypeA: function (Pos, Content, Speed) {
-			this.IsVisibled = true;
 			this.IsReading = true;
+			this.IsVisibled = true;
 			
 			var Dialog = document.createElement("RPGHelper-Dialog");
 				Dialog.style.width = (this.Canvas.attributes["width"].value - 10) + "px";
@@ -78,6 +78,16 @@ var RPGHelper = function () {
 					
 				}
 			})(this.Canvas, Dialog);
+			
+			return {
+				IsReading: function () {
+					return this.IsReading;
+				},
+				
+				IsVisibled: function () {
+					return this.IsVisibled;
+				}
+			}
 		}
 	}
 }
