@@ -1,14 +1,24 @@
 var RPGHelper = function () {
 	this.Canvas = document.getElementById("RPGHelper-Main");
-		this.Canvas.style.width = this.Canvas.attributes["width"].value + "px";
-		this.Canvas.style.height = this.Canvas.attributes["height"].value + "px";
+		this.Canvas.style.width = this.Canvas.attributes["Width"].value + "px";
+		this.Canvas.style.height = this.Canvas.attributes["Height"].value + "px";
 		this.Canvas.style.position = "Relative";
-	
-	var Style = document.createElement("Link");
-		document.head.appendChild(Style);
-		Style.setAttribute("Rel", "StyleSheet");
-		Style.setAttribute("HREF", "Script/RPG Helper/RPG Helper Alpha 1.0.css");
 		
+	var Counter = 0;
+	
+	for (var i = 0; i < document.head.children.length; i++) {
+		if (document.head.children[i].attributes["HREF"].value == "Script/RPG Helper/RPG Helper Alpha 1.0.css") {
+			Counter++;
+		}
+	}
+	
+	if (Counter == 0) {
+		var Style = document.createElement("Link");
+			document.head.appendChild(Style);
+			Style.setAttribute("Rel", "StyleSheet");
+			Style.setAttribute("HREF", "Script/RPG Helper/RPG Helper Alpha 1.0.css");
+	}
+	
 	this.R = {
 		SPEED: {
 			SLOW: 100,
@@ -27,11 +37,9 @@ var RPGHelper = function () {
 		Canvas: this.Canvas,
 		
 		TypeA: function (Pos, Content, Speed) {
-			var IsReading = true;
-			var IsVisibled = true;
-			
 			var Dialog = document.createElement("RPGHelper-Dialog");
-				Dialog.style.width = (this.Canvas.attributes["width"].value - 10) + "px";
+				Dialog.setAttribute("Class", "MsgBox-TypeA");
+				Dialog.style.width = (this.Canvas.attributes["Width"].value - 10) + "px";
 				this.Canvas.appendChild(Dialog);
 			
 			switch (Pos) {
@@ -64,33 +72,16 @@ var RPGHelper = function () {
 							Counter++;
 						} else {
 							clearInterval(Timer);
-							IsReading = false;
 						}
 					}
 				})(Dialog, Counter), Speed);
 			}
 			
 			Dialog.onclick = (function (Canvas, Dialog) {
-				IsVisibled = false;
-				
 				return function () {
 					Canvas.removeChild(Dialog);
 				}
 			})(this.Canvas, Dialog);
-			
-			return {
-				IsReading: (function (IsReading) {
-					return function () {
-						return IsReading;
-					}
-				})(IsReading),
-				
-				IsVisibled: (function (IsVisibled) {
-					return function () {
-						return IsVisibled;
-					}
-				})(IsVisibled)
-			}
 		}
 	}
 }
