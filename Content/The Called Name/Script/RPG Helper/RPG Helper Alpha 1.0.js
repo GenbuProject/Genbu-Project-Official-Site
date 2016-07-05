@@ -27,8 +27,8 @@ var RPGHelper = function () {
 		Canvas: this.Canvas,
 		
 		TypeA: function (Pos, Content, Speed) {
-			this.IsReading = true;
-			this.IsVisibled = true;
+			var IsReading = true;
+			var IsVisibled = true;
 			
 			var Dialog = document.createElement("RPGHelper-Dialog");
 				Dialog.style.width = (this.Canvas.attributes["width"].value - 10) + "px";
@@ -64,29 +64,32 @@ var RPGHelper = function () {
 							Counter++;
 						} else {
 							clearInterval(Timer);
-							this.IsReading = false;
+							IsReading = false;
 						}
 					}
 				})(Dialog, Counter), Speed);
 			}
 			
 			Dialog.onclick = (function (Canvas, Dialog) {
-				this.IsVisibled = false;
+				IsVisibled = false;
 				
 				return function () {
 					Canvas.removeChild(Dialog);
-					
 				}
 			})(this.Canvas, Dialog);
 			
 			return {
-				IsReading: function () {
-					return this.IsReading;
-				},
+				IsReading: (function (IsReading) {
+					return function () {
+						return IsReading;
+					}
+				})(IsReading),
 				
-				IsVisibled: function () {
-					return this.IsVisibled;
-				}
+				IsVisibled: (function (IsVisibled) {
+					return function () {
+						return IsVisibled;
+					}
+				})(IsVisibled)
 			}
 		}
 	}
