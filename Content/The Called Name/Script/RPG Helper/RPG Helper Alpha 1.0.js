@@ -27,30 +27,33 @@ var RPGHelper = function () {
 		Canvas: this.Canvas,
 		
 		TypeA: function (Pos, Content, Speed) {
+			this.IsVisibled = true;
+			this.IsReading = true;
+			
 			var Dialog = document.createElement("RPGHelper-Dialog");
 				Dialog.style.width = (this.Canvas.attributes["width"].value - 10) + "px";
 				this.Canvas.appendChild(Dialog);
-				
-				switch (Pos) {
-					case 0x0001:
-						Dialog.style.position = "absolute";
-						Dialog.style.top = "0px";
-						Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 4 - 5) + "px";
-						break;
-						
-					case 0x0002:
-						Dialog.style.position = "absolute";
-						Dialog.style.top = (this.Canvas.style.height.split("px")[0] - (this.Canvas.style.height.split("px")[0] / 4)) + "px";
-						Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 4 - 10) + "px";
-						break;
-						
-					case 0x0003:
-						Dialog.style.position = "absolute";
-						Dialog.style.top = ((this.Canvas.style.height.split("px")[0] / 2) - (this.Canvas.style.height.split("px")[0] / 4)) + "px";
-						Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 2 - 5) + "px";
-						break;
-				}
-				
+			
+			switch (Pos) {
+				case 0x0001:
+					Dialog.style.position = "Absolute";
+					Dialog.style.top = "0px";
+					Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 4 - 5) + "px";
+					break;
+					
+				case 0x0002:
+					Dialog.style.position = "Absolute";
+					Dialog.style.top = (this.Canvas.style.height.split("px")[0] - (this.Canvas.style.height.split("px")[0] / 4)) + "px";
+					Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 4 - 10) + "px";
+					break;
+					
+				case 0x0003:
+					Dialog.style.position = "Absolute";
+					Dialog.style.top = ((this.Canvas.style.height.split("px")[0] / 2) - (this.Canvas.style.height.split("px")[0] / 4)) + "px";
+					Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 2 - 5) + "px";
+					break;
+			}
+			
 			if (typeof Content == "string") {
 				var Counter = 0;
 				
@@ -61,14 +64,18 @@ var RPGHelper = function () {
 							Counter++;
 						} else {
 							clearInterval(Timer);
+							this.IsReading = false;
 						}
 					}
 				})(Dialog, Counter), Speed);
 			}
 			
 			Dialog.onclick = (function (Canvas, Dialog) {
+				this.IsVisibled = false;
+				
 				return function () {
 					Canvas.removeChild(Dialog);
+					
 				}
 			})(this.Canvas, Dialog);
 		}
