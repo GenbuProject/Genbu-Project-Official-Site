@@ -15,16 +15,8 @@
 					var Lines = Texts.split("\n");
 					
 					for (var i = 0; i < Lines.length; i++) {
-						MsgBox.TypeA(Lines[i].split("%%")[1] == "^1" ? R.POS.TOP : Lines[i].split("%%")[1] == "^2" ? R.POS.BOTTOM : Lines[i].split("%%")[1] == "^3" ? R.POS.CENTER : R.POS.BOTTOM, Lines[i].split("%%")[0], R.SPEED.NORMAL);
+						MsgBox(Lines[i].split("%%")[1] == "^1" ? R.POS.TOP : Lines[i].split("%%")[1] == "^2" ? R.POS.BOTTOM : Lines[i].split("%%")[1] == "^3" ? R.POS.CENTER : R.POS.BOTTOM, Lines[i].split("%%")[0], R.SPEED.NORMAL);
 					}
-				}
-			}
-			
-			function Clear() {
-				var Dialogs = document.getElementsByTagName("RPGHelper-Dialog");
-				
-				for (var i = 0; i < Dialogs.length; i++) {
-					document.getElementById("RPGHelper-Main").removeChild(Dialogs[i]);
 				}
 			}
 		</Script>
@@ -35,6 +27,5 @@
 		
 		<TextArea></TextArea>
 		<Button OnClick = "Submit();">反映</Button>
-		<Button OnClick = "Clear();">クリア</Button>
 	</Body>
 </HTML>
