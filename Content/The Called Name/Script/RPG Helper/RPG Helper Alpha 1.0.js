@@ -4,23 +4,6 @@ var RPGHelper = function () {
 		this.Canvas.style.height = this.Canvas.attributes["height"].value + "px";
 		this.Canvas.style.position = "Relative";
 		
-	var Counter = 0;
-	
-	for (var i = 0; i < document.head.children.length; i++) {
-		if (document.head.children[i].tagName == "LINK") {
-			if (document.head.children[i].attributes["href"].value == "Script/RPG Helper/RPG Helper Alpha 1.0.css") {
-				Counter++;
-			}
-		}
-	}
-	
-	if (Counter == 0) {
-		var Style = document.createElement("Link");
-			document.head.appendChild(Style);
-			Style.setAttribute("Rel", "StyleSheet");
-			Style.setAttribute("HREF", "Script/RPG Helper/RPG Helper Alpha 1.0.css");
-	}
-	
 	this.R = {
 		SPEED: {
 			SLOW: 100,
