@@ -35,55 +35,59 @@ var RPGHelper = function () {
 		}
 	}
 	
-	this.MsgBox = {
+	this.MsgBox = function (Pos, Content, Speed) {
+		var Dialog = document.createElement("RPGHelper-MsgBox");
+			Dialog.style.width = (this.Canvas.attributes["width"].value - 10) + "px";
+			this.Canvas.appendChild(Dialog);
+		
+		switch (Pos) {
+			case 0x0001:
+				Dialog.style.position = "Absolute";
+				Dialog.style.top = "0px";
+				Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 4 - 5) + "px";
+				break;
+				
+			case 0x0002:
+				Dialog.style.position = "Absolute";
+				Dialog.style.top = (this.Canvas.style.height.split("px")[0] - (this.Canvas.style.height.split("px")[0] / 4)) + "px";
+				Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 4 - 10) + "px";
+				break;
+				
+			case 0x0003:
+				Dialog.style.position = "Absolute";
+				Dialog.style.top = ((this.Canvas.style.height.split("px")[0] / 2) - (this.Canvas.style.height.split("px")[0] / 4)) + "px";
+				Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 2 - 5) + "px";
+				break;
+		}
+		
+		if (typeof Content == "string") {
+			var Counter = 0;
+			
+			var Timer = setInterval((function (Dialog, Counter) {
+				return function () {
+					if (Counter <= Content.length) {
+						Dialog.textContent = Content.substr(0, Counter);
+						Counter++;
+					} else {
+						clearInterval(Timer);
+					}
+				}
+			})(Dialog, Counter), Speed);
+		}
+		
+		Dialog.onclick = (function (Canvas, Dialog) {
+			return function () {
+				Canvas.removeChild(Dialog);
+			}
+		})(this.Canvas, Dialog);
+	}
+	
+	this.Menu = {
 		Canvas: this.Canvas,
 		
-		TypeA: function (Pos, Content, Speed) {
-			var Dialog = document.createElement("RPGHelper-Dialog");
-				Dialog.setAttribute("Class", "MsgBox-TypeA");
-				Dialog.style.width = (this.Canvas.attributes["width"].value - 10) + "px";
-				this.Canvas.appendChild(Dialog);
-			
-			switch (Pos) {
-				case 0x0001:
-					Dialog.style.position = "Absolute";
-					Dialog.style.top = "0px";
-					Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 4 - 5) + "px";
-					break;
-					
-				case 0x0002:
-					Dialog.style.position = "Absolute";
-					Dialog.style.top = (this.Canvas.style.height.split("px")[0] - (this.Canvas.style.height.split("px")[0] / 4)) + "px";
-					Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 4 - 10) + "px";
-					break;
-					
-				case 0x0003:
-					Dialog.style.position = "Absolute";
-					Dialog.style.top = ((this.Canvas.style.height.split("px")[0] / 2) - (this.Canvas.style.height.split("px")[0] / 4)) + "px";
-					Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 2 - 5) + "px";
-					break;
-			}
-			
-			if (typeof Content == "string") {
-				var Counter = 0;
+		MenuPanel: function (Pos, Amount) {
+			var Dialog = document.createElement("RPGHelper-Menu-MenuPanel");
 				
-				var Timer = setInterval((function (Dialog, Counter) {
-					return function () {
-						if (Counter <= Content.length) {
-							Dialog.textContent = Content.substr(0, Counter);
-							Counter++;
-						} else {
-							clearInterval(Timer);
-						}
-					}
-				})(Dialog, Counter), Speed);
-			}
-			
-			Dialog.onclick = (function (Canvas, Dialog) {
-				return function () {
-					Canvas.removeChild(Dialog);
-				}
-			})(this.Canvas, Dialog);
 		}
 	}
 }
