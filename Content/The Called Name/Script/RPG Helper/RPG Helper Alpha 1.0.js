@@ -4,6 +4,8 @@ var RPGHelper = function () {
 		this.Canvas.style.height = this.Canvas.attributes["height"].value + "px";
 		this.Canvas.style.position = "Relative";
 		
+	//this.SE = new document.
+		
 	this.R = {
 		SPEED: {
 			SLOW: 100,
