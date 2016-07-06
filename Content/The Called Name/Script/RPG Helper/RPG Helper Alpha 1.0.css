@@ -2,7 +2,7 @@
 	Border: Thin Solid Gray;
 }
 
-RPGHelper-Dialog {
+RPGHelper-MsgBox RPGHelper-Menu-MenuPanel {
 	Border: 5px Groove Plum;
 	Border-Radius: 5px 5px 5px 5px;
 	
