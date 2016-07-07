@@ -4,7 +4,9 @@ var RPGHelper = function () {
 		this.Canvas.style.height = this.Canvas.attributes["height"].value + "px";
 		this.Canvas.style.position = "Relative";
 		
-	//this.SE = new document.
+	this.SE = new Audio("null.wav");
+	this.BGM = new Audio("null.wav");
+		BGM.loop = true;
 		
 	this.R = {
 		SPEED: {
@@ -29,19 +31,19 @@ var RPGHelper = function () {
 			case 0x0001:
 				Dialog.style.position = "Absolute";
 				Dialog.style.top = "0px";
-				Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 4 - 5) + "px";
+				Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 4 - 5) + "px"; //【縦横500pxの時】500px / 4 - 5px[ボーダー幅] = 120px
 				break;
 				
 			case 0x0002:
 				Dialog.style.position = "Absolute";
-				Dialog.style.top = (this.Canvas.style.height.split("px")[0] - (this.Canvas.style.height.split("px")[0] / 4)) + "px";
-				Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 4 - 10) + "px";
+				Dialog.style.top = (this.Canvas.style.height.split("px")[0] - (this.Canvas.style.height.split("px")[0] / 4)) + "px"; //【縦横500pxの時】500px - (500px / 4) = 500px - 125px = 375px
+				Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 4 - 10) + "px"; //【縦横500pxの時】500px / 4 - 10px[ボーダー幅 * 2] = 115px
 				break;
 				
 			case 0x0003:
 				Dialog.style.position = "Absolute";
-				Dialog.style.top = ((this.Canvas.style.height.split("px")[0] / 2) - (this.Canvas.style.height.split("px")[0] / 4)) + "px";
-				Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 2 - 5) + "px";
+				Dialog.style.top = ((this.Canvas.style.height.split("px")[0] / 2) - (this.Canvas.style.height.split("px")[0] / 4)) + "px"; //【縦横500pxの時】(500px / 2) - (500px - 2) = 250px - 125px = 125px
+				Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 2 - 5) + "px"; //【縦横500pxの時】500px / 2 - 5 = 245px
 				break;
 		}
 		
@@ -72,7 +74,8 @@ var RPGHelper = function () {
 		
 		MenuPanel: function (Pos, Amount) {
 			var Dialog = document.createElement("RPGHelper-Menu-MenuPanel");
-				
+				Dialog.style.height = 50 * Amount + "px";
+				this.Canvas.appendChild(Dialog);
 		}
 	}
 }
