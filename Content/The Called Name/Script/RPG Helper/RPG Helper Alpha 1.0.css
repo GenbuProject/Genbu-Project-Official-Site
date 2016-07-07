@@ -2,11 +2,11 @@
 	Border: Thin Solid Gray;
 }
 
-RPGHelper-MsgBox, RPGHelper-Menu-MenuPanel {
+RPGHelper-MsgBox, RPGHelper-Menu-MenuPanel, RPGHelper-Menu-Magic-MagicType {
 	Border: 5px Groove Plum;
 	Border-Radius: 5px 5px 5px 5px;
 	
-	BackGround: rgba(200, 200, 200, 0.5);
+	BackGround: RGBA(200, 200, 200, 0.5);
 	
 	Font: Medium Meiryo;
 }
