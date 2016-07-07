@@ -4,9 +4,11 @@ var RPGHelper = function () {
 		this.Canvas.style.height = this.Canvas.attributes["height"].value + "px";
 		this.Canvas.style.position = "Relative";
 		
-	this.SE = new Audio("null.wav");
 	this.BGM = new Audio("null.wav");
-		BGM.loop = true;
+		this.BGM.loop = true;
+		
+	this.SE = new Audio("null.wav");
+		this.SE.loop = false;
 		
 	this.R = {
 		SPEED: {
@@ -76,6 +78,23 @@ var RPGHelper = function () {
 			var Dialog = document.createElement("RPGHelper-Menu-MenuPanel");
 				Dialog.style.height = 50 * Amount + "px";
 				this.Canvas.appendChild(Dialog);
+		}
+	}
+	
+	this.Sound = {
+		BGM: this.BGM,
+		SE: this.SE,
+		
+		PlayBGM: function (URL, Volume) {
+			this.BGM.src = URL;
+			this.BGM.volume = Volume;
+			this.BGM.play();
+		},
+		
+		PlaySE: function (URL, Volume) {
+			this.SE.src = URL;
+			this.SE.volume = Volume;
+			this.SE.play();
 		}
 	}
 }
