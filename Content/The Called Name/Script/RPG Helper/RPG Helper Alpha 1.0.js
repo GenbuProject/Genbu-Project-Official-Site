@@ -95,8 +95,8 @@ var RPGHelper = function () {
 				Dialog.style.left = (this.Canvas.style.width.split("px")[0] / 10) * (Math.min(Size[0].substr(1, 1), Size[1].substr(1, 1))) + "px";
 				
 			if (Size[1] == "100") {
-				Dialog.style.width = this.Canvas.style.width.split("px")[0] - 5 + "px";
-				Dialog.style.height = this.Canvas.style.height.split("px")[0] - 5 + "px";
+				Dialog.style.width = this.Canvas.style.width.split("px")[0] - 10 + "px";
+				Dialog.style.height = this.Canvas.style.height.split("px")[0] - 10 + "px";
 				Dialog.style.top = "0px";
 				Dialog.style.left = "0px";
 			}
