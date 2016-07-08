@@ -9,4 +9,4 @@
 > <Br>
 > `RPG Helper`ではゲーム画面を【図1】のように分割して処理を行っています。
 > <Br>
-> ![図1](https://genbuproject.github.io/Genbu-Project-Official-Site/Content/The%20Called%20Name/Image/Image-1.png "図1")
+> ![図1](https://genbuproject.github.io/Genbu-Project-Official-Site/Content/The%20Called%20Name/Image/Image-2.png "図1")
