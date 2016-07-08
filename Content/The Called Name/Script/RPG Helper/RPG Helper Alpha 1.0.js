@@ -115,9 +115,20 @@ var RPGHelper = function () {
 			this.Canvas.appendChild(Dialog);
 		},
 		
-		MenuItem: function (Size, ClickFuc) {
+		/*/
+		 *##################################################
+		 *#Size : Array型
+		 *#|=> [0] : int型(00 ～ 99)
+		 *#|=> [1] : int型(00 ～ 99)
+		 *#
+		 *#Content : String型
+		 *#ClickFuc : Function型
+		 *##################################################
+		/*/
+		MenuItem: function (Size, Content, ClickFuc) {
 			var Dialog = document.createElement("RPGHelper-Menu-MenuItem");
 				Dialog.style.position = "Absolute";
+				Dialog.textContent = Content;
 				
 				if (Size[0].substr(0, 1) != "^" && Size[1].substr(0, 1) != "^" && Size[0].substr(1, 1) != "^" && Size[1].substr(1, 1) != "^") {
 					Dialog.style.width = (this.Canvas.style.width.split("px")[0] / 10) * (Math.max(Size[0].substr(1, 1), Size[1].substr(1, 1)) - Math.min(Size[0].substr(1, 1), Size[1].substr(1, 1))) - 5 + "px";
