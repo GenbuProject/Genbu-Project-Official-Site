@@ -36,7 +36,11 @@
 				var Colorizer = new JsColorizer();
 					Colorizer.s = Code;
 					Code = Colorizer.colorize();
-				
+					
+				var Decoder = new JsDecoder();
+					Decoder.s = Code;
+					Code = Decoder.decode();
+					
 				if (document.all) {
 					Code = Code.replace(/\n|\r\n/g, "<br/>");
 				}
@@ -62,7 +66,7 @@
 		<TextArea Wrap = "Off"></TextArea>
 		<Button OnClick = "Submit();">反映</Button><Br>
 		
-		<TextArea Wrap = "Off" OnKeyDown = "Colorize();" OnKeyPress = "Colorize();" OnKeyUp = "Colorize();"></TextArea>
+		<TextArea Wrap = "Off" Style = "Width: 100%;" OnKeyDown = "Colorize();" OnKeyPress = "Colorize();" OnKeyUp = "Colorize();"></TextArea>
 		<Pre ID = "FormatedCode" Style = "Color: MenuText; BackGround: Menu; Border: Thin Solid OrangeRed; Border-Radius: 5px; Line-Height: 1.5; Display: None;"></Pre>
 		<Button OnClick = "RunCode();">コード実行</Button>
 	</Body>
