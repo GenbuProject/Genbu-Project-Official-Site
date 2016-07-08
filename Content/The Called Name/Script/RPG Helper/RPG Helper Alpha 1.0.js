@@ -26,24 +26,22 @@ var RPGHelper = function () {
 	
 	this.MsgBox = function (Pos, Content, Speed) {
 		var Dialog = document.createElement("RPGHelper-MsgBox");
+			Dialog.style.position = "Absolute";
 			Dialog.style.width = (this.Canvas.attributes["width"].value - 10) + "px";
 			this.Canvas.appendChild(Dialog);
-		
+			
 		switch (Pos) {
 			case 0x0001:
-				Dialog.style.position = "Absolute";
 				Dialog.style.top = "0px";
 				Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 4 - 5) + "px"; //【縦横500pxの時】500px / 4 - 5px[ボーダー幅] = 120px
 				break;
 				
 			case 0x0002:
-				Dialog.style.position = "Absolute";
 				Dialog.style.top = (this.Canvas.style.height.split("px")[0] - (this.Canvas.style.height.split("px")[0] / 4)) + "px"; //【縦横500pxの時】500px - (500px / 4) = 500px - 125px = 375px
 				Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 4 - 10) + "px"; //【縦横500pxの時】500px / 4 - 10px[ボーダー幅 * 2] = 115px
 				break;
 				
 			case 0x0003:
-				Dialog.style.position = "Absolute";
 				Dialog.style.top = ((this.Canvas.style.height.split("px")[0] / 2) - (this.Canvas.style.height.split("px")[0] / 4)) + "px"; //【縦横500pxの時】(500px / 2) - (500px - 2) = 250px - 125px = 125px
 				Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 2 - 5) + "px"; //【縦横500pxの時】500px / 2 - 5 = 245px
 				break;
@@ -74,8 +72,9 @@ var RPGHelper = function () {
 	this.Menu = {
 		Canvas: this.Canvas,
 		
-		MenuPanel: function (Pos, Amount) {
+		MenuPanel: function (Size, Amount) {
 			var Dialog = document.createElement("RPGHelper-Menu-MenuPanel");
+				Dialog.style.position = "Absolute";
 				Dialog.style.height = 50 * Amount + "px";
 				this.Canvas.appendChild(Dialog);
 		}
