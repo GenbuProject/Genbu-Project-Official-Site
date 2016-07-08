@@ -4,10 +4,10 @@ var RPGHelper = function () {
 		this.Canvas.style.height = this.Canvas.attributes["height"].value + "px";
 		this.Canvas.style.position = "Relative";
 		
-	this.BGM = new Audio("null.wav");
+	this.BGM = new Audio("Script/RPG Helper/null.wav");
 		this.BGM.loop = true;
 		
-	this.SE = new Audio("null.wav");
+	this.SE = new Audio("Script/RPG Helper/null.wav");
 		this.SE.loop = false;
 		
 	this.R = {
