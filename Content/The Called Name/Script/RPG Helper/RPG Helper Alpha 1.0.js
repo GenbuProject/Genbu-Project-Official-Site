@@ -100,7 +100,7 @@ var RPGHelper = function () {
 		StopBGM: function () {
 			this.SE.pause();
 			this.SE.currentTime = 0;
-			this.SE.src = "null.wav";
+			this.SE.src = "Script/RPG Helper/null.wav";
 			this.SE.volume = 1;
 		}
 	}
