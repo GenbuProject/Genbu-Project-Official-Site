@@ -41,7 +41,7 @@
 					Code = Code.replace(/\n|\r\n/g, "<br/>");
 				}
 				
-				document.getElementById("FormatedCode").innerHTML = "<Pre>" + Code + "</Pre>";
+				document.getElementById("FormatedCode").innerHTML = Code;
 				
 				if (document.getElementById("FormatedCode").innerHTML == "") {
 					document.getElementById("FormatedCode").style.display = "None";
@@ -63,7 +63,7 @@
 		<Button OnClick = "Submit();">反映</Button><Br>
 		
 		<TextArea Wrap = "Off" OnKeyDown = "Colorize();" OnKeyPress = "Colorize();" OnKeyUp = "Colorize();"></TextArea>
-		<Div ID = "FormatedCode" Style = "Color: MenuText; BackGround: Menu; Border: Thin Solid Gray; Border-Radius: 5px; Line-Height: 1.5; Display: None;"></Div>
+		<Pre ID = "FormatedCode" Style = "Color: MenuText; BackGround: Menu; Border: Thin Solid OrangeRed; Border-Radius: 5px; Line-Height: 1.5; Display: None;"></Pre>
 		<Button OnClick = "RunCode();">コード実行</Button>
 	</Body>
 </HTML>
