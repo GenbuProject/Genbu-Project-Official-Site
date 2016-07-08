@@ -24,6 +24,13 @@ var RPGHelper = function () {
 		}
 	}
 	
+	/*/
+	 *##################################################
+	 *#Pos : R.POS型
+	 *#Content : String型
+	 *#Speed : R.SPEED型
+	 *##################################################
+	/*/
 	this.MsgBox = function (Pos, Content, Speed) {
 		var Dialog = document.createElement("RPGHelper-MsgBox");
 			Dialog.style.position = "Absolute";
@@ -72,10 +79,20 @@ var RPGHelper = function () {
 	this.Menu = {
 		Canvas: this.Canvas,
 		
-		MenuPanel: function (Size, Amount) {
+		/*/
+		 *##################################################
+		 *#Size : Array型
+		 *#|=> [0] : int型(00 ～ 99)
+		 *#|=> [1] : int型(00 ～ 99)
+		 *##################################################
+		/*/
+		MenuPanel: function (Size) {
 			var Dialog = document.createElement("RPGHelper-Menu-MenuPanel");
 				Dialog.style.position = "Absolute";
-				Dialog.style.height = 50 * Amount + "px";
+				Dialog.style.width = (this.Canvas.style.width / 10) * (Math.max(parseInt(Size[0].substr(1, 1)), parseInt(Size[1].substr(1, 1))) - Math.min(parseInt(Size[0].substr(1, 1)), parseInt(Size[1].substr(1, 1))));
+				Dialog.style.height = (this.Canvas.style.height / 10) * (Math.max(parseInt(Size[0].substr(0, 1)), parseInt(Size[1].substr(0, 1))) - Math.min(parseInt(Size[0].substr(0, 1)), parseInt(Size[1].substr(0, 1))));
+				Dialog.style.top = (this.Canvas.style.height / 10) * (Math.max(parseInt(Size[0].substr(0, 1)), parseInt(Size[1].substr(0, 1))) - Math.min(parseInt(Size[0].substr(0, 1)), parseInt(Size[1].substr(0, 1))));
+				
 				this.Canvas.appendChild(Dialog);
 		}
 	}
@@ -84,12 +101,24 @@ var RPGHelper = function () {
 		BGM: this.BGM,
 		SE: this.SE,
 		
+		/*/
+		 *##################################################
+		 *#URL : String型
+		 *#Volume : double型
+		 *##################################################
+		/*/
 		PlayBGM: function (URL, Volume) {
 			this.BGM.src = URL;
 			this.BGM.volume = Volume;
 			this.BGM.play();
 		},
 		
+		/*/
+		 *##################################################
+		 *#URL : String型
+		 *#Volume : double型
+		 *##################################################
+		/*/
 		PlaySE: function (URL, Volume) {
 			this.SE.src = URL;
 			this.SE.volume = Volume;
