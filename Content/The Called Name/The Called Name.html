@@ -6,6 +6,8 @@
 		<Title>Genbu Project Official Site == The Called Name</Title>
 		
 		<Script Src = "Script/RPG Helper/RPG Helper Alpha 1.0.js"></Script>
+		<Script Src = "Script/JsDecoder.js"></Script>
+		<Script Src = "Script/JsColorizer.js"></Script>
 		<Link Rel = "StyleSheet" HREF = "Script/RPG Helper/RPG Helper Alpha 1.0.css">
 		
 		<Script Type = "Text/JavaScript">
@@ -20,6 +22,29 @@
 					}
 				}
 			}
+			
+			function Colorize() {
+				var Code = document.getElementsByTagName("TextArea")[1].value;
+					Code = Code.replace(/&/g, "&amp;");
+					Code = Code.replace(/</g, "&lt;");
+					Code = Code.replace(/>/g, "&gt;");
+					
+				if (document.all) {
+					Code = Code.replace(/ /g, "&nbsp;");
+				}
+				
+				var Colorizer = new JsColorizer();
+					Colorizer.s = code;
+					Code = Colorizer.colorize();
+				
+				if (document.all) {
+					Code = Code.replace(/\n|\r\n/g, "<br/>");
+				}
+			}
+			
+			function RunCode() {
+				eval (document.getElementsByTagName("TextArea")[1].value);
+			}
 		</Script>
 	</Head>
 	
@@ -27,6 +52,9 @@
 		<Div ID = "RPGHelper-Main" Width = "500" Height = "500"></Div>
 		
 		<TextArea></TextArea>
-		<Button OnClick = "Submit();">反映</Button>
+		<Button OnClick = "Submit();">反映</Button><Br>
+		
+		<TextArea OnChange = "Colorize();"></TextArea>
+		<Button OnClick = "RunCode();">コード実行</Button>
 	</Body>
 </HTML>
