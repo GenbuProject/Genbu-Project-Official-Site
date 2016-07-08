@@ -29,6 +29,10 @@
 					Code = Code.replace(/</g, "&lt;");
 					Code = Code.replace(/>/g, "&gt;");
 					
+				var Decoder = new JsDecoder();
+					Decoder.s = Code;
+					Code = Decoder.decode();
+					
 				if (document.all) {
 					Code = Code.replace(/ /g, "&nbsp;");
 				}
@@ -36,10 +40,6 @@
 				var Colorizer = new JsColorizer();
 					Colorizer.s = Code;
 					Code = Colorizer.colorize();
-					
-				var Decoder = new JsDecoder();
-					Decoder.s = Code;
-					Code = Decoder.decode();
 					
 				if (document.all) {
 					Code = Code.replace(/\n|\r\n/g, "<br/>");
