@@ -41,7 +41,7 @@
 					Code = Code.replace(/\n|\r\n/g, "<br/>");
 				}
 				
-				document.getElementById("FormatedCode").innerHTML = Code;
+				document.getElementById("FormatedCode").innerHTML = "<Pre>" + Code + "</Pre>";
 				
 				if (document.getElementById("FormatedCode").innerHTML == "") {
 					document.getElementById("FormatedCode").style.display = "None";
