@@ -25,25 +25,18 @@
 			
 			function Colorize() {
 				var Code = document.getElementsByTagName("TextArea")[1].value;
-					Code = Code.replace(/&/g, "&amp;");
-					Code = Code.replace(/</g, "&lt;");
-					Code = Code.replace(/>/g, "&gt;");
-					
+				
 				var Decoder = new JsDecoder();
 					Decoder.s = Code;
 					Code = Decoder.decode();
 					
-				if (document.all) {
-					Code = Code.replace(/ /g, "&nbsp;");
-				}
-				
 				var Colorizer = new JsColorizer();
 					Colorizer.s = Code;
 					Code = Colorizer.colorize();
 					
-				if (document.all) {
+				/*if (document.all) {
 					Code = Code.replace(/\n|\r\n/g, "<br/>");
-				}
+				}*/
 				
 				document.getElementById("FormatedCode").innerHTML = Code;
 				
