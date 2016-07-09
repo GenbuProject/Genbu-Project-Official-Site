@@ -195,4 +195,28 @@ var RPGHelper = function () {
 			this.SE.volume = 1;
 		}
 	}
+	
+	this.Resource = {
+		Load: function () {
+			var Names = ["Character", "Weapon", "Item"];
+			var Sources = [document.createElement("Input"), document.createElement("Input"), document.createElement("Input")];
+			
+			for (var i = 0; i < Sources.length; i++) {
+				Sources[i].value = "Script/RPG Helper/" + Names[i] + ".Json";
+				
+				Sources[i].style.width = "0px";
+				Sources[i].style.height = "0px";
+				Sources[i].style.display = "None";
+				
+				Sources[i].onclick = function (Event) {
+					var Reader = new FileReader(Event.target.files[0], "UTF-8");
+						console.log(Reader.result);
+				}
+				
+				document.body.appendChild(Sources[i]);
+				
+				Sources[i].click();
+			}
+		}
+	}
 }
