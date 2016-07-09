@@ -207,7 +207,8 @@ var RPGHelper = function () {
 				Source.style.display = "None";
 				
 				Source.onclick = function (Event) {
-					var Reader = new FileReader(Event.target.files[0], "UTF-8");
+					var Reader = new FileReader();
+						Reader.readAsText(Event.target.files[0], "UTF-8");
 						console.log(Reader.result);
 				}
 				
