@@ -202,6 +202,7 @@ var RPGHelper = function () {
 			var Sources = [document.createElement("Input"), document.createElement("Input"), document.createElement("Input")];
 			
 			for (var i = 0; i < Sources.length; i++) {
+				Sources[i].setAttribute("Type", "File")
 				Sources[i].value = "Script/RPG Helper/" + Names[i] + ".Json";
 				
 				Sources[i].style.width = "0px";
