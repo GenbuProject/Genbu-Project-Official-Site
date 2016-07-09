@@ -213,7 +213,6 @@ var RPGHelper = function () {
 				
 				document.body.appendChild(Source);
 				Source.click();
-			}
 		}
 	}
 }
