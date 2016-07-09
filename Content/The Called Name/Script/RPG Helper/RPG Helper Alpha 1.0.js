@@ -195,30 +195,4 @@ var RPGHelper = function () {
 			this.SE.volume = 1;
 		}
 	}
-	
-	this.Resource = {
-		LoadWeapon: function (FileName) {
-			var Source = document.createElement("Input");
-				Source.setAttribute("Type", "File")
-				Source.value = FileName;
-				
-				Source.style.width = "0px";
-				Source.style.height = "0px";
-				Source.style.display = "None";
-				
-				Source.onclick = function (Event) {
-					var Reader = new FileReader();
-						Reader.readAsText(Event.target.files[0], "UTF-8");
-						
-						Reader.onload = function () {
-							console.log(Reader.result);
-						}
-						
-					Event.preventDefault();
-				}
-				
-				document.body.appendChild(Source);
-				Source.click();
-		}
-	}
 }
