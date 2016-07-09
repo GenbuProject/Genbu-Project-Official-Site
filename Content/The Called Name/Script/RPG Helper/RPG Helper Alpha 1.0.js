@@ -10,6 +10,55 @@ var RPGHelper = function () {
 	this.SE = new Audio("Script/RPG Helper/null.wav");
 		this.SE.loop = false;
 		
+	this.Resource = {
+		/*/
+		 *##################################################
+		 *#>>WeaponData<<
+		 *#使用する武器のデータを配列形式で代入
+		 *#
+		 *#>>For example<<
+		 *#[
+		 *#  {
+		 *#    "Name": "武器名",
+		 *#    "Type": "剣",
+		 *#    "ATK": 3
+		 *#	 }
+		 *#]
+		 *##################################################
+		/*/
+		WeaponData: [
+			{
+				"Name": "木の剣",
+				"Type": "Sword",
+				"ATK": 3
+			},
+			
+			{
+				"Name": "石の剣",
+				"Type": "Sword",
+				"ATK": 5
+			},
+			
+			{
+				"Name": "鉄の剣",
+				"Type": "Sword",
+				"ATK": 7
+			},
+			
+			{
+				"Name": "ダイヤの剣",
+				"Type": "Sword",
+				"ATK": 9
+			},
+			
+			{
+				"Name": "金の剣",
+				"Type": "Sword",
+				"ATK": 2
+			},
+		]
+	}
+		
 	this.R = {
 		SPEED: {
 			SLOW: 100,
