@@ -197,26 +197,22 @@ var RPGHelper = function () {
 	}
 	
 	this.Resource = {
-		Load: function () {
-			var Names = ["Character", "Weapon", "Item"];
-			var Sources = [document.createElement("Input"), document.createElement("Input"), document.createElement("Input")];
-			
-			for (var i = 0; i < Sources.length; i++) {
-				Sources[i].setAttribute("Type", "File")
-				Sources[i].value = "Script/RPG Helper/" + Names[i] + ".Json";
+		LoadWeapon: function (FileName) {
+			var Source = document.createElement("Input");
+				Source.setAttribute("Type", "File")
+				Source.value = FileName;
 				
-				Sources[i].style.width = "0px";
-				Sources[i].style.height = "0px";
-				Sources[i].style.display = "None";
+				Source.style.width = "0px";
+				Source.style.height = "0px";
+				Source.style.display = "None";
 				
-				Sources[i].onclick = function (Event) {
+				Source.onclick = function (Event) {
 					var Reader = new FileReader(Event.target.files[0], "UTF-8");
 						console.log(Reader.result);
 				}
 				
-				document.body.appendChild(Sources[i]);
-				
-				Sources[i].click();
+				document.body.appendChild(Source);
+				Source.click();
 			}
 		}
 	}
