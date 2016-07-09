@@ -11,6 +11,7 @@
 		<Script Src = "Script/JsDecoder.js"></Script>
 		<Script Src = "Script/JsColorizer.js"></Script>
 		<Script Src = "https://code.jquery.com/jquery-1.12.2.js"></Script>
+		<Script Src = "https://raw.githubusercontent.com/robotnic/waterbug/master/waterbug.js"></Script>
 		
 		<Script Type = "Text/JavaScript">
 			function Submit() {
@@ -50,7 +51,7 @@
 			}
 			
 			function RunCode() {
-				eval (document.getElementsByTagName("TextArea")[1].value);
+				eval (Waterbury.log(document.getElementsByTagName("TextArea")[1].value));
 			}
 		</Script>
 	</Head>
