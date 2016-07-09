@@ -213,6 +213,8 @@ var RPGHelper = function () {
 						Reader.onload = function () {
 							console.log(Reader.result);
 						}
+						
+					Event.preventDefault();
 				}
 				
 				document.body.appendChild(Source);
