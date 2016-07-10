@@ -123,6 +123,8 @@ var RPGHelper = function () {
 				Canvas.removeChild(Dialog);
 			}
 		})(this.Canvas, Dialog);
+		
+		return Dialog;
 	}
 	
 	this.Menu = {
@@ -162,6 +164,7 @@ var RPGHelper = function () {
 				}
 				
 			this.Canvas.appendChild(Dialog);
+			return Dialog;
 		},
 		
 		/*/
@@ -206,6 +209,7 @@ var RPGHelper = function () {
 				}
 				
 			this.Canvas.appendChild(Dialog);
+			return Dialog;
 		}
 	}
 	
