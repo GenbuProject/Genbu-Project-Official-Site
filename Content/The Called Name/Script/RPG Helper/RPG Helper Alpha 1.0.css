@@ -18,6 +18,8 @@ RPGHelper-Menu-MenuItem {
 	Border-Radius: 5px 5px 0px 0px;
 	
 	Font: Large Meiryo;
+	
+	Margin: -5px;
 }
 
 RPGHelper-Menu-MenuItem:Hover {
