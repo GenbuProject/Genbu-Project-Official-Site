@@ -210,7 +210,9 @@ var RPGHelper = function () {
 				
 			ParentPanel.appendChild(Dialog);
 			
-			if (parseInt(Dialog.style.width.split("px")[0]) + parseInt(Dialog.parentElement.style.left.split("px")[0]) >= parseInt(this.Canvas.style.width.split("px")[0] - 5)) {
+			if (parseInt(Dialog.style.width.split("px")[0]) + parseInt(Dialog.parentElement.style.left.split("px")[0]) < parseInt(this.Canvas.style.width.split("px")[0] - 5)) {
+				
+			} else {
 				Dialog.style.width = parseInt(Dialog.style.width.split("px")[0]) - 5 + "px";
 			}
 			
