@@ -177,7 +177,7 @@ var RPGHelper = function () {
 		 *#ClickFuc : Function型
 		 *##################################################
 		/*/
-		MenuItem: function (Size, Content, ClickFuc) {
+		MenuItem: function (ParentPanel, Size, Content, ClickFuc) {
 			var Dialog = document.createElement("RPGHelper-Menu-MenuItem");
 				Dialog.style.position = "Absolute";
 				Dialog.textContent = Content;
@@ -208,7 +208,7 @@ var RPGHelper = function () {
 					ClickFuc();
 				}
 				
-			this.Canvas.appendChild(Dialog);
+			ParentPanel.appendChild(Dialog);
 			return Dialog;
 		}
 	}
