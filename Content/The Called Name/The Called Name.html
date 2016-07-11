@@ -11,11 +11,10 @@
 		<Script Src = "Script/JsDecoder.js"></Script>
 		<Script Src = "Script/JsColorizer.js"></Script>
 		<Script Src = "https://code.jquery.com/jquery-1.12.2.js"></Script>
-		<Script Src = "https://raw.githubusercontent.com/robotnic/waterbug/master/waterbug.js"></Script>
 		
 		<Script Type = "Text/JavaScript">
 			function Formater() {
-				var Code = document.getElementsByTagName("TextArea")[1].value;
+				var Code = document.getElementById("Code").value;
 				
 				var Decoder = new JsDecoder();
 					Decoder.s = Code;
