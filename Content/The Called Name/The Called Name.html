@@ -38,21 +38,21 @@
 			}
 			
 			function KeySetting(Event) {
-				var key_code = Event.keyCode;
-				// Shiftキーの押下状態
-				var shift_key = Event.shiftKey;
-				// Ctrlキーの押下状態
-				var ctrl_key = Event.ctrlKey;
-				// Altキーの押下状態
-				var alt_key = Event.altKey;
-			
-				// ------------------------------------------------------------
-				// 出力テスト
-				// ------------------------------------------------------------
-				console.log("code:" + key_code);
-				console.log("shift:" + shift_key);
-				console.log("ctrl" + ctrl_key);
-				console.log("alt:" + alt_key);
+				switch (Event.keyCode) {
+					case 9:
+						break;
+						
+					case 219:
+						if (Event.shiftKey) {
+							var Code = document.getElementById("Code");
+								Code.value = Code.value.substr(0, Code.selectionStart + 1) + " } " + Code.value.substr(Code.selectionStart, Code.length - (Code.selectionStart + 1));
+						} else {
+							var Code = document.getElementById("Code");
+								Code.value = Code.value.substr(0, Code.selectionStart + 1) + " ] " + Code.value.substr(Code.selectionStart, Code.length - (Code.selectionStart + 1));
+						}
+						
+						break;
+				}
 			}
 			
 			function AddEvents() {
@@ -66,6 +66,6 @@
 		
 		<TextArea ID = "Code" Wrap = "Off" Style = "Width: 100%; Height: 250px" OnKeyDown = "Formater();" OnKeyPress = "Formater();" OnKeyUp = "Formater();"></TextArea>
 		<Pre ID = "FormatedCode" Style = "Color: MenuText; BackGround: Menu; Border: Thin Solid OrangeRed; Border-Radius: 5px; Line-Height: 1.5; Display: None;"></Pre>
-		<Button OnClick = "eval (document.getElementById("Code").value);">コード実行</Button>
+		<Button OnClick = "eval (document.getElementById('Code').value);">コード実行</Button>
 	</Body>
 </HTML>
