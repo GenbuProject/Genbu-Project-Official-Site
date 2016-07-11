@@ -121,7 +121,7 @@ var RPGHelper = function () {
 						
 						Saver.click();
 						
-					URL.revokeObjectURL();
+					URL.revokeObjectURL(Saver);
 				}
 			}
 		}
