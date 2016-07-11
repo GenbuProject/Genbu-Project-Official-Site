@@ -14,19 +14,7 @@
 		<Script Src = "https://raw.githubusercontent.com/robotnic/waterbug/master/waterbug.js"></Script>
 		
 		<Script Type = "Text/JavaScript">
-			function Submit() {
-				var Texts = document.getElementsByTagName("TextArea")[0].value;
-				
-				with (new RPGHelper()) {
-					var Lines = Texts.split("\n");
-					
-					for (var i = 0; i < Lines.length; i++) {
-						MsgBox(Lines[i].split("%%")[1] == "^1" ? R.POS.TOP : Lines[i].split("%%")[1] == "^2" ? R.POS.BOTTOM : Lines[i].split("%%")[1] == "^3" ? R.POS.CENTER : R.POS.BOTTOM, Lines[i].split("%%")[0], R.SPEED.NORMAL);
-					}
-				}
-			}
-			
-			function Colorize() {
+			function Formater() {
 				var Code = document.getElementsByTagName("TextArea")[1].value;
 				
 				var Decoder = new JsDecoder();
@@ -50,20 +38,35 @@
 				}
 			}
 			
-			function RunCode() {
-				eval (document.getElementsByTagName("TextArea")[1].value);
+			function KeySetting(Event) {
+				var key_code = Evemt.keyCode;
+				// Shiftキーの押下状態
+				var shift_key = Event.shiftKey;
+				// Ctrlキーの押下状態
+				var ctrl_key = Event.ctrlKey;
+				// Altキーの押下状態
+				var alt_key = Event.altKey;
+			
+				// ------------------------------------------------------------
+				// 出力テスト
+				// ------------------------------------------------------------
+				console.log("code:" + key_code);
+				console.log("shift:" + shift_key);
+				console.log("ctrl" + ctrl_key);
+				console.log("alt:" + alt_key);
+			}
+			
+			function AddEvents() {
+				document.getElementById("Code").addEventListener("keydown", KeySetting);
 			}
 		</Script>
 	</Head>
 	
-	<Body Style = 'Color: #EEE; Font: 14px/2 "メイリオ", Meiryo, Osaka; BackGround: URL("http://genbuproject.github.io/Genbu-Project-Official-Site/Too%20Many%20Tags/Back.jpg");'>
+	<Body Style = 'Color: #EEE; Font: 14px/2 "メイリオ", Meiryo, Osaka; BackGround: URL("http://genbuproject.github.io/Genbu-Project-Official-Site/Too%20Many%20Tags/Back.jpg");' OnLoad = "AddEvents();">
 		<Div ID = "RPGHelper-Main" Width = "500" Height = "500"></Div>
 		
-		<TextArea Wrap = "Off"></TextArea>
-		<Button OnClick = "Submit();">反映</Button><Br>
-		
-		<TextArea Wrap = "Off" Style = "Width: 100%; Height: 300px" OnKeyDown = "Colorize();" OnKeyPress = "Colorize();" OnKeyUp = "Colorize();"></TextArea>
+		<TextArea ID = "Code" Wrap = "Off" Style = "Width: 100%; Height: 300px" OnKeyDown = "Formater();" OnKeyPress = "Formater();" OnKeyUp = "Formater();"></TextArea>
 		<Pre ID = "FormatedCode" Style = "Color: MenuText; BackGround: Menu; Border: Thin Solid OrangeRed; Border-Radius: 5px; Line-Height: 1.5; Display: None;"></Pre>
-		<Button OnClick = "RunCode();">コード実行</Button>
+		<Button OnClick = "eval (document.getElementById("Code").value);">コード実行</Button>
 	</Body>
 </HTML>
