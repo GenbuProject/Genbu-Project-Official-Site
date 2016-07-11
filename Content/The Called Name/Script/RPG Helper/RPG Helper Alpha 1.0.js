@@ -10,51 +10,91 @@ var RPGHelper = function () {
 	this.SE = new Audio("Script/RPG Helper/null.wav");
 		this.SE.loop = false;
 		
+	/*/
+	 *##################################################
+	 *#>>Resource<<
+	 *#RPGで使用するデータフィールド
+	 *##################################################
+	/*/
 	this.Resource = {
 		/*/
 		 *##################################################
-		 *#>>WeaponData<<
-		 *#使用する武器のデータを配列形式で代入
+		 *#>>Character<<
+		 *#RPGで使用するキャラクター情報を配列形式で代入
 		 *#
-		 *#>>For example<<
+		 *#>>For Example<<
 		 *#[
 		 *#  {
-		 *#    "Name": "武器名",
-		 *#    "Type": "剣",
-		 *#    "ATK": 3
+		 *#    Name: "ヒーロー",
+		 *#    Job: "勇者",
+		 *#    BaseATK: 10,
+		 *#    BaseDEF: 10,
+		 *#    BaseMAG: 10,
+		 *#    BaseSPD: 10,
+		 *#    BaseLUK: 10,
+		 *#    TipURL: "Hero-Tip.png"
 		 *#	 }
 		 *#]
 		 *##################################################
 		/*/
-		WeaponData: [
+		Character: [
 			{
-				"Name": "木の剣",
-				"Type": "Sword",
-				"ATK": 3
+				Name: "かすてら。",
+				Job: "ホモ",
+				BaseATK: 8,
+				BaseDEF: 7,
+				BaseMAG: 9,
+				BaseSPD: 15,
+				BaseLUK: 8,
+				TipURL: "https://GenbuProject.github.io/Genbu-Project-Official-Site/Content/The Called Name/Image/Kasutera-Tip.png",
+				FaceURL: "https://GenbuProject.github.io/Genbu-Project-Official-Site/Content/The Called Name/Image/Kasutera.png"
+			}
+		],
+		
+		/*/
+		 *##################################################
+		 *#>>Weapon<<
+		 *#使用する武器のデータを配列形式で代入
+		 *#
+		 *#>>For Example<<
+		 *#[
+		 *#  {
+		 *#    Name: "普通の剣",
+		 *#    Type: "剣",
+		 *#    ATK: 3
+		 *#	 }
+		 *#]
+		 *##################################################
+		/*/
+		Weapon: [
+			{
+				Name: "木の剣",
+				Type: "Sword",
+				ATK: 3
 			},
 			
 			{
-				"Name": "石の剣",
-				"Type": "Sword",
-				"ATK": 5
+				Name: "石の剣",
+				Type: "Sword",
+				ATK: 5
 			},
 			
 			{
-				"Name": "鉄の剣",
-				"Type": "Sword",
-				"ATK": 7
+				Name: "鉄の剣",
+				Type: "Sword",
+				ATK: 7
 			},
 			
 			{
-				"Name": "ダイヤの剣",
-				"Type": "Sword",
-				"ATK": 9
+				Name: "金の剣",
+				Type: "Sword",
+				ATK: 2
 			},
 			
 			{
-				"Name": "金の剣",
-				"Type": "Sword",
-				"ATK": 2
+				Name: "ダイヤの剣",
+				Type: "Sword",
+				ATK: 9
 			},
 		]
 	}
