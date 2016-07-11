@@ -40,8 +40,7 @@
 					case 9:
 						Event.preventDefault();
 						
-						Code.setSelectionRange(Code.selectionStart - 1, Code.selectionStart - 1);
-						Code.value = Code.value.substr(0, Code.selectionStart + 1) + "\t" + Code.value.substr(Code.selectionStart, Code.length - (Code.selectionStart + 1));
+						Code.value = Code.value.substr(0, Code.selectionStart) + "\t" + Code.value.substr(Code.selectionStart, Code.value.length - (Code.selectionStart)));
 						
 						break;
 						
