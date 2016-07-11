@@ -116,9 +116,12 @@ var RPGHelper = function () {
 				} else {
 					var Saver = document.createElement("A");
 						Saver.href = URL.createObjectURL(Content);
+						Saver.target = "_blank";
 						Saver.download = FileName;
 						
 						Saver.click();
+						
+					URL.revokeObjectURL();
 				}
 			}
 		}
