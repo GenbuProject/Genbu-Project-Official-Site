@@ -96,7 +96,32 @@ var RPGHelper = function () {
 				Type: "Sword",
 				ATK: 9
 			},
-		]
+		],
+		
+		/*/
+		 *##################################################
+		 *#Pos : R.POS型
+		 *#Content : String型
+		 *#Speed : R.SPEED型
+		 *##################################################
+		/*/
+		Data: {
+			Save: function (FileName, Data) {
+				var Content = new Blob([Data], {
+					type: "Text/Plain"
+				});
+				
+				if (window.navigator.msSaveBlob) {
+					window.navigator.msSaveBlob(Content, FileName);
+				} else {
+					var Saver = document.createElement("A");
+						Saver.href = URL.createObjectURL(Content);
+						Saver.download = FileName;
+						
+						Saver.click();
+				}
+			}
+		}
 	}
 		
 	this.R = {
