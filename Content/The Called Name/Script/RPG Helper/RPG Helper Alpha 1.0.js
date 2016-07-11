@@ -32,7 +32,8 @@ var RPGHelper = function () {
 		 *#    BaseMAG: 10,
 		 *#    BaseSPD: 10,
 		 *#    BaseLUK: 10,
-		 *#    TipURL: "Hero-Tip.png"
+		 *#    TipURL: "Hero-Tip.png",
+		 *#    FaceURL: "Hero-Face.png"
 		 *#	 }
 		 *#]
 		 *##################################################
@@ -98,30 +99,26 @@ var RPGHelper = function () {
 			},
 		],
 		
-		/*/
-		 *##################################################
-		 *#FileName : String型
-		 *#Data : String型
-		 *##################################################
-		/*/
 		Data: {
-			Save: function (FileName, Data) {
-				var Content = new Blob([Data], {
-					type: "text/plain"
-				});
-				
-				if (window.navigator.msSaveBlob) {
-					window.navigator.msSaveBlob(Content, FileName);
-				} else {
-					var Filer = document.createElement("A");
-						Filer.href = URL.createObjectURL(Content);
-						Filer.target = "_blank";
-						Filer.download = FileName;
-						
-						Filer.click();
-						
-					URL.revokeObjectURL(Filer);
-				}
+			/*/
+			 *##################################################
+			 *#>>Load<<
+			 *#RPGのセーブデータを読み込む
+			 *##################################################
+			/*/
+			Load: function () {
+				var Filer = document.createElement("Input");
+					Filer.Type = "File";
+					
+					Filer.addEventListener("change", function (Event) {
+						var Reader = new FileReader().readAsText(Event.target.files[0]);
+							
+							Reader.onload = function () {
+								return Reader.result;
+							}
+					});
+					
+					Filer.click();
 			}
 		}
 	}
@@ -142,6 +139,10 @@ var RPGHelper = function () {
 	
 	/*/
 	 *##################################################
+	 *#>>MsgBox<<
+	 *#メッセージダイアログを表示
+	 *#
+	 *#>>引数<<
 	 *#Pos : R.POS型
 	 *#Content : String型
 	 *#Speed : R.SPEED型
@@ -199,6 +200,10 @@ var RPGHelper = function () {
 		
 		/*/
 		 *##################################################
+		 *#>>MenuPanel<<
+		 *#メニュー画面を表示
+		 *#
+		 *#>>引数<<
 		 *#Size : Array型
 		 *#|=> [0] : String型(00 ～ 99, ^^)
 		 *#|=> [1] : String型(00 ～ 99, ^^)
@@ -236,6 +241,11 @@ var RPGHelper = function () {
 		
 		/*/
 		 *##################################################
+		 *#>>MenuItem<<
+		 *#メニューのアイテムを表示
+		 *#
+		 *#>>引数<<
+		 *#ParentPanel : Element型
 		 *#Size : Array型
 		 *#|=> [0] : int型(00 ～ 99)
 		 *#|=> [1] : int型(00 ～ 99)
