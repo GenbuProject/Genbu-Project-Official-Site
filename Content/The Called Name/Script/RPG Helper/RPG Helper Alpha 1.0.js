@@ -100,28 +100,27 @@ var RPGHelper = function () {
 		
 		/*/
 		 *##################################################
-		 *#Pos : R.POS型
-		 *#Content : String型
-		 *#Speed : R.SPEED型
+		 *#FileName : String型
+		 *#Data : String型
 		 *##################################################
 		/*/
 		Data: {
 			Save: function (FileName, Data) {
 				var Content = new Blob([Data], {
-					type: "Text/Plain"
+					type: "text/plain"
 				});
 				
 				if (window.navigator.msSaveBlob) {
 					window.navigator.msSaveBlob(Content, FileName);
 				} else {
-					var Saver = document.createElement("A");
-						Saver.href = URL.createObjectURL(Content);
-						Saver.target = "_blank";
-						Saver.download = FileName;
+					var Filer = document.createElement("A");
+						Filer.href = URL.createObjectURL(Content);
+						Filer.target = "_blank";
+						Filer.download = FileName;
 						
-						Saver.click();
+						Filer.click();
 						
-					URL.revokeObjectURL(Saver);
+					URL.revokeObjectURL(Filer);
 				}
 			}
 		}
