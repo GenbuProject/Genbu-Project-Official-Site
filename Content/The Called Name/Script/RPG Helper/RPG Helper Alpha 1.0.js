@@ -111,7 +111,8 @@ var RPGHelper = function () {
 					Filer.type = "File";
 					
 					Filer.addEventListener("change", function (Event) {
-						var Reader = new FileReader().readAsText(Event.target.files[0]);
+						var Reader = new FileReader();
+							Reader.readAsText(Event.target.files[0]);
 							
 							Reader.onload = function () {
 								return Reader.result;
