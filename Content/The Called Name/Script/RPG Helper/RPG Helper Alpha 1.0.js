@@ -39,17 +39,7 @@ var RPGHelper = function () {
 		 *##################################################
 		/*/
 		Character: [
-			{
-				Name: "かすてら。",
-				Job: "ホモ",
-				BaseATK: 8,
-				BaseDEF: 7,
-				BaseMAG: 9,
-				BaseSPD: 15,
-				BaseLUK: 8,
-				TipURL: "https://GenbuProject.github.io/Genbu-Project-Official-Site/Content/The Called Name/Image/Kasutera-Tip.png",
-				FaceURL: "https://GenbuProject.github.io/Genbu-Project-Official-Site/Content/The Called Name/Image/Kasutera.png"
-			}
+			
 		],
 		
 		/*/
@@ -68,35 +58,7 @@ var RPGHelper = function () {
 		 *##################################################
 		/*/
 		Weapon: [
-			{
-				Name: "木の剣",
-				Type: "Sword",
-				ATK: 3
-			},
 			
-			{
-				Name: "石の剣",
-				Type: "Sword",
-				ATK: 5
-			},
-			
-			{
-				Name: "鉄の剣",
-				Type: "Sword",
-				ATK: 7
-			},
-			
-			{
-				Name: "金の剣",
-				Type: "Sword",
-				ATK: 2
-			},
-			
-			{
-				Name: "ダイヤの剣",
-				Type: "Sword",
-				ATK: 9
-			},
 		],
 		
 		Data: {
