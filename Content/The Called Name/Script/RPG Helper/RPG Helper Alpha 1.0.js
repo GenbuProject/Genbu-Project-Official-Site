@@ -38,9 +38,12 @@ var RPGHelper = function () {
 	 *##################################################
 	 *#>>Load<<
 	 *#RPGのセーブデータを読み込む
+	 *#
+	 *#>>引数<<
+	 *#SuccessFuc : Function型
 	 *##################################################
 	/*/
-	this.Load = function () {
+	this.Load = function (SuccessFuc) {
 		var Filer = document.createElement("Input");
 			Filer.type = "File";
 			
@@ -50,11 +53,7 @@ var RPGHelper = function () {
 					
 					Reader.onload = function () {
 						this.Resource = JSON.parse(Reader.result);
-						return JSON.parse(Reader.result);
-					}
-					
-					while(Reader.readyState != 2) {
-						console.log(Reader.readyState);
+						SuccessFuc();
 					}
 			});
 			
