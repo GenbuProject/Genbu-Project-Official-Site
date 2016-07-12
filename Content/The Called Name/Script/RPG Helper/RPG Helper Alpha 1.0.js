@@ -41,6 +41,8 @@ var RPGHelper = function () {
 	 *##################################################
 	/*/
 	this.Load = function () {
+		var IsLoading = true;
+		
 		var Filer = document.createElement("Input");
 			Filer.type = "File";
 			
@@ -48,7 +50,12 @@ var RPGHelper = function () {
 				var Reader = new FileReader();
 					Reader.readAsText(Event.target.files[0]);
 					
+					while (IsLoading) {
+						
+					}
+					
 					Reader.onload = function () {
+						IsLoading = false;
 						this.Resource = JSON.parse(Reader.result);
 						return JSON.parse(Reader.result);
 					}
