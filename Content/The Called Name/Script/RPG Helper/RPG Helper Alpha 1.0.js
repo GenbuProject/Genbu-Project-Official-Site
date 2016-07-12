@@ -43,7 +43,7 @@ var RPGHelper = function () {
 	 *#LoadFuc : Function型
 	 *##################################################
 	/*/
-	this.Load = function (LoadFuc) {
+	this.Load = function () {
 		var Filer = document.createElement("Input");
 			Filer.type = "File";
 			
@@ -53,13 +53,23 @@ var RPGHelper = function () {
 					
 					Reader.onload = function () {
 						Resource = JSON.parse(Reader.result);
-						LoadFuc();
 					}
 			});
-			
-			Filer.click();
-			
+				
+		var Gene = (function () {	
+			this.Filer.click();
 			yield;
+			
+			return true;
+		})();
+		
+		Gene.next();
+		
+		while (Filer.readyState != FileReader.DONE) {
+			
+		}
+		
+		Gene.next();
 	}
 	
 	/*/
