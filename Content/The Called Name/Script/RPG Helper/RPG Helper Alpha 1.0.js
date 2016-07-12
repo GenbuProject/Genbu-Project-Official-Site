@@ -4,88 +4,12 @@ var RPGHelper = function () {
 		this.Canvas.style.height = this.Canvas.attributes["height"].value + "px";
 		this.Canvas.style.position = "Relative";
 		
-	this.BGM = new Audio("Script/RPG Helper/null.wav");
-		this.BGM.loop = true;
-		
-	this.SE = new Audio("Script/RPG Helper/null.wav");
-		this.SE.loop = false;
-		
 	/*/
 	 *##################################################
-	 *#>>Resource<<
-	 *#RPGで使用するデータフィールド
+	 *#>>R<<
+	 *#レイアウトシステム定数
 	 *##################################################
 	/*/
-	this.Resource = {
-		/*/
-		 *##################################################
-		 *#>>Character<<
-		 *#RPGで使用するキャラクター情報を配列形式で代入
-		 *#
-		 *#>>For Example<<
-		 *#[
-		 *#  {
-		 *#    Name: "ヒーロー",
-		 *#    Job: "勇者",
-		 *#    BaseATK: 10,
-		 *#    BaseDEF: 10,
-		 *#    BaseMAG: 10,
-		 *#    BaseSPD: 10,
-		 *#    BaseLUK: 10,
-		 *#    TipURL: "Hero-Tip.png",
-		 *#    FaceURL: "Hero-Face.png"
-		 *#	 }
-		 *#]
-		 *##################################################
-		/*/
-		Character: [
-			
-		],
-		
-		/*/
-		 *##################################################
-		 *#>>Weapon<<
-		 *#使用する武器のデータを配列形式で代入
-		 *#
-		 *#>>For Example<<
-		 *#[
-		 *#  {
-		 *#    Name: "普通の剣",
-		 *#    Type: "剣",
-		 *#    ATK: 3
-		 *#	 }
-		 *#]
-		 *##################################################
-		/*/
-		Weapon: [
-			
-		],
-		
-		Data: {
-			/*/
-			 *##################################################
-			 *#>>Load<<
-			 *#RPGのセーブデータを読み込む
-			 *##################################################
-			/*/
-			Load: function () {
-				var Filer = document.createElement("Input");
-					Filer.type = "File";
-					
-					Filer.addEventListener("change", function (Event) {
-						var Reader = new FileReader();
-							Reader.readAsText(Event.target.files[0]);
-							
-							Reader.onload = function () {
-								return Reader.result;
-							}
-					});
-					
-					Filer.click();
-			}
-		}
-	}
-		
 	this.R = {
 		SPEED: {
 			SLOW: 100,
@@ -98,6 +22,38 @@ var RPGHelper = function () {
 			BOTTOM: 0x0002,
 			CENTER: 0x0003
 		}
+	}
+	
+	/*/
+	 *##################################################
+	 *#>>Resource<<
+	 *#RPGのセーブデータの情報
+	 *##################################################
+	/*/
+	this.Resource = {
+		
+	}
+	
+	/*/
+	 *##################################################
+	 *#>>Load<<
+	 *#RPGのセーブデータを読み込む
+	 *##################################################
+	/*/
+	this.Load = function () {
+		var Filer = document.createElement("Input");
+			Filer.type = "File";
+			
+			Filer.addEventListener("change", function (Event) {
+				var Reader = new FileReader();
+					Reader.readAsText(Event.target.files[0]);
+					
+					Reader.onload = function () {
+						this.Resource = JSON.parse(Reader.result);
+					}
+			});
+			
+			Filer.click();
 	}
 	
 	/*/
@@ -257,42 +213,6 @@ var RPGHelper = function () {
 			}
 			
 			return Dialog;
-		}
-	}
-	
-	this.Sound = {
-		BGM: this.BGM,
-		SE: this.SE,
-		
-		/*/
-		 *##################################################
-		 *#URL : String型
-		 *#Volume : double型
-		 *##################################################
-		/*/
-		PlayBGM: function (URL, Volume) {
-			this.BGM.src = URL;
-			this.BGM.volume = Volume;
-			this.BGM.play();
-		},
-		
-		/*/
-		 *##################################################
-		 *#URL : String型
-		 *#Volume : double型
-		 *##################################################
-		/*/
-		PlaySE: function (URL, Volume) {
-			this.SE.src = URL;
-			this.SE.volume = Volume;
-			this.SE.play();
-		},
-		
-		StopBGM: function () {
-			this.SE.pause();
-			this.SE.currentTime = 0;
-			this.SE.src = "Script/RPG Helper/null.wav";
-			this.SE.volume = 1;
 		}
 	}
 }
