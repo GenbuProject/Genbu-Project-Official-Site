@@ -44,18 +44,19 @@ var RPGHelper = function () {
 	 *##################################################
 	/*/
 	this.Load = function () {
+		var Reader = new FileReader();
+		
 		var Filer = document.createElement("Input");
 			Filer.type = "File";
 			
 			Filer.addEventListener("change", function (Event) {
-				var Reader = new FileReader();
-					Reader.readAsText(Event.target.files[0]);
-					
-					Reader.onload = function () {
-						Resource = JSON.parse(Reader.result);
-					}
-			});
+				Reader.readAsText(Event.target.files[0]);
 				
+				Reader.onload = function () {
+					Resource = JSON.parse(Reader.result);
+				}
+			});
+			
 		var Gene = (function * () {	
 			Filer.click();
 			yield;
@@ -65,8 +66,8 @@ var RPGHelper = function () {
 		
 		Gene.next();
 		
-		while (Filer.readyState != FileReader.DONE) {
-			
+		while (Reader.readyState != FileReader.DONE) {
+			console.log("Loading...");
 		}
 		
 		Gene.next();
