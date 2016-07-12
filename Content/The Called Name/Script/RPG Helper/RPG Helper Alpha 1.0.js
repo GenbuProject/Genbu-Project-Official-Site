@@ -43,7 +43,7 @@ var RPGHelper = function () {
 	 *#SuccessFuc : Function型
 	 *##################################################
 	/*/
-	this.Load = function (SuccessFuc) {
+	this.Load = function () {
 		var Filer = document.createElement("Input");
 			Filer.type = "File";
 			
@@ -53,9 +53,6 @@ var RPGHelper = function () {
 					
 					Reader.onload = function () {
 						this.Resource = JSON.parse(Reader.result);
-						return Reader.result;
-						
-						SuccessFuc();
 					}
 			});
 			
