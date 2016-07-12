@@ -58,6 +58,8 @@ var RPGHelper = function () {
 			});
 			
 			Filer.click();
+			
+			yield;
 	}
 	
 	/*/
