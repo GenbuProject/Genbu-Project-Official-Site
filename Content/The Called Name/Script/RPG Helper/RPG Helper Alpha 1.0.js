@@ -30,7 +30,7 @@ var RPGHelper = function () {
 	 *#RPGのセーブデータの情報
 	 *##################################################
 	/*/
-	this.Resource = {
+	Resource = {
 		
 	}
 	
@@ -43,24 +43,22 @@ var RPGHelper = function () {
 	 *#SuccessFuc : Function型
 	 *##################################################
 	/*/
-	this.Load = (function (Resource) {
-		return function () {
-			var Filer = document.createElement("Input");
-				Filer.type = "File";
-				
-				Filer.addEventListener("change", function (Event) {
-					var Reader = new FileReader();
-						Reader.readAsText(Event.target.files[0]);
-						
-						Reader.onload = function () {
-							Resource = JSON.parse(Reader.result);
-							console.log(Resource);
-						}
-				});
-				
-				Filer.click();
-		}
-	})(this.Resource)
+	this.Load = function () {
+		var Filer = document.createElement("Input");
+			Filer.type = "File";
+			
+			Filer.addEventListener("change", function (Event) {
+				var Reader = new FileReader();
+					Reader.readAsText(Event.target.files[0]);
+					
+					Reader.onload = function () {
+						Resource = JSON.parse(Reader.result);
+						console.log(Resource);
+					}
+			});
+			
+			Filer.click();
+	}
 	
 	/*/
 	 *##################################################
