@@ -57,7 +57,7 @@ var RPGHelper = function () {
 			});
 				
 		var Gene = (function () {	
-			this.Filer.click();
+			Filer.click();
 			yield;
 			
 			return true;
