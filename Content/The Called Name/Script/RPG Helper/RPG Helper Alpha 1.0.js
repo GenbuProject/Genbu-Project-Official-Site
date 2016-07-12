@@ -57,7 +57,7 @@ var RPGHelper = function () {
 						Resource = JSON.parse(Reader.result);
 					}
 					
-					Reader.onloadstart = function () {
+					Reader.onloadend = function () {
 						Gene.next();
 					}
 				});
