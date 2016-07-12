@@ -52,6 +52,8 @@ var RPGHelper = function () {
 						this.Resource = JSON.parse(Reader.result);
 						return JSON.parse(Reader.result);
 					}
+					
+					return Reader;
 			});
 			
 			Filer.click();
