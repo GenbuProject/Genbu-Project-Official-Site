@@ -40,10 +40,10 @@ var RPGHelper = function () {
 	 *#RPGのセーブデータを読み込む
 	 *#
 	 *#>>引数<<
-	 *#SuccessFuc : Function型
+	 *#LoadFuc : Function型
 	 *##################################################
 	/*/
-	this.Load = function () {
+	this.Load = function (LoadFuc) {
 		var Filer = document.createElement("Input");
 			Filer.type = "File";
 			
@@ -53,9 +53,8 @@ var RPGHelper = function () {
 					
 					Reader.onload = function () {
 						Resource = JSON.parse(Reader.result);
+						LoadFuc();
 					}
-					
-				return Reader;
 			});
 			
 			Filer.click();
