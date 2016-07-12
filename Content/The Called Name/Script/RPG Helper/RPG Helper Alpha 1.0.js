@@ -53,11 +53,9 @@ var RPGHelper = function () {
 						return JSON.parse(Reader.result);
 					}
 					
-					setInterval((function (Reader) {
-						return function () {
-							console.log(Reader.readyState);
-						}
-					})(Reader), 100);
+					while(Reader.readyState != 2) {
+						console.log(Reader.readyState);
+					}
 			});
 			
 			Filer.click();
