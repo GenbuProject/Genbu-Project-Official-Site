@@ -53,7 +53,7 @@ var RPGHelper = function () {
 					
 					Reader.onload = function () {
 						this.Resource = JSON.parse(Reader.result);
-						console.log(JSON.parse(Reader.result));
+						console.log(this.Resource);
 					}
 			});
 			
