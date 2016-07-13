@@ -41,24 +41,24 @@ var RPGHelper = function () {
 	 *##################################################
 	/*/
 	this.Save = function (FileName) {
-		var File = new Blob([JSON.stringify(Resource, null, "\t")], {
+		var Data = new Blob([JSON.stringify(Resource, null, "\t")], {
 			type: "Text/Plain"
 		});
 		
 		if (window.navigator.msSaveBlob) {
-			window.navigator.msSaveBlob(File, FileName);
+			window.navigator.msSaveBlob(Data, FileName);
 		} else {
 			Link = document.createElement("A");
-			Link.href = URL.createObjectURL(File);
+			Link.href = URL.createObjectURL(Data);
 			Link.download = FileName;
 			Link.target = "_blank";
 			
 			var Click = document.createEvent("MouseEvents");
-				Click.initEvent("Click", false, true);
+				Click.initEvent("click", false, true);
 				
 			Link.dispatchEvent(Click);
 			
-			URL.revokeObjectURL(File);
+			URL.revokeObjectURL(Data);
 		}
 	}
 	
