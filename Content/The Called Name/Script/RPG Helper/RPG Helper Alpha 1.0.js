@@ -43,32 +43,22 @@ var RPGHelper = function () {
 	 *#LoadFuc : Function型
 	 *##################################################
 	/*/
-	this.Load = function () {
-		new Promise(function (Resolve, Reject) {
-			var Reader = new FileReader();
+	this.Load = function (LoadFuc) {
+		var Reader = new FileReader();
+		
+		var Filer = document.createElement("Input");
+			Filer.type = "File";
 			
-			var Filer = document.createElement("Input");
-				Filer.type = "File";
+			Filer.addEventListener("change", function (Event) {
+				Reader.readAsText(Event.target.files[0]);
 				
-				Filer.addEventListener("change", function (Event) {
-					Reader.readAsText(Event.target.files[0]);
-					
-					Reader.onload = function () {
-						Resource = JSON.parse(Reader.result);
-						Resolve("<System> ロード正常終了");
-					}
-					
-					Reader.onerror = function () {
-						Reject("<System> ロード異常終了");
-					}
-				});
-				
-				Filer.click();
-				
-			return true;
-		}).then(function () {
+				Reader.onloadend = function () {
+					Resource = JSON.parse(Reader.result);
+					LoadFuc();
+				}
+			});
 			
-		});
+			Filer.click();
 	}
 	
 	/*/
