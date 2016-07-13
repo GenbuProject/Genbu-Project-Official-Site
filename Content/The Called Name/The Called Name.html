@@ -61,7 +61,7 @@
 								}
 							}
 							
-							Save(D.split("/")[0] + "-" + D.split("/")[1].length == 1 ? "0" + "-" + D.split("/")[1] : D.split("/")[1] + "-" + D.split("/")[2].length == 1 ? "0" + D.split("/")[2] : D.split("/")[2] + ".Json");
+							Save(D + ".Json");
 						});
 						
 						Menu.MenuItem(StartMenu, ["01", "42"], "LOAD GAME", function () {
