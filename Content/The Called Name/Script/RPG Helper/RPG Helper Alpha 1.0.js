@@ -44,22 +44,31 @@ var RPGHelper = function () {
 	 *##################################################
 	/*/
 	this.Load = function () {
-		var Reader = new FileReader();
-		
-		var Filer = document.createElement("Input");
-			Filer.type = "File";
+		new Promise(function (Resolve, Reject) {
+			var Reader = new FileReader();
 			
-			Filer.addEventListener("change", function (Event) {
-				Reader.readAsText(Event.target.files[0]);
+			var Filer = document.createElement("Input");
+				Filer.type = "File";
 				
-				Reader.onload = function () {
-					Resource = JSON.parse(Reader.result);
-				}
-			});
+				Filer.addEventListener("change", function (Event) {
+					Reader.readAsText(Event.target.files[0]);
+					
+					Reader.onload = function () {
+						Resource = JSON.parse(Reader.result);
+						Resolve("<System> ロード正常終了");
+					}
+					
+					Reader.onerror = function () {
+						Reject("<System> ロード異常終了");
+					}
+				});
+				
+				Filer.click();
+				
+			return true;
+		}).then(function () {
 			
-			Filer.click();
-			
-		return true;
+		});
 	}
 	
 	/*/
