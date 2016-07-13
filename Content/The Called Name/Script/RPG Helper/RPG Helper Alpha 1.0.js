@@ -41,7 +41,7 @@ var RPGHelper = function () {
 	 *##################################################
 	/*/
 	this.Save = function (FileName) {
-		var File = new Blob([Resource], {
+		var File = new Blob([btoa(JSON.stringify(Resource))], {
 			type: "Text/Plain"
 		});
 		
@@ -81,7 +81,7 @@ var RPGHelper = function () {
 				Reader.readAsText(Event.target.files[0]);
 				
 				Reader.onloadend = function () {
-					Resource = JSON.parse(Reader.result);
+					Resource = JSON.parse(atob(Reader.result));
 					LoadFuc();
 				}
 			});
