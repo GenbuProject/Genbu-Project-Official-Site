@@ -36,6 +36,34 @@ var RPGHelper = function () {
 	
 	/*/
 	 *##################################################
+	 *#>>Save<<
+	 *#RPGのセーブデータを保存する
+	 *##################################################
+	/*/
+	this.Save = function (FileName) {
+		var File = new Blob([Resource], {
+			type: "Text/Plain"
+		});
+		
+		if (window.navigator.msSaveBlob) {
+			window.navigator.msSaveBlob(File, FileName);
+		} else {
+			Link = document.createElement("A");
+			Link.href = URL.createObjectURL(File);
+			Link.download = FileName;
+			Link.target = "_blank";
+			
+			var Click = document.createEvent("MouseEvents");
+				Click.initEvent("Click", false, true);
+				
+			Link.dispatchEvent(Click);
+			
+			URL.revokeObjectURL(File);
+		}
+	}
+	
+	/*/
+	 *##################################################
 	 *#>>Load<<
 	 *#RPGのセーブデータを読み込む
 	 *#
