@@ -4,10 +4,10 @@ var RPGHelper = function () {
 		this.Canvas.style.height = this.Canvas.attributes["height"].value + "px";
 		this.Canvas.style.position = "Relative";
 		
-	this.BGM = new Audio("null.wav");
+	this.BGM = new Audio("Audio/null.wav");
 		this.BGM.loop = true;
 		
-	this.SE = new Audio("null.wav");
+	this.SE = new Audio("Audio/null.wav");
 		this.SE.loop = false;
 		
 	/*/
@@ -263,7 +263,7 @@ var RPGHelper = function () {
 			if (!this.BGM.paused) {
 				this.BGM.pause();
 				this.BGM.currentTime = 0;
-				this.BGM.src = "null.wav";
+				this.BGM.src = "Audio/null.wav";
 			}
 			
 			this.BGM.src = URL;
@@ -275,7 +275,7 @@ var RPGHelper = function () {
 		StopBGM: function () {
 			this.BGM.pause();
 			this.BGM.currentTime = 0;
-			this.BGM.src = "null.wav";
+			this.BGM.src = "Audio/null.wav";
 		},
 		
 		PlaySE: function (URL, Volume) {
