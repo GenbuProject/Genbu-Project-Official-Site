@@ -48,6 +48,7 @@
 			function Main() {
 				with (new RPGHelper()) {
 					Canvas.style.background = 'URL("Image/Title.png")';
+					Sound.PlayBGM("Audio/The Called Name.wav", 1);
 					
 					var StartMenu = Menu.MenuPanel(["36", "79"]);
 						Menu.MenuItem(StartMenu, ["00", "41"], "NEW GAME", function () {
