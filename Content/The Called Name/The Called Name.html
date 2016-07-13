@@ -32,13 +32,21 @@
 					document.getElementById("FormatedCode").style.display = "Block";
 				}
 			}
+			
+			Date.prototype.getToday = function (SplitWord) {
+				var Day = new Date().toLocaleDateString().split("/");
+				var Dates = [Day[0], Day[1], Day[2]];
+				
+				if (Dates[1].length == 1) Dates[1] = "0" + Day[1];
+				if (Dates[2].length == 1) Dates[2] = "0" + Day[2];
+				
+				return Dates[0] + SplitWord + Dates[1] + SplitWord + Dates[2];
+			}
 		</Script>
 		
 		<Script Type = "Text/JavaScript">
 			function Main() {
 				with (new RPGHelper()) {
-					var D = new Date().toLocaleDateString();
-					
 					Canvas.style.background = 'URL("Image/Title.png")';
 					
 					var StartMenu = Menu.MenuPanel(["36", "79"]);
@@ -61,7 +69,7 @@
 								}
 							}
 							
-							Save(D + ".Json");
+							Save(new Date().getToday("-") + ".Json");
 						});
 						
 						Menu.MenuItem(StartMenu, ["01", "42"], "LOAD GAME", function () {
