@@ -344,7 +344,7 @@ var RPGHelper = function () {
 var ClassExtender = function () {
 	window.Wait = function (Flag, FinishFuc, MiliSecond) {
 		window.Timer = setInterval(function () {
-			if (eval(Flag)) {
+			if (Flag) {
 				clearInterval(Timer);
 				Timer = null;
 				FinishFuc();
