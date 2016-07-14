@@ -107,11 +107,11 @@ var RPGHelper = function () {
 	 *##################################################
 	/*/
 	this.MsgBox = function (Pos, Speed, Content, ClickFuc) {
-		this.Clicked = false;
-		
 		var Dialog = document.createElement("RPGHelper-MsgBox");
 			Dialog.style.position = "Absolute";
 			Dialog.style.width = (this.Canvas.attributes["width"].value - 10) + "px";
+			Dialog.Clicked = false;
+			
 			this.Canvas.appendChild(Dialog);
 			
 		switch (Pos) {
