@@ -200,16 +200,16 @@ var RPGHelper = function () {
 		/*/
 		 *##################################################
 		 *#>>MenuItem<<
-		 *#メニューのアイテムを表示
+		 *#メニュー画面のアイテムを表示
 		 *#
 		 *#>>引数<<
 		 *#ParentPanel : Element型
 		 *#Size : Array型
-		 *#|=> [0] : int型(00 ～ 99)
-		 *#|=> [1] : int型(00 ～ 99)
+		 *#|=> [0] : int型(00 ～ 99, ^^)
+		 *#|=> [1] : int型(00 ～ 99, ^^)
 		 *#
-		 *#Content : String型
-		 *#ClickFuc : Function型
+		 *#|=> [0] : String型(00 ～ 99, ^^)
+		 *#|=> [1] : String型(00 ～ 99, ^^)
 		 *##################################################
 		/*/
 		MenuItem: function (ParentPanel, Size, Content, ClickFuc) {
@@ -246,7 +246,57 @@ var RPGHelper = function () {
 			ParentPanel.appendChild(Dialog);
 			
 			if (parseInt(Dialog.style.width.split("px")[0]) + parseInt(Dialog.parentElement.style.left.split("px")[0]) < parseInt(this.Canvas.style.width.split("px")[0] - 5)) {
+			} else {
+				Dialog.style.width = parseInt(Dialog.style.width.split("px")[0]) - 5 + "px";
+			}
+			
+			return Dialog;
+		},
+		
+		/*/
+		 *##################################################
+		 *#>>MenuMsgBox<<
+		 *#メニュー画面のテキストを表示
+		 *#
+		 *#>>引数<<
+		 *#ParentPanel : Element型
+		 *#Size : Array型
+		 *#|=> [0] : String型(00 ～ 99, ^^)
+		 *#|=> [1] : String型(00 ～ 99, ^^)
+		 *#
+		 *#Content : String型
+		 *##################################################
+		/*/
+		MenuMsgBox: function (ParentPanel, Size, Content) {
+			var Dialog = document.createElement("RPGHelper-Menu-MenuMsgBox");
+				Dialog.style.position = "Absolute";
+				Dialog.textContent = Content;
 				
+				if (Size[0].substr(0, 1) != "^" && Size[1].substr(0, 1) != "^" && Size[0].substr(1, 1) != "^" && Size[1].substr(1, 1) != "^") {
+					Dialog.style.width = (this.Canvas.style.width.split("px")[0] / 10) * (Math.max(Size[0].substr(0, 1), Size[1].substr(0, 1)) - Math.min(Size[0].substr(0, 1), Size[1].substr(0, 1))) - 5 + "px";
+					Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 10) * (Math.max(Size[0].substr(1, 1), Size[1].substr(1, 1)) - Math.min(Size[0].substr(1, 1), Size[1].substr(1, 1))) - 5 + "px";
+					Dialog.style.top = (this.Canvas.style.height.split("px")[0] / 10) * (Math.min(Size[0].substr(1, 1), Size[1].substr(1, 1))) + "px";
+					Dialog.style.left = (this.Canvas.style.width.split("px")[0] / 10) * (Math.min(Size[0].substr(0, 1), Size[1].substr(0, 1))) + "px";
+				} else if (Size[1].substr(0, 1) != "^" && Size[1].substr(1, 1) == "^") {
+					Dialog.style.width = (this.Canvas.style.width.split("px")[0] / 10) * (Math.max(Size[0].substr(0, 1), Size[1].substr(0, 1)) - Math.min(Size[0].substr(0, 1), Size[1].substr(0, 1))) - 5 + "px";
+					Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 10) * (10 - Size[0].substr(1, 1)) - 10 + "px";
+					Dialog.style.top = this.Canvas.style.height.split("px")[0] - (this.Canvas.style.height.split("px")[0] / 10) * (10 - Size[0].substr(1, 1)) + "px";
+					Dialog.style.left = (this.Canvas.style.width.split("px")[0] / 10) * (Math.min(Size[0].substr(0, 1), Size[1].substr(0, 1))) + "px";
+				} else if (Size[1].substr(0, 1) == "^" && Size[1].substr(1, 1) != "^") {
+					Dialog.style.width = (this.Canvas.style.width.split("px")[0] / 10) * (10 - Size[0].substr(0, 1)) - 10 + "px";
+					Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 10) * (Math.max(Size[0].substr(1, 1), Size[1].substr(1, 1)) - Math.min(Size[0].substr(1, 1), Size[1].substr(1, 1))) - 5 + "px";
+					Dialog.style.top = (this.Canvas.style.height.split("px")[0] / 10) * (Math.min(Size[0].substr(1, 1), Size[1].substr(1, 1))) + "px";
+					Dialog.style.left = this.Canvas.style.width.split("px")[0] - (this.Canvas.style.width.split("px")[0] / 10) * (10 - Size[0].substr(0, 1)) + "px";
+				} else if (Size[1].substr(0, 1) == "^" && Size[1].substr(1, 1) == "^") {
+					Dialog.style.width = (this.Canvas.style.width.split("px")[0] / 10) * (10 - Size[0].substr(0, 1)) - 10 + "px";
+					Dialog.style.height = (this.Canvas.style.height.split("px")[0] / 10) * (10 - Size[0].substr(1, 1)) - 10 + "px";
+					Dialog.style.top = this.Canvas.style.height.split("px")[0] - (this.Canvas.style.height.split("px")[0] / 10) * (10 - Size[0].substr(1, 1)) + "px";
+					Dialog.style.left = this.Canvas.style.width.split("px")[0] - (this.Canvas.style.width.split("px")[0] / 10) * (10 - Size[0].substr(0, 1)) + "px";
+				}
+				
+			ParentPanel.appendChild(Dialog);
+			
+			if (parseInt(Dialog.style.width.split("px")[0]) + parseInt(Dialog.parentElement.style.left.split("px")[0]) < parseInt(this.Canvas.style.width.split("px")[0] - 5)) {
 			} else {
 				Dialog.style.width = parseInt(Dialog.style.width.split("px")[0]) - 5 + "px";
 			}
