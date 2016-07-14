@@ -106,9 +106,7 @@ var RPGHelper = function () {
 	 *#Speed : R.SPEED型
 	 *##################################################
 	/*/
-	this.MsgBox = function (Pos, Content, Speed) {
-		var Clicked = false;
-		
+	this.MsgBox = function (Pos, Speed, Content, ClickFuc) {
 		var Dialog = document.createElement("RPGHelper-MsgBox");
 			Dialog.style.position = "Absolute";
 			Dialog.style.width = (this.Canvas.attributes["width"].value - 10) + "px";
@@ -148,14 +146,10 @@ var RPGHelper = function () {
 		
 		Dialog.onclick = (function (Canvas, Dialog) {
 			return function () {
-				Clicked = true;
 				Canvas.removeChild(Dialog);
+				ClickFuc();
 			}
 		})(this.Canvas, Dialog);
-		
-		while (!Clicked) {
-			
-		}
 		
 		return Dialog;
 	}
@@ -343,3 +337,17 @@ var RPGHelper = function () {
 		}
 	}
 }
+
+var ClassExtender = function () {
+	window.Wait = function (Flag, FinishFuc, MiliSecond) {
+		window.Timer = setInterval(function () {
+			if (eval(Flag)) {
+				clearInterval(Timer);
+				Timer = null;
+				FinishFuc();
+			}
+		}, MiliSecond);
+	}
+}
+
+new ClassExtender();
