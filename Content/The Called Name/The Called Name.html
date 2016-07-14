@@ -47,30 +47,13 @@
 		<Script Type = "Text/JavaScript">
 			function Main() {
 				with (new RPGHelper()) {
-					Canvas.style.background = 'URL("Image/Title.png")';
+					Canvas.style.background = "URL('Image/Title.png')";
 					Sound.PlayBGM("Audio/The Called Name.wav", 0.8);
 					
 					var StartMenu = Menu.MenuPanel(["36", "79"]);
 						Menu.MenuItem(StartMenu, ["00", "41"], "NEW GAME", function () {
-							Resource = {
-								Weapon: {
-									"かすてら。ソード": {
-										Type: "剣",
-										
-										Param: {
-											ATK: 10,
-											DEF: 0,
-											MAG: 0,
-											SPD: 0,
-											LUK: 0,
-											
-											Explain: "伝説の剣。\nかすてら。の名が刻まれている..."
-										}
-									}
-								}
-							}
-							
-							Save(new Date().getToday("-") + ".Json");
+							Canvas.style.background = "Black";
+							StartMenu.parentElement.removeChild(StartMenu);
 						});
 						
 						Menu.MenuItem(StartMenu, ["01", "42"], "LOAD GAME", function () {
