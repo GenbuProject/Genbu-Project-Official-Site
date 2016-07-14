@@ -107,6 +107,8 @@ var RPGHelper = function () {
 	 *##################################################
 	/*/
 	this.MsgBox = function (Pos, Speed, Content, ClickFuc) {
+		this.Clicked = false;
+		
 		var Dialog = document.createElement("RPGHelper-MsgBox");
 			Dialog.style.position = "Absolute";
 			Dialog.style.width = (this.Canvas.attributes["width"].value - 10) + "px";
@@ -146,6 +148,7 @@ var RPGHelper = function () {
 		
 		Dialog.onclick = (function (Canvas, Dialog) {
 			return function () {
+				this.Clicked = true;
 				Canvas.removeChild(Dialog);
 				ClickFuc();
 			}
