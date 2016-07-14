@@ -52,8 +52,17 @@
 					
 					var StartMenu = Menu.MenuPanel(["36", "79"]);
 						Menu.MenuItem(StartMenu, ["00", "41"], "NEW GAME", function () {
-							Canvas.style.background = "Black";
 							StartMenu.parentElement.removeChild(StartMenu);
+							
+							while (BGM.volume > 0) {
+								BGM.volume--;
+								
+								if (BGM.volume == 0) {
+									Sound.StopBGM();
+								}
+							}
+							
+							Canvas.style.background = "Black";
 						});
 						
 						Menu.MenuItem(StartMenu, ["01", "42"], "LOAD GAME", function () {
