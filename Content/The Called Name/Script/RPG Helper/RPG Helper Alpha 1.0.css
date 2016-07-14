@@ -2,23 +2,23 @@
 	Border: Thin Solid Gray;
 }
 
-RPGHelper-MsgBox, RPGHelper-Menu-MenuPanel, RPGHelper-Menu-MenuMsgBox, RPGHelper-Menu-Magic-MagicType {
+RPGHelper-MsgBox, RPGHelper-Menu-MenuPanel, RPGHelper-Menu-Magic-MagicType {
 	BackGround: RGBA(200, 200, 200, 0.5);
 	Border: 5px Groove Plum;
 	Border-Radius: 5px 5px 5px 5px;
-	
 	Font: Medium Meiryo;
 }
 
-RPGHelper-Menu-MenuItem {
-	Text-Align: Center;
-	
+RPGHelper-Menu-MenuItem, RPGHelper-Menu-MenuMsgBox {
 	Border: 5px Groove Plum;
-	Border-Radius: 5px 5px 0px 0px;
-	
+	Border-Radius: 5px 5px 5px 5px;
 	Font: Large Meiryo;
-	
 	Margin: -5px;
+}
+
+RPGHelper-Menu-MenuItem {
+	Border-Radius: 5px 5px 0px 0px;
+	Text-Align: Center;
 }
 
 RPGHelper-Menu-MenuItem:Hover {
