@@ -134,25 +134,21 @@ var RPGHelper = function () {
 		if (typeof Content == "string") {
 			var Counter = 0;
 			
-			var Timer = setInterval((function (Dialog, Counter) {
-				return function () {
-					if (Counter <= Content.length) {
-						Dialog.textContent = Content.substr(0, Counter);
-						Counter++;
-					} else {
-						clearInterval(Timer);
-					}
+			var Timer = setInterval(function () {
+				if (Counter <= Content.length) {
+					Dialog.textContent = Content.substr(0, Counter);
+					Counter++;
+				} else {
+					clearInterval(Timer);
 				}
-			})(Dialog, Counter), Speed);
+			}, Speed);
 		}
 		
-		Dialog.onclick = (function (Canvas, Dialog) {
-			return function () {
-				this.Clicked = true;
-				Canvas.removeChild(Dialog);
-				ClickFuc();
-			}
-		})(this.Canvas, Dialog);
+		Dialog.onclick = function () {
+			this.Clicked = true;
+			Canvas.removeChild(Dialog);
+			ClickFuc();
+		}
 		
 		return Dialog;
 	}
@@ -342,14 +338,14 @@ var RPGHelper = function () {
 }
 
 var ClassExtender = function () {
-	window.Wait = function (Flag, FinishFuc, MiliSecond) {
+	window.Wait = function (Flag, TrueFuc) {
 		window.Timer = setInterval(function () {
-			if (eval(Flag)) {
+			if (Flag) {
 				clearInterval(Timer);
 				Timer = null;
-				FinishFuc();
+				TrueFuc();
 			}
-		}, MiliSecond);
+		}, 1);
 	}
 }
 
