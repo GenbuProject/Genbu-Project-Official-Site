@@ -144,11 +144,13 @@ var RPGHelper = function () {
 			}, Speed);
 		}
 		
-		Dialog.onclick = function () {
-			this.Clicked = true;
-			Canvas.removeChild(Dialog);
-			ClickFuc();
-		}
+		Dialog.onclick = (function (Canvas) {
+			return function () {
+				this.Clicked = true;
+				Canvas.removeChild(Dialog);
+				ClickFuc();
+			}
+		})(this.Canvas);
 		
 		return Dialog;
 	}
