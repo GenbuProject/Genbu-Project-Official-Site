@@ -21,6 +21,10 @@ RPGHelper-Menu-MenuItem {
 	Text-Align: Center;
 }
 
+.RPGHelper-Menu-MenuTextArea {
+	Font: Medium Meiryo;
+}
+
 RPGHelper-Menu-MenuItem:Hover {
 	BackGround: RGBA(150, 50, 0, 0.5);
 	Border-Bottom: 5px Groove ActiveBorder;
