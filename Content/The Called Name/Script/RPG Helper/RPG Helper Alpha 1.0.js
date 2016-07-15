@@ -337,7 +337,7 @@ var RPGHelper = function () {
 			
 			if (parseInt(Dialog.style.width.split("px")[0]) + parseInt(Dialog.parentElement.style.left.split("px")[0]) < parseInt(this.Canvas.style.width.split("px")[0] - 5)) {
 			} else {
-				Dialog.style.width = parseInt(Dialog.style.width.split("px")[0]) - 15 + "px";
+				Dialog.style.width = parseInt(Dialog.style.width.split("px")[0]) - 5 + "px";
 			}
 			
 			return Dialog;
