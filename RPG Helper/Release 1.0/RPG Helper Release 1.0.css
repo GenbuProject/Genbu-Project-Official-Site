@@ -1,0 +1,37 @@
+/*/
+ *######################################################################
+ *#RPG Helper Release 1.0
+ *#Copyright (C) Genbu Project & Genbu Hase 2016 All Rights Reversed.
+ *######################################################################
+/*/
+#RPGHelper-Main {
+	Border: Thin Solid Gray;
+}
+
+RPGHelper-MsgBox, RPGHelper-Menu-MenuPanel, RPGHelper-Menu-Magic-MagicType {
+	BackGround: RGBA(200, 200, 200, 0.5);
+	Border: 5px Groove Plum;
+	Border-Radius: 5px 5px 5px 5px;
+	Font: Medium Meiryo;
+}
+
+RPGHelper-Menu-MenuItem, RPGHelper-Menu-MenuMsgBox, .RPGHelper-Menu-MenuTextArea {
+	Border: 5px Groove Plum;
+	Border-Radius: 5px 5px 5px 5px;
+	Font: Large Meiryo;
+	Margin: -5px;
+}
+
+RPGHelper-Menu-MenuItem {
+	Border-Radius: 5px 5px 0px 0px;
+	Text-Align: Center;
+}
+
+.RPGHelper-Menu-MenuTextArea {
+	Font: Medium Meiryo;
+}
+
+RPGHelper-Menu-MenuItem:Hover {
+	BackGround: RGBA(150, 50, 0, 0.5);
+	Border-Bottom: 5px Groove ActiveBorder;
+}
