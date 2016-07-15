@@ -52,6 +52,7 @@
 					
 					var StartMenu = Menu.MenuPanel(["36", "79"]);
 						Menu.MenuItem(StartMenu, ["00", "41"], "NEW GAME", function () {
+							Sound.PlaySE("Audio/SE/Click.wav", 1);
 							Sound.StopBGM();
 							
 							StartMenu.parentElement.removeChild(StartMenu);
@@ -59,6 +60,8 @@
 						});
 						
 						Menu.MenuItem(StartMenu, ["01", "42"], "LOAD GAME", function () {
+							Sound.PlaySE("Audio/SE/Click.wav", 1);
+							
 							Load(function () {
 								var Msg = MsgBox(R.POS.CENTER, "ゲームを開始します...", R.SPEED.NORMAL);
 								
@@ -69,10 +72,12 @@
 						});
 						
 						Menu.MenuItem(StartMenu, ["02", "43"], "About", function () {
+							Sound.PlaySE("Audio/SE/Click.wav", 1);
 							StartMenu.style.display = "None";
 							
 							var AboutPane = Menu.MenuPanel(["03", "^7"]);
 								Menu.MenuItem(AboutPane, ["", ""], "←", function () {
+									Sound.PlaySE("Audio/SE/Click.wav", 1);
 									StartMenu.style.display = "Block";
 									
 									AboutPane.parentElement.removeChild(AboutPane);
