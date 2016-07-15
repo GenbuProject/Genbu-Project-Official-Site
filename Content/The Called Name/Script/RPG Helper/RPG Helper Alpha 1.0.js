@@ -306,9 +306,9 @@ var RPGHelper = function () {
 			return Dialog;
 		},
 		
-		MenuTextArea: function (ParentPanel, Size, Content) {
+		MenuTextArea: function (ParentPanel, Size) {
 			var Dialog = document.createElement("TextArea");
-				Dialog.class = "RPGHelper-Menu-MenuTextArea";
+				Dialog.setAttribute("Class", "RPGHelper-Menu-MenuTextArea");
 				Dialog.style.position = "Absolute";
 				
 				if (Size[0].substr(0, 1) != "^" && Size[1].substr(0, 1) != "^" && Size[0].substr(1, 1) != "^" && Size[1].substr(1, 1) != "^") {
