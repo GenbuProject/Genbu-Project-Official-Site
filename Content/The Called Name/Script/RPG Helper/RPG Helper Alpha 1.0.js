@@ -306,10 +306,13 @@ var RPGHelper = function () {
 			return Dialog;
 		},
 		
-		MenuTextArea: function (ParentPanel, Size) {
+		MenuTextArea: function (ParentPanel, Size, HintMsg, IsRequired) {
 			var Dialog = document.createElement("TextArea");
 				Dialog.setAttribute("Class", "RPGHelper-Menu-MenuTextArea");
 				Dialog.style.position = "Absolute";
+				
+				Dialog.setAttribute("PlaceHolder", HintMsg);
+				if (IsRequired) Dialog.setAttribute("Required", "Required");
 				
 				if (Size[0].substr(0, 1) != "^" && Size[1].substr(0, 1) != "^" && Size[0].substr(1, 1) != "^" && Size[1].substr(1, 1) != "^") {
 					Dialog.style.width = (this.Canvas.style.width.split("px")[0] / 10) * (Math.max(Size[0].substr(0, 1), Size[1].substr(0, 1)) - Math.min(Size[0].substr(0, 1), Size[1].substr(0, 1))) - 7 + "px";
