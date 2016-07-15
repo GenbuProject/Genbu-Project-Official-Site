@@ -333,10 +333,10 @@ var RPGHelper = function () {
 					Dialog.style.left = this.Canvas.style.width.split("px")[0] - (this.Canvas.style.width.split("px")[0] / 10) * (10 - Size[0].substr(0, 1)) + "px";
 				}
 				
-				Dialog.style.maxwidth = Dialog.style.width;
-				Dialog.style.minwidth = Dialog.style.width;
-				Dialog.style.maxheight = Dialog.style.height;
-				Dialog.style.minheight = Dialog.style.height;
+				Dialog.style.maxWidth = Dialog.style.width;
+				Dialog.style.minWidth = Dialog.style.width;
+				Dialog.style.maxHeight = Dialog.style.height;
+				Dialog.style.minHeight = Dialog.style.height;
 				
 			ParentPanel.appendChild(Dialog);
 			
