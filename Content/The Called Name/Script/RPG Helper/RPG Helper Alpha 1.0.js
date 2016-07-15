@@ -333,6 +333,11 @@ var RPGHelper = function () {
 					Dialog.style.left = this.Canvas.style.width.split("px")[0] - (this.Canvas.style.width.split("px")[0] / 10) * (10 - Size[0].substr(0, 1)) + "px";
 				}
 				
+				Dialog.style.maxwidth = Dialog.style.width;
+				Dialog.style.minwidth = Dialog.style.width;
+				Dialog.style.maxheight = Dialog.style.height;
+				Dialog.style.minheight = Dialog.style.height;
+				
 			ParentPanel.appendChild(Dialog);
 			
 			if (parseInt(Dialog.style.width.split("px")[0]) + parseInt(Dialog.parentElement.style.left.split("px")[0]) < parseInt(this.Canvas.style.width.split("px")[0] - 5)) {
