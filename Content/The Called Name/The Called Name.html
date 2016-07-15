@@ -33,80 +33,6 @@
 				}
 			}
 			
-			function KeySetting(Event) {
-				var Code = document.getElementById("Code");
-				
-				switch (Event.keyCode) {
-					case 9:
-						Event.preventDefault();
-						
-						var E = document.createEvent("Event");
-							E.initEvent("keypress", true, true);
-							E.keyCode = 9;
-							
-							Code.dispatchEvent(E);
-							E.stopPropagation();
-							
-						break;
-						
-					case 50:
-						if (Event.shiftKey) {
-							Event.preventDefault();
-							
-							var E = document.createEvent("Event");
-								E.initEvent("keypress", true, true);
-								E.keyCode = 50;
-								E.shiftKey = true;
-								
-								Code.dispatchEvent(E);
-								Event.stopPropagation();
-								
-							var E = document.createEvent("Event");
-								E.initEvent("keypress", true, true);
-								E.keyCode = 50;
-								E.shiftKey = true;
-								
-								Code.dispatchEvent(E);
-								Event.stopPropagation();
-						}
-						
-						break;
-						
-					case 55:
-						if (Event.shiftKey) {
-							Event.preventDefault();
-							
-							Code.value = Code.value.substr(0, Code.selectionStart + 1) + "''" + Code.value.substr(Code.selectionStart, Code.length - (Code.selectionStart + 1));
-							Code.setSelectionRange(Code.selectionStart - 1, Code.selectionStart - 1);
-						}
-						
-						break;
-						
-					case 56:
-						if (Event.shiftKey) {
-							Event.preventDefault();
-							
-							Code.value = Code.value.substr(0, Code.selectionStart + 1) + "()" + Code.value.substr(Code.selectionStart, Code.length - (Code.selectionStart + 1));
-							Code.setSelectionRange(Code.selectionStart - 1, Code.selectionStart - 1);
-						}
-						
-						break;
-						
-					case 219:
-						Event.preventDefault();
-						
-						if (Event.shiftKey) {
-							Code.value = Code.value.substr(0, Code.selectionStart + 1) + "{}" + Code.value.substr(Code.selectionStart, Code.length - (Code.selectionStart + 1));
-							Code.setSelectionRange(Code.selectionStart - 1, Code.selectionStart - 1);
-						} else {
-							Code.value = Code.value.substr(0, Code.selectionStart + 1) + "[]" + Code.value.substr(Code.selectionStart, Code.length - (Code.selectionStart + 1));
-							Code.setSelectionRange(Code.selectionStart - 1, Code.selectionStart - 1);
-						}
-						
-						break;
-				}
-			}
-			
 			Date.prototype.getToday = function (SplitWord) {
 				var Day = new Date().toLocaleDateString().split("/");
 				var Dates = [Day[0], Day[1], Day[2]];
@@ -126,6 +52,8 @@
 					
 					var StartMenu = Menu.MenuPanel(["36", "79"]);
 						Menu.MenuItem(StartMenu, ["00", "41"], "NEW GAME", function () {
+							Sound.StopBGM();
+							
 							StartMenu.parentElement.removeChild(StartMenu);
 							Canvas.style.background = "Black";
 						});
