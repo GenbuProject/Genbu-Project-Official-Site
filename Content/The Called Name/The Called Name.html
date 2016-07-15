@@ -57,6 +57,15 @@
 							
 							StartMenu.parentElement.removeChild(StartMenu);
 							Canvas.style.background = "Black";
+							
+							setTimeout(function () {
+								var PropPane = Menu.MenuPanel(["03", "^7"]);
+									Menu.MenuMsgBox(PropPane, ["00", "^1"], "主人公の名前を入力して下さい");
+									Menu.MenuTextArea(PropPane, ["01", "^2"], "全角8文字まで", true);
+									Menu.MenuItem(PropPane, ["02", "^4"], "決定", function () {
+										Sound.PlaySE("Audio/SE/Click.wav", 1);
+									})
+							})
 						});
 						
 						Menu.MenuItem(StartMenu, ["01", "42"], "LOAD GAME", function () {
