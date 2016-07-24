@@ -56,10 +56,11 @@
 							Sound.StopBGM();
 							
 							StartMenu.parentElement.removeChild(StartMenu);
-							Canvas.style.background = "";
-							Canvas.style.animation = "blackout 1.5s Ease 0s 1 Normal";
+							Effect.BlackOut(1.5, 0, true);
 							
 							setTimeout(function () {
+								Canvas.style.background = "Black";
+								
 								var PropPane = Menu.MenuPanel(["03", "^7"]);
 									Menu.MenuMsgBox(PropPane, ["00", "^1"], "主人公の名前を入力して下さい");
 									Menu.MenuTextArea(PropPane, ["01", "^2"], "全角8文字まで", true);
@@ -103,7 +104,7 @@
 		</Script>
 		
 		<Style>
-			@keyframes blackout {
+			@keyframes BlackOut {
 				0% {
 					BackGround: URL("Image/Title.png");
 				}
