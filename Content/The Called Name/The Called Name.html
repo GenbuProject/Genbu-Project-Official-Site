@@ -64,6 +64,7 @@
 									Menu.MenuTextArea(PropPane, ["01", "^2"], "全角8文字まで", true);
 									Menu.MenuItem(PropPane, ["02", "^4"], "決定", function () {
 										Sound.PlaySE("Audio/SE/Click.wav", 1);
+										
 									})
 							}, 1500);
 						});
@@ -72,7 +73,7 @@
 							Sound.PlaySE("Audio/SE/Click.wav", 1);
 							
 							Load(function () {
-								var Msg = MsgBox(R.POS.CENTER, "ゲームを開始します...", R.SPEED.NORMAL);
+								var Msg = MsgBox(R.POS.CENTER, R.SPEED.NORMAL, "ゲームを開始します...", function () {});
 								
 								setTimeout(function () {
 									Msg.click();
