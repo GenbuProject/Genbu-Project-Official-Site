@@ -108,10 +108,12 @@ var RPGHelper = function () {
 				Effecter.style.height = this.Canvas.style.height;
 				Effecter.style.animation = "BlackOut " + Sec + "s Ease " + Delay + "s 1 Normal";
 				
+				this.Canvas.appendChild(Effecter);
+				
 			if (WillDelete) {
 				setTimeout(function () {
-					Effecter.parentElement.removeChild(Effecter);
-				}, parseInt(Sec) * 1000);
+					this.Canvas.removeChild(Effecter);
+				}, Sec * 1000);
 			}
 			
 			return Effecter;
