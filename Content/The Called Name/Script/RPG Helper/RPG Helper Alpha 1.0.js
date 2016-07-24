@@ -95,6 +95,29 @@ var RPGHelper = function () {
 			Filer.click();
 	}
 	
+	this.Effect = {
+		Canvas: this.Canvas,
+		
+		BlackOut: function (Sec, Delay, WillDelete) {
+			var Style = document.createElement("Style");
+				Style.id = "RPGHelper-Effect";
+				Style.innerHTML = "@keyframes BlackOut {0% {BackGround: Transparent;} 100% {BackGround: Black;}}";
+				
+			var Effecter = document.createElement("Canvas");
+				Effecter.style.width = this.Canvas.style.width;
+				Effecter.style.height = this.Canvas.style.height;
+				Effecter.style.animation = "BlackOut " + Sec + "s Ease " + Delay + "s 1 Normal";
+				
+			if (WillDelete) {
+				setTimeout(function () {
+					Effecter.parentElement.removeChild(Effecter);
+				}, parseInt(Sec) * 1000);
+			}
+			
+			return Effecter;
+		}
+	}
+	
 	/*/
 	 *##################################################
 	 *#>>MsgBox<<
