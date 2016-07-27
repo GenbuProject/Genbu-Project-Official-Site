@@ -47,6 +47,21 @@
 		<Script Type = "Text/JavaScript">
 			function Main() {
 				with (new RPGHelper()) {
+					Sound.PlayBGM("Audio/The Called Name.wav", 0);
+					Sound.StopBGM();
+					Sound.PlayBGM("Audio/The Called Name - Serious.wav", 0);
+					Sound.StopBGM();
+					Sound.PlayBGM("Audio/The Called Name - Strange.wav", 0);
+					Sound.StopBGM();
+					Sound.PlayBGM("Audio/Sadness.wav", 0);
+					Sound.StopBGM();
+					Sound.PlayBGM("Audio/Battle 1.wav", 0);
+					Sound.StopBGM();
+					Sound.PlayBGM("Audio/Boss Battle 1.wav", 0);
+					Sound.StopBGM();
+					Sound.PlayBGM("Audio/SE/Click.wav", 0);
+					Sound.StopBGM();
+					
 					Canvas.style.background = "URL('Image/Title.png')";
 					Sound.PlayBGM("Audio/The Called Name.wav", 0.8);
 					
@@ -67,8 +82,6 @@
 									Menu.MenuItem(PropPane, ["02", "^4"], "決定", function () {
 										Sound.PlaySE("Audio/SE/Click.wav", 1);
 										PropPane.parentElement.removeChild(PropPane);
-										
-										Effect.ColorOut(1.5, 0, "Transparent");
 										
 										/*/
 										 *【8月10日】
