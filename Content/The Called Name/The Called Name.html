@@ -47,13 +47,7 @@
 		<Script Type = "Text/JavaScript">
 			function Main() {
 				with (new RPGHelper()) {
-					Sound.PlaySE("Audio/The Called Name.wav", 0);
-					Sound.PlaySE("Audio/The Called Name - Serious.wav", 0);
-					Sound.PlaySE("Audio/The Called Name - Strange.wav", 0);
-					Sound.PlaySE("Audio/Sadness.wav", 0);
-					Sound.PlaySE("Audio/Battle 1.wav", 0);
-					Sound.PlaySE("Audio/Boss Battle 1.wav", 0);
-					Sound.PlaySE("Audio/SE/Click.wav", 0);
+					Sound.Load(["Audio/The Called Name.wav", "Audio/The Called Name - Serious.wav", "Audio/The Called Name - Strange.wav", "Audio/Sadness.wav", "Audio/Battle 1.wav", "Audio/Boss Battle 1.wav", "Audio/SE/Click.wav"]);
 					
 					Canvas.style.background = "URL('Image/Title.png')";
 					Sound.PlayBGM("Audio/The Called Name.wav", 1);
