@@ -47,27 +47,20 @@
 		<Script Type = "Text/JavaScript">
 			function Main() {
 				with (new RPGHelper()) {
-					Sound.PlayBGM("Audio/The Called Name.wav", 0);
-					Sound.StopBGM();
-					Sound.PlayBGM("Audio/The Called Name - Serious.wav", 0);
-					Sound.StopBGM();
-					Sound.PlayBGM("Audio/The Called Name - Strange.wav", 0);
-					Sound.StopBGM();
-					Sound.PlayBGM("Audio/Sadness.wav", 0);
-					Sound.StopBGM();
-					Sound.PlayBGM("Audio/Battle 1.wav", 0);
-					Sound.StopBGM();
-					Sound.PlayBGM("Audio/Boss Battle 1.wav", 0);
-					Sound.StopBGM();
-					Sound.PlayBGM("Audio/SE/Click.wav", 0);
-					Sound.StopBGM();
+					Sound.PlaySE("Audio/The Called Name.wav", 0);
+					Sound.PlaySE("Audio/The Called Name - Serious.wav", 0);
+					Sound.PlaySE("Audio/The Called Name - Strange.wav", 0);
+					Sound.PlaySE("Audio/Sadness.wav", 0);
+					Sound.PlaySE("Audio/Battle 1.wav", 0);
+					Sound.PlaySE("Audio/Boss Battle 1.wav", 0);
+					Sound.PlaySE("Audio/SE/Click.wav", 0);
 					
 					Canvas.style.background = "URL('Image/Title.png')";
-					Sound.PlayBGM("Audio/The Called Name.wav", 0.8);
+					Sound.PlayBGM("Audio/The Called Name.wav", 1);
 					
 					var StartMenu = Menu.MenuPanel(["36", "79"]);
 						Menu.MenuItem(StartMenu, ["00", "41"], "NEW GAME", function () {
-							Sound.PlaySE("Audio/SE/Click.wav", 1);
+							Sound.PlaySE("Audio/SE/Click.wav", 0.8);
 							Sound.StopBGM();
 							
 							StartMenu.parentElement.removeChild(StartMenu);
@@ -80,7 +73,7 @@
 									Menu.MenuMsgBox(PropPane, ["00", "^1"], "主人公の名前を入力して下さい");
 									Menu.MenuTextArea(PropPane, ["01", "^2"], "", true);
 									Menu.MenuItem(PropPane, ["02", "^4"], "決定", function () {
-										Sound.PlaySE("Audio/SE/Click.wav", 1);
+										Sound.PlaySE("Audio/SE/Click.wav", 0.8);
 										PropPane.parentElement.removeChild(PropPane);
 										
 										/*/
