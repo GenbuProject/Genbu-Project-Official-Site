@@ -1,4 +1,46 @@
 {
+	"Audio": {
+		"BGM": {
+			"The Called Name.wav": {
+				"ID": 1,
+				"Volume": 1
+			},
+			
+			"The Called Name - Serious.wav": {
+				"ID": 2,
+				"Volume": 1
+			},
+			
+			"The Called Name - Strange.wav": {
+				"ID": 3,
+				"Volume": 1
+			},
+			
+			"Sadness.wav": {
+				"ID": 4,
+				"Volume": 1
+			},
+			
+			"Battle 1.wav": {
+				"ID": 5,
+				"Volume": 1
+			},
+			
+			"Boss Battle 1.wav": {
+				"ID": 6,
+				"Volume": 1
+			}
+		},
+		
+		"SE": {
+			
+		},
+		
+		"Util": {
+			"Click": "SE/Click.wav"
+		}
+	},
+	
 	"Item": {
 		"ハーブ": {
 			"ID": 1,
