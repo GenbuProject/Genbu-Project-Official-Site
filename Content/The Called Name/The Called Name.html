@@ -47,15 +47,14 @@
 		<Script Type = "Text/JavaScript">
 			function Main() {
 				with (new RPGHelper()) {
-					Sound.Load(["Audio/The Called Name.wav", "Audio/The Called Name - Serious.wav", "Audio/The Called Name - Strange.wav", "Audio/Sadness.wav", "Audio/Battle 1.wav", "Audio/Boss Battle 1.wav", "Audio/SE/Click.wav"]);
 					SystemLoad();
+					Sound.Load();
 					
 					Canvas.style.background = "URL('Image/Title.png')";
-					Sound.PlayBGM("Audio/The Called Name.wav", 1);
+					Sound.PlayBGM(1);
 					
 					var StartMenu = Menu.MenuPanel(["36", "79"]);
 						Menu.MenuItem(StartMenu, ["00", "41"], "NEW GAME", function () {
-							Sound.PlaySE("Audio/SE/Click.wav", 0.8);
 							Sound.StopBGM();
 							
 							StartMenu.parentElement.removeChild(StartMenu);
@@ -63,12 +62,12 @@
 							
 							setTimeout(function () {
 								Canvas.style.background = "Black";
+								Sound.PlayBGM(2);
 								
 								var PropPane = Menu.MenuPanel(["03", "^7"]);
 									Menu.MenuMsgBox(PropPane, ["00", "^1"], "主人公の名前を入力して下さい");
 									Menu.MenuTextArea(PropPane, ["01", "^2"], "", true);
 									Menu.MenuItem(PropPane, ["02", "^4"], "決定", function () {
-										Sound.PlaySE("Audio/SE/Click.wav", 0.8);
 										PropPane.parentElement.removeChild(PropPane);
 										
 										/*/
@@ -135,8 +134,6 @@
 						});
 						
 						Menu.MenuItem(StartMenu, ["01", "42"], "LOAD GAME", function () {
-							Sound.PlaySE("Audio/SE/Click.wav", 1);
-							
 							Load(function () {
 								var Msg = MsgBox(R.POS.CENTER, R.SPEED.NORMAL, "ゲームを開始します...", function () {});
 								
@@ -147,14 +144,11 @@
 						});
 						
 						Menu.MenuItem(StartMenu, ["02", "43"], "About", function () {
-							Sound.PlaySE("Audio/SE/Click.wav", 1);
 							StartMenu.style.display = "None";
 							
 							var AboutPane = Menu.MenuPanel(["03", "^7"]);
 								Menu.MenuItem(AboutPane, ["", ""], "←", function () {
-									Sound.PlaySE("Audio/SE/Click.wav", 1);
 									StartMenu.style.display = "Block";
-									
 									AboutPane.parentElement.removeChild(AboutPane);
 								});
 								
