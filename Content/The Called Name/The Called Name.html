@@ -68,6 +68,20 @@
 									Menu.MenuMsgBox(PropPane, ["00", "^1"], "主人公の名前を入力して下さい");
 									Menu.MenuTextArea(PropPane, ["01", "^2"], "", true);
 									Menu.MenuItem(PropPane, ["02", "^4"], "決定", function () {
+										Resource.UserData.Character = {};
+										Resource.UserData.Character[PropPane.children[1].value] = {
+											Job: "勇者",
+											
+											HP: 50,
+											MP: 5,
+											
+											ATK: 5,
+											DEF: 5,
+											MAG: 5,
+											SPD: 5,
+											LUK: 5
+										};
+										
 										PropPane.parentElement.removeChild(PropPane);
 										
 										/*/
