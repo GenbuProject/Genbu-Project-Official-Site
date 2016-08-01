@@ -9,7 +9,14 @@
 	</Head>
 	
 	<Body Style = 'Color: #EEE; Font: 14px/2 "メイリオ", Meiryo, Osaka; BackGround: URL("http://genbuproject.github.io/Genbu-Project-Official-Site/Too%20Many%20Tags/Back.jpg");'>
-		<Input ID = "ID" Type = "TextBox" Value = "" PlaceHolder = "Google+のID"></Input><Br>
-		<Input ID = "Amount" Type = "Number" Value = "10" PlaceHolder = "検索するページ数(100)"></Input><Button OnClick = "Search(document.getElementById('ID').value, document.getElementById('Amount').value);">検索</Button>
+		<P>
+			<Input ID = "ID" Type = "TextBox" Value = "" PlaceHolder = "Google+のID"></Input><Br>
+			<Input ID = "Amount" Type = "Number" Value = "10" PlaceHolder = "検索するページ数(100)"></Input><Button OnClick = "Search(document.getElementById('ID').value, document.getElementById('Amount').value);">検索</Button>
+		</P>
+		
+		<Table>
+			<TH>投稿日時</TH><TH>投稿リンク</TH>
+			<TD ID = "Date"></TD><TD ID = "Link"></TD>
+		</Table>
 	</Body>
 </HTML>
