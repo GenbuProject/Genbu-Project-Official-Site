@@ -22,8 +22,8 @@ function Search(ID, Amount) {
 		}
 	}
 	
-	document.getElementById("Date").textContent = Result.items[Result.items.length - 1].published;
-	document.getElementById("Link").textContent = Result.items[Result.items.length - 1].url;
+	document.getElementById("Date").innerHTML = Result.items[Result.items.length - 1].published;
+	document.getElementById("Link").innerHTML = '<A HREF = "' + Result.items[Result.items.length - 1].url + '">' + Result.items[Result.items.length - 1].url + '</A>';
 	
 	console.log("Finished.");
 	alert("Finished.");
