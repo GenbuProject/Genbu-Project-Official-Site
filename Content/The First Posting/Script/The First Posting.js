@@ -14,9 +14,11 @@ function Search(ID, Amount) {
 			X.open("GET", "https://www.googleapis.com/plus/v1/people/" + ID + "/activities/public?key=AIzaSyBIYF6mrAIJpngIQAxqARVCqhqxQFq7qXc&maxResults=100&pageToken=" + Token, false);
 			X.send();
 			
-			X.onerror = function () {
+			if (X.status == 404) {
 				console.log("IDが無効です");
 				alert("IDが無効です");
+				
+				return "Failed.";
 			}
 			
 		Memory = JSON.parse(X.responseText);
