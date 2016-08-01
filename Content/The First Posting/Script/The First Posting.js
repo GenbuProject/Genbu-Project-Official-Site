@@ -1,7 +1,7 @@
-//?key=AIzaSyBMB3VAvofs_51Nu3c9_7FsxQLvlqGkUmc
-//100110299413815947503
+//key=AIzaSyBMB3VAvofs_51Nu3c9_7FsxQLvlqGkUmc
 function Search(ID, Amount) {
 	var Memory;
+	var Result;
 	
 	for (var i = 0; i < Amount; i++) {
 		var Token = "";
@@ -17,9 +17,13 @@ function Search(ID, Amount) {
 		Memory = JSON.parse(X.responseText);
 		
 		if (Memory.nextPageToken == undefined) {
+			Result = Memory;
 			break;
 		}
 	}
+	
+	document.getELementById("Date").textContent = Result.items[Result.items.length - 1].published;
+	document.getELementById("Link").textContent = Result.items[Result.items.length - 1].url;
 	
 	console.log("Finished.");
 	alert("Finished.");
