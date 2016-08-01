@@ -23,7 +23,7 @@ function Search(ID, Amount) {
 	}
 	
 	document.getElementById("Date").innerHTML = Result.items[Result.items.length - 1].published;
-	document.getElementById("Link").innerHTML = '<A HREF = "' + Result.items[Result.items.length - 1].url + '">' + Result.items[Result.items.length - 1].url + '</A>';
+	document.getElementById("Link").innerHTML = '<A Target = "_blank" Href = "' + Result.items[Result.items.length - 1].url + '">' + Result.items[Result.items.length - 1].url + '</A>';
 	
 	console.log("Finished.");
 	alert("Finished.");
