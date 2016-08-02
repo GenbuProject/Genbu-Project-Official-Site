@@ -41,6 +41,28 @@
 		}
 	},
 	
+	"Map": [
+		{
+			"MapFile": "エルム村.map",
+			"MapName": "エルム村",
+			
+			"TileID": 0
+		},
+		
+		{
+			"MapFile": "エルム森.map",
+			"MapName": "エルム森",
+			
+			"TileID": 1
+		}
+	],
+	
+	"Tile": {
+		"Town.png": {
+			"ID": 0
+		}
+	},
+	
 	"Item": {
 		"ハーブ": {
 			"ID": 1,
