@@ -57,10 +57,10 @@
 		}
 	],
 	
-	"Tile": {
-		"Town.png": 0,
-		"World.png": 1
-	},
+	"Tile": [
+		"Town.png",
+		"World.png"
+	],
 	
 	"Item": {
 		"ハーブ": {
