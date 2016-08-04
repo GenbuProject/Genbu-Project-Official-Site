@@ -53,14 +53,13 @@
 			"MapFile": "エルム森.map",
 			"MapName": "エルム森",
 			
-			"TileID": 1
+			"TileID": 0
 		}
 	],
 	
 	"Tile": {
-		"Town.png": {
-			"ID": 0
-		}
+		"Town.png": 0,
+		"World.png": 1
 	},
 	
 	"Item": {
