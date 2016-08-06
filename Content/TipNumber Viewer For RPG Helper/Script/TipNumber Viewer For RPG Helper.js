@@ -26,7 +26,7 @@ function View(File) {
 						
 					for (var y = 0; y < Img.height / 16; y++) {
 						for (var x = 0; x < Img.width / 16; x++) {
-							Ctx.font = '16px "Meiryo"';
+							Ctx.font = '8px "Meiryo"';
 							Ctx.fillStyle = "Red";
 							
 							Ctx.fillText(x + y * 8, x * 16, (y + 1) * 16, 16);
