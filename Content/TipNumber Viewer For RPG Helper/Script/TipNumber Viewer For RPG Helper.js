@@ -17,8 +17,8 @@ function View(File) {
 					console.log(Img);
 					
 					var Cvs = document.getElementById("Canvas");
-						Cvs.width = Img.width + "px";
-						Cvs.height = Img.height + "px";
+						Cvs.width = Img.width;
+						Cvs.height = Img.height;
 						
 					var Ctx = Cvs.getContext("2d");
 						Ctx.clearRect(0, 0, Img.width, Img.height);
