@@ -17,7 +17,7 @@ function View(File) {
 					console.log(Img);
 					
 					var Ctx = document.getElementById("Canvas").getContext("2d");
-						Ctx.drawImage(Img);
+						Ctx.drawImage(Img, 0, 0);
 				}
 		}
 }
