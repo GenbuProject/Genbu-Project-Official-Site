@@ -16,7 +16,12 @@ function View(File) {
 				Img.onload = function () {
 					console.log(Img);
 					
-					var Ctx = document.getElementById("Canvas").getContext("2d");
+					var Cvs = document.getElementById("Canvas");
+						Cvs.style.width = Img.width + "px";
+						Cvs.style.height = Img.height + "px";
+						
+					var Ctx = Cvs.getContext("2d");
+						Ctx.clearRect(0, 0, Img.width, Img.height);
 						Ctx.drawImage(Img, 0, 0);
 				}
 		}
