@@ -16,18 +16,28 @@
 				"Volume": 1
 			},
 			
-			"Sadness.wav": {
+			"Elum Village.wav": {
 				"ID": 4,
 				"Volume": 1
 			},
 			
-			"Battle 1.wav": {
+			"Prospering Elum Village.wav": {
 				"ID": 5,
 				"Volume": 1
 			},
 			
-			"Boss Battle 1.wav": {
+			"Sadness.wav": {
 				"ID": 6,
+				"Volume": 1
+			},
+			
+			"Battle 1.wav": {
+				"ID": 7,
+				"Volume": 1
+			},
+			
+			"Boss Battle 1.wav": {
+				"ID": 8,
 				"Volume": 1
 			}
 		},
