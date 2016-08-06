@@ -87,7 +87,9 @@
 										Map.Warp(0, [0, 0]);
 										Effect.ColorOut(2.5, 0, "Black");
 										
-										Sound.PlayBGM(4);
+										setTimeout(function () {
+											Sound.PlayBGM(4);
+										}, 2500);
 									});
 							}, 1500);
 						});
