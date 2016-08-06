@@ -67,6 +67,9 @@
 									Menu.MenuMsgBox(PropPane, ["00", "^1"], "主人公の名前を入力して下さい");
 									Menu.MenuTextArea(PropPane, ["01", "^2"], "", true);
 									Menu.MenuItem(PropPane, ["02", "^4"], "決定", function () {
+										PropPane.parentElement.removeChild(PropPane);
+										Canvas.style.background = "Transparent";
+										
 										Resource.UserData.Character = {};
 										Resource.UserData.Character[PropPane.children[1].value] = {
 											Job: "勇者",
@@ -81,11 +84,10 @@
 											LUK: 5
 										};
 										
-										PropPane.parentElement.removeChild(PropPane);
-										
 										Map.Warp(0, [0, 0]);
 										Effect.ColorOut(2.5, 0, "Black");
-										Canvas.style.background = "Transparent";
+										
+										Sound.PlayBGM(4);
 									});
 							}, 1500);
 						});
