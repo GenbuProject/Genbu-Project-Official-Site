@@ -67,6 +67,8 @@
 									Menu.MenuMsgBox(PropPane, ["00", "^1"], "主人公の名前を入力して下さい");
 									Menu.MenuTextArea(PropPane, ["01", "^2"], "", true);
 									Menu.MenuItem(PropPane, ["02", "^4"], "決定", function () {
+										Sound.StopBGM();
+										
 										PropPane.parentElement.removeChild(PropPane);
 										Canvas.style.background = "Transparent";
 										
