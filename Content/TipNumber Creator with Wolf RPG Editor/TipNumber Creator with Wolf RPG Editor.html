@@ -9,7 +9,11 @@
 		
 		<Script>
 			function Init() {
-				document.getElementById("Picker").addEventListener("change", function (Event) {
+				document.getElementById("TipPicker").addEventListener("change", function (Event) {
+					Load(Event.target.files[0]);
+				});
+				
+				document.getElementById("MapPicker").addEventListener("change", function (Event) {
 					Create(Event.target.files[0]);
 				});
 			}
