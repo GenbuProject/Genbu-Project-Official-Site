@@ -1,9 +1,12 @@
 var TipDatas = [];
-var MapDatas = [];
 
 var L1Datas = [];
 var L2Datas = [];
 var L3Datas = [];
+
+var MaxWidth = 0;
+var MaxHeight = 0;
+var MaxTipID = 0;
 
 function Load(File) {
 	var Reader = new FileReader();
@@ -46,11 +49,11 @@ function Create(File) {
 		Reader.readAsArrayBuffer(File);
 		
 		Reader.onload = function () {
-			var MapWidth = new DataView(Reader.result).getUint8(38);
-			var MapHeight = new DataView(Reader.result).getUint8(42);
-			var MaxTipID = TipDatas.length - 1;
+			MapWidth = new DataView(Reader.result).getUint8(38);
+			MapHeight = new DataView(Reader.result).getUint8(42);
+			MaxTipID = TipDatas.length - 1;
 			
-			MapDatas = new DataView(Reader.result.slice(50));
+			var MapDatas = new DataView(Reader.result.slice(50));
 			
 			console.log("Xサイズ：" + MapWidth + ", Yサイズ：" + MapHeight);
 			console.log("チップタイル上限値：" + MaxTipID);
