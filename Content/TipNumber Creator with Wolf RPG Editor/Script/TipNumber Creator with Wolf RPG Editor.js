@@ -1,6 +1,10 @@
 var TipDatas = [];
 var MapDatas = [];
 
+var L1Datas = [];
+var L2Datas = [];
+var L3Datas = [];
+
 function Load(File) {
 	var Reader = new FileReader();
 		Reader.readAsArrayBuffer(File);
@@ -45,10 +49,6 @@ function Create(File) {
 			var MapWidth;
 			var MapHeight;
 			
-			var L1Datas = [];
-			var L2Datas = [];
-			var L3Datas = [];
-			
 			MapWidth = new DataView(Reader.result).getUint8(38);
 			MapHeight = new DataView(Reader.result).getUint8(42);
 			
@@ -61,11 +61,27 @@ function Create(File) {
 			console.log("レイヤー2範囲：" + (MapWidth * MapHeight * 4 * 1) + "～" + (MapWidth * MapHeight * 4 * 2 - 1));
 			console.log("レイヤー3範囲：" + (MapWidth * MapHeight * 4 * 2) + "～" + (MapWidth * MapHeight * 4 * 3 - 1));
 			
-			for (var L1 = 0; L1 < MapWidth * MapHeight * 4 * 1; L1 += 4) {
-				if (L1 == 0) {
-					L1Datas[0] = MapDatas.getUint32(0);
+			for (var L1 = MapWidth * MapHeight * 4 * 0; L1 < MapWidth * MapHeight * 4 * 1; L1 += 4) {
+				if (L1 == MapWidth * MapHeight * 4 * 0) {
+					L1Datas[0] = MapDatas.getUint32(MapWidth * MapHeight * 4 * 0).toString(16);
 				} else {
-					L1Datas[L1 / 4] = MapDatas.getUint32(L1);
+					L1Datas[(L1 - MapWidth * MapHeight * 4 * 0) / 4] = MapDatas.getUint32(L1).toString(16);
+				}
+			}
+			
+			for (var L2 = MapWidth * MapHeight * 4 * 1; L2 < MapWidth * MapHeight * 4 * 2; L2 += 4) {
+				if (L2 == MapWidth * MapHeight * 4 * 1) {
+					L2Datas[0] = MapDatas.getUint32(MapWidth * MapHeight * 4 * 1).toString(16);
+				} else {
+					L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4] = MapDatas.getUint32(L2).toString(16);
+				}
+			}
+			
+			for (var L3 = MapWidth * MapHeight * 4 * 2; L3 < MapWidth * MapHeight * 4 * 3; L3 += 4) {
+				if (L3 == MapWidth * MapHeight * 4 * 2) {
+					L3Datas[0] = MapDatas.getUint32(MapWidth * MapHeight * 4 * 2).toString(16);
+				} else {
+					L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4] = MapDatas.getUint32(L3).toString(16);
 				}
 			}
 		}
