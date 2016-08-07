@@ -45,16 +45,28 @@ function Create(File) {
 			var MapWidth;
 			var MapHeight;
 			
-			MapWidth = new Uint8Array(Reader.result)[38];
-			MapHeight = new Uint8Array(Reader.result)[42];
+			var L1Datas = [];
+			var L2Datas = [];
+			var L3Datas = [];
 			
-			MapDatas = new Uint8Array(Reader.result, 50);
+			MapWidth = new DataView(Reader.result).getUint8(38);
+			MapHeight = new DataView(Reader.result).getUint8(42);
+			
+			MapDatas = new DataView(Reader.result.slice(50));
 			
 			console.log("Xサイズ：" + MapWidth + ", Yサイズ：" + MapHeight);
-			console.log("チップタイル上限値：" + TipDatas.length);
+			console.log("チップタイル上限値：" + (TipDatas.length - 1));
 			
 			console.log("レイヤー1範囲：" + (MapWidth * MapHeight * 4 * 0) + "～" + (MapWidth * MapHeight * 4 * 1 - 1));
 			console.log("レイヤー2範囲：" + (MapWidth * MapHeight * 4 * 1) + "～" + (MapWidth * MapHeight * 4 * 2 - 1));
 			console.log("レイヤー3範囲：" + (MapWidth * MapHeight * 4 * 2) + "～" + (MapWidth * MapHeight * 4 * 3 - 1));
+			
+			for (var L1 = 0; L1 < MapWidth * MapHeight * 4 * 1; L1 += 4) {
+				if (L1 == 0) {
+					L1Datas[0] = MapDatas.getUint32(0);
+				} else {
+					L1Datas[i / 4] = MapDatas.getUint32(i);
+				}
+			}
 		}
 }
