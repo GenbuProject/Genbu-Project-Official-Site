@@ -1,6 +1,6 @@
-var TipData = null;
+var TipDatas = [];
 var TipCtx = null;
-var MapData = null;
+var MapDatas = [];
 var MapCtx = null;
 
 function Load(File) {
@@ -29,7 +29,13 @@ function Load(File) {
 						Ctx.clearRect(0, 0, Img.width, Img.height);
 						Ctx.drawImage(Img, 0, 0);
 						
-					TipData = Ctx.getImageData(0, 0, Img.width, Img.height);
+					for (var i = 0; i < (Img.width / 16) * (Img.height / 16); i++) {
+						var X = i % ((Img.width / 16));
+						var Y = Math.floor(i / (Img.width / 16));
+						
+						TipDatas[i] = Ctx.getImageData(X * 16, Y * 16, (X + 1) * 16, 16);
+					}
+					
 					TipCvs = Ctx;
 				}
 		}
@@ -61,7 +67,13 @@ function Create(File) {
 						Ctx.clearRect(0, 0, Img.width, Img.height);
 						Ctx.drawImage(Img, 0, 0);
 						
-					MapData = Ctx.getImageData(0, 0, Img.width, Img.height);
+					for (var i = 0; i < (Img.width / 32) * (Img.height / 32); i++) {
+						var X = i % ((Img.width / 32));
+						var Y = Math.floor(i / (Img.width / 32));
+						
+						MapDatas[i] = Ctx.getImageData(X * 32, Y * 32, (X + 1) * 32, 32);
+					}
+					
 					MapCtx = Ctx;
 				}
 		}
