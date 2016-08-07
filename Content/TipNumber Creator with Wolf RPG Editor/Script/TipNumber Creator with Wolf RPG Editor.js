@@ -63,13 +63,13 @@ function Create(File) {
 					L1Datas[0] = MapDatas.getUint32(MapWidth * MapHeight * 4 * 0).toString(16);
 					
 					if (L1Datas[0].length == 7) {
-						L1Datas[0] += "0";
+						L1Datas[0] = "0" + L1Datas[0];
 					}
 				} else {
 					L1Datas[(L1 - MapWidth * MapHeight * 4 * 0) / 4] = MapDatas.getUint32(L1).toString(16);
 					
 					if (L1Datas[(L1 - MapWidth * MapHeight * 4 * 0) / 4].length == 7) {
-						L1Datas[(L1 - MapWidth * MapHeight * 4 * 0) / 4] += "0";
+						L1Datas[(L1 - MapWidth * MapHeight * 4 * 0) / 4] = "0" + L1Datas[(L1 - MapWidth * MapHeight * 4 * 0) / 4];
 					}
 				}
 			}
@@ -79,13 +79,13 @@ function Create(File) {
 					L2Datas[0] = MapDatas.getUint32(MapWidth * MapHeight * 4 * 1).toString(16);
 					
 					if (L2Datas[0].length == 7) {
-						L2Datas[0] += "0";
+						L2Datas[0] = "0" + L2Datas[0];
 					}
 				} else {
 					L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4] = MapDatas.getUint32(L2).toString(16);
 					
 					if (L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4].length == 7) {
-						L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4] += "0";
+						L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4] = "0" + L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4];
 					}
 				}
 			}
@@ -95,13 +95,13 @@ function Create(File) {
 					L3Datas[0] = MapDatas.getUint32(MapWidth * MapHeight * 4 * 2).toString(16);
 					
 					if (L3Datas[0].length == 7) {
-						L3Datas[0] += "0";
+						L3Datas[0] = "0" + L3Datas[0];
 					}
 				} else {
 					L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4] = MapDatas.getUint32(L3).toString(16);
 					
 					if (L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4].length == 7) {
-						L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4] += "0";
+						L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4] = "0" + L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4];
 					}
 				}
 			}
