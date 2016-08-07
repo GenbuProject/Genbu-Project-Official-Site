@@ -1,7 +1,5 @@
 var TipDatas = [];
-var TipCtx = null;
 var MapDatas = [];
-var MapCtx = null;
 
 function Load(File) {
 	var Reader = new FileReader();
@@ -35,8 +33,6 @@ function Load(File) {
 						
 						TipDatas[i] = Ctx.getImageData(X * 16, Y * 16, 16, 16).data;
 					}
-					
-					TipCvs = Ctx;
 				}
 		}
 }
@@ -46,6 +42,6 @@ function Create(File) {
 		Reader.readAsArrayBuffer(File);
 		
 		Reader.onload = function () {
-			console.log(Reader.result);
+			MapDatas = new Uint32Array(Reader.result);
 		}
 }
