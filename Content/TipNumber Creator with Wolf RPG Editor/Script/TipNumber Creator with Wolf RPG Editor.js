@@ -65,12 +65,18 @@ function Create(File) {
 					if (L1Datas[0].length == 7) {
 						L1Datas[0] = "0" + L1Datas[0];
 					}
+					
+					var M = L1Datas[0].match(/../g);
+					L1Datas[0] = parseInt(M[3] + M[2] + M[1] + M[0], 16);
 				} else {
 					L1Datas[(L1 - MapWidth * MapHeight * 4 * 0) / 4] = MapDatas.getUint32(L1).toString(16);
 					
 					if (L1Datas[(L1 - MapWidth * MapHeight * 4 * 0) / 4].length == 7) {
 						L1Datas[(L1 - MapWidth * MapHeight * 4 * 0) / 4] = "0" + L1Datas[(L1 - MapWidth * MapHeight * 4 * 0) / 4];
 					}
+					
+					var M = L1Datas[(L1 - MapWidth * MapHeight * 4 * 0) / 4].match(/../g);
+					L1Datas[(L1 - MapWidth * MapHeight * 4 * 0) / 4] = parseInt(M[3] + M[2] + M[1] + M[0], 16);
 				}
 			}
 			
@@ -81,12 +87,18 @@ function Create(File) {
 					if (L2Datas[0].length == 7) {
 						L2Datas[0] = "0" + L2Datas[0];
 					}
+					
+					var M = L2Datas[0].match(/../g);
+					L2Datas[0] = parseInt(M[3] + M[2] + M[1] + M[0], 16);
 				} else {
 					L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4] = MapDatas.getUint32(L2).toString(16);
 					
 					if (L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4].length == 7) {
 						L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4] = "0" + L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4];
 					}
+					
+					var M = L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4].match(/../g);
+					L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4] = parseInt(M[3] + M[2] + M[1] + M[0], 16);
 				}
 			}
 			
@@ -97,12 +109,18 @@ function Create(File) {
 					if (L3Datas[0].length == 7) {
 						L3Datas[0] = "0" + L3Datas[0];
 					}
+					
+					var M = L3Datas[0].match(/../g);
+					L3Datas[0] = parseInt(M[3] + M[2] + M[1] + M[0], 16);
 				} else {
 					L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4] = MapDatas.getUint32(L3).toString(16);
 					
 					if (L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4].length == 7) {
 						L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4] = "0" + L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4];
 					}
+					
+					var M = L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4].match(/../g);
+					L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4] = parseInt(M[3] + M[2] + M[1] + M[0], 16);
 				}
 			}
 		}
