@@ -65,7 +65,7 @@ function Create(File) {
 				if (L1 == 0) {
 					L1Datas[0] = MapDatas.getUint32(0);
 				} else {
-					L1Datas[i / 4] = MapDatas.getUint32(i);
+					L1Datas[L1 / 4] = MapDatas.getUint32(L1);
 				}
 			}
 		}
