@@ -33,7 +33,7 @@ function Load(File) {
 						var X = i % ((Img.width / 16));
 						var Y = Math.floor(i / (Img.width / 16));
 						
-						TipDatas[i] = Ctx.getImageData(X * 16, Y * 16, (X + 1) * 16, 16);
+						TipDatas[i] = Ctx.getImageData(X * 16, Y * 16, 16, 16);
 					}
 					
 					TipCvs = Ctx;
@@ -71,7 +71,7 @@ function Create(File) {
 						var X = i % ((Img.width / 32));
 						var Y = Math.floor(i / (Img.width / 32));
 						
-						MapDatas[i] = Ctx.getImageData(X * 32, Y * 32, (X + 1) * 32, 32);
+						MapDatas[i] = Ctx.getImageData(X * 32, Y * 32, 32, 32);
 					}
 					
 					MapCtx = Ctx;
