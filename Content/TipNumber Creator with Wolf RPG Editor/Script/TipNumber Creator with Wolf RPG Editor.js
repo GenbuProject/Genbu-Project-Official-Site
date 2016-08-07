@@ -42,6 +42,16 @@ function Create(File) {
 		Reader.readAsArrayBuffer(File);
 		
 		Reader.onload = function () {
+			var MapWidth;
+			var MapHeight;
+			
+			MapWidth = new Uint8Array(Reader.result)[38];
+			MapHeight = new Uint8Array(Reader.result)[42];
+			
 			MapDatas = new Uint8Array(Reader.result, 50);
+			
+			console.log(MapDatas[MapWidth * MapHeight * 4 * 1]);
+			console.log(MapDatas[MapWidth * MapHeight * 4 * 2]);
+			console.log(MapDatas[MapWidth * MapHeight * 4 * 3]);
 		}
 }
