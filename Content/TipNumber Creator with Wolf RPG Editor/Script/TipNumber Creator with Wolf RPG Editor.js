@@ -43,38 +43,9 @@ function Load(File) {
 
 function Create(File) {
 	var Reader = new FileReader();
-		Reader.readAsArrayBuffer(File);
+		Reader.readAsBinaryString(File);
 		
 		Reader.onload = function () {
-			var Link = URL.createObjectURL(
-				new Blob(
-					[Reader.result],
-					{type: "image/png"}
-				)
-			);
-			
-			var Img = new Image();
-				Img.src = Link;
-				
-				Img.onload = function () {
-					console.log(Img);
-					
-					var Cvs = document.getElementById("MapCanvas");
-						Cvs.width = Img.width;
-						Cvs.height = Img.height;
-						
-					var Ctx = Cvs.getContext("2d");
-						Ctx.clearRect(0, 0, Img.width, Img.height);
-						Ctx.drawImage(Img, 0, 0);
-						
-					for (var i = 0; i < (Img.width / 32) * (Img.height / 32); i++) {
-						var X = i % ((Img.width / 32));
-						var Y = Math.floor(i / (Img.width / 32));
-						
-						MapDatas[i] = Ctx.getImageData(X * 32, Y * 32, 32, 32).data;
-					}
-					
-					MapCtx = Ctx;
-				}
+			console.log(Reader.result);
 		}
 }
