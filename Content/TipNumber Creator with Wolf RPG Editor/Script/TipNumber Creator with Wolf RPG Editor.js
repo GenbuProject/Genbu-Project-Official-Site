@@ -43,7 +43,7 @@ function Load(File) {
 
 function Create(File) {
 	var Reader = new FileReader();
-		Reader.readAsBinaryString(File);
+		Reader.readAsArrayBuffer(File);
 		
 		Reader.onload = function () {
 			console.log(Reader.result);
