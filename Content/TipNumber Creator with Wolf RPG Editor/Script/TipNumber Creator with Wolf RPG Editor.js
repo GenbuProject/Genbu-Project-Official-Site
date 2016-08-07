@@ -46,11 +46,8 @@ function Create(File) {
 		Reader.readAsArrayBuffer(File);
 		
 		Reader.onload = function () {
-			var MapWidth;
-			var MapHeight;
-			
-			MapWidth = new DataView(Reader.result).getUint8(38);
-			MapHeight = new DataView(Reader.result).getUint8(42);
+			var MapWidth = new DataView(Reader.result).getUint8(38);
+			var MapHeight = new DataView(Reader.result).getUint8(42);
 			
 			MapDatas = new DataView(Reader.result.slice(50));
 			
@@ -64,24 +61,48 @@ function Create(File) {
 			for (var L1 = MapWidth * MapHeight * 4 * 0; L1 < MapWidth * MapHeight * 4 * 1; L1 += 4) {
 				if (L1 == MapWidth * MapHeight * 4 * 0) {
 					L1Datas[0] = MapDatas.getUint32(MapWidth * MapHeight * 4 * 0).toString(16);
+					
+					if (L1Datas[0].length == 7) {
+						L1Datas[0] += "0";
+					}
 				} else {
 					L1Datas[(L1 - MapWidth * MapHeight * 4 * 0) / 4] = MapDatas.getUint32(L1).toString(16);
+					
+					if (L1Datas[(L1 - MapWidth * MapHeight * 4 * 0) / 4].length == 7) {
+						L1Datas[(L1 - MapWidth * MapHeight * 4 * 0) / 4] += "0";
+					}
 				}
 			}
 			
 			for (var L2 = MapWidth * MapHeight * 4 * 1; L2 < MapWidth * MapHeight * 4 * 2; L2 += 4) {
 				if (L2 == MapWidth * MapHeight * 4 * 1) {
 					L2Datas[0] = MapDatas.getUint32(MapWidth * MapHeight * 4 * 1).toString(16);
+					
+					if (L2Datas[0].length == 7) {
+						L2Datas[0] += "0";
+					}
 				} else {
 					L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4] = MapDatas.getUint32(L2).toString(16);
+					
+					if (L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4].length == 7) {
+						L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4] += "0";
+					}
 				}
 			}
 			
 			for (var L3 = MapWidth * MapHeight * 4 * 2; L3 < MapWidth * MapHeight * 4 * 3; L3 += 4) {
 				if (L3 == MapWidth * MapHeight * 4 * 2) {
 					L3Datas[0] = MapDatas.getUint32(MapWidth * MapHeight * 4 * 2).toString(16);
+					
+					if (L3Datas[0].length == 7) {
+						L3Datas[0] += "0";
+					}
 				} else {
 					L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4] = MapDatas.getUint32(L3).toString(16);
+					
+					if (L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4].length == 7) {
+						L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4] += "0";
+					}
 				}
 			}
 		}
