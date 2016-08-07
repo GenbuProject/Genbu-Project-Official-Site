@@ -42,6 +42,6 @@ function Create(File) {
 		Reader.readAsArrayBuffer(File);
 		
 		Reader.onload = function () {
-			MapDatas = new Uint32Array(Reader.result);
+			MapDatas = new Uint8Array(Reader.result);
 		}
 }
