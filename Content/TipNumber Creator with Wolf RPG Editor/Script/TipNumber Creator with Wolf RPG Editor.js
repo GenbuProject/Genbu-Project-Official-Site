@@ -50,9 +50,11 @@ function Create(File) {
 			
 			MapDatas = new Uint8Array(Reader.result, 50);
 			
-			console.log([MapWidth, MapHeight]);
-			console.log(MapDatas[MapWidth * MapHeight * 4 * 0]);
-			console.log(MapDatas[MapWidth * MapHeight * 4 * 1]);
-			console.log(MapDatas[MapWidth * MapHeight * 4 * 2]);
+			console.log("Xサイズ：" + MapWidth + ", Yサイズ：" + MapHeight);
+			console.log("チップタイル上限値：" + TipDatas.length);
+			
+			console.log("レイヤー1範囲：" + MapWidth * MapHeight * 4 * 0 + "～" + MapWidth * MapHeight * 4 * 1 - 1);
+			console.log("レイヤー2範囲：" + MapWidth * MapHeight * 4 * 1 + "～" + MapWidth * MapHeight * 4 * 2 - 1);
+			console.log("レイヤー3範囲：" + MapWidth * MapHeight * 4 * 2 + "～" + MapWidth * MapHeight * 4 * 3 - 1);
 		}
 }
