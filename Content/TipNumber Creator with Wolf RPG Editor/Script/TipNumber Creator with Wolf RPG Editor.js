@@ -48,11 +48,12 @@ function Create(File) {
 		Reader.onload = function () {
 			var MapWidth = new DataView(Reader.result).getUint8(38);
 			var MapHeight = new DataView(Reader.result).getUint8(42);
+			var MaxTipID = TipDatas.length - 1;
 			
 			MapDatas = new DataView(Reader.result.slice(50));
 			
 			console.log("Xサイズ：" + MapWidth + ", Yサイズ：" + MapHeight);
-			console.log("チップタイル上限値：" + (TipDatas.length - 1));
+			console.log("チップタイル上限値：" + MaxTipID);
 			
 			console.log("レイヤー1範囲：" + (MapWidth * MapHeight * 4 * 0) + "～" + (MapWidth * MapHeight * 4 * 1 - 1));
 			console.log("レイヤー2範囲：" + (MapWidth * MapHeight * 4 * 1) + "～" + (MapWidth * MapHeight * 4 * 2 - 1));
@@ -68,6 +69,10 @@ function Create(File) {
 					
 					var M = L1Datas[0].match(/../g);
 					L1Datas[0] = parseInt(M[3] + M[2] + M[1] + M[0], 16);
+					
+					if (L1Datas[0] > MaxTipID) {
+						L1Datas[0] = -1;
+					}
 				} else {
 					L1Datas[(L1 - MapWidth * MapHeight * 4 * 0) / 4] = MapDatas.getUint32(L1).toString(16);
 					
@@ -77,6 +82,10 @@ function Create(File) {
 					
 					var M = L1Datas[(L1 - MapWidth * MapHeight * 4 * 0) / 4].match(/../g);
 					L1Datas[(L1 - MapWidth * MapHeight * 4 * 0) / 4] = parseInt(M[3] + M[2] + M[1] + M[0], 16);
+					
+					if (L1Datas[(L1 - MapWidth * MapHeight * 4 * 0) / 4] > MaxTipID) {
+						L1Datas[(L1 - MapWidth * MapHeight * 4 * 0) / 4] = -1;
+					}
 				}
 			}
 			
@@ -90,6 +99,10 @@ function Create(File) {
 					
 					var M = L2Datas[0].match(/../g);
 					L2Datas[0] = parseInt(M[3] + M[2] + M[1] + M[0], 16) + 16;
+					
+					if (L2Datas[0] > MaxTipID) {
+						L2Datas[0] = -1;
+					}
 				} else {
 					L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4] = MapDatas.getUint32(L2).toString(16);
 					
@@ -99,6 +112,10 @@ function Create(File) {
 					
 					var M = L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4].match(/../g);
 					L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4] = parseInt(M[3] + M[2] + M[1] + M[0], 16) + 16;
+					
+					if (L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4] > MaxTipID) {
+						L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4] = -1;
+					}
 				}
 			}
 			
@@ -112,6 +129,10 @@ function Create(File) {
 					
 					var M = L3Datas[0].match(/../g);
 					L3Datas[0] = parseInt(M[3] + M[2] + M[1] + M[0], 16) + 16;
+					
+					if (L3Datas[0] > MaxTipID) {
+						L3Datas[0] = -1;
+					}
 				} else {
 					L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4] = MapDatas.getUint32(L3).toString(16);
 					
@@ -121,6 +142,10 @@ function Create(File) {
 					
 					var M = L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4].match(/../g);
 					L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4] = parseInt(M[3] + M[2] + M[1] + M[0], 16) + 16;
+					
+					if (L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4] > MaxTipID) {
+						L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4] = -1;
+					}
 				}
 			}
 		}
