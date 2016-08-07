@@ -50,8 +50,9 @@ function Create(File) {
 			
 			MapDatas = new Uint8Array(Reader.result, 50);
 			
+			console.log([MapWidth, MapHeight]);
+			console.log(MapDatas[MapWidth * MapHeight * 4 * 0]);
 			console.log(MapDatas[MapWidth * MapHeight * 4 * 1]);
 			console.log(MapDatas[MapWidth * MapHeight * 4 * 2]);
-			console.log(MapDatas[MapWidth * MapHeight * 4 * 3]);
 		}
 }
