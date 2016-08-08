@@ -1,12 +1,10 @@
-var TipDatas = [];
+var MaxTipID = 0;
+var MaxWidth = 0;
+var MaxHeight = 0;
 
 var L1Datas = [];
 var L2Datas = [];
 var L3Datas = [];
-
-var MaxWidth = 0;
-var MaxHeight = 0;
-var MaxTipID = 0;
 
 function Load(File) {
 	var Reader = new FileReader();
@@ -34,12 +32,16 @@ function Load(File) {
 						Ctx.clearRect(0, 0, Img.width, Img.height);
 						Ctx.drawImage(Img, 0, 0);
 						
+					var TipDatas = [];
+					
 					for (var i = 0; i < (Img.width / 16) * (Img.height / 16); i++) {
 						var X = i % ((Img.width / 16));
 						var Y = Math.floor(i / (Img.width / 16));
 						
 						TipDatas[i] = Ctx.getImageData(X * 16, Y * 16, 16, 16).data;
 					}
+					
+					MaxTipID = TipDatas.length - 1;
 				}
 		}
 }
@@ -51,7 +53,6 @@ function Create(File) {
 		Reader.onload = function () {
 			MapWidth = new DataView(Reader.result).getUint8(38);
 			MapHeight = new DataView(Reader.result).getUint8(42);
-			MaxTipID = TipDatas.length - 1;
 			
 			var MapDatas = new DataView(Reader.result.slice(50));
 			
@@ -152,10 +153,10 @@ function Create(File) {
 				}
 			}
 			
-			var Result = new Array(MapHeight);
+			var Result = new Array();
 			
 			for (var Y = 0; Y < MapWidth; Y++) {
-				Result[Y] = new Array(MapWidth);
+				Result[Y] = new Array();
 				
 				for (var X = 0; X < L2Datas.length; X += MapWidth) {
 					Result[Y].push(L2Datas[X + Y]);
