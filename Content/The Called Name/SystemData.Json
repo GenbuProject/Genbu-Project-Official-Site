@@ -80,6 +80,11 @@
 		"World.png"
 	],
 	
+	"BackGround": {
+		"Title": "Title.png",
+		"Dialog": "Back.jpg"
+	},
+	
 	"Item": {
 		"ハーブ": {
 			"ID": 1,
