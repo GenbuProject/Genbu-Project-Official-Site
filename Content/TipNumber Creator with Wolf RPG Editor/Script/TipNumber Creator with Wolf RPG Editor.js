@@ -151,5 +151,17 @@ function Create(File) {
 					}
 				}
 			}
+			
+			var Result = new Array(MapHeight);
+			
+			for (var Y = 0; Y < MapWidth; Y++) {
+				Result[Y] = new Array(MapWidth);
+				
+				for (var X = 0; X < L2Datas.length; X += MapWidth) {
+					Result[Y].push(L2Datas[X + Y]);
+				}
+			}
+			
+			document.getElementById("Result").textContent = JSON.stringify(Result, null, "\t");
 		}
 }
