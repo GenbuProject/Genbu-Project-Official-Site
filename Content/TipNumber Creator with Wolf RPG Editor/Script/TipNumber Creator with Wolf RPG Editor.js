@@ -156,10 +156,20 @@ function Create(File) {
 			var Result = new Array();
 			
 			for (var Y = 0; Y < MapWidth; Y++) {
-				Result[Y] = new Array();
+				Result[0][Y] = new Array();
+				Result[1][Y] = new Array();
+				Result[2][Y] = new Array();
+				
+				for (var X = 0; X < L1Datas.length; X += MapWidth) {
+					Result[0][Y].push(L1Datas[X + Y]);
+				}
 				
 				for (var X = 0; X < L2Datas.length; X += MapWidth) {
-					Result[Y].push(L2Datas[X + Y]);
+					Result[1][Y].push(L2Datas[X + Y]);
+				}
+				
+				for (var X = 0; X < L3Datas.length; X += MapWidth) {
+					Result[2][Y].push(L3Datas[X + Y]);
 				}
 			}
 			
