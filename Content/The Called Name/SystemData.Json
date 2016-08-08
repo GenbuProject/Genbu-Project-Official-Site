@@ -26,24 +26,32 @@
 				"Volume": 1
 			},
 			
-			"Sadness.wav": {
+			"Battle 1.wav": {
 				"ID": 6,
 				"Volume": 1
 			},
 			
-			"Battle 1.wav": {
+			"Boss Battle 1.wav": {
 				"ID": 7,
 				"Volume": 1
 			},
 			
-			"Boss Battle 1.wav": {
+			"Sadness.wav": {
 				"ID": 8,
+				"Volume": 1
+			},
+			
+			"Birds.wav": {
+				"ID": 9,
 				"Volume": 1
 			}
 		},
 		
 		"SE": {
-			
+			"Crow.wav": {
+				"ID": 1,
+				"Volume": 1
+			}
 		},
 		
 		"Util": {
