@@ -50,7 +50,7 @@
 					Sound.PlayBGM(1);
 					
 					var StartMenu = Menu.MenuPanel(["36", "79"]);
-						Menu.MenuItem(StartMenu, ["00", "41"], "NEW GAME", function () {
+						Menu.MenuItem(StartMenu, ["00", "41"], R.COLOR.WHITE, "NEW GAME", function () {
 							Sound.StopBGM();
 							
 							StartMenu.parentElement.removeChild(StartMenu);
@@ -61,9 +61,9 @@
 								Sound.PlayBGM(2);
 								
 								var PropPane = Menu.MenuPanel(["03", "^7"]);
-									Menu.MenuMsgBox(PropPane, ["00", "^1"], "主人公の名前を入力して下さい");
-									Menu.MenuTextArea(PropPane, ["01", "^2"], "", true);
-									Menu.MenuItem(PropPane, ["02", "^4"], "決定", function () {
+									Menu.MenuMsgBox(PropPane, ["00", "^1"], R.COLOR.WHITE, "主人公の名前を入力して下さい");
+									Menu.MenuTextArea(PropPane, ["01", "^2"], R.COLOR.GREEN, "", true);
+									Menu.MenuItem(PropPane, ["02", "^4"], R.COLOR.WHITE, "決定", function () {
 										Sound.StopBGM();
 										
 										PropPane.parentElement.removeChild(PropPane);
@@ -90,17 +90,17 @@
 										setTimeout(function () {
 											Sound.PlayBGM(9);
 											
-											MsgBox(R.POS.CENTER, R.SPEED.NORMAL, "真っ青な空が広がるある日の朝。\n僕はただ空を眺めていた。", function () {
-												MsgBox(R.POS.CENTER, R.SPEED.NORMAL, "僕の名前は" + Resource.UserData.Character[0]["Name"] + "。\nエルム村育ちの普通の子供だ。", function () {
-													MsgBox(R.POS.CENTER, R.SPEED.NORMAL, "このエルム村は森に囲まれた場所にあり、あまり栄えているとはいえない。\n人口は僕を含めて13人。\nだから他から干渉を受けない場所のはずだった...", function () {
+											MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.BLUE, "真っ青な空が広がるある日の朝。\n僕はただ空を眺めていた。", function () {
+												MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.BLUE, "僕の名前は" + Resource.UserData.Character[0]["Name"] + "。\nエルム村育ちの普通の子供だ。", function () {
+													MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.BLUE, "このエルム村は森に囲まれた場所にあり、あまり栄えているとはいえない。\n人口は僕を含めて13人。\nだから他から干渉を受けない場所のはずだった...", function () {
 														Map.Warp(0, [16, 11]);
 														Effect.ColorOut(2, 0, "Black");
 														
 														setTimeout(function () {
-															MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, "？？？\n「た、大変だー！！」", function () {
-																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, Resource.UserData.Character[0]["Name"] + "\n『い、一体何がっ！？』", function () {
-																	MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, "？？？\n「ぞ、蔵書庫にあ、集まれぇ！！」", function () {
-																		MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, "周りの村人達が次々と蔵書庫に集まっている...\n僕も蔵書庫へ向かおう...！", function () {
+															MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, "？？？\n「た、大変だー！！」", function () {
+																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『い、一体何がっ！？』", function () {
+																	MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, "？？？\n「ぞ、蔵書庫にあ、集まれぇ！！」", function () {
+																		MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.BLUE, "周りの村人達が次々と蔵書庫に集まっている...\n僕も蔵書庫へ向かおう...！", function () {
 																			
 																		});
 																	});
@@ -115,9 +115,9 @@
 							}, 1500);
 						});
 						
-						Menu.MenuItem(StartMenu, ["01", "42"], "LOAD GAME", function () {
+						Menu.MenuItem(StartMenu, ["01", "42"], R.COLOR.WHITE, "LOAD GAME", function () {
 							Load(function () {
-								var Msg = MsgBox(R.POS.CENTER, R.SPEED.NORMAL, "ゲームを開始します...", function () {});
+								var Msg = MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "ゲームを開始します...", function () {});
 								
 								setTimeout(function () {
 									Msg.click();
@@ -125,18 +125,18 @@
 							});
 						});
 						
-						Menu.MenuItem(StartMenu, ["02", "43"], "About", function () {
+						Menu.MenuItem(StartMenu, ["02", "43"], R.COLOR.WHITE, "About", function () {
 							StartMenu.style.display = "None";
 							
 							var AboutPane = Menu.MenuPanel(["03", "^7"]);
-								Menu.MenuItem(AboutPane, ["", ""], "←", function () {
+								Menu.MenuItem(AboutPane, ["", ""], R.COLOR.WHITE, "←", function () {
 									StartMenu.style.display = "Block";
 									AboutPane.parentElement.removeChild(AboutPane);
 								});
 								
-								Menu.MenuItem(AboutPane, ["01", "^2"], "製作者：プログラマーGenboo", function () {});
-								Menu.MenuItem(AboutPane, ["02", "^3"], "最終更新日：2016年7月13日[水]", function () {});
-								Menu.MenuItem(AboutPane, ["03", "^4"], "バージョン：Alpha 1.0", function () {});
+								Menu.MenuItem(AboutPane, ["01", "^2"], R.COLOR.WHITE, "製作者：プログラマーGenboo", function () {});
+								Menu.MenuItem(AboutPane, ["02", "^3"], R.COLOR.WHITE, "最終更新日：2016年7月13日[水]", function () {});
+								Menu.MenuItem(AboutPane, ["03", "^4"], R.COLOR.WHITE, "バージョン：Alpha 1.0", function () {});
 						});
 				}
 			}
