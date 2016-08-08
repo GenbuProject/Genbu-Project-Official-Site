@@ -14,6 +14,11 @@
 ### 3. The Called Nameについて
 > `The Called Name`は2016年度の[Genbu Hase](https://github.com/GenbuHase)の自由研究として製作されました。
 > <Br>
-> マップ素材等は[ウディタ](http://www.silversecond.com/WolfRPGEditor/)付属の素材及びツールを使用しています。
+> マップ素材等は[Wolf RPG Editor【ウディタ】](http://www.silversecond.com/WolfRPGEditor/)付属の素材及びツールを使用しています。
 > <Br>
-> 使用させて頂いた事をここをもって感謝申し上げます。
+> 素材製作者の方々に感謝申し上げます。
+
+### 4. 音源素材・マップ素材
+> `効果音素材`：![ポケットサウンド様](http://pocket-se.info/image/bnr_pcse.jpg)
+> <Br>
+> `チップ素材`：[Wolf RPG Editor【ウディタ】](http://www.silversecond.com/WolfRPGEditor/)
