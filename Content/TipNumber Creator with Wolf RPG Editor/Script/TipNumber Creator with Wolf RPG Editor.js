@@ -102,7 +102,7 @@ function Create(File) {
 					}
 					
 					var M = L2Datas[0].match(/../g);
-					L2Datas[0] = parseInt(M[3] + M[2] + M[1] + M[0], 16) + 16;
+					L2Datas[0] = parseInt(M[3] + M[2] + M[1] + M[0], 16);
 					
 					if (L2Datas[0] > MaxTipID) {
 						L2Datas[0] = -1;
@@ -115,7 +115,7 @@ function Create(File) {
 					}
 					
 					var M = L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4].match(/../g);
-					L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4] = parseInt(M[3] + M[2] + M[1] + M[0], 16) + 16;
+					L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4] = parseInt(M[3] + M[2] + M[1] + M[0], 16);
 					
 					if (L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4] > MaxTipID) {
 						L2Datas[(L2 - MapWidth * MapHeight * 4 * 1) / 4] = -1;
@@ -132,7 +132,7 @@ function Create(File) {
 					}
 					
 					var M = L3Datas[0].match(/../g);
-					L3Datas[0] = parseInt(M[3] + M[2] + M[1] + M[0], 16) + 16;
+					L3Datas[0] = parseInt(M[3] + M[2] + M[1] + M[0], 16);
 					
 					if (L3Datas[0] > MaxTipID) {
 						L3Datas[0] = -1;
@@ -145,7 +145,7 @@ function Create(File) {
 					}
 					
 					var M = L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4].match(/../g);
-					L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4] = parseInt(M[3] + M[2] + M[1] + M[0], 16) + 16;
+					L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4] = parseInt(M[3] + M[2] + M[1] + M[0], 16);
 					
 					if (L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4] > MaxTipID) {
 						L3Datas[(L3 - MapWidth * MapHeight * 4 * 2) / 4] = -1;
