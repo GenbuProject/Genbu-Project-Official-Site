@@ -96,8 +96,11 @@
 											MsgBox(R.POS.CENTER, R.SPEED.NORMAL, "真っ青な空が広がるある日の朝。\n僕はただ空を眺めていた。", function () {
 												MsgBox(R.POS.CENTER, R.SPEED.NORMAL, "僕の名前は" + Resource.UserData.Character[0]["Name"] + "。\nエルム村育ちの普通の子供だ。", function () {
 													MsgBox(R.POS.CENTER, R.SPEED.NORMAL, "このエルム村はあまり栄えているとはいえない。\n人口は僕を含めて13人。\nだから他から干渉を受けない場所のはずだった...", function () {
-														Map.Warp(0, [16, 11]);
 														Effect.ColorOut(2, 0, "Black");
+														
+														setTimeout(function () {
+															Map.Warp(0, [16, 11]);
+														}, 2000);
 													});
 												});
 											});
