@@ -98,9 +98,11 @@
 														
 														setTimeout(function () {
 															MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, "？？？\n「た、大変だー！！」", function () {
-																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, Resource.UserData.Character[0]["Name"] + "\n『！？』", function () {
-																	MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, "周りの村人達が次々と蔵書庫に集まっている...\n僕も蔵書庫へ向かおう...！", function () {
-																		
+																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, Resource.UserData.Character[0]["Name"] + "\n『い、一体何がっ！？』", function () {
+																	MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, "？？？\n「ぞ、蔵書庫にあ、集まれぇ！！」", function () {
+																		MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, "周りの村人達が次々と蔵書庫に集まっている...\n僕も蔵書庫へ向かおう...！", function () {
+																			
+																		});
 																	});
 																});
 															});
