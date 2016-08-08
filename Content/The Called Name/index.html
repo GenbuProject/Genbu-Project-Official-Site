@@ -72,8 +72,10 @@
 										PropPane.parentElement.removeChild(PropPane);
 										Canvas.style.background = "Transparent";
 										
-										Resource.UserData.Character = {};
-										Resource.UserData.Character[PropPane.children[1].value] = {
+										Resource.UserData.Character = [];
+										
+										Resource.UserData.Character[0] = {
+											Name: PropPane.children[1].value,
 											Job: "勇者",
 											
 											HP: 50,
@@ -86,11 +88,19 @@
 											LUK: 5
 										};
 										
-										Map.Warp(0, [0, 0]);
+										Map.Warp(0, [16, 11]);
 										Effect.ColorOut(2.5, 0, "Black");
 										
 										setTimeout(function () {
 											Sound.PlayBGM(4);
+											
+											MsgBox(R.POS.CENTER, R.SPEED.NORMAL, "真っ青な空が広がるある日の朝。\n僕はただ空を眺めていた。", function () {
+												MsgBox(R.POS.CENTER, R.SPEED.NORMAL, "僕の名前は" + Resource.UserData.Character[0]["Name"] + "。\nエルム村育ちの普通の子供だ。", function () {
+													MsgBox(R.POS.CENTER, R.SPEED.NORMAL, "このエルム村はあまり栄えているとはいえない。\n人口は僕を含めて13人。\nだから他から干渉を受けない場所だった...", function () {
+														
+													});
+												});
+											});
 										}, 2500);
 									});
 							}, 1500);
