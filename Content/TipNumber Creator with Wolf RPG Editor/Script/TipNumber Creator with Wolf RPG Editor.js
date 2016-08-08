@@ -154,7 +154,10 @@ function Create(File) {
 			}
 			
 			var Result = new Array();
-			
+				Result[0] = new Array();
+				Result[1] = new Array();
+				Result[2] = new Array();
+				
 			for (var Y = 0; Y < MapWidth; Y++) {
 				Result[0][Y] = new Array();
 				Result[1][Y] = new Array();
