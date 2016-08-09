@@ -102,7 +102,36 @@
 																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『い、一体何がっ！？』", function () {
 																	MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, "？？？\n「ぞ、蔵書庫にあ、集まれぇ！！」", function () {
 																		MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.BLUE, "周りの村人達が次々と蔵書庫に集まっている...\n僕も蔵書庫へ向かおう...！", function () {
+																			var X = 16;
+																			var Y = 11;
 																			
+																			document.body.addEventListener("keypress", function (E) {
+																				switch (E.keyCode) {
+																					case 38:
+																						Y--;
+																						Character.Warp("CharacterTip/MainCharacter.png", R.DIRECTION.N, [X, Y]);
+																						
+																						break;
+																						
+																					case 40:
+																						Y++;
+																						Character.Warp("CharacterTip/MainCharacter.png", R.DIRECTION.S, [X, Y]);
+																						
+																						break;
+																						
+																					case 37:
+																						X--;
+																						Character.Warp("CharacterTip/MainCharacter.png", R.DIRECTION.W, [X, Y]);
+																						
+																						break;
+																						
+																					case 39:
+																						X++;
+																						Character.Warp("CharacterTip/MainCharacter.png", R.DIRECTION.E, [X, Y]);
+																						
+																						break;
+																				}
+																			});
 																		});
 																	});
 																});
