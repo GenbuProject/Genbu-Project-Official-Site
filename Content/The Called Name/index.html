@@ -108,24 +108,32 @@
 																			document.body.addEventListener("keypress", function (E) {
 																				switch (E.keyCode) {
 																					case 38:
+																						E.preventDefault();
+																						
 																						Y--;
 																						Character.Warp("CharacterTip/MainCharacter.png", R.DIRECTION.N, [X, Y]);
 																						
 																						break;
 																						
 																					case 40:
+																						E.preventDefault();
+																						
 																						Y++;
 																						Character.Warp("CharacterTip/MainCharacter.png", R.DIRECTION.S, [X, Y]);
 																						
 																						break;
 																						
 																					case 37:
+																						E.preventDefault();
+																						
 																						X--;
 																						Character.Warp("CharacterTip/MainCharacter.png", R.DIRECTION.W, [X, Y]);
 																						
 																						break;
 																						
 																					case 39:
+																						E.preventDefault();
+																						
 																						X++;
 																						Character.Warp("CharacterTip/MainCharacter.png", R.DIRECTION.E, [X, Y]);
 																						
