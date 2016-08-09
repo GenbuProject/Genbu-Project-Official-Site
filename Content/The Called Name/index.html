@@ -154,7 +154,7 @@
 						});
 						
 						Menu.MenuItem(StartMenu, ["01", "42"], R.COLOR.WHITE, "LOAD GAME", function () {
-							Load(function () {
+							Load(".sav", function () {
 								var Msg = MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "ゲームを開始します...", function () {});
 								
 								setTimeout(function () {
