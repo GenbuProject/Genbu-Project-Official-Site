@@ -5,8 +5,8 @@
 		<Meta Charset = "UTF-8">
 		<Title>Genbu Project Official Site == The Called Name</Title>
 		
-		<Script Src = "https://genbuproject.github.io/RPG-Helper/Alpha/RPG Helper Alpha 1.2.js"></Script>
-		<Link Rel = "StyleSheet" HREF = "https://genbuproject.github.io/RPG-Helper/Alpha/RPG Helper Alpha 1.2.css">
+		<Script Src = "https://genbuproject.github.io/RPG-Helper/Alpha/RPG Helper Alpha 1.3.js"></Script>
+		<Link Rel = "StyleSheet" HREF = "https://genbuproject.github.io/RPG-Helper/Alpha/RPG Helper Alpha 1.3.css">
 		
 		<Script Src = "Script/JsDecoder.js"></Script>
 		<Script Src = "Script/JsColorizer.js"></Script>
@@ -69,11 +69,12 @@
 										PropPane.parentElement.removeChild(PropPane);
 										Canvas.style.background = "Black";
 										
-										Resource.UserData.Character = [];
-										
 										Resource.UserData.Character[0] = {
 											Name: PropPane.children[1].value,
 											Job: "勇者",
+											
+											CharacterTip: "MainCharacter.png",
+											CharacterFace: "MainCharacter.png",
 											
 											HP: 50,
 											MP: 5,
@@ -94,7 +95,7 @@
 												MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.BLUE, "僕の名前は" + Resource.UserData.Character[0]["Name"] + "。\nエルム村育ちの普通の子供だ。", function () {
 													MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.BLUE, "このエルム村は森に囲まれた場所にあり、\nあまり栄えているとはいえない。\n人口は僕を含めて13人。\nだから他から干渉を受けない場所のはずだった...", function () {
 														Map.Show(0);
-														Character.Warp("CharacterTip/MainCharacter.png", R.DIRECTION.S, [16, 11]);
+														Character.Warp(0, R.DIRECTION.S, [16, 11]);
 														Effect.ColorOut(2, 0, "Black");
 														
 														setTimeout(function () {
@@ -111,7 +112,7 @@
 																						E.preventDefault();
 																						
 																						Y--;
-																						Character.Warp("CharacterTip/MainCharacter.png", R.DIRECTION.N, [X, Y]);
+																						Character.Warp(0, R.DIRECTION.N, [X, Y]);
 																						
 																						break;
 																						
@@ -119,7 +120,7 @@
 																						E.preventDefault();
 																						
 																						Y++;
-																						Character.Warp("CharacterTip/MainCharacter.png", R.DIRECTION.S, [X, Y]);
+																						Character.Warp(0, R.DIRECTION.S, [X, Y]);
 																						
 																						break;
 																						
@@ -127,7 +128,7 @@
 																						E.preventDefault();
 																						
 																						X--;
-																						Character.Warp("CharacterTip/MainCharacter.png", R.DIRECTION.W, [X, Y]);
+																						Character.Warp(0, R.DIRECTION.W, [X, Y]);
 																						
 																						break;
 																						
@@ -135,7 +136,7 @@
 																						E.preventDefault();
 																						
 																						X++;
-																						Character.Warp("CharacterTip/MainCharacter.png", R.DIRECTION.E, [X, Y]);
+																						Character.Warp(0, R.DIRECTION.E, [X, Y]);
 																						
 																						break;
 																				}
