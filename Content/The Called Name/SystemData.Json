@@ -59,6 +59,16 @@
 		}
 	},
 	
+	"BackGround": {
+		"Title": "Title.png",
+		"Dialog": "Back.jpg"
+	},
+	
+	"Tile": [
+		"Town.png",
+		"World.png"
+	],
+	
 	"Map": [
 		{
 			"MapFile": "エルム村.map",
@@ -74,16 +84,6 @@
 			"TileID": 0
 		}
 	],
-	
-	"Tile": [
-		"Town.png",
-		"World.png"
-	],
-	
-	"BackGround": {
-		"Title": "Title.png",
-		"Dialog": "Back.jpg"
-	},
 	
 	"Item": {
 		"ハーブ": {
