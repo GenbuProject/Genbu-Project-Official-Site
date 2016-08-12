@@ -1,6 +1,6 @@
 var MaxTipID = 0;
-var MaxWidth = 0;
-var MaxHeight = 0;
+var MapWidth = 0;
+var MapHeight = 0;
 
 var L1Datas = [];
 var L2Datas = [];
