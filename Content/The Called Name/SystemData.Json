@@ -51,6 +51,11 @@
 			"Crow.wav": {
 				"ID": 1,
 				"Volume": 1
+			},
+			
+			"Siren.wav": {
+				"ID": 2,
+				"Volume": 1
 			}
 		},
 		
