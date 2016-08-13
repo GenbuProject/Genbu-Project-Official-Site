@@ -144,16 +144,16 @@
 						document.addEventListener("keydown", function (Event) {
 							switch (Event.keyCode) {
 								case 70:
-									var FullScreenElementPrefix = fullscreenElement || webkitFullscreenElement || mozFullScreenElement || msFullscreenElement;
-									var RequestFullScreenPrefix = requestFullscreen || webkitRequestFullScreen || mozRequestFullScreen || msRequestFullscreen;
-									var ExitFullScreenPrefix = exitFullscreen || webkitExitFullscreen || mozExitFullScreen || msExitFullscreen;
+									var FullScreenElementPrefix = "fullscreenElement" || "webkitFullscreenElement" || "mozFullScreenElement" || "msFullscreenElement";
+									var RequestFullScreenPrefix = "requestFullscreen" || "webkitRequestFullScreen" || "mozRequestFullScreen" || "msRequestFullscreen";
+									var ExitFullScreenPrefix = "exitFullscreen" || "webkitExitFullscreen" || "mozExitFullScreen" || "msExitFullscreen";
 									
 									Event.preventDefault();
 									
-									if (document.FullScreenElementPrefix == null) {
-										Canvas["RequestFullScreenPrefix"]();
+									if (document[FullScreenElementPrefix] == null) {
+										Canvas[RequestFullScreenPrefix]();
 									} else {
-										Canvas["ExitFullScreenPrefix"]();
+										Canvas[ExitFullScreenPrefix]();
 									}
 									
 									break;
