@@ -103,44 +103,7 @@
 																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『い、一体何がっ！？』", function () {
 																	MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, "？？？\n「ぞ、蔵書庫にあ、集まれぇ！！」", function () {
 																		MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.BLUE, "周りの村人達が次々と蔵書庫に集まっている...\n僕も蔵書庫へ向かおう...！", function () {
-																			var X = 16;
-																			var Y = 11;
-																			
-																			document.addEventListener("keydown", function (E) {
-																				switch (E.keyCode) {
-																					case 38:
-																						E.preventDefault();
-																						
-																						Y--;
-																						Character.Warp(0, R.DIRECTION.N, [X, Y]);
-																						
-																						break;
-																						
-																					case 40:
-																						E.preventDefault();
-																						
-																						Y++;
-																						Character.Warp(0, R.DIRECTION.S, [X, Y]);
-																						
-																						break;
-																						
-																					case 37:
-																						E.preventDefault();
-																						
-																						X--;
-																						Character.Warp(0, R.DIRECTION.W, [X, Y]);
-																						
-																						break;
-																						
-																					case 39:
-																						E.preventDefault();
-																						
-																						X++;
-																						Character.Warp(0, R.DIRECTION.E, [X, Y]);
-																						
-																						break;
-																				}
-																			});
+																			GamePad.KeyboardType();
 																		});
 																	});
 																});
