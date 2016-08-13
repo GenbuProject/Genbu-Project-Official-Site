@@ -118,13 +118,13 @@
 						});
 						
 						Menu.MenuItem(StartMenu, ["01", "42"], R.COLOR.WHITE, "LOAD GAME", function () {
-							Load(".sav", function () {
-								var Msg = MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "ゲームを開始します...", function () {});
-								
-								setTimeout(function () {
-									Msg.click();
-								}, 2500);
-							});
+							Load(".sav");
+							
+							var Msg = MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "ゲームを開始します...", function () {});
+							
+							setTimeout(function () {
+								Msg.click();
+							}, 2500);
 						});
 						
 						Menu.MenuItem(StartMenu, ["02", "43"], R.COLOR.WHITE, "About", function () {
