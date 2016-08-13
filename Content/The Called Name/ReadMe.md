@@ -19,6 +19,10 @@
 > 素材製作者の方々に感謝申し上げます。
 
 ### 4. 音源素材・マップ素材
-> `効果音素材`：![ポケットサウンド様](http://pocket-se.info/image/bnr_pcse.jpg)
-> <Br>
-> `チップ素材`：[Wolf RPG Editor【ウディタ】](http://www.silversecond.com/WolfRPGEditor/)
+> #### 【効果音素材】
+>> [![ポケットサウンド 様](http://pocket-se.info/image/bnr_pcse.jpg)](http://pocket-se.info/)
+>> <Br>
+>> [On-Jin ～音人～ 様](http://on-jin.com/)
+>> 
+> #### 【チップ素材】
+>> [Wolf RPG Editor【ウディタ】 様](http://www.silversecond.com/WolfRPGEditor/)
