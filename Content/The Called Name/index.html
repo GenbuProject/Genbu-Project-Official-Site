@@ -141,6 +141,16 @@
 								Menu.MenuItem(AboutPane, ["03", "^4"], R.COLOR.WHITE, "バージョン：Alpha 1.0", function () {});
 						});
 				}
+				
+				document.addEventListener("keydown", function (Event) {
+					switch (Event.keyCode) {
+						case 70:
+							Event.preventDefault();
+							
+							Canvas.requestFullScreen();
+							break;
+					}
+				});
 			}
 		</Script>
 	</Head>
