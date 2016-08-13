@@ -151,9 +151,9 @@
 									Event.preventDefault();
 									
 									if (document.FullScreenElementPrefix == null) {
-										Canvas.RequestFullScreenPrefix();
+										Canvas["RequestFullScreenPrefix"]();
 									} else {
-										Canvas.ExitFullScreenPrefix();
+										Canvas["ExitFullScreenPrefix"]();
 									}
 									
 									break;
