@@ -140,17 +140,26 @@
 								Menu.MenuItem(AboutPane, ["02", "^3"], R.COLOR.WHITE, "最終更新日：2016年7月13日[水]", function () {});
 								Menu.MenuItem(AboutPane, ["03", "^4"], R.COLOR.WHITE, "バージョン：Alpha 1.0", function () {});
 						});
+						
+						document.addEventListener("keydown", function (Event) {
+							switch (Event.keyCode) {
+								case 70:
+									var FullScreenElementPrefix = fullscreenElement || webkitFullscreenElement || mozFullScreenElement || msFullscreenElement;
+									var RequestFullScreenPrefix = requestFullscreen || webkitRequestFullScreen || mozRequestFullScreen || msRequestFullscreen;
+									var ExitFullScreenPrefix = exitFullscreen || webkitExitFullscreen || mozExitFullScreen || msExitFullscreen;
+									
+									Event.preventDefault();
+									
+									if (document.FullScreenElementPrefix == null) {
+										Canvas.RequestFullScreenPrefix();
+									} else {
+										Canvas.ExitFullScreenPrefix();
+									}
+									
+									break;
+							}
+						});
 				}
-				
-				document.addEventListener("keydown", function (Event) {
-					switch (Event.keyCode) {
-						case 70:
-							Event.preventDefault();
-							
-							Canvas.requestFullScreen();
-							break;
-					}
-				});
 			}
 		</Script>
 	</Head>
