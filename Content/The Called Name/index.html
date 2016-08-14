@@ -89,7 +89,7 @@
 										Effect.BlackOut(2.5, 0, true);
 										
 										setTimeout(function () {
-											Sound.PlayBGM(9);
+											Sound.PlayBGM(8);
 											
 											MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.BLUE, "真っ青な空が広がるある日の朝。\n僕はただ空を眺めていた。", function () {
 												MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.BLUE, "僕の名前は" + Resource.UserData.Character[0]["Name"] + "。\nエルム村育ちの普通の子供だ。", function () {
@@ -100,11 +100,12 @@
 														
 														setTimeout(function () {
 															Sound.StopBGM();
+															Sound.PlaySE(1);
 															
 															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "？？？\n「た、大変だー！！」", function () {
 																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.GREEN, Resource.UserData.Character[0]["Name"] + "\n『今のは...叫び声...!?』", function () {
 																	MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.BLUE, "誰かの叫び声が聞こえてから暫くすると、\n蔵書庫へ集合する旨の放送が流れた...", function () {
-																		Sound.PlaySE(2);
+																		Sound.PlayBGM(9);
 																		
 																		MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, "エルム村の緊急放送\n「緊急放送\nエルム村の村人達は蔵書庫へ集合せよ\n\n繰り返す\n\n緊急放送\nエルム村の村人達は蔵書庫へ集合せよ」", function () {
 																			MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.BLUE, "周りの村人達が次々と蔵書庫に集まっている...\n僕も蔵書庫へ向かおう...！", function () {
