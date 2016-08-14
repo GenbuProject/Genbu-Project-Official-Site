@@ -31,32 +31,42 @@
 				"Volume": 1
 			},
 			
-			"Boss Battle 1.wav": {
+			"Sadness.wav": {
 				"ID": 7,
 				"Volume": 1
 			},
 			
-			"Sadness.wav": {
+			"Birds.wav": {
 				"ID": 8,
 				"Volume": 1
 			},
 			
-			"Birds.wav": {
+			"Siren.wav": {
 				"ID": 9,
+				"Volume": 1
+			},
+			
+			"Boss Battle 1 - Intro.wav": {
+				"ID": 101,
+				"Volume": 1
+			},
+			
+			"Boss Battle 1 - Loop.wav": {
+				"ID": 102,
 				"Volume": 1
 			}
 		},
 		
 		"SE": {
-			"Crow.wav": {
+			"Mystery 1.wav": {
 				"ID": 1,
 				"Volume": 1
 			},
 			
-			"Siren.wav": {
+			"Crow.wav": {
 				"ID": 2,
 				"Volume": 1
-			}
+			},
 		},
 		
 		"Util": {
