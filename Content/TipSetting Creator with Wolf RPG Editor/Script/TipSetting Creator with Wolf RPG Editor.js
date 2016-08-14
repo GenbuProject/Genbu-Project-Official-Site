@@ -183,7 +183,7 @@ function TipIDCreate(File) {
 
 var TileDatas;
 
-function PassIDCreate(File) {
+function TileSettingCreate(File) {
 	var Reader = new FileReader();
 		Reader.readAsArrayBuffer(File);
 		
