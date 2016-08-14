@@ -8,52 +8,39 @@
 		<Script Src = "Script/TipSetting Creator with Wolf RPG Editor.js"></Script>
 		
 		<Script>
-			function InitTipIDCreator() {
-				document.getElementById("TipPicker-TipIDCreator").addEventListener("change", function (Event) {
+			function Init() {
+				document.getElementById("TipPicker").addEventListener("change", function (Event) {
 					Load(Event.target.files[0]);
 				});
 				
-				document.getElementById("MapPicker-TipIDCreator").addEventListener("change", function (Event) {
+				document.getElementById("MapPicker").addEventListener("change", function (Event) {
 					TipIDCreate(Event.target.files[0]);
 				});
-			}
-			
-			function InitPassIDCreator() {
-				document.getElementById("TipPicker-PassIDCreator").addEventListener("change", function (Event) {
-					Load(Event.target.files[0]);
-				});
 				
-				document.getElementById("MapPicker-PassIDCreator").addEventListener("change", function (Event) {
-					PassIDCreate(Event.target.files[0]);
+				document.getElementById("TileSettingPicker").addEventListener("change", function (Event) {
+					TileSettingCreate(Event.target.files[0]);
 				});
 			}
 		</Script>
 	</Head>
 	
-	<Body Style = 'Color: #EEE; Font: 14px/2 "メイリオ", Meiryo, Osaka; BackGround: URL("https://genbuproject.github.io/Genbu-Project-Official-Site/Too%20Many%20Tags/Back.jpg");' OnLoad = 'InitTipIDCreator(); InitPassIDCreator();'>
-		<H2>チップIDクリエイター</H2>
-		<Hr>
-		
+	<Body Style = 'Color: #EEE; Font: 14px/2 "メイリオ", Meiryo, Osaka; BackGround: URL("https://genbuproject.github.io/Genbu-Project-Official-Site/Too%20Many%20Tags/Back.jpg");' OnLoad = 'Init();'>
 		<P>
-			<Canvas ID = "TipCanvas-TipIDCreator" Style = "Border: Thin Solid Black;"></Canvas><Br>
-			チップ画像：<Input ID = "TipPicker-TipIDCreator" Type = "File"></Input><Br>
-			マップデータ(*.mps)：<Input ID = "MapPicker-TipIDCreator" Type = "File"></Input>
+			<Canvas ID = "TipCanvas" Style = "Border: Thin Solid Black;"></Canvas><Br>
+			チップ画像：<Input ID = "TipPicker" Type = "File"></Input>
 		</P>
 		
+		<P>
+			マップデータ(*.mps)：<Input ID = "MapPicker" Type = "File"></Input><Br>
+			タイル設定データ(*.tile)：<Input ID = "TileSettingPicker" Type = "File"></Input>
+		</P>
+		
+		<H3>チップID</H3>
 		<Pre ID = "Result-TipIDCreator" Style = "Color: Black; BackGround: LightGray; Border: Thin Solid Orange; Border-Radius: 2.5px">
 		</Pre>
 		
-		<Hr>
-		<H2>タイル通過IDクリエイター</H2>
-		<Hr>
-		
-		<P>
-			<Canvas ID = "TipCanvas-PassIDCreator" Style = "Border: Thin Solid Black;"></Canvas><Br>
-			チップ画像：<Input ID = "TipPicker-PassIDCreator" Type = "File"></Input><Br>
-			タイル設定データ(*.tile)：<Input ID = "MapPicker-PassIDCreator" Type = "File"></Input>
-		</P>
-		
-		<Pre ID = "Result-PassIDCreator" Style = "Color: Black; BackGround: LightGray; Border: Thin Solid Orange; Border-Radius: 2.5px">
+		<H3>タイル設定</H3>
+		<Pre ID = "Result-TileSettingCreator" Style = "Color: Black; BackGround: LightGray; Border: Thin Solid Orange; Border-Radius: 2.5px">
 		</Pre>
 	</Body>
 </HTML>
