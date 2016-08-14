@@ -180,7 +180,8 @@ function TipIDCreate(File) {
 		}
 }
 
-function TilePassIDCreate(File) {
+
+function PassIDCreate(File) {
 	var Reader = new FileReader();
 		Reader.readAsArrayBuffer(File);
 		
