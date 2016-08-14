@@ -191,8 +191,12 @@ function TileSettingCreate(File) {
 			TileDatas = new DataView(Reader.result.slice(19));
 			
 			for (var i = 0; i < TileDatas.byteLength; i++) {
-				if (TileDatas.getUint8(i).toString(16) == "FF") {
-					console.log(TileDatas.getUint32(i).toString(16));
+				if (TileDatas.getUint8(i).toString(16) == "ff") {
+					var Key = TileDatas.getUint32(i).toString(16);
+						Key = Key.match(/../g);
+						Key = "" + Key[3] + Key[2] + Key[1] + Key[0];
+						
+					console.log("識別キー：" + Key);
 				}
 			}
 		}
