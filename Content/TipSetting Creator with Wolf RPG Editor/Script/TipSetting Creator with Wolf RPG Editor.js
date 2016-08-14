@@ -181,6 +181,7 @@ function TipIDCreate(File) {
 }
 
 
+var CheckKey = "";
 var TileDatas;
 
 function TileSettingCreate(File) {
@@ -188,15 +189,27 @@ function TileSettingCreate(File) {
 		Reader.readAsArrayBuffer(File);
 		
 		Reader.onload = function () {
-			TileDatas = new DataView(Reader.result.slice(19));
+			var Count = 0;
+			TileDatas = new DataView(Reader.result);
 			
 			for (var i = 0; i < TileDatas.byteLength; i++) {
 				if (TileDatas.getUint8(i).toString(16) == "ff") {
+					Count++;
+					
 					var Key = TileDatas.getUint32(i).toString(16);
 						Key = Key.match(/../g);
 						Key = "" + Key[3] + Key[2] + Key[1] + Key[0];
 						
-					console.log("識別キー：" + Key);
+					CheckKey = Key;
+					
+					if (Count == 2) {
+						TileDatas = new DataView(Result.result, i, TileDatas.byteLength - 4));
+						
+						console.log("識別キー：" + CheckKey);
+						console.log("タイル設定範囲：" + 0 + "～" + TileDatas.byteLength);
+						
+						break;
+					}
 				}
 			}
 		}
