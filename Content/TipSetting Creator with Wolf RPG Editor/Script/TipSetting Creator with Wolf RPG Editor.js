@@ -181,12 +181,14 @@ function TipIDCreate(File) {
 }
 
 
+var TileDatas;
+
 function PassIDCreate(File) {
 	var Reader = new FileReader();
 		Reader.readAsArrayBuffer(File);
 		
 		Reader.onload = function () {
-			var TileDatas = new DataView(Reader.result.slice(13));
+			TileDatas = new DataView(Reader.result.slice(13));
 			
 			for (var i = 0; i < TileDatas.byteLength; i++) {
 				if (TileDatas.getUint8(i).toString(16) == "FF") {
