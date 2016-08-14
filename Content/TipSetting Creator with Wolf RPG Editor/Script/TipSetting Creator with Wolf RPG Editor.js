@@ -190,26 +190,48 @@ function TileSettingCreate(File) {
 		
 		Reader.onload = function () {
 			var Count = 0;
+			var Result = [];
+			
 			TileDatas = new DataView(Reader.result);
 			
 			for (var i = 0; i < TileDatas.byteLength; i++) {
-				if (TileDatas.getUint8(i).toString(16) == "ff") {
+				if (TileDatas.getUint8(i).toString(16).toUpperCase() == "FF") {
 					Count++;
 					
-					var Key = TileDatas.getUint32(i).toString(16);
+					var Key = TileDatas.getUint32(i).toString(16).toUpperCase();
 						Key = Key.match(/../g);
 						Key = "" + Key[3] + Key[2] + Key[1] + Key[0];
 						
 					CheckKey = Key;
 					
 					if (Count == 2) {
-						TileDatas = new DataView(Reader.result, i, TileDatas.byteLength - 4 - i);
+						TileDatas = new DataView(Reader.result, i + (4 * 16), TileDatas.byteLength - 4 - i - (4 * 16));
 						
 						console.log("識別キー：" + CheckKey);
-						console.log("タイル設定範囲：" + 0 + "～" + TileDatas.byteLength);
+						console.log("タイル設定範囲：" + 0 + "～" + TileDatas.byteLength - 1);
 						
 						break;
 					}
+				}
+			}
+			
+			for (var i = 0; i < TileDatas.byteLength / 4; i++) {
+				var ID = TileDatas.getUint32(i).toString(16).toUpperCase();
+					ID = ID.match(/../g);
+					ID = "" + ID[3] + ID[2] + ID[1] + ID[0];
+					
+				switch (ID) {
+					case "00000000":
+						Result[i] = 0;
+						break;
+						
+					case "0000000F":
+						Result[i] = 1;
+						break;
+						
+					case "00000010":
+						Result[i] = 2;
+						break;
 				}
 			}
 		}
