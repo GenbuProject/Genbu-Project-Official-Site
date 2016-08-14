@@ -99,6 +99,8 @@
 														Effect.ColorOut(2, 0, "Black");
 														
 														setTimeout(function () {
+															Sound.StopBGM();
+															
 															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "？？？\n「た、大変だー！！」", function () {
 																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.GREEN, Resource.UserData.Character[0]["Name"] + "\n『今のは...叫び声...!?』", function () {
 																	MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.BLUE, "誰かの叫び声が聞こえてから暫くすると、\n蔵書庫へ集合する旨の放送が流れた...", function () {
