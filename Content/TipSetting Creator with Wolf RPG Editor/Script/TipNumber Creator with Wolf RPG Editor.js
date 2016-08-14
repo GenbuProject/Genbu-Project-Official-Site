@@ -24,7 +24,7 @@ function Load(File) {
 				Img.onload = function () {
 					console.log(Img);
 					
-					var Cvs = document.getElementById("TipCanvas");
+					var Cvs = document.getElementById("TipCanvas-TipIDCreator");
 						Cvs.width = Img.width;
 						Cvs.height = Img.height;
 						
@@ -46,7 +46,7 @@ function Load(File) {
 		}
 }
 
-function Create(File) {
+function TipIDCreate(File) {
 	var Reader = new FileReader();
 		Reader.readAsArrayBuffer(File);
 		
@@ -176,6 +176,21 @@ function Create(File) {
 				}
 			}
 			
-			document.getElementById("Result").textContent = JSON.stringify(Result, null, "\t");
+			document.getElementById("Result-TipIDCreator").textContent = JSON.stringify(Result, null, "\t");
+		}
+}
+
+function TilePassIDCreate(File) {
+	var Reader = new FileReader();
+		Reader.readAsArrayBuffer(File);
+		
+		Reader.onload = function () {
+			var TileDatas = new DataView(Reader.result.slice(13));
+			
+			for (var i = 0; i < TileDatas.prototype.byteLength; i++) {
+				if (TileDatas.getUint8(i).toString(16) == "FF") {
+					console.log(TileDatas.getUint32(i).toString(16));
+				}
+			}
 		}
 }
