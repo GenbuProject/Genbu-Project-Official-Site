@@ -188,7 +188,7 @@ function PassIDCreate(File) {
 		Reader.readAsArrayBuffer(File);
 		
 		Reader.onload = function () {
-			TileDatas = new DataView(Reader.result.slice(13));
+			TileDatas = new DataView(Reader.result.slice(19));
 			
 			for (var i = 0; i < TileDatas.byteLength; i++) {
 				if (TileDatas.getUint8(i).toString(16) == "FF") {
