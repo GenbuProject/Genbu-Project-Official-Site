@@ -18,13 +18,13 @@
 				});
 			}
 			
-			function Init-TilePassIDCreator() {
-				document.getElementById("TipPicker-TilePassIDCreator").addEventListener("change", function (Event) {
+			function Init-PassIDCreator() {
+				document.getElementById("TipPicker-PassIDCreator").addEventListener("change", function (Event) {
 					Load(Event.target.files[0]);
 				});
 				
-				document.getElementById("MapPicker-TilePassIDCreator").addEventListener("change", function (Event) {
-					TilePassIDCreate(Event.target.files[0]);
+				document.getElementById("MapPicker-PassIDCreator").addEventListener("change", function (Event) {
+					PassIDCreate(Event.target.files[0]);
 				});
 			}
 		</Script>
@@ -43,16 +43,17 @@
 		<Pre ID = "Result-TipIDCreator" Style = "Color: Black; BackGround: LightGray; Border: Thin Solid Orange; Border-Radius: 2.5px">
 		</Pre>
 		
+		<Hr>
 		<H2>タイル通過IDクリエイター</H2>
 		<Hr>
 		
 		<P>
-			<Canvas ID = "TipCanvas-TilePassIDCreator" Style = "Border: Thin Solid Black;"></Canvas><Br>
-			チップ画像：<Input ID = "TipPicker-TilePassIDCreator" Type = "File"></Input><Br>
-			タイル設定データ(*.tile)：<Input ID = "MapPicker-TilePassIDCreator" Type = "File"></Input>
+			<Canvas ID = "TipCanvas-PassIDCreator" Style = "Border: Thin Solid Black;"></Canvas><Br>
+			チップ画像：<Input ID = "TipPicker-PassIDCreator" Type = "File"></Input><Br>
+			タイル設定データ(*.tile)：<Input ID = "MapPicker-PassIDCreator" Type = "File"></Input>
 		</P>
 		
-		<Pre ID = "Result-TilePassIDCreator" Style = "Color: Black; BackGround: LightGray; Border: Thin Solid Orange; Border-Radius: 2.5px">
+		<Pre ID = "Result-PassIDCreator" Style = "Color: Black; BackGround: LightGray; Border: Thin Solid Orange; Border-Radius: 2.5px">
 		</Pre>
 	</Body>
 </HTML>
