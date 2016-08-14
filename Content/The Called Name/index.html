@@ -103,11 +103,11 @@
 															Sound.PlaySE(1);
 															
 															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "？？？\n「た、大変だー！！」", function () {
-																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.GREEN, Resource.UserData.Character[0]["Name"] + "\n『今のは...叫び声...!?』", function () {
+																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『今のは...!?』", function () {
 																	MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.BLUE, "誰かの叫び声が聞こえてから暫くすると、\n蔵書庫へ集合する旨の放送が流れた...", function () {
 																		Sound.PlayBGM(9);
 																		
-																		MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, "エルム村の緊急放送\n「緊急放送\nエルム村の村人達は蔵書庫へ集合せよ\n\n繰り返す\n\n緊急放送\nエルム村の村人達は蔵書庫へ集合せよ」", function () {
+																		MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, "エルム村の緊急放送\n「エルム村の村人達は蔵書庫へ集合せよ\n　繰り返す\n　エルム村の村人達は蔵書庫へ集合せよ」", function () {
 																			MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.BLUE, "周りの村人達が次々と蔵書庫に集まっている...\n僕も蔵書庫へ向かおう...！", function () {
 																				GamePad.KeyboardType(0);
 																			});
