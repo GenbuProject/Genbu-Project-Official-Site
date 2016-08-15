@@ -24,7 +24,7 @@ function Load(File) {
 				Img.onload = function () {
 					console.log(Img);
 					
-					var Cvs = document.getElementById("TipCanvas-TipIDCreator");
+					var Cvs = document.getElementById("TipCanvas");
 						Cvs.width = Img.width;
 						Cvs.height = Img.height;
 						
