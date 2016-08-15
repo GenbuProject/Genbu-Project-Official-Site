@@ -205,7 +205,7 @@ function TileSettingCreate(File) {
 					CheckKey = Key;
 					
 					if (Count == 2) {
-						TileDatas = new DataView(TileDatas.buffer, i + 4 + 64, TileDatas.byteLength - i - 4 - 64 - 2);
+						TileDatas = new DataView(TileDatas.buffer, i + 4 + 64,4 * MaxTipID);
 						
 						console.log("識別キー：" + CheckKey);
 						console.log("タイル設定範囲：0～" + (TileDatas.byteLength - 1));
