@@ -217,24 +217,14 @@ function TileSettingCreate(File) {
 			
 			for (var i = 0; i < TileDatas.byteLength / 4; i++) {
 				var ID = TileDatas.getUint32(4 * i).toString(16).toUpperCase();
-					ID = ID.match(/../g);
-					
-				if (ID[0].length == 1) {
-					ID[0] = "0" + ID[0];
+				
+				if (ID.length < 8) {
+					for (var i = 0; i < 8 - ID.length; i++) {
+						ID = "0" + ID;
+					}
 				}
 				
-				if (ID[1].length == 1) {
-					ID[1] = "0" + ID[1];
-				}
-				
-				if (ID[2].length == 1) {
-					ID[2] = "0" + ID[2];
-				}
-				
-				if (ID[3].length == 1) {
-					ID[3] = "0" + ID[3];
-				}
-				
+				ID = ID.match(/../g);
 				ID = ID[3] + ID[2] + ID[1] + ID[0];
 				
 				switch (ID) {
