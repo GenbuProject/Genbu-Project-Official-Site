@@ -205,7 +205,7 @@ function TileSettingCreate(File) {
 					CheckKey = Key;
 					
 					if (Count == 2) {
-						TileDatas = new DataView(Reader.result.slice(i + (4 * 16), (TileDatas.byteLength - 3) - (i + (4 * 16))));
+						TileDatas = new DataView(TileDatas, i + 64, TileDatas.byteLength - i);
 						
 						console.log("識別キー：" + CheckKey);
 						console.log("タイル設定範囲：0～" + (TileDatas.byteLength - 1));
@@ -218,7 +218,7 @@ function TileSettingCreate(File) {
 			for (var i = 0; i < TileDatas.byteLength / 4; i++) {
 				var ID = TileDatas.getUint32(4 * i).toString(16).toUpperCase();
 				
-				Result[i] = ID
+				Result[i] = ID;
 			}
 			
 			A = Result;
