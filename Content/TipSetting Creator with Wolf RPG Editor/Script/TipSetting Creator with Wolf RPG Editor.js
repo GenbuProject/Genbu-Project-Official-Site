@@ -217,10 +217,9 @@ function TileSettingCreate(File) {
 			
 			for (var i = 0; i < TileDatas.byteLength / 4; i++) {
 				var ID = TileDatas.getUint32(4 * i).toString(16).toUpperCase();
-				
 				Result[i] = ID;
 			}
 			
-			A = Result;
+			document.getElementById("Result-TileSettingCreator").textContent = JSON.stringify(Result, null, "\t");
 		}
 }
