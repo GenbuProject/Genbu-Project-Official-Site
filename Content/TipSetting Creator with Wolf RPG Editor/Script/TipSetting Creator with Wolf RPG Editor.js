@@ -200,7 +200,7 @@ function TileSettingCreate(File) {
 					
 					var Key = TileDatas.getUint32(i).toString(16).toUpperCase();
 						Key = Key.match(/../g);
-						Key = "" + Key[3] + Key[2] + Key[1] + Key[0];
+						Key = Key[3] + Key[2] + Key[1] + Key[0];
 						
 					CheckKey = Key;
 					
@@ -208,7 +208,7 @@ function TileSettingCreate(File) {
 						TileDatas = new DataView(Reader.result, i + (4 * 16), TileDatas.byteLength - 4 - i - (4 * 16));
 						
 						console.log("識別キー：" + CheckKey);
-						console.log("タイル設定範囲：0～" + TileDatas.byteLength - 1);
+						console.log("タイル設定範囲：0～" + (TileDatas.byteLength - 1));
 						
 						break;
 					}
@@ -216,7 +216,7 @@ function TileSettingCreate(File) {
 			}
 			
 			for (var i = 0; i < TileDatas.byteLength / 4; i++) {
-				var ID = TileDatas.getUint32(i).toString(16).toUpperCase();
+				var ID = TileDatas.getUint32(4 * i).toString(16).toUpperCase();
 					ID = ID.match(/../g);
 					ID = ID[3] + ID[2] + ID[1] + ID[0];
 					
