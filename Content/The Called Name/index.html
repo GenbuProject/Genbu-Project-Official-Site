@@ -51,6 +51,12 @@
 						IsOpening: false
 					}
 					
+					var Panel = {
+						SideMenu: null,
+						ItemPane: null,
+						ExplainPane: null
+					}
+					
 					Sound.PlayBGM(1);
 					
 					var StartMenu = Menu.MenuPanel(["36", "79"]);
@@ -129,30 +135,26 @@
 																						document.addEventListener("keydown", function (Event) {
 																							switch (Event.keyCode) {
 																								case 88:
-																									var Terminal;
-																									var ItemPane;
-																									var ExplainPane;
-																									
 																									if (!Flag.IsOpening) {
 																										Flag.IsOpening = true;
 																										
-																										Terminal = Menu.MenuPanel(["00", "37"]);
-																											Menu.MenuItem(Terminal, ["00", "31"], R.COLOR.WHITE, "アイテム", function () {
-																												ItemPane = Menu.MenuPanel(["30", "^7"]);
-																													Menu.MenuItem(ItemPane, ["", ""], R.COLOR.WHITE, "←", function () {
-																														ItemPane.parentElement.removeChild(ItemPane);
-																														ItemPane = undefined;
+																										Panel.SideMenu = Menu.MenuPanel(["00", "37"]);
+																											Menu.MenuItem(Panel.SideMenu, ["00", "31"], R.COLOR.WHITE, "アイテム", function () {
+																												Panel.ItemPane = Menu.MenuPanel(["30", "^7"]);
+																													Menu.MenuItem(Panel.ItemPane, ["", ""], R.COLOR.WHITE, "←", function () {
+																														Panel.ItemPane.parentElement.removeChild(Panel.ItemPane);
+																														Panel.ItemPane = null;
 																													});
 																											});
 																											
-																										ExplainPane = Menu.MenuPanel(["07", "^^"]);
+																										Panel.ExplainPane = Menu.MenuPanel(["07", "^^"]);
 																									} else if (Flag.IsOpening) {
 																										Flag.IsOpening = false;
 																										
-																										Terminal.parentElement.removeChild(Terminal);
+																										Panel.SideMenu.parentElement.removeChild(Panel.SideMenu);
 																										
-																										if (ItemPane != undefined) {
-																											ItemPane.parentElement.removeChild(ItemPane);
+																										if (Panel.ItemPane != null) {
+																											Panel.ItemPane.parentElement.removeChild(Panel.ItemPane);
 																										}
 																									}
 																									
