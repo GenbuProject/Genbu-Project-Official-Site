@@ -121,6 +121,23 @@
 																				MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, "エルム村の緊急放送\n「エルム村の村人達は蔵書庫へ集合せよ\n　繰り返す\n　エルム村の村人達は蔵書庫へ集合せよ」", function () {
 																					MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.BLUE, "周りの村人達が次々と蔵書庫に集まっている...\n僕も蔵書庫へ向かおう...！", function () {
 																						GamePad.KeyboardType(0);
+																						
+																						document.addEventListener("keydown", function (Event) {
+																							switch (Event.keyCode) {
+																								case 88:
+																									var Terminal = Menu.MenuPanel(["00", "37"]);
+																										Menu.MenuItem(Terminal, ["00", "31"], R.COLOR.WHITE, "アイテム", function () {
+																											var ItemPane = Menu.MenuPanel(["30", "^7"]);
+																												Menu.MenuItem(ItemPane, ["", ""], R.COLOR.WHITE, "←", function () {
+																													ItemPane.parentElement.removeChild(ItemPane);
+																												});
+																										});
+																										
+																									var ExplainPane = Menu.MenuPanel(["07", "^^"]);
+																									
+																									break;
+																							}
+																						});
 																					});
 																				});
 																			}, 1500);
