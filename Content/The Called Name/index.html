@@ -102,17 +102,30 @@
 															Sound.StopBGM();
 															Sound.PlaySE(1);
 															
-															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "？？？\n「た、大変だー！！」", function () {
-																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『今のは...!?』", function () {
-																	MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.BLUE, "誰かの叫び声が聞こえてから暫くすると、\n蔵書庫へ集合する旨の放送が流れた...", function () {
-																		Sound.PlayBGM(9);
+															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "？？？\n「た、大変だー！！\n　エレンが居ないぞ！！」", function () {
+																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『なっ、何だって...!?\n　一体何が起こったんだ.........』", function () {
+																	Effect.BlackOut(2, 0, true);
+																	
+																	setTimeout(function () {
+																		Map.Hide();
+																		Character.Hide();
 																		
-																		MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, "エルム村の緊急放送\n「エルム村の村人達は蔵書庫へ集合せよ\n　繰り返す\n　エルム村の村人達は蔵書庫へ集合せよ」", function () {
-																			MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.BLUE, "周りの村人達が次々と蔵書庫に集まっている...\n僕も蔵書庫へ向かおう...！", function () {
-																				GamePad.KeyboardType(0);
-																			});
+																		MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.BLUE, "誰かの叫び声が聞こえてから暫くすると、\n蔵書庫へ集合する旨の放送が流れた...", function () {
+																			Map.Show(0);
+																			Character.Warp(0, R.DIRECTION.S. [16, 12]);
+																			Effect.ColorOut(1.5, 0, "Black");
+																			
+																			setTimeout(function () {
+																				Sound.PlayBGM(9);
+																				
+																				MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, "エルム村の緊急放送\n「エルム村の村人達は蔵書庫へ集合せよ\n　繰り返す\n　エルム村の村人達は蔵書庫へ集合せよ」", function () {
+																					MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.BLUE, "周りの村人達が次々と蔵書庫に集まっている...\n僕も蔵書庫へ向かおう...！", function () {
+																						GamePad.KeyboardType(0);
+																					});
+																				});
+																			}, 1500);
 																		});
-																	});
+																	}, 2000);
 																});
 															});
 														}, 2000);
@@ -144,8 +157,8 @@
 								});
 								
 								Menu.MenuItem(AboutPane, ["01", "^2"], R.COLOR.WHITE, "製作者：プログラマーGenboo", function () {});
-								Menu.MenuItem(AboutPane, ["02", "^3"], R.COLOR.WHITE, "最終更新日：2016年7月13日[水]", function () {});
-								Menu.MenuItem(AboutPane, ["03", "^4"], R.COLOR.WHITE, "バージョン：Alpha 1.0", function () {});
+								Menu.MenuItem(AboutPane, ["02", "^3"], R.COLOR.WHITE, "最終更新日：2016年08月16日[火]", function () {});
+								Menu.MenuItem(AboutPane, ["03", "^4"], R.COLOR.WHITE, "バージョン：Alpha 1.3", function () {});
 						});
 				}
 			}
