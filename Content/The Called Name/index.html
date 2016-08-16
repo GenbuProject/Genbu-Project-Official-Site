@@ -47,6 +47,10 @@
 		<Script Type = "Text/JavaScript">
 			function Main() {
 				with (new RPGHelper()) {
+					var Flag = {
+						IsOpening: false
+					}
+					
 					Sound.PlayBGM(1);
 					
 					var StartMenu = Menu.MenuPanel(["36", "79"]);
@@ -125,15 +129,32 @@
 																						document.addEventListener("keydown", function (Event) {
 																							switch (Event.keyCode) {
 																								case 88:
-																									var Terminal = Menu.MenuPanel(["00", "37"]);
-																										Menu.MenuItem(Terminal, ["00", "31"], R.COLOR.WHITE, "アイテム", function () {
-																											var ItemPane = Menu.MenuPanel(["30", "^7"]);
-																												Menu.MenuItem(ItemPane, ["", ""], R.COLOR.WHITE, "←", function () {
-																													ItemPane.parentElement.removeChild(ItemPane);
-																												});
-																										});
+																									var Terminal;
+																									var ItemPane;
+																									var ExplainPane;
+																									
+																									if (!Flag.IsOpening) {
+																										IsOpening = true;
 																										
-																									var ExplainPane = Menu.MenuPanel(["07", "^^"]);
+																										Terminal = Menu.MenuPanel(["00", "37"]);
+																											Menu.MenuItem(Terminal, ["00", "31"], R.COLOR.WHITE, "アイテム", function () {
+																												ItemPane = Menu.MenuPanel(["30", "^7"]);
+																													Menu.MenuItem(ItemPane, ["", ""], R.COLOR.WHITE, "←", function () {
+																														ItemPane.parentElement.removeChild(ItemPane);
+																														ItemPane = undefined;
+																													});
+																											});
+																											
+																										ExplainPane = Menu.MenuPanel(["07", "^^"]);
+																									} else if (Flag.IsOpening) {
+																										Flag.IsOpening = false;
+																										
+																										Terminal.parentElement.removeChild(Terminal);
+																										
+																										if (ItemPane != undefined) {
+																											ItemPane.parentElement.removeChild(ItemPane);
+																										}
+																									}
 																									
 																									break;
 																							}
