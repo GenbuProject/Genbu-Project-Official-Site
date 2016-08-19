@@ -14,12 +14,12 @@ function Update() {
 		var Data = JSON.parse(Reader.responseText);
 		
 		for (var i = 0; i < Data.items.length; i++) {
-			if (Data.items[i].title.match("#珠照語録") != -1) {
-				var Mem = Data.items[i].title.replace("#珠照語録 \n", "");
+			if (Data.items[i].title.match("#珠照語録更新") != -1) {
+				var Mem = Data.items[i].title.replace("#珠照語録更新 \n", "");
 				
 				Library.push({
 					Reading: Mem.substring(0, Mem.match(/[\n↵]+/).index),
-					Word: Mem.substring(Mem.match(/[\n↵]+/).index)
+					Word: Mem.substring(Mem.match(/[\n↵]+/).index).replace(/[\n↵]+/, "")
 				});
 			}
 		}
