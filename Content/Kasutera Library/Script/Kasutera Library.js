@@ -22,6 +22,7 @@ function Update() {
 	document.getElementById("Accept").disabled = "disabled";
 	
 	var Dialog = document.createElement("Dialog");
+		Dialog.style.position = "Fixed";
 		Dialog.style.left = (window.innerWidth / 4) + "px";
 		Dialog.style.top = (window.innerHeight / 4) + "px";
 		Dialog.style.width = (window.innerWidth / 2) + "px";
