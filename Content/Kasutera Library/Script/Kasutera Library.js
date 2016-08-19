@@ -19,7 +19,7 @@ function Update() {
 				
 				Library.push({
 					Reading: Mem.substring(0, Mem.match(/[\n↵]+/).index),
-					Word: Mem.substring(0, Mem.match(/[\n↵]+/).index).replace(/[\n↵]+/, "")
+					Word: Mem.substring(Mem.match(/[\n↵]+/).index)
 				});
 			}
 		}
