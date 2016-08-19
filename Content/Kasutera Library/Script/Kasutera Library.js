@@ -3,8 +3,7 @@
 //プログラマーGenboo：106666684430101995501
 
 Date.prototype.getToday = function (SplitWord) {
-	var Day = new Date().toLocaleDateString().split("/");
-	var Dates = [Day[0], Day[1], Day[2]];
+	var Dates = [new Date().getFullYear(), new Date().getMonth + 1, new Date().getDate()];
 	
 	if (Dates[1].length == 1) Dates[1] = "0" + Day[1];
 	if (Dates[2].length == 1) Dates[2] = "0" + Day[2];
