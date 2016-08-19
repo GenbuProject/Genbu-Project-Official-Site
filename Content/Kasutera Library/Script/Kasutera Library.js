@@ -18,8 +18,8 @@ function Update() {
 				var Mem = Data.items[i].title.replace("#珠照語録 \n", "");
 				
 				Library.push({
-					Reading: Mem.substr(0, Mem.match(/\n*/)),
-					Word: Mem.substr(Mem.match(/\n*/)).replace(/\n*/, "")
+					Reading: Mem.substring(0, Mem.match(/[\n↵]+/).index),
+					Word: Mem.substring(0, Mem.match(/[\n↵]+/).index).replace(/[\n↵]+/, "")
 				});
 			}
 		}
