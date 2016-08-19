@@ -72,9 +72,9 @@ function Update() {
 			
 			for (var i = 0; i < Library.length; i++) {
 				if (i == Library[i].length - 1) {
-					DL += Library[i].Reading + "\t" + Library[i].Word + "\t" + "顔文字";
+					DL += Library[i].Reading + "\t" + Library[i].Word + "\t" + "顔文字" + "\t";
 				} else {
-					DL += Library[i].Reading + "\t" + Library[i].Word + "\t" + "顔文字" + "\n";
+					DL += Library[i].Reading + "\t" + Library[i].Word + "\t" + "顔文字" + "\t" + "\n";
 				}
 			}
 			
