@@ -3,7 +3,7 @@
 //プログラマーGenboo：106666684430101995501
 
 Date.prototype.getToday = function (SplitWord) {
-	var Dates = [new Date().getFullYear(), new Date().getMonth + 1, new Date().getDate()];
+	var Dates = [new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate()];
 	
 	if (Dates[1].length == 1) Dates[1] = "0" + Dates[1];
 	if (Dates[2].length == 1) Dates[2] = "0" + Dates[2];
