@@ -40,7 +40,7 @@ function Update() {
 			Dialog.textContent = "";
 			LoadingCount = 0;
 		}
-	}, (1000 / 3));
+	}, 200);
 	
 	var Looper = setInterval(function () {
 		var Reader = new XMLHttpRequest();
