@@ -25,11 +25,11 @@ function Update() {
 				});
 			}
 		}
-		document.getElementById("Contents").textContent += JSON.stringify(Data, null, "\t") + "\n\n";
 		
 		Token = Data.nextPageToken;
 		
 		if (Token == undefined) {
+			document.getElementById("Contents").textContent = JSON.stringify(Library, null, "\t");
 			break;
 		}
 	}
