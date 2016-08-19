@@ -30,19 +30,19 @@ function Update() {
 		
 		document.body.appendChild(Dialog);
 		
-		var Timer = setInterval(function () {
-			var Content = "読み込み中...";
-			
-			Dialog.textContent += Content.substr(LoadingCount, 1);
-			LoadingCount++;
-			
-			if (LoadingCount == Content.length - 1) {
-				Dialog.textContent = "";
-				LoadingCount = 0;
-			}
-		}, (1000 / 3));
+	var Timer = setInterval(function () {
+		var Content = "読み込み中...";
 		
-	while (true) {
+		Dialog.textContent += Content.substr(LoadingCount, 1);
+		LoadingCount++;
+		
+		if (LoadingCount == Content.length - 1) {
+			Dialog.textContent = "";
+			LoadingCount = 0;
+		}
+	}, (1000 / 3));
+	
+	for (var a = 0; a < 0xFFFF; a++) {
 		var Reader = new XMLHttpRequest();
 			Reader.open("GET", "https://www.googleapis.com/plus/v1/people/106666684430101995501/activities/public?key=AIzaSyAmcraDAZp5kah2o3oCnH8HCnhUVbQwZ2g&maxResults=100&pageToken=" + Token, false);
 			Reader.send(null);
