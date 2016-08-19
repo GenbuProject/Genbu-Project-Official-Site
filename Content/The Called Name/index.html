@@ -148,6 +148,30 @@
 																														});
 																												});
 																												
+																												Menu.MenuItem(Panel.SideMenu, ["01", "32"], R.COLOR.WHITE, "技能", function () {
+																													
+																												});
+																												
+																												Menu.MenuItem(Panel.SideMenu, ["02", "33"], R.COLOR.WHITE, "装備", function () {
+																													
+																												});
+																												
+																												Menu.MenuItem(Panel.SideMenu, ["03", "34"], R.COLOR.WHITE, "ステータス", function () {
+																													
+																												});
+																												
+																												Menu.MenuItem(Panel.SideMenu, ["04", "35"], R.COLOR.WHITE, "イベント", function () {
+																													
+																												});
+																												
+																												Menu.MenuItem(Panel.SideMenu, ["05", "36"], R.COLOR.WHITE, "オプション", function () {
+																													
+																												});
+																												
+																												Menu.MenuItem(Panel.SideMenu, ["06", "37"], R.COLOR.WHITE, "セーブ", function () {
+																													Save("The Called Name " + new Date().getToday("-") + ".sav");
+																												});
+																												
 																											Panel.ExplainPane = Menu.MenuPanel(["07", "^^"]);
 																										} else if (Flag.IsOpening) {
 																											Flag.IsOpening = false;
@@ -160,6 +184,8 @@
 																												Panel.ItemPane.parentElement.removeChild(Panel.ItemPane);
 																											}
 																										}
+																										
+																										Sound.PlaySE("Click");
 																										
 																										break;
 																								}
