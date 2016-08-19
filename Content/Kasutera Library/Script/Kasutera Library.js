@@ -4,6 +4,8 @@
 var Library = [];
 
 function Update() {
+	Library = [];
+	
 	var Token = "";
 	
 	while (true) {
@@ -15,11 +17,11 @@ function Update() {
 		
 		for (var i = 0; i < Data.items.length; i++) {
 			if (Data.items[i].title.match("#珠照語録更新") != -1) {
-				var Mem = Data.items[i].title.replace("#珠照語録更新 \n", "");
+				var Mem = Data.items[i].title.replace(/#珠照語録更新 \n{1}/, "");
 				
 				Library.push({
-					Reading: Mem.substring(0, Mem.match(/[\n↵]+/).index),
-					Word: Mem.substring(Mem.match(/[\n↵]+/).index).replace(/[\n↵]+/, "")
+					Reading: Mem.split(/[\n↵]{2}/)[0],
+					Word: Mem.split(/[\n↵]{2}/)[1]
 				});
 			}
 		}
