@@ -16,8 +16,8 @@ function Update() {
 		var Data = JSON.parse(Reader.responseText);
 		
 		for (var i = 0; i < Data.items.length; i++) {
-			if (Data.items[i].title.match("#珠照語録更新") != -1) {
-				var Mem = Data.items[i].title.replace(/#珠照語録更新 \n{1}/, "");
+			if (Data.items[i].title.split(/#珠照語録更新 [\n↵]{1}/)[1] != undefined) {
+				var Mem = Data.items[i].title.split(/#珠照語録更新 [\n↵]{1}/)[1];
 				
 				Library.push({
 					Reading: Mem.split(/[\n↵]{2}/)[0],
