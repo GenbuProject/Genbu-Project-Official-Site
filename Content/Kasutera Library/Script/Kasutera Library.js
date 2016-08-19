@@ -5,6 +5,8 @@ var Library = [];
 
 function Update() {
 	var Token = "";
+	var LoadingCount = 0;
+	
 	Library = [];
 	
 	document.getElementById("Accept").disabled = "disabled";
@@ -16,6 +18,18 @@ function Update() {
 		Dialog.style.height = (window.innerHeight / 2) + "px";
 		
 		document.body.appendChild(Dialog);
+		
+		var Timer = setInterval(function () {
+			var Content = "読み込み中...";
+			
+			Dialog.textContent += Content.substr(LoadingCount, 1);
+			LoadingCount++;
+			
+			if (LoadingCount == Content.length - 1) {
+				Dialog.textContent = "";
+				LoadingCount = 0;
+			}
+		}, (1000 / 3));
 		
 	while (true) {
 		var Reader = new XMLHttpRequest();
@@ -41,6 +55,7 @@ function Update() {
 			document.getElementById("Contents").textContent = JSON.stringify(Library, null, "\t");
 			document.getElementById("Accept").disabled = null;
 			
+			clearInterval(Timer);
 			Dialog.parentElement.removeChild(Dialog);
 			
 			break;
