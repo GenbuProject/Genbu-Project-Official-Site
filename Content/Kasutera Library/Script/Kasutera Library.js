@@ -40,7 +40,7 @@ function Update() {
 		}
 		
 		var Reader = new XMLHttpRequest();
-			Reader.open("GET", "https://www.googleapis.com/plus/v1/people/106666684430101995501/activities/public?key=AIzaSyAmcraDAZp5kah2o3oCnH8HCnhUVbQwZ2g&maxResults=100&pageToken=" + Token, false);
+			Reader.open("GET", "https://www.googleapis.com/plus/v1/people/109100500854083629580/activities/public?key=AIzaSyAmcraDAZp5kah2o3oCnH8HCnhUVbQwZ2g&maxResults=100&pageToken=" + Token, false);
 			Reader.send(null);
 			
 		var Data = JSON.parse(Reader.responseText);
