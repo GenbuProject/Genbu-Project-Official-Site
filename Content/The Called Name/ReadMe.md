@@ -23,6 +23,8 @@
 >> [![ポケットサウンド 様](http://pocket-se.info/image/bnr_pcse.jpg)](http://pocket-se.info/)
 >> <Br>
 >> [On-Jin ～音人～ 様](http://on-jin.com/)
+>> <Br>
+>> [![魔王魂 様](http://maoudamashii.jokersounds.com/banner03.png)](http://maoudamashii.jokersounds.com/)
 >> 
 > #### 【チップ素材】
 >> [Wolf RPG Editor【ウディタ】 様](http://www.silversecond.com/WolfRPGEditor/)
