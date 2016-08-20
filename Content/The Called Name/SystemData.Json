@@ -31,28 +31,28 @@
 				"Volume": 1
 			},
 			
-			"Sadness.wav": {
+			"Battle 2.wav": {
 				"ID": 7,
 				"Volume": 1
 			},
 			
-			"Birds.wav": {
+			"Sadness.wav": {
 				"ID": 8,
 				"Volume": 1
 			},
 			
-			"Siren.wav": {
+			"Birds.wav": {
 				"ID": 9,
 				"Volume": 1
 			},
 			
-			"Boss Battle 1 - Intro.wav": {
-				"ID": 101,
+			"Siren.wav": {
+				"ID": 10,
 				"Volume": 1
 			},
 			
-			"Boss Battle 1 - Loop.wav": {
-				"ID": 102,
+			"Boss Battle 1.wav": {
+				"ID": 11,
 				"Volume": 1
 			}
 		},
@@ -108,21 +108,21 @@
 	},
 	
 	"Monster": {
-		"かすてら。": {
+		"ゴブリン": {
 			"ID": 1,
 			
-			"HP": 25,
+			"HP": 10,
 			"MP": 0,
-			"ATK": 11,
-			"DEF": 4,
-			"MAG": 5,
-			"SPD": 1,
-			"LUK": 4
+			"ATK": 2,
+			"DEF": 1,
+			"MAG": 1,
+			"SPD": 2,
+			"LUK": 3
 		}
 	},
 	
 	"Weapon": {
-		"かすてら。ソード": {
+		"ブロードソード": {
 			"Type": "Sword",
 			
 			"Param": {
@@ -132,7 +132,7 @@
 				"SPD": 0,
 				"LUK": 0,
 				
-				"Explain": "かすてら。が手掛けた剣"
+				"Explain": "普通の剣。"
 			}
 		}
 	}
