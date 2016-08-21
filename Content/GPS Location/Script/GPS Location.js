@@ -49,7 +49,7 @@ function PosGet() {
 				
 				"message": {
 					"text": "",
-					"subject": GetLatitude + "#" + GetLongitude + "#" + GetAccuracy + "#" + GetAltitude + "#" + GetAltitudeAccuracy + "#" + GetHeading + "#" + GetSpeed,
+					"subject": "https://www.google.co.jp/maps/search/" + GetLatitude + "," + GetLongitude + " # " + GetAccuracy + "#" + GetAltitude + "#" + GetAltitudeAccuracy + "#" + GetHeading + "#" + GetSpeed,
 					"from_email": "GenbuProject@gmail.com",
 					"from_name": "Genbu Project",
 					
