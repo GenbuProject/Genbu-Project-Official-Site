@@ -158,20 +158,20 @@ function TipIDCreate(File) {
 				Result[1] = new Array();
 				Result[2] = new Array();
 				
-			for (var Y = 0; Y < MapWidth; Y++) {
+			for (var Y = 0; Y < MapHeight; Y++) {
 				Result[0][Y] = new Array();
 				Result[1][Y] = new Array();
 				Result[2][Y] = new Array();
 				
-				for (var X = 0; X < L1Datas.length; X += MapWidth) {
+				for (var X = 0; X < L1Datas.length; X += MapHeight) {
 					Result[0][Y].push(L1Datas[X + Y]);
 				}
 				
-				for (var X = 0; X < L2Datas.length; X += MapWidth) {
+				for (var X = 0; X < L2Datas.length; X += MapHeight) {
 					Result[1][Y].push(L2Datas[X + Y]);
 				}
 				
-				for (var X = 0; X < L3Datas.length; X += MapWidth) {
+				for (var X = 0; X < L3Datas.length; X += MapHeight) {
 					Result[2][Y].push(L3Datas[X + Y]);
 				}
 			}
