@@ -84,7 +84,7 @@
 									
 									var PropPane = Menu.MenuPanel(["03", "^7"]);
 										Menu.MenuMsgBox(PropPane, ["00", "^1"], R.COLOR.WHITE, "主人公の名前を入力して下さい");
-										Menu.MenuTextArea(PropPane, ["01", "^2"], R.COLOR.GREEN, "", true);
+										Menu.MenuTextArea(PropPane, ["01", "^2"], R.COLOR.ORANGE, "", true);
 										Menu.MenuItem(PropPane, ["02", "^4"], R.COLOR.WHITE, "決定", function () {
 											Sound.StopBGM();
 											
@@ -113,9 +113,9 @@
 											setTimeout(function () {
 												Sound.PlayBGM(10);
 												
-												MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.BLUE, "真っ青な空が広がるある日の朝。\n僕はただ空を眺めていた。", function () {
-													MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.BLUE, "僕の名前は" + Resource.UserData.Character[0]["Name"] + "。\nエルム村育ちの普通の子供だ。", function () {
-														MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.BLUE, "このエルム村は森に囲まれた場所にあり、\nあまり栄えているとはいえない。\n人口は僕を含めて13人。\nだから他から干渉を受けない場所のはずだった...", function () {
+												MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.CYAN, "真っ青な空が広がるある日の朝。\n僕はただ空を眺めていた。", function () {
+													MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.CYAN, "僕の名前は" + Resource.UserData.Character[0]["Name"] + "。\nエルム村育ちの普通の子供だ。", function () {
+														MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.CYAN, "このエルム村は森に囲まれた場所にあり、\nあまり栄えているとはいえない。\n人口は僕を含めて13人。\nだから他から干渉を受けない場所のはずだった...", function () {
 															Map.Show(0);
 															Character.Warp(0, R.DIRECTION.S, [16, 12]);
 															Effect.ColorOut(2, 0, "Black");
@@ -125,14 +125,14 @@
 																Sound.PlaySE(1);
 																
 																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "？？？\n「た、大変だー！！\n　エレンが居ないぞ！！」", function () {
-																	MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『なっ、何だって...!?\n　一体何が起こったんだ.........』", function () {
+																	MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『...なっ、何だって...!?\n　一体何が起こったんだ.........』", function () {
 																		Effect.BlackOut(2, 0, true);
 																		
 																		setTimeout(function () {
 																			Map.Hide();
 																			Character.Hide();
 																			
-																			MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.BLUE, "誰かの叫び声が聞こえてから暫くすると、\n蔵書庫へ集合する旨の放送が流れた...", function () {
+																			MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "誰かの叫び声が聞こえてから暫くすると、\n蔵書庫へ集合する旨の放送が流れた...", function () {
 																				Map.Show(0);
 																				Character.Warp(0, R.DIRECTION.S, [16, 12]);
 																				Effect.ColorOut(1.5, 0, "Black");
@@ -141,7 +141,7 @@
 																					Sound.PlayBGM(11);
 																					
 																					MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, "エルム村の緊急放送\n「エルム村の村人達は蔵書庫へ集合せよ\n　繰り返す\n　エルム村の村人達は蔵書庫へ集合せよ」", function () {
-																						MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.BLUE, "周りの村人達が次々と蔵書庫に集まっている...\n僕も蔵書庫へ向かおう...！", function () {
+																						MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "周りの村人達が次々と蔵書庫に集まっている...\n僕も蔵書庫へ向かおう...！", function () {
 																							GamePad.KeyboardType(0);
 																							
 																							document.addEventListener("keydown", function (Event) {
@@ -152,6 +152,11 @@
 																											
 																											Panel.SideMenu = Menu.MenuPanel(["00", "37"]);
 																												Menu.MenuItem(Panel.SideMenu, ["00", "31"], R.COLOR.WHITE, "アイテム", function () {
+																													if (Panel.ItemPane != null) {
+																														Panel.ItemPane.parentElement.removeChild(Panel.ItemPane);
+																														Panel.ItemPane = null;
+																													}
+																													
 																													Panel.ItemPane = Menu.MenuPanel(["30", "^7"]);
 																														Menu.MenuItem(Panel.ItemPane, ["", ""], R.COLOR.WHITE, "←", function () {
 																															Panel.ItemPane.parentElement.removeChild(Panel.ItemPane);
