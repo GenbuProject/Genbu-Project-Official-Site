@@ -148,7 +148,19 @@
 																			Character.Hide();
 																			
 																			MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "誰かの叫び声が聞こえてから暫くすると、\n蔵書庫へ集合する旨の放送が流れた...", function () {
-																				Map.Show(0);
+																				Map.Show(0, [
+																					function () {
+																						Map.Hide();
+																						Character.Hide();
+																						
+																						Map.Show(1, [
+																							
+																						]);
+																						
+																						Character.Warp(0, R.DIRECTION.N, [2, 15]);
+																					}
+																				]);
+																				
 																				Character.Warp(0, R.DIRECTION.S, [16, 12]);
 																				Effect.ColorOut(1.5, 0, "Black");
 																				
