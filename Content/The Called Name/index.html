@@ -125,10 +125,25 @@
 																	Character.Hide();
 																	
 																	Map.Show(1, [
+																		function () {
+																			Map.Hide();
+																			Character.Hide();
+																			
+																			Map.Show(0, [
+																				function () {
+																					
+																				}
+																			]);
+																			
+																			Character.Warp(0, R.DIRECTION.S, [12, 1]);
+																		},
 																		
+																		function () {
+																			
+																		}
 																	]);
 																	
-																	Character.Warp(0, R.DIRECTION.N, [2, 15]);
+																	Character.Warp(0, R.DIRECTION.N, [2, 14]);
 																}
 															]);
 															
@@ -154,10 +169,25 @@
 																						Character.Hide();
 																						
 																						Map.Show(1, [
+																							function () {
+																								Map.Hide();
+																								Character.Hide();
+																								
+																								Map.Show(0, [
+																									function () {
+																										
+																									}
+																								]);
+																								
+																								Character.Warp(0, R.DIRECTION.S, [12, 1]);
+																							},
 																							
+																							function () {
+																								
+																							}
 																						]);
 																						
-																						Character.Warp(0, R.DIRECTION.N, [2, 15]);
+																						Character.Warp(0, R.DIRECTION.N, [2, 14]);
 																					}
 																				]);
 																				
