@@ -3275,6 +3275,18 @@
 			"Position": [12, 1],
 			"TipID": 1183,
 			"Type": 1
+		},
+		
+		{
+			"Position": [23, 4],
+			"TipID": 648,
+			"Type": 2
+		},
+		
+		{
+			"Position": [24, 4],
+			"TipID": 649,
+			"Type": 2
 		}
 	]
 ]
