@@ -119,31 +119,33 @@
 												MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.CYAN, "真っ青な空が広がるある日の朝。\n僕はただ空を眺めていた。", function () {
 													MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.CYAN, "僕の名前は" + Resource.UserData.Character[0]["Name"] + "。\nエルム村育ちの普通の子供だ。", function () {
 														MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.CYAN, "このエルム村は森に囲まれた場所にあり、\nあまり栄えているとはいえない。\n人口は僕を含めて13人。\nだから他から干渉を受けない場所のはずだった...", function () {
+															function ElumVillageToElumForest() {
+																Map.Show(1, [
+																	function () {
+																		Map.Hide();
+																		Character.Hide();
+																		
+																		Map.Show(0, [
+																			function () {
+																				ElumVillageToElumForest();
+																			}
+																		]);
+																		
+																		Character.Warp(0, R.DIRECTION.S, [12, 1]);
+																	},
+																	
+																	function () {
+																		
+																	}
+																]);
+															}
+															
 															Map.Show(0, [
 																function () {
 																	Map.Hide();
 																	Character.Hide();
 																	
-																	Map.Show(1, [
-																		function () {
-																			Map.Hide();
-																			Character.Hide();
-																			
-																			Map.Show(0, [
-																				function () {
-																					
-																				}
-																			]);
-																			
-																			Character.Warp(0, R.DIRECTION.S, [12, 1]);
-																		},
-																		
-																		function () {
-																			
-																		}
-																	]);
-																	
-																	Character.Warp(0, R.DIRECTION.N, [2, 14]);
+																	ElumVillageToElumForest();
 																}
 															]);
 															
