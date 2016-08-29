@@ -120,6 +120,9 @@
 													MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.CYAN, "僕の名前は" + Resource.UserData.Character[0]["Name"] + "。\nエルム村育ちの普通の子供だ。", function () {
 														MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.CYAN, "このエルム村は森に囲まれた場所にあり、\nあまり栄えているとはいえない。\n人口は僕を含めて13人。\nだから他から干渉を受けない場所のはずだった...", function () {
 															function ElumVillageToElumForest() {
+																Map.Hide();
+																Character.Hide();
+																
 																Map.Show(2, [
 																	function () {
 																		Map.Hide();
@@ -168,6 +171,9 @@
 															}
 															
 															function ElumVillageToLibrary() {
+																Map.Hide();
+																Character.Hide();
+																
 																Map.Show(1, [
 																	function () {
 																		Map.Hide();
@@ -194,23 +200,14 @@
 															
 															Map.Show(0, [
 																function () {
-																	Map.Hide();
-																	Character.Hide();
-																	
 																	ElumVillageToElumForest();
 																},
 																
 																function () {
-																	Map.Hide();
-																	Character.Hide();
-																	
 																	ElumVillageToLibrary();
 																},
 																
 																function () {
-																	Map.Hide();
-																	Character.Hide();
-																	
 																	ElumVillageToLibrary();
 																}
 															]);
@@ -233,23 +230,14 @@
 																			MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "誰かの叫び声が聞こえてから暫くすると、\n蔵書庫へ集合する旨の放送が流れた...", function () {
 																				Map.Show(0, [
 																					function () {
-																						Map.Hide();
-																						Character.Hide();
-																						
 																						ElumVillageToElumForest();
 																					},
 																					
 																					function () {
-																						Map.Hide();
-																						Character.Hide();
-																						
 																						ElumVillageToLibrary();
 																					},
 																					
 																					function () {
-																						Map.Hide();
-																						Character.Hide();
-																						
 																						ElumVillageToLibrary();
 																					}
 																				]);
