@@ -164,6 +164,16 @@
 																		]);
 																		
 																		Character.Warp(0, R.DIRECTION.S, [12, 2]);
+																	},
+																	
+																	function () {
+																		MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {});
+																		Save("The Called Name " + new Date().getToday("-") + ".sav");
+																	},
+																	
+																	function () {
+																		MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {});
+																		Save("The Called Name " + new Date().getToday("-") + ".sav");
 																	}
 																]);
 																
@@ -258,14 +268,14 @@
 																										if (!Flag.IsOpening) {
 																											Flag.IsOpening = true;
 																											
-																											Panel.SideMenu = Menu.MenuPanel(["00", "37"]);
+																											Panel.SideMenu = Menu.MenuPanel(["00", "36"]);
 																												Menu.MenuItem(Panel.SideMenu, ["00", "31"], R.COLOR.WHITE, "アイテム", function () {
 																													if (Panel.ItemPane != null) {
 																														Panel.ItemPane.parentElement.removeChild(Panel.ItemPane);
 																														Panel.ItemPane = null;
 																													}
 																													
-																													Panel.ItemPane = Menu.MenuPanel(["30", "^7"]);
+																													Panel.ItemPane = Menu.MenuPanel(["30", "^6"]);
 																														Menu.MenuItem(Panel.ItemPane, ["", ""], R.COLOR.WHITE, "←", function () {
 																															Panel.ItemPane.parentElement.removeChild(Panel.ItemPane);
 																															Panel.ItemPane = null;
@@ -292,11 +302,7 @@
 																													
 																												});
 																												
-																												Menu.MenuItem(Panel.SideMenu, ["06", "37"], R.COLOR.WHITE, "セーブ", function () {
-																													Save("The Called Name " + new Date().getToday("-") + ".sav");
-																												});
-																												
-																											Panel.ExplainPane = Menu.MenuPanel(["07", "^^"]);
+																											Panel.ExplainPane = Menu.MenuPanel(["06", "^^"]);
 																										} else if (Flag.IsOpening) {
 																											Flag.IsOpening = false;
 																											
