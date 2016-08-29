@@ -62,7 +62,11 @@
 			function Main() {
 				with (new RPGHelper()) {
 					var Flag = {
-						IsOpening: false
+						IsOpening: false,
+						
+						Story: {
+							Flag0001: false
+						}
 					}
 					
 					var Panel = {
@@ -115,32 +119,54 @@
 							},
 							
 							function () {
-								GamePad.Disable();
-								
-								MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『何だって...!?』", function () {
-									MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「一体どういう事だ...?」", function () {
-										MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「エレンが闇騎士団に誘拐されたようだ...」", function () {
-											MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『闇...騎士団...って...\n　まさかそんな事が...！』", function () {
-												MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「この本を見てみろ...」", function () {
-													Effect.BlackOut(1.5, 0, true);
-													Canvas.style.background = "Black";
-													
-													setTimeout(function () {
-														Map.Hide();
+								if (!Flag.Story.Flag0001) {
+									GamePad.Disable();
+									
+									MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『何だって...!?』", function () {
+										MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「一体どういう事だ...?」", function () {
+											MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「エレンが闇騎士団に誘拐されたようだ...」", function () {
+												MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『闇...騎士団...って...\n　まさかそんな事が...！』", function () {
+													MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「この本を見てみろ...」", function () {
+														Effect.BlackOut(1.5, 0, true);
+														Canvas.style.background = "Black";
 														
-														MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "白昼ノ空、紅ニ染ムル時、世界ガ闇騎士団ニ呪ワレル時ナリ。\n闇騎士団ヲ打チ砕キタル時、世界ハ救ワレタモウ。\n打チ砕ク者、村カラ一人現レリ。", function () {
-															Effect.ColorOut(1.5, 0, "Black");
-														});
-													}, 1500);
+														setTimeout(function () {
+															Map.Hide();
+															Character.Hide();
+															
+															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "白昼ノ空、紅ニ染ムル時、世界ガ闇騎士団ニ呪ワレル時ナリ。\n闇騎士団ヲ打チ砕キタル時、世界ハ救ワレタモウ。\n打チ砕ク者、村カラ一人現レリ。", function () {
+																Effect.ColorOut(1.5, 0, "Black");
+																
+																setTimeout(function () {
+																	ElumVillageToLibrary();
+																	Character.Warp(0, R.DIRECTION.N, [7, 12]);
+																	
+																	MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「これは...！」", function () {
+																		MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「代々伝わる書物だよ。\n　この中の誰かが救い主らしい......」", function () {
+																			MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「ほう( ͡° ͜ʖ ͡°)」", function () {
+																				MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「これから外で勇者探しが行われる。\n　見に行くか？」", function () {
+																					MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『僕も見に行こう...！』", function () {
+																						MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「行きます。」", function () {
+																							Flag.Story.Flag0001 = true;
+																						});
+																					});
+																				});
+																			});
+																		});
+																	});
+																}, 1500);
+															});
+														}, 1500);
+													});
 												});
 											});
 										});
 									});
-								});
+								}
 							}
 						]);
 						
-						Character.Warp(0, R.DIRECTION.N, [1, 13]);
+						Character.Warp(0, R.DIRECTION.N, [1, 13], 2);
 					}
 					
 					function LibraryToElumVillage() {
