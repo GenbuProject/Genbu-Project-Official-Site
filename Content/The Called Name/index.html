@@ -55,170 +55,6 @@
 			}
 		</Script>
 		
-		<Script>
-			function ElumVillageToLibrary() {
-				Map.Hide();
-				Character.Hide();
-				
-				Map.Show(1, [
-					function () {
-						Map.Hide();
-						Character.Hide();
-						
-						Map.Show(0, [
-							function () {
-								ElumVillageToElumForest();
-							},
-							
-							function () {
-								LibraryToElumVillage();
-							},
-							
-							function () {
-								LibraryToElumVillage();
-							}
-						]);
-					},
-					
-					function () {
-						Map.Hide();
-						Character.Hide();
-						
-						Map.Show(0, [
-							function () {
-								ElumVillageToElumForest();
-							},
-							
-							function () {
-								LibraryToElumVillage();
-							},
-							
-							function () {
-								LibraryToElumVillage();
-							}
-						]);
-					},
-					
-					function () {
-						GamePad.Disable();
-						
-						MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『何だって...!?』", function () {
-							MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「一体どういう事だ...?」", function () {
-								MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「エレンが闇騎士団に誘拐されたようだ...」", function () {
-									MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『闇...騎士団...って...\n　まさかそんな事が...！』", function () {
-										MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「この本を見てみろ...」", function () {
-											Effect.BlackOut(1.5, 0, true);
-											Canvas.style.background = "Black";
-											
-											setTimeout(function () {
-												Map.Hide();
-												
-												MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "白昼ノ空、紅ニ染ムル時、世界ガ闇騎士団ニ呪ワレル時ナリ。\n闇騎士団ヲ打チ砕キタル時、世界ハ救ワレタモウ。\n打チ砕ク者、村カラ一人現レリ。", function () {
-													Effect.ColorOut(1.5, 0, "Black");
-												});
-											}, 1500);
-										});
-									});
-								});
-							});
-						});
-					}
-				]);
-				
-				Character.Warp(0, R.DIRECTION.N, [1, 13]);
-			}
-			
-			function LibraryToElumVillage() {
-				Map.Hide();
-				Character.Hide();
-				
-				Map.Show(0, [
-					function () {
-						ElumVillageToElumForest();
-					},
-					
-					function () {
-						ElumVillageToLibrary();
-					},
-					
-					function () {
-						ElumVillageToLibrary();
-					}
-				]);
-				
-				Character.Warp(0, R.DIRECTION.N, [23, 5]);
-			}
-			
-			function ElumVillageToElumForest() {
-				Map.Hide();
-				Character.Hide();
-				
-				Map.Show(2, [
-					function () {
-						Map.Hide();
-						Character.Hide();
-						
-						Map.Show(0, [
-							function () {
-								ElumVillageToElumForest();
-							},
-							
-							function () {
-								ElumVillageToLibrary();
-							},
-							
-							function () {
-								ElumVillageToLibrary();
-							}
-						]);
-						
-						Character.Warp(0, R.DIRECTION.S, [12, 2]);
-					},
-					
-					function () {
-						Map.Hide();
-						Character.Hide();
-						
-						Map.Show(0, [
-							function () {
-								ElumVillageToElumForest();
-							},
-							
-							function () {
-								ElumVillageToLibrary();
-							},
-							
-							function () {
-								ElumVillageToLibrary();
-							}
-						]);
-						
-						Character.Warp(0, R.DIRECTION.S, [12, 2]);
-					},
-					
-					function () {
-						GamePad.Disable();
-						
-						MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {});
-						Save("The Called Name " + new Date().getToday("-") + ".sav");
-						
-						GamePad.KeyboardType(0);
-					},
-					
-					function () {
-						GamePad.Disable();
-						
-						MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {});
-						Save("The Called Name " + new Date().getToday("-") + ".sav");
-						
-						GamePad.KeyboardType(0);
-					}
-				]);
-				
-				Character.Warp(0, R.DIRECTION.N, [2, 14]);
-			}
-		</Script>
-		
 		<Script Type = "Text/JavaScript">
 			//普通のセリフ：R.COLOR.WHITE
 			//感情とか：R.COLOR.CYAN
@@ -233,6 +69,168 @@
 						SideMenu: null,
 						ItemPane: null,
 						ExplainPane: null
+					}
+					
+					function ElumVillageToLibrary() {
+						Map.Hide();
+						Character.Hide();
+						
+						Map.Show(1, [
+							function () {
+								Map.Hide();
+								Character.Hide();
+								
+								Map.Show(0, [
+									function () {
+										ElumVillageToElumForest();
+									},
+									
+									function () {
+										LibraryToElumVillage();
+									},
+									
+									function () {
+										LibraryToElumVillage();
+									}
+								]);
+							},
+							
+							function () {
+								Map.Hide();
+								Character.Hide();
+								
+								Map.Show(0, [
+									function () {
+										ElumVillageToElumForest();
+									},
+									
+									function () {
+										LibraryToElumVillage();
+									},
+									
+									function () {
+										LibraryToElumVillage();
+									}
+								]);
+							},
+							
+							function () {
+								GamePad.Disable();
+								
+								MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『何だって...!?』", function () {
+									MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「一体どういう事だ...?」", function () {
+										MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「エレンが闇騎士団に誘拐されたようだ...」", function () {
+											MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『闇...騎士団...って...\n　まさかそんな事が...！』", function () {
+												MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「この本を見てみろ...」", function () {
+													Effect.BlackOut(1.5, 0, true);
+													Canvas.style.background = "Black";
+													
+													setTimeout(function () {
+														Map.Hide();
+														
+														MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "白昼ノ空、紅ニ染ムル時、世界ガ闇騎士団ニ呪ワレル時ナリ。\n闇騎士団ヲ打チ砕キタル時、世界ハ救ワレタモウ。\n打チ砕ク者、村カラ一人現レリ。", function () {
+															Effect.ColorOut(1.5, 0, "Black");
+														});
+													}, 1500);
+												});
+											});
+										});
+									});
+								});
+							}
+						]);
+						
+						Character.Warp(0, R.DIRECTION.N, [1, 13]);
+					}
+					
+					function LibraryToElumVillage() {
+						Map.Hide();
+						Character.Hide();
+						
+						Map.Show(0, [
+							function () {
+								ElumVillageToElumForest();
+							},
+							
+							function () {
+								ElumVillageToLibrary();
+							},
+							
+							function () {
+								ElumVillageToLibrary();
+							}
+						]);
+						
+						Character.Warp(0, R.DIRECTION.N, [23, 5]);
+					}
+					
+					function ElumVillageToElumForest() {
+						Map.Hide();
+						Character.Hide();
+						
+						Map.Show(2, [
+							function () {
+								Map.Hide();
+								Character.Hide();
+								
+								Map.Show(0, [
+									function () {
+										ElumVillageToElumForest();
+									},
+									
+									function () {
+										ElumVillageToLibrary();
+									},
+									
+									function () {
+										ElumVillageToLibrary();
+									}
+								]);
+								
+								Character.Warp(0, R.DIRECTION.S, [12, 2]);
+							},
+							
+							function () {
+								Map.Hide();
+								Character.Hide();
+								
+								Map.Show(0, [
+									function () {
+										ElumVillageToElumForest();
+									},
+									
+									function () {
+										ElumVillageToLibrary();
+									},
+									
+									function () {
+										ElumVillageToLibrary();
+									}
+								]);
+								
+								Character.Warp(0, R.DIRECTION.S, [12, 2]);
+							},
+							
+							function () {
+								GamePad.Disable();
+								
+								MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {});
+								Save("The Called Name " + new Date().getToday("-") + ".sav");
+								
+								GamePad.KeyboardType(0);
+							},
+							
+							function () {
+								GamePad.Disable();
+								
+								MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {});
+								Save("The Called Name " + new Date().getToday("-") + ".sav");
+								
+								GamePad.KeyboardType(0);
+							}
+						]);
+						
+						Character.Warp(0, R.DIRECTION.N, [2, 14]);
 					}
 					
 					Sound.Load(function () {
