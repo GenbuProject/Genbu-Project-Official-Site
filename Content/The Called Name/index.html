@@ -270,7 +270,10 @@
 							Character.Warp(0, R.DIRECTION.N, [2, 14]);
 						} else {
 							GamePad.Disable();
+							Character.Warp(0, R.DIRECTION.S, [12, 2]);
+							
 							MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「先に蔵書庫に行かなきゃ...！」", function () {});
+							
 							GamePad.KeyboardType(0);
 						}
 					}
