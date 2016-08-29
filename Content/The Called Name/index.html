@@ -65,7 +65,16 @@
 						IsOpening: false,
 						
 						Story: {
-							Flag0001: false
+							Flag0001: false,
+							Flag0002: false,
+							Flag0003: false,
+							Flag0004: false,
+							Flag0005: false,
+							Flag0006: false,
+							Flag0007: false,
+							Flag0008: false,
+							Flag0009: false,
+							Flag0010: false
 						}
 					}
 					
@@ -122,7 +131,7 @@
 								if (!Flag.Story.Flag0001) {
 									GamePad.Disable();
 									
-									MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "僕が蔵書庫に入ると、重々しい空気が漂っていた...", function () {
+									MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『空気が異様に重々しい...\n　この本は...？』", function () {
 										MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「一体何があったんですか...？」", function () {
 											MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「エレンが...闇騎士団に誘拐されたようだ...」", function () {
 												MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『闇...騎士団...って...\n　まさかそんな事が...！』", function () {
@@ -143,7 +152,7 @@
 																	MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「これは...！」", function () {
 																		MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「代々伝わる書物だ。\n　この中の誰かが救い主らしい......」", function () {
 																			MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「ほう( ͡° ͜ʖ ͡°)」", function () {
-																				MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「これから外で勇者探しが行われるらしい...\n俺は先に行ってるぞ...」", function () {
+																				MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「これから外で勇者探しが行われるらしい...\n　俺は先に行ってるぞ...」", function () {
 																					MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "勇者探し...か......\n僕も見に行くとするか...", function () {
 																						Flag.Story.Flag0001 = true;
 																					});
@@ -164,6 +173,10 @@
 						]);
 						
 						Character.Warp(0, R.DIRECTION.N, [1, 13], 2);
+						
+						if (!Flag.Story.Flag0001) {
+							Sound.PlayBGM(9);
+						}
 					}
 					
 					function LibraryToElumVillage() {
@@ -188,72 +201,78 @@
 					}
 					
 					function ElumVillageToElumForest() {
-						Map.Hide();
-						Character.Hide();
-						
-						Map.Show(2, [
-							function () {
-								Map.Hide();
-								Character.Hide();
-								
-								Map.Show(0, [
-									function () {
-										ElumVillageToElumForest();
-									},
-									
-									function () {
-										ElumVillageToLibrary();
-									},
-									
-									function () {
-										ElumVillageToLibrary();
-									}
-								]);
-								
-								Character.Warp(0, R.DIRECTION.S, [12, 2]);
-							},
+						if (Flag.Story.Flag0002) {
+							Map.Hide();
+							Character.Hide();
 							
-							function () {
-								Map.Hide();
-								Character.Hide();
-								
-								Map.Show(0, [
-									function () {
-										ElumVillageToElumForest();
-									},
+							Map.Show(2, [
+								function () {
+									Map.Hide();
+									Character.Hide();
 									
-									function () {
-										ElumVillageToLibrary();
-									},
+									Map.Show(0, [
+										function () {
+											ElumVillageToElumForest();
+										},
+										
+										function () {
+											ElumVillageToLibrary();
+										},
+										
+										function () {
+											ElumVillageToLibrary();
+										}
+									]);
 									
-									function () {
-										ElumVillageToLibrary();
-									}
-								]);
+									Character.Warp(0, R.DIRECTION.S, [12, 2]);
+								},
 								
-								Character.Warp(0, R.DIRECTION.S, [12, 2]);
-							},
+								function () {
+									Map.Hide();
+									Character.Hide();
+									
+									Map.Show(0, [
+										function () {
+											ElumVillageToElumForest();
+										},
+										
+										function () {
+											ElumVillageToLibrary();
+										},
+										
+										function () {
+											ElumVillageToLibrary();
+										}
+									]);
+									
+									Character.Warp(0, R.DIRECTION.S, [12, 2]);
+								},
+								
+								function () {
+									GamePad.Disable();
+									
+									MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {});
+									Save("The Called Name " + new Date().getToday("-") + ".sav");
+									
+									GamePad.KeyboardType(0);
+								},
+								
+								function () {
+									GamePad.Disable();
+									
+									MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {});
+									Save("The Called Name " + new Date().getToday("-") + ".sav");
+									
+									GamePad.KeyboardType(0);
+								}
+							]);
 							
-							function () {
-								GamePad.Disable();
-								
-								MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {});
-								Save("The Called Name " + new Date().getToday("-") + ".sav");
-								
-								GamePad.KeyboardType(0);
-							},
-							
-							function () {
-								GamePad.Disable();
-								
-								MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {});
-								Save("The Called Name " + new Date().getToday("-") + ".sav");
-								
-								GamePad.KeyboardType(0);
-							}
-						]);
-						
-						Character.Warp(0, R.DIRECTION.N, [2, 14]);
+							Character.Warp(0, R.DIRECTION.N, [2, 14]);
+						} else {
+							GamePad.Disable();
+							MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「先に蔵書庫に行かなきゃ...！」", function () {});
+							GamePad.KeyboardType(0);
+						}
 					}
 					
 					Sound.Load(function () {
@@ -340,10 +359,12 @@
 																					},
 																					
 																					function () {
+																						Sound.StopBGM();
 																						ElumVillageToLibrary();
 																					},
 																					
 																					function () {
+																						Sound.StopBGM();
 																						ElumVillageToLibrary();
 																					}
 																				]);
