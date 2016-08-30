@@ -155,6 +155,8 @@
 																				MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「これから外で勇者探しが行われるらしい...\n　俺は先に行ってるぞ...」", function () {
 																					MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "勇者探し...か......\n僕も見に行くとするか...", function () {
 																						Resource.UserData.Flag.Flag0001_Prologue = true;
+																						
+																						GamePad.KeyboardType(0);
 																					});
 																				});
 																			});
@@ -251,19 +253,21 @@
 								function () {
 									GamePad.Disable();
 									
-									MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {});
-									Save("The Called Name " + new Date().getToday("-") + ".sav");
+									MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {
+										GamePad.KeyboardType(0);
+									});
 									
-									GamePad.KeyboardType(0);
+									Save("The Called Name " + new Date().getToday("-") + ".sav");
 								},
 								
 								function () {
 									GamePad.Disable();
 									
-									MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {});
-									Save("The Called Name " + new Date().getToday("-") + ".sav");
+									MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {
+										GamePad.KeyboardType(0);
+									});
 									
-									GamePad.KeyboardType(0);
+									Save("The Called Name " + new Date().getToday("-") + ".sav");
 								}
 							]);
 							
@@ -272,9 +276,9 @@
 							GamePad.Disable();
 							Character.Warp(0, R.DIRECTION.S, [12, 2]);
 							
-							MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「先に蔵書庫に行かなきゃ...！」", function () {});
-							
-							GamePad.KeyboardType(0);
+							MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「先に蔵書庫に行かなきゃ...！」", function () {
+								GamePad.KeyboardType(0);
+							});
 						}
 					}
 					
