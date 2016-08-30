@@ -195,8 +195,6 @@
 							
 							function () {
 								if (!Resource.UserData.Flag.Flag0001_Prologue) {
-									GamePad.Disable();
-									
 									MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『空気が異様に重々しい...\n　この本は...？』", function () {
 										MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「一体何があったんですか...？」", function () {
 											MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「エレンが...闇騎士団に誘拐されたようだ...」", function () {
@@ -236,6 +234,10 @@
 											});
 										});
 									});
+								} else {
+									MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『遥か昔から残されてきたとされる書物だ...』", function () {
+										GamePad.KeyboardType(0);
+									});
 								}
 							}
 						]);
@@ -243,6 +245,7 @@
 						Character.Warp(0, R.DIRECTION.N, [1, 13], 3);
 						
 						if (!Resource.UserData.Flag.Flag0001_Prologue) {
+							Sound.StopBGM();
 							Sound.PlayBGM(9);
 						}
 					}
@@ -266,6 +269,10 @@
 						]);
 						
 						Character.Warp(0, R.DIRECTION.S, [23, 5]);
+						
+						if (!Resource.UserData.Flag.Flag0002_FindHero) {
+							
+						}
 					}
 					
 					function ElumVillageToElumForest() {
@@ -450,66 +457,74 @@
 																					
 																					MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, "エルム村の緊急放送\n「エルム村の村人達は蔵書庫へ集合せよ\n　繰り返す\n　エルム村の村人達は蔵書庫へ集合せよ」", function () {
 																						MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "周りの村人達が次々と蔵書庫に集まっている...\n僕も蔵書庫へ向かおう...！", function () {
-																							GamePad.KeyboardType(0);
-																							
-																							document.addEventListener("keydown", function (Event) {
-																								switch (Event.keyCode) {
-																									case Resource.SystemData.Key.Cancel:
-																										if (!Flag.IsOpening) {
-																											Flag.IsOpening = true;
+																							MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.ORANGE, "The Called Nameをプレイして頂き、誠にありがとうございます。", function () {
+																								MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.ORANGE, "このゲームは RPG Helper(C) を使って製作されています。", function () {
+																									MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.ORANGE, "方向キーでキャラクター移動\nZキーで各アクション\nXキーでメニュー\nとなっております。", function () {
+																										MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.ORANGE, "それではThe Called Nameの世界観をお楽しみ下さい。", function () {
+																											GamePad.KeyboardType(0);
 																											
-																											Panel.SideMenu = Menu.MenuPanel(["00", "36"]);
-																												Menu.MenuItem(Panel.SideMenu, ["00", "31"], R.COLOR.WHITE, "アイテム", function () {
-																													if (Panel.ItemPane != null) {
-																														Panel.ItemPane.parentElement.removeChild(Panel.ItemPane);
-																														Panel.ItemPane = null;
-																													}
-																													
-																													Panel.ItemPane = Menu.MenuPanel(["30", "^6"]);
-																														Menu.MenuItem(Panel.ItemPane, ["", ""], R.COLOR.WHITE, "←", function () {
-																															Panel.ItemPane.parentElement.removeChild(Panel.ItemPane);
-																															Panel.ItemPane = null;
-																														});
-																												});
-																												
-																												Menu.MenuItem(Panel.SideMenu, ["01", "32"], R.COLOR.WHITE, "技能", function () {
-																													
-																												});
-																												
-																												Menu.MenuItem(Panel.SideMenu, ["02", "33"], R.COLOR.WHITE, "装備", function () {
-																													
-																												});
-																												
-																												Menu.MenuItem(Panel.SideMenu, ["03", "34"], R.COLOR.WHITE, "ステータス", function () {
-																													
-																												});
-																												
-																												Menu.MenuItem(Panel.SideMenu, ["04", "35"], R.COLOR.WHITE, "イベント", function () {
-																													
-																												});
-																												
-																												Menu.MenuItem(Panel.SideMenu, ["05", "36"], R.COLOR.WHITE, "オプション", function () {
-																													
-																												});
-																												
-																											Panel.ExplainPane = Menu.MenuPanel(["06", "^^"]);
-																										} else if (Flag.IsOpening) {
-																											Flag.IsOpening = false;
-																											
-																											Panel.SideMenu.parentElement.removeChild(Panel.SideMenu);
-	
-																											Panel.ExplainPane.parentElement.removeChild(Panel.ExplainPane);
-																											
-																											if (Panel.ItemPane != null) {
-																												Panel.ItemPane.parentElement.removeChild(Panel.ItemPane);
-																												Panel.ItemPane = null;
-																											}
-																										}
-																										
-																										Sound.PlaySE("Click");
-																										
-																										break;
-																								}
+																											document.addEventListener("keydown", function (Event) {
+																												switch (Event.keyCode) {
+																													case Resource.SystemData.Key.Cancel:
+																														if (!Flag.IsOpening) {
+																															Flag.IsOpening = true;
+																															
+																															Panel.SideMenu = Menu.MenuPanel(["00", "36"]);
+																																Menu.MenuItem(Panel.SideMenu, ["00", "31"], R.COLOR.WHITE, "アイテム", function () {
+																																	if (Panel.ItemPane != null) {
+																																		Panel.ItemPane.parentElement.removeChild(Panel.ItemPane);
+																																		Panel.ItemPane = null;
+																																	}
+																																	
+																																	Panel.ItemPane = Menu.MenuPanel(["30", "^6"]);
+																																		Menu.MenuItem(Panel.ItemPane, ["", ""], R.COLOR.WHITE, "←", function () {
+																																			Panel.ItemPane.parentElement.removeChild(Panel.ItemPane);
+																																			Panel.ItemPane = null;
+																																		});
+																																});
+																																
+																																Menu.MenuItem(Panel.SideMenu, ["01", "32"], R.COLOR.WHITE, "技能", function () {
+																																	
+																																});
+																																
+																																Menu.MenuItem(Panel.SideMenu, ["02", "33"], R.COLOR.WHITE, "装備", function () {
+																																	
+																																});
+																																
+																																Menu.MenuItem(Panel.SideMenu, ["03", "34"], R.COLOR.WHITE, "ステータス", function () {
+																																	
+																																});
+																																
+																																Menu.MenuItem(Panel.SideMenu, ["04", "35"], R.COLOR.WHITE, "イベント", function () {
+																																	
+																																});
+																																
+																																Menu.MenuItem(Panel.SideMenu, ["05", "36"], R.COLOR.WHITE, "オプション", function () {
+																																	
+																																});
+																																
+																															Panel.ExplainPane = Menu.MenuPanel(["06", "^^"]);
+																														} else if (Flag.IsOpening) {
+																															Flag.IsOpening = false;
+																															
+																															Panel.SideMenu.parentElement.removeChild(Panel.SideMenu);
+					
+																															Panel.ExplainPane.parentElement.removeChild(Panel.ExplainPane);
+																															
+																															if (Panel.ItemPane != null) {
+																																Panel.ItemPane.parentElement.removeChild(Panel.ItemPane);
+																																Panel.ItemPane = null;
+																															}
+																														}
+																														
+																														Sound.PlaySE("Click");
+																														
+																														break;
+																												}
+																											});
+																										});
+																									});
+																								});
 																							});
 																						});
 																					});
