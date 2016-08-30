@@ -136,7 +136,7 @@
 											MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「エレンが...闇騎士団に誘拐されたようだ...」", function () {
 												MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『闇...騎士団...って...\n　まさかそんな事が...！』", function () {
 													MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「この本を見てみろ...」", function () {
-														Effect.BlackOut(1.5, 0, true);
+														Effect.BlackOut(1.5, 0);
 														
 														setTimeout(function () {
 															Map.Hide();
@@ -286,7 +286,7 @@
 								Sound.StopBGM();
 								
 								StartMenu.parentElement.removeChild(StartMenu);
-								Effect.BlackOut(1.5, 0, true);
+								Effect.BlackOut(1.5, 0);
 								
 								setTimeout(function () {
 									Canvas.style.background = "Black";
@@ -318,7 +318,7 @@
 												LUK: 5
 											};
 											
-											Effect.BlackOut(2.5, 0, true);
+											Effect.BlackOut(2.5, 0);
 											
 											setTimeout(function () {
 												Sound.PlayBGM(10);
@@ -349,7 +349,7 @@
 																
 																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "？？？\n「た、大変だー！！\n　エレンが居ないぞ！！」", function () {
 																	MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『...なっ、何だって...!?\n　一体何が起こったんだ.........』", function () {
-																		Effect.BlackOut(2, 0, true);
+																		Effect.BlackOut(2, 0);
 																		
 																		setTimeout(function () {
 																			Map.Hide();
@@ -459,7 +459,7 @@
 							
 							Menu.MenuItem(StartMenu, ["01", "42"], R.COLOR.WHITE, "LOAD GAME", function () {
 								Load(".sav", function () {
-									Effect.BlackOut(2, 0, true);
+									Effect.BlackOut(2, 0);
 									
 									setTimeout(function () {
 										
