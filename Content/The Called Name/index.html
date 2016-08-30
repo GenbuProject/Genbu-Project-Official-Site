@@ -55,6 +55,68 @@
 			}
 		</Script>
 		
+		<Script Name = "Calc-Object" Type = "Text/JavaScript">
+			var Calc = Object.create(null);
+				Calc.TypeID = {
+					Character: 0x0001,
+					Monster: 0x0002
+				}
+				
+				Calc.GetGenericATKDamage = function (TypeID, CharacterOrMonsterID) {
+					if (TypeID === Calc.TypeID.Character) return Resource.UserData.Character[CharacterOrMonsterID].ATK + Math.floor(Math.random() * 5 + 1);
+					if (TypeID === Calc.TypeID.Monster) return Resource.SystemData.Monster[CharacterOrMonsterID].ATK + Math.floor(Math.random() * 5 + 1);
+				}
+				
+				Calc.GetGenericMAGDamage = function (TypeID, CharacterOrMonsterID, UsingMagicID) {
+					if (TypeID === Calc.TypeID.Character) return (Resource.UserData.Character[CharacterOrMonsterID].MAG + Math.floor(Math.random() * 5 + 1)) * Resource.SystemData.Magic[UsingMagicID].GenericDamage;
+					if (TypeID === Calc.TypeID.Monster) return (Resource.SystemData.Monster[CharacterOrMonsterID].MAG + Math.floor(Math.random() * 5 + 1)) * Resource.SystemData.Magic[UsingMagicID].GenericDamage;
+				}
+				
+				Calc.GetFinalATKDamage = function (AttackerData, VictimData) {
+					if (AttackerData[0] === Calc.TypeID.Character) {
+						var Attacker = Resource.UserData.Character[AttackerData[1]];
+						
+						if (VictimData[0] === Calc.TypeID.Character) {
+							var Victim = Resource.UserData.Character[VictimData[1]];
+						} else if (VictimData[0] === Calc.TypeID.Monster) {
+							var Victim = Resource.SystemData.Monster[VictimData[1]];
+						}
+					} else if (AttackerData[0] === Calc.TypeID.Monster) {
+						var Attacker = Resource.SystemData.Monster[AttackerData[1]];
+					}
+					
+					if (Attacker.ATK > Victim.DEF) {
+						return Calc.GetGenericATKDamage(AttackerData[0], AttackerData[1]) * (1 + 0.1 * (Attacker.ATK - Victim.DEF));
+					} else if (Attacker.ATK < Victim.DEF) {
+						return Calc.GetGenericATKDamage(AttackerData[0], AttackerData[1]) * (1 - 0.01 * (Victim.DEF - Attacker.ATK));
+					} else {
+						return Calc.GetGenericATKDamage(AttackerData[0], AttackerData[1]);
+					}
+				}
+				
+				Calc.GetFinalMAGDamage = function (AttackerData, VictimData, UsingMagicID) {
+					if (AttackerData[0] === Calc.TypeID.Character) {
+						var Attacker = Resource.UserData.Character[AttackerData[1]];
+						
+						if (VictimData[0] === Calc.TypeID.Character) {
+							var Victim = Resource.UserData.Character[VictimData[1]];
+						} else if (VictimData[0] === Calc.TypeID.Monster) {
+							var Victim = Resource.SystemData.Monster[VictimData[1]];
+						}
+					} else if (AttackerData[0] === Calc.TypeID.Monster) {
+						var Attacker = Resource.SystemData.Monster[AttackerData[1]];
+					}
+					
+					if (Attacker.MAG > Victim.DEF) {
+						return Calc.GetGenericMAGDamage(AttackerData[0], AttackerData[1], UsingMagicID) * (1 + 0.1 * (Attacker.MAG - Victim.DEF));
+					} else if (Attacker.MAG < Victim.DEF) {
+						return Calc.GetGenericMAGDamage(AttackerData[0], AttackerData[1], UsingMagicID) * (1 - 0.01 * (Victim.DEF - Attacker.MAG));
+					} else {
+						return Calc.GetGenericMAGDamage(AttackerData[0], AttackerData[1], UsingMagicID);
+					}
+				}
+		</Script>
+		
 		<Script Type = "Text/JavaScript">
 			//普通のセリフ：R.COLOR.WHITE
 			//感情とか：R.COLOR.CYAN
