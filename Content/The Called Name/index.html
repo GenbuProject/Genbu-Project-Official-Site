@@ -72,9 +72,9 @@
 					}
 					
 					Resource.UserData.Flag = {
-						0001_Prologue: false,
-						0002_FindHero: false,
-						0003_OpenForest: false,
+						Flag0001_Prologue: false,
+						Flag0002_FindHero: false,
+						Flag0003_OpenForest: false,
 						Flag0004: false,
 						Flag0005: false,
 						Flag0006: false,
@@ -128,7 +128,7 @@
 							},
 							
 							function () {
-								if (!Resource.UserData.Flag.0001_Prologue) {
+								if (!Resource.UserData.Flag.Flag0001_Prologue) {
 									GamePad.Disable();
 									
 									MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『空気が異様に重々しい...\n　この本は...？』", function () {
@@ -154,7 +154,7 @@
 																			MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「ほう( ͡° ͜ʖ ͡°)」", function () {
 																				MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「これから外で勇者探しが行われるらしい...\n　俺は先に行ってるぞ...」", function () {
 																					MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "勇者探し...か......\n僕も見に行くとするか...", function () {
-																						Resource.UserData.Flag.0001_Prologue = true;
+																						Resource.UserData.Flag.Flag0001_Prologue = true;
 																					});
 																				});
 																			});
@@ -174,7 +174,7 @@
 						
 						Character.Warp(0, R.DIRECTION.N, [1, 13], 2);
 						
-						if (!Resource.UserData.Flag.0001_Prologue) {
+						if (!Resource.UserData.Flag.Flag0001_Prologue) {
 							Sound.PlayBGM(9);
 						}
 					}
@@ -201,7 +201,7 @@
 					}
 					
 					function ElumVillageToElumForest() {
-						if (Resource.UserData.Flag.0002_FindHero) {
+						if (Resource.UserData.Flag.Flag0002_FindHero) {
 							Map.Hide();
 							Character.Hide();
 							
