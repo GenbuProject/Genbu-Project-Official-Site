@@ -177,51 +177,17 @@
 						Flag0010: false
 					}
 					
-					function ElumVillageToLibrary() {
+					function ToLibrary() {
 						Map.Hide();
 						Character.Hide();
 						
 						Map.Show(1, [
 							function () {
-								Map.Hide();
-								Character.Hide();
-								
-								Map.Show(0, [
-									function () {
-										ElumVillageToElumForest();
-									},
-									
-									function () {
-										ElumVillageToLibrary();
-									},
-									
-									function () {
-										ElumVillageToLibrary();
-									}
-								]);
-								
-								Character.Warp(0, R.DIRECTION.S, [23, 5]);
+								ToElumVillage();
 							},
 							
 							function () {
-								Map.Hide();
-								Character.Hide();
-								
-								Map.Show(0, [
-									function () {
-										ElumVillageToElumForest();
-									},
-									
-									function () {
-										ElumVillageToLibrary();
-									},
-									
-									function () {
-										ElumVillageToLibrary();
-									}
-								]);
-								
-								Character.Warp(0, R.DIRECTION.S, [23, 5]);
+								ToElumVillage();
 							},
 							
 							function () {
@@ -241,7 +207,7 @@
 																Effect.ColorOut(1.5, 0, "Black");
 																
 																setTimeout(function () {
-																	ElumVillageToLibrary();
+																	ToLibrary();
 																	Character.Warp(0, R.DIRECTION.N, [7, 12]);
 																	
 																	MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「これは...！」", function () {
@@ -281,22 +247,22 @@
 						}
 					}
 					
-					function LibraryToElumVillage() {
+					function ToElumVillage() {
 						Map.Hide();
 						Character.Hide();
 						
 						if ((Resource.UserData.Flag.Flag0001_Prologue && Resource.UserData.Flag.Flag0002_FindHero) || (!Resource.UserData.Flag.Flag0001_Prologue && !Resource.UserData.Flag.Flag0002_FindHero)) {
 							Map.Show(0, [
 								function () {
-									ElumVillageToElumForest();
+									ToElumForest();
 								},
 								
 								function () {
-									ElumVillageToLibrary();
+									ToLibrary();
 								},
 								
 								function () {
-									ElumVillageToLibrary();
+									ToLibrary();
 								}
 							]);
 						} else {
@@ -310,27 +276,27 @@
 						Character.Warp(0, R.DIRECTION.S, [23, 5]);
 					}
 					
-					function ElumVillageToElumForest() {
+					function ToElumForest() {
 						if (Resource.UserData.Flag.Flag0002_FindHero) {
 							Map.Hide();
 							Character.Hide();
 							
-							Map.Show(2, [
+							Map.Show(3, [
 								function () {
 									Map.Hide();
 									Character.Hide();
 									
 									Map.Show(0, [
 										function () {
-											ElumVillageToElumForest();
+											ToElumForest();
 										},
 										
 										function () {
-											ElumVillageToLibrary();
+											ToLibrary();
 										},
 										
 										function () {
-											ElumVillageToLibrary();
+											ToLibrary();
 										}
 									]);
 									
@@ -343,15 +309,15 @@
 									
 									Map.Show(0, [
 										function () {
-											ElumVillageToElumForest();
+											ToElumForest();
 										},
 										
 										function () {
-											ElumVillageToLibrary();
+											ToLibrary();
 										},
 										
 										function () {
-											ElumVillageToLibrary();
+											ToLibrary();
 										}
 									]);
 									
@@ -440,15 +406,15 @@
 														MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.CYAN, "このエルム村は森に囲まれた場所にあり、\nあまり栄えているとはいえない。\n人口は僕を含めて13人。\nだから他から干渉を受けない場所のはずだった...", function () {
 															Map.Show(0, [
 																function () {
-																	ElumVillageToElumForest();
+																	ToElumForest();
 																},
 																
 																function () {
-																	ElumVillageToLibrary();
+																	ToLibrary();
 																},
 																
 																function () {
-																	ElumVillageToLibrary();
+																	ToLibrary();
 																}
 															]);
 															
@@ -470,17 +436,15 @@
 																			MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "誰かの叫び声が聞こえてから暫くすると、\n蔵書庫へ集合する旨の放送が流れた...", function () {
 																				Map.Show(0, [
 																					function () {
-																						ElumVillageToElumForest();
+																						ToElumForest();
 																					},
 																					
 																					function () {
-																						Sound.StopBGM();
-																						ElumVillageToLibrary();
+																						ToLibrary();
 																					},
 																					
 																					function () {
-																						Sound.StopBGM();
-																						ElumVillageToLibrary();
+																						ToLibrary();
 																					}
 																				]);
 																				
