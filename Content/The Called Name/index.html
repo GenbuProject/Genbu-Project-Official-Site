@@ -138,7 +138,7 @@
 							
 							Graphic.onload = (function (i) {
 								return function () {
-									MonsterCvs.getContext("2d").drawImage(Graphic, 0, 0, Graphic.width, Graphic.height, (document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5) * i, 0, document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5, document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5);
+									MonsterCvs[i].getContext("2d").drawImage(Graphic, 0, 0, Graphic.width, Graphic.height, (document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5) * i, 0, document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5, document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5);
 								}
 							})(i);
 					}
@@ -599,7 +599,7 @@
 		</Script>
 		
 		<Style>
-			.TheCalledName-MonsterArea:Hover {
+			.TheCalledName-MonsterArea {
 				Border: 5px Groove Plum;
 				Border-Radius: 5px 5px 5px 5px;
 			}
