@@ -125,6 +125,7 @@
 					var MonsterCvs = document.createElement("Canvas");
 						MonsterCvs.width = document.getElementById("RPGHelper-Main").style.width.split("px")[0];
 						MonsterCvs.height = document.getElementById("RPGHelper-Main").style.height.split("px")[0];
+						MonsterCvs.style.position = "Absolute";
 						
 					document.getElementById("RPGHelper-Main").appendChild(MonsterCvs);
 					
@@ -136,9 +137,11 @@
 						var Graphic = new Image();
 							Graphic.src = "MonsterGraphic/" + Party[i].MonsterGraphic;
 							
-							Graphic.onload = function () {
-								Ctx.drawImage(Graphic, 0, 0, Graphic.width, Graphic.height, (document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5) * i, (document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5) * i, document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5, document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5);
-							}
+							Graphic.onload = (function (i) {
+								return function () {
+									Ctx.drawImage(Graphic, 0, 0, Graphic.width, Graphic.height, (document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5) * i, 0, document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5, document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5);
+								}
+							})(i);
 					}
 				}
 			}
