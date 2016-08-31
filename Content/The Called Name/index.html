@@ -160,6 +160,7 @@
 					var Panel = {
 						SideMenu: null,
 						ItemPane: null,
+						MagicPane: null,
 						ExplainPane: null
 					}
 					
@@ -494,6 +495,8 @@
 																											GamePad.KeyboardType(0);
 																											
 																											document.addEventListener("keydown", function (Event) {
+																												var MagicPage = 1;
+																												
 																												switch (Event.keyCode) {
 																													case Resource.SystemData.Key.Cancel:
 																														if (!Flag.IsOpening) {
@@ -525,6 +528,28 @@
 																																			Panel.MagicPane = null;
 																																		});
 																																		
+																																		Menu.MenuMsgBox(Panel.MagicPane, ["10", "51"], R.COLOR.WHITE, "ページ" + MagicPage);
+																																		
+																																		Menu.MenuItem(Panel.MagicPane, ["50", "61"], R.COLOR.WHITE, "≪", function () {
+																																			if (MagicPage > 1) {
+																																				MagicPage--;
+																																				
+																																				for (var i = (MagicPage - 1) * 5; i < MagicPage * 5; i++) {
+																																					Menu.MenuItem(Panel.MagicPane, ["0" + (i + 1).toString(), "7" + (i + 2).toString()], Resource.SystemData.Magic[i].Type == "Fire" ? R.COLOR.RED : Resource.SystemData.Magic[i].Type == "Water" ? R.COLOR.CYAN : Resource.SystemData.Magic[i].Type == "Wind" ? R.COLOR.GREEN : R.COLOR.WHITE, Resource.SystemData.Magic[i].Name + "(MP" + Resource.SystemData.Magic[i].UseMP + ")", function () {});
+																																				}
+																																			}
+																																		});
+																																		
+																																		Menu.MenuItem(Panel.MagicPane, ["60", "71"], R.COLOR.WHITE, "≫", function () {
+																																			if (MagicPage < Math.floor(Resource.SystemData.Magic.length / 5)) {
+																																				MagicPage++;
+																																				
+																																				for (var i = (MagicPage - 1) * 5; i < MagicPage * 5; i++) {
+																																					Menu.MenuItem(Panel.MagicPane, ["0" + (i + 1).toString(), "7" + (i + 2).toString()], Resource.SystemData.Magic[i].Type == "Fire" ? R.COLOR.RED : Resource.SystemData.Magic[i].Type == "Water" ? R.COLOR.CYAN : Resource.SystemData.Magic[i].Type == "Wind" ? R.COLOR.GREEN : R.COLOR.WHITE, Resource.SystemData.Magic[i].Name + "(MP" + Resource.SystemData.Magic[i].UseMP + ")", function () {});
+																																				}
+																																			}
+																																		});
+																																		
 																																		for (var i = 0; i < Resource.SystemData.Magic.length; i++) {
 																																			Menu.MenuItem(Panel.MagicPane, ["0" + (i + 1).toString(), "7" + (i + 2).toString()], Resource.SystemData.Magic[i].Type == "Fire" ? R.COLOR.RED : Resource.SystemData.Magic[i].Type == "Water" ? R.COLOR.CYAN : Resource.SystemData.Magic[i].Type == "Wind" ? R.COLOR.GREEN : R.COLOR.WHITE, Resource.SystemData.Magic[i].Name + "(MP" + Resource.SystemData.Magic[i].UseMP + ")", function () {});
 																																		}
@@ -551,12 +576,16 @@
 																															Flag.IsOpening = false;
 																															
 																															Panel.SideMenu.parentElement.removeChild(Panel.SideMenu);
-					
 																															Panel.ExplainPane.parentElement.removeChild(Panel.ExplainPane);
 																															
 																															if (Panel.ItemPane != null) {
 																																Panel.ItemPane.parentElement.removeChild(Panel.ItemPane);
 																																Panel.ItemPane = null;
+																															}
+																															
+																															if (Panel.MagicPane != null) {
+																																Panel.MagicPane.parentElement.removeChild(Panel.MagicPane);
+																																Panel.MagicPane = null;
 																															}
 																														}
 																														
