@@ -1,4 +1,14 @@
 {
+	"Key": {
+		"Decide": 90,
+		"Cancel": 88
+	},
+	
+	"BackGround": {
+		"Title": "Title.png",
+		"Dialog": "Back.jpg"
+	},
+	
 	"Audio": {
 		"BGM": {
 			"The Called Name.wav": {
@@ -74,11 +84,6 @@
 		}
 	},
 	
-	"BackGround": {
-		"Title": "Title.png",
-		"Dialog": "Back.jpg"
-	},
-	
 	"Tile": [
 		"Town.png",
 		"World.png"
@@ -107,11 +112,6 @@
 		}
 	],
 	
-	"Key": {
-		"Decide": 90,
-		"Cancel": 88
-	},
-	
 	"Item": {
 		"ハーブ": {
 			"ID": 1,
@@ -119,9 +119,66 @@
 		}
 	},
 	
+	"Magic": [
+		{
+			"Name": "ファイア",
+			"Type": "Fire",
+			
+			"GenericDamage": 3,
+			"UseMP": 2,
+			"DamageRange": 1
+		},
+		
+		{
+			"Name": "ファイラ",
+			"Type": "Fire",
+			
+			"GenericDamage": 5,
+			"UseMP": 3,
+			"DamageRange": 1
+		},
+		
+		{
+			"Name": "ファイガ",
+			"Type": "Fire",
+			
+			"GenericDamage": 8,
+			"UseMP": 5,
+			"DamageRange": 1
+		},
+		
+		{
+			"Name": "サマファイア",
+			"Type": "Fire",
+			
+			"GenericDamage": 2,
+			"UseMP": 3,
+			"DamageRange": "All"
+		},
+		
+		{
+			"Name": "サマファイラ",
+			"Type": "Fire",
+			
+			"GenericDamage": 4,
+			"UseMP": 7,
+			"DamageRange": "All"
+		},
+		
+		{
+			"Name": "サマファイガ",
+			"Type": "Fire",
+			
+			"GenericDamage": 7,
+			"UseMP": 12,
+			"DamageRange": "All"
+		},
+	],
+	
 	"Monster": [
 		{
-			"Name": "ゴブリン",
+			"Name": "ゴブリン(赤)",
+			"MonsterGraphic": "Goblin(Red).png",
 			
 			"HP": 10,
 			"MP": 0,
@@ -130,6 +187,32 @@
 			"MAG": 1,
 			"SPD": 2,
 			"LUK": 3
+		},
+		
+		{
+			"Name": "ゴブリン(青)",
+			"MonsterGraphic": "Goblin(Blue).png",
+			
+			"HP": 25,
+			"MP": 0,
+			"ATK": 6,
+			"DEF": 4,
+			"MAG": 4,
+			"SPD": 2,
+			"LUK": 4
+		},
+		
+		{
+			"Name": "ゴブリン(緑)",
+			"MonsterGraphic": "Goblin(Green).png",
+			
+			"HP": 40,
+			"MP": 0,
+			"ATK": 13,
+			"DEF": 6,
+			"MAG": 5,
+			"SPD": 4,
+			"LUK": 4
 		},
 		
 		{
@@ -143,6 +226,13 @@
 			"SPD": 1,
 			"LUK": 2
 		}
+	],
+	
+	"Group": [
+		[0, 0, 0],
+		[1, 1, 1],
+		[2, 2, 2],
+		[3]
 	],
 	
 	"Weapon": {

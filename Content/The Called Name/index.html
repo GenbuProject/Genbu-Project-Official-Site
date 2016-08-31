@@ -117,7 +117,34 @@
 				}
 		</Script>
 		
-		<Script Type = "Text/JavaScript">
+		<Script Name = "Fighting-Method" Type = "Text/JavaScript">
+			var Fight = {
+				Init: function (GroupID) {
+					var Party = [];
+					
+					var MonsterCvs = document.createElement("Canvas");
+						MonsterCvs.width = document.getElementById("RPGHelper-Main").style.width.split("px")[0];
+						MonsterCvs.height = document.getElementById("RPGHelper-Main").style.height.split("px")[0];
+						
+					document.getElementById("RPGHelper-Main").appendChild(MonsterCvs);
+					
+					var Ctx = MonsterCvs.getContext("2d");
+					
+					for (var i = 0; i < Resource.SystemData.Group[GroupID].length; i++) {
+						Party[i] = Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]];
+						
+						var Graphic = new Image();
+							Graphic.src = "MonsterGraphic/" + Party[i].MonsterGraphic;
+							
+							Graphic.onload = function () {
+								Ctx.drawImage(0, 0, Graphic.width, Graphic.height, (document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5) * i, (document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5) * i, (document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5) * (i + 1), (document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5) * (i + 1));
+							}
+					}
+				}
+			}
+		</Script>
+		
+		<Script Name = "Main-Class" Type = "Text/JavaScript">
 			//普通のセリフ：R.COLOR.WHITE
 			//感情とか：R.COLOR.CYAN
 			//イベントとか：R.COLOR.ORANGE
