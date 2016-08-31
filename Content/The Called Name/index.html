@@ -510,7 +510,7 @@
 																																	}
 																																	
 																																	Panel.ItemPane = Menu.MenuPanel(["30", "^6"]);
-																																		Menu.MenuItem(Panel.ItemPane, ["", ""], R.COLOR.WHITE, "←", function () {
+																																		Menu.MenuItem(Panel.ItemPane, ["00", "11"], R.COLOR.WHITE, "←", function () {
 																																			Panel.ItemPane.parentElement.removeChild(Panel.ItemPane);
 																																			Panel.ItemPane = null;
 																																		});
@@ -523,7 +523,7 @@
 																																	}
 																																	
 																																	Panel.MagicPane = Menu.MenuPanel(["30", "^6"]);
-																																		Menu.MenuItem(Panel.MagicPane, ["", ""], R.COLOR.WHITE, "←", function () {
+																																		Menu.MenuItem(Panel.MagicPane, ["00", "11"], R.COLOR.WHITE, "←", function () {
 																																			Panel.MagicPane.parentElement.removeChild(Panel.MagicPane);
 																																			Panel.MagicPane = null;
 																																		});
@@ -550,7 +550,7 @@
 																																			}
 																																		});
 																																		
-																																		for (var i = 0; i < Resource.SystemData.Magic.length; i++) {
+																																		for (var i = 0; i < 5; i++) {
 																																			Menu.MenuItem(Panel.MagicPane, ["0" + (i + 1).toString(), "7" + (i + 2).toString()], Resource.SystemData.Magic[i].Type == "Fire" ? R.COLOR.RED : Resource.SystemData.Magic[i].Type == "Water" ? R.COLOR.CYAN : Resource.SystemData.Magic[i].Type == "Wind" ? R.COLOR.GREEN : R.COLOR.WHITE, Resource.SystemData.Magic[i].Name + "(MP" + Resource.SystemData.Magic[i].UseMP + ")", function () {});
 																																		}
 																																});
