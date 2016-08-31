@@ -5,8 +5,8 @@
 		<Meta Charset = "UTF-8">
 		<Title>Genbu Project Official Site == The Called Name</Title>
 		
-		<Script Src = "https://genbuproject.github.io/RPG-Helper/Alpha/RPG Helper Alpha 1.3.js"></Script>
-		<Link Rel = "StyleSheet" HREF = "https://genbuproject.github.io/RPG-Helper/Alpha/RPG Helper Alpha 1.3.css">
+		<Script Src = "https://genbuproject.github.io/RPG-Helper/Release/RPG Helper Release 1.3.js"></Script>
+		<Link Rel = "StyleSheet" HREF = "https://genbuproject.github.io/RPG-Helper/Release/RPG Helper Release 1.3.css">
 		
 		<Script Src = "Script/JsDecoder.js"></Script>
 		<Script Src = "Script/JsColorizer.js"></Script>
@@ -123,8 +123,8 @@
 					var Party = [];
 					
 					var MonsterCvs = document.createElement("Canvas");
-						//MonsterCvs.width = document.getElementById("RPGHelper-Main").style.width.split("px")[0];
-						//MonsterCvs.height = document.getElementById("RPGHelper-Main").style.height.split("px")[0];
+						MonsterCvs.id = "MonsterParty";
+						MonsterCvs.width = document.getElementById("RPGHelper-Main").style.width.split("px")[0];
 						MonsterCvs.style.position = "Absolute";
 						
 					document.getElementById("RPGHelper-Main").appendChild(MonsterCvs);
@@ -513,8 +513,21 @@
 																																		});
 																																});
 																																
-																																Menu.MenuItem(Panel.SideMenu, ["01", "32"], R.COLOR.WHITE, "技能", function () {
+																																Menu.MenuItem(Panel.SideMenu, ["01", "32"], R.COLOR.WHITE, "魔法", function () {
+																																	if (Panel.MagicPane != null) {
+																																		Panel.MagicPane.parentElement.removeChild(Panel.MagicPane);
+																																		Panel.MagicPane = null;
+																																	}
 																																	
+																																	Panel.MagicPane = Menu.MenuPanel(["30", "^6"]);
+																																		Menu.MenuItem(Panel.MagicPane, ["", ""], R.COLOR.WHITE, "←", function () {
+																																			Panel.MagicPane.parentElement.removeChild(Panel.MagicPane);
+																																			Panel.MagicPane = null;
+																																		});
+																																		
+																																		for (var i = 0; i < Resource.SystemData.Magic.length; i++) {
+																																			Menu.MenuItem(Panel.MagicPane, ["0" + i.toString(), "^" + (i + 1).toString()], Resource.SystemData.Magic[i].Type == "Fire" ? R.COLOR.RED : Resource.SystemData.Magic[i].Type == "Water" ? R.COLOR.CYAN : Resource.SystemData.Magic[i].Type == "Wind" ? R.COLOR.GREEN : R.COLOR.WHITE, Resource.SystemData.Magic[i].Name + "(MP" + Resource.SystemData.Magic[i].UseMP + ")", function () {});
+																																		}
 																																});
 																																
 																																Menu.MenuItem(Panel.SideMenu, ["02", "33"], R.COLOR.WHITE, "装備", function () {
