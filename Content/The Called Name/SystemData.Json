@@ -172,7 +172,7 @@
 			"GenericDamage": 7,
 			"UseMP": 12,
 			"DamageRange": "All"
-		},
+		}
 	],
 	
 	"Monster": [
