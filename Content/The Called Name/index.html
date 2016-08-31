@@ -120,7 +120,7 @@
 		<Script Name = "Fighting-Method" Type = "Text/JavaScript">
 			var Fight = {
 				Init: function (GroupID) {
-					var Party = [];
+					var MonsterParty = [];
 					
 					var MonsterCvs = document.createElement("Canvas");
 						MonsterCvs.id = "MonsterParty";
@@ -135,7 +135,7 @@
 						Party[i] = Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]];
 						
 						var Graphic = new Image();
-							Graphic.src = "MonsterGraphic/" + Party[i].MonsterGraphic;
+							Graphic.src = "MonsterGraphic/" + MonsterParty[i].MonsterGraphic;
 							
 							Graphic.onload = (function (i) {
 								return function () {
@@ -285,25 +285,29 @@
 						Map.Hide();
 						Character.Hide();
 						
-						Map.Show(0, [
-							function () {
-								ElumVillageToElumForest();
-							},
-							
-							function () {
-								ElumVillageToLibrary();
-							},
-							
-							function () {
-								ElumVillageToLibrary();
-							}
-						]);
+						if ((Resource.UserData.Flag.Flag0001_Prologue && Resource.UserData.Flag.Flag0002_FindHero) || (!Resource.UserData.Flag.Flag0001_Prologue && !Resource.UserData.Flag.Flag0002_FindHero)) {
+							Map.Show(0, [
+								function () {
+									ElumVillageToElumForest();
+								},
+								
+								function () {
+									ElumVillageToLibrary();
+								},
+								
+								function () {
+									ElumVillageToLibrary();
+								}
+							]);
+						} else {
+							Map.Show(2, [
+								function () {
+									
+								}
+							]);
+						}
 						
 						Character.Warp(0, R.DIRECTION.S, [23, 5]);
-						
-						if (!Resource.UserData.Flag.Flag0002_FindHero) {
-							
-						}
 					}
 					
 					function ElumVillageToElumForest() {
@@ -527,32 +531,6 @@
 																																			Panel.MagicPane.parentElement.removeChild(Panel.MagicPane);
 																																			Panel.MagicPane = null;
 																																		});
-																																		
-																																		Menu.MenuMsgBox(Panel.MagicPane, ["10", "51"], R.COLOR.WHITE, "ページ" + MagicPage);
-																																		
-																																		Menu.MenuItem(Panel.MagicPane, ["50", "61"], R.COLOR.WHITE, "≪", function () {
-																																			if (MagicPage > 1) {
-																																				MagicPage--;
-																																				
-																																				for (var i = (MagicPage - 1) * 5; i < MagicPage * 5; i++) {
-																																					Menu.MenuItem(Panel.MagicPane, ["0" + (i + 1).toString(), "7" + (i + 2).toString()], Resource.SystemData.Magic[i].Type == "Fire" ? R.COLOR.RED : Resource.SystemData.Magic[i].Type == "Water" ? R.COLOR.CYAN : Resource.SystemData.Magic[i].Type == "Wind" ? R.COLOR.GREEN : R.COLOR.WHITE, Resource.SystemData.Magic[i].Name + "(MP" + Resource.SystemData.Magic[i].UseMP + ")", function () {});
-																																				}
-																																			}
-																																		});
-																																		
-																																		Menu.MenuItem(Panel.MagicPane, ["60", "71"], R.COLOR.WHITE, "≫", function () {
-																																			if (MagicPage < Math.floor(Resource.SystemData.Magic.length / 5)) {
-																																				MagicPage++;
-																																				
-																																				for (var i = (MagicPage - 1) * 5; i < MagicPage * 5; i++) {
-																																					Menu.MenuItem(Panel.MagicPane, ["0" + (i + 1).toString(), "7" + (i + 2).toString()], Resource.SystemData.Magic[i].Type == "Fire" ? R.COLOR.RED : Resource.SystemData.Magic[i].Type == "Water" ? R.COLOR.CYAN : Resource.SystemData.Magic[i].Type == "Wind" ? R.COLOR.GREEN : R.COLOR.WHITE, Resource.SystemData.Magic[i].Name + "(MP" + Resource.SystemData.Magic[i].UseMP + ")", function () {});
-																																				}
-																																			}
-																																		});
-																																		
-																																		for (var i = 0; i < 5; i++) {
-																																			Menu.MenuItem(Panel.MagicPane, ["0" + (i + 1).toString(), "7" + (i + 2).toString()], Resource.SystemData.Magic[i].Type == "Fire" ? R.COLOR.RED : Resource.SystemData.Magic[i].Type == "Water" ? R.COLOR.CYAN : Resource.SystemData.Magic[i].Type == "Wind" ? R.COLOR.GREEN : R.COLOR.WHITE, Resource.SystemData.Magic[i].Name + "(MP" + Resource.SystemData.Magic[i].UseMP + ")", function () {});
-																																		}
 																																});
 																																
 																																Menu.MenuItem(Panel.SideMenu, ["02", "33"], R.COLOR.WHITE, "装備", function () {
