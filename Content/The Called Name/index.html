@@ -526,7 +526,7 @@
 																																		});
 																																		
 																																		for (var i = 0; i < Resource.SystemData.Magic.length; i++) {
-																																			Menu.MenuItem(Panel.MagicPane, ["0" + i.toString(), "^" + (i + 1).toString()], Resource.SystemData.Magic[i].Type == "Fire" ? R.COLOR.RED : Resource.SystemData.Magic[i].Type == "Water" ? R.COLOR.CYAN : Resource.SystemData.Magic[i].Type == "Wind" ? R.COLOR.GREEN : R.COLOR.WHITE, Resource.SystemData.Magic[i].Name + "(MP" + Resource.SystemData.Magic[i].UseMP + ")", function () {});
+																																			Menu.MenuItem(Panel.MagicPane, ["0" + (i + 1).toString(), "7" + (i + 2).toString()], Resource.SystemData.Magic[i].Type == "Fire" ? R.COLOR.RED : Resource.SystemData.Magic[i].Type == "Water" ? R.COLOR.CYAN : Resource.SystemData.Magic[i].Type == "Wind" ? R.COLOR.GREEN : R.COLOR.WHITE, Resource.SystemData.Magic[i].Name + "(MP" + Resource.SystemData.Magic[i].UseMP + ")", function () {});
 																																		}
 																																});
 																																
