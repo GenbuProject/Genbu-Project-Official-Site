@@ -224,6 +224,7 @@
 		
 		{
 			"Name": "エンリコ",
+			"MonsterGraphic": "Enlico.png",
 			
 			"HP": 20,
 			"MP": 0,
