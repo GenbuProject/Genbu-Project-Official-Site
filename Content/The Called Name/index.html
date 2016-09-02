@@ -155,6 +155,7 @@
 								return function () {
 									MonsterCvs[i].width = document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5;
 									MonsterCvs[i].height = document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5;
+									MonsterCvs[i].style.left = (document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5) * i;
 									
 									MonsterCvs[i].getContext("2d").drawImage(Graphic, 0, 0, Graphic.width, Graphic.height, (document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5) * i, 0, document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5, document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5);
 								}
