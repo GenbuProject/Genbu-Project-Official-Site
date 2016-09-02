@@ -32,8 +32,10 @@
 						case 9:
 			        		Event.preventDefault();
 			        		
+			        		var Pos = document.getElementById("Code").selectionStart;
+			        		
 			       			document.getElementById("Code").value = document.getElementById("Code").value.substr(0, document.getElementById("Code").selectionStart) + "\t" + document.getElementById("Code").value.substr(document.getElementById("Code").selectionStart, document.getElementById("Code").value.length);
-			        		document.getElementById("Code").setSelectionRange(document.getElementById("Code").selectionStart + 1, document.getElementById("Code").selectionStart + 1);
+			        		document.getElementById("Code").setSelectionRange(Pos + 1, Pos + 1);
 			        		
 			        		break;
 		    		}
