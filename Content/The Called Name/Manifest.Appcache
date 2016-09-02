@@ -5,7 +5,10 @@ NETWORK:
 index.html
 SystemData.Json
 
-CACHE:
+https://genbuproject.github.io/RPG-Helper/Release/RPG Helper Release 1.3.js
+https://genbuproject.github.io/RPG-Helper/Release/RPG Helper Release 1.3.css
+Script/The Called Name.js
+
 Audio/The Called Name.wav
 Audio/The Called Name - Serious.wav
 Audio/The Called Name - Strange.wav
@@ -50,8 +53,3 @@ MonsterGraphic/Goblin(Green).png
 Tile/Town.png
 Tile/Town.TileSetting
 Tile/World.png
-
-Script/The Called Name.js
-
-https://genbuproject.github.io/RPG-Helper/Release/RPG Helper Release 1.3.js
-https://genbuproject.github.io/RPG-Helper/Release/RPG Helper Release 1.3.css
