@@ -26,6 +26,20 @@
 		</Script>
 		
 		<Script Type = "Text/JavaScript">
+			function KeySet() {
+				document.getElementById("Code").addEventListener("keydown", function (Event) {
+					switch (Event.keyCode) {
+						case 9:
+			        		Event.preventDefault();
+			        		
+			       			document.getElementById("Code").value = document.getElementById("Code").value.substr(0, document.getElementById("Code").selectionStart) + "\t" + document.getElementById("Code").value.substr(document.getElementById("Code").selectionStart, document.getElementById("Code").value.length);
+			        		document.getElementById("Code").setSelectionRange(document.getElementById("Code").selectionStart + 1, document.getElementById("Code").selectionStart + 1);
+			        		
+			        		break;
+		    		}
+				});
+			}
+			
 			function Formater() {
 				var Code = document.getElementById("Code").value;
 				
@@ -45,18 +59,6 @@
 					document.getElementById("FormatedCode").style.display = "Block";
 				}
 			}
-			
-			document.getElementById("Code").addEventListener("keydown", function (Event) {
-				switch (Event.keyCode) {
-					case 9:
-		        		Event.preventDefault();
-		        		
-		       			document.getElementById("Code").value = document.getElementById("Code").value.substr(0, document.getElementById("Code").selectionStart) + "\t" + document.getElementById("Code").value.substr(document.getElementById("Code").selectionStart, document.getElementById("Code").value.length);
-		        		elem.setSelectionRange(document.getElementById("Code").selectionStart + 1, document.getElementById("Code").selectionStart + 1);
-		        		
-		        		break;
-	    		}
-			});
 			
 			Date.prototype.getToday = function (SplitWord) {
 				var Day = new Date().toLocaleDateString().split("/");
@@ -181,7 +183,7 @@
 		</Style>
 	</Head>
 	
-	<Body Style = 'Color: #EEE; Font: 14px/2 "メイリオ", Meiryo, Osaka; BackGround: URL("Image/Back.jpg");' OnLoad = "Main();">
+	<Body Style = 'Color: #EEE; Font: 14px/2 "メイリオ", Meiryo, Osaka; BackGround: URL("Image/Back.jpg");' OnLoad = "Main(); KeySet();">
 		<Div ID = "RPGHelper-Main" Width = "512" Height = "512"></Div>
 		
 		<TextArea ID = "Code" Wrap = "Off" Style = "Width: 100%; Height: 250px" OnKeyDown = "Formater();" OnKeyPress = "Formater();" OnKeyUp = "Formater();"></TextArea>
