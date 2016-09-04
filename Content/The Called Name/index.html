@@ -191,15 +191,15 @@
 									}
 								})(i));
 								
-								Fight.MonsterSelect.id = "MonsterSelect" + i;
+								MonsterSelect.id = "MonsterSelect" + i;
 								
-								Fight.MonsterSelect.onmouseover = (function (i) {
+								MonsterSelect.onmouseover = (function (i) {
 									return function () {
 										Fight.MonsterCvs[i].className = "TheCalledName-MonsterArea";
 									}
 								})(i);
 								
-								Fight.MonsterSelect.onmouseout = (function (i) {
+								MonsterSelect.onmouseout = (function (i) {
 									return function () {
 										Fight.MonsterCvs[i].className = "";
 									}
