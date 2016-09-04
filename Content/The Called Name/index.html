@@ -177,7 +177,7 @@
 							var SelectPane = Menu.MenuPanel(["35", "^^"]);
 							
 							for (var i = 0; i < Fight.MonsterParty.length; i++) {
-								var MonsterSelect = Menu.MenuItem(SelectPane, ["0" + i.toString(), "7" + (i + 1).toString()], R.COLOR.WHITE, MonsterParty[i].Name, (function (i) {
+								var MonsterSelect = Menu.MenuItem(SelectPane, ["0" + i.toString(), "7" + (i + 1).toString()], R.COLOR.WHITE, Fight.MonsterParty[i].Name, (function (i) {
 									return function () {
 										SelectPane.parentElement.removeChild(SelectPane);
 										BattlePane.parentElement.removeChild(BattlePane);
