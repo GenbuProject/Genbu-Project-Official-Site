@@ -142,7 +142,7 @@
 					FightMemory = [];
 					
 					for (var i = 0; i < Resource.SystemData.Group[GroupID].length; i++) {
-						MonsterParty[i] = Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]];
+						MonsterParty[i] = $.extend(true, {}, Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]]);
 						
 						MonsterCvs[i] = document.createElement("Canvas");
 							MonsterCvs[i].id = "Monster" + i;
