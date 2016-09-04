@@ -118,7 +118,7 @@ function Main() {
 			} else {
 				Map.Show(2, [
 					function () {
-						Fight.Init(3, Menu, R, GamePad);
+						Fight.Init(3, Menu, R, MsgBox, GamePad);
 					}
 				]);
 			}
