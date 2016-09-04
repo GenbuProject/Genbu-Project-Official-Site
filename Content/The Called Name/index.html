@@ -173,7 +173,7 @@
 							for (var i = 0; i < MonsterParty.length; i++) {
 								var MonsterSelect = Menu.MenuItem(SelectPane, ["0" + i.toString(), "7" + (i + 1).toString()], R.COLOR.WHITE, MonsterParty[i].Name, (function (i) {
 									return function () {
-										FightMemory[parseInt(MonsterSelect.id.split("MonsterSelect")[1])].HP = FightMemory[parseInt(MonsterSelect.id.split("MonsterSelect")[1])].HP - Calc.GetFinalATKDamage([Calc.TypeID.Character, 0], [Calc.TypeID.Monster, Resource.SystemData.Group[GroupID][i]]);
+										FightMemory[i].HP -= Calc.GetFinalATKDamage([Calc.TypeID.Character, 0], [Calc.TypeID.Monster, Resource.SystemData.Group[GroupID][i]]);
 									}
 								})(i));
 								
