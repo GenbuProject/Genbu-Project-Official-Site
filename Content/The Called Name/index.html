@@ -171,11 +171,13 @@
 							var SelectPane = Menu.MenuPanel(["35", "^^"]);
 							
 							for (var i = 0; i < MonsterParty.length; i++) {
-								var MonsterSelect = Menu.MenuItem(SelectPane, ["0" + i.toString(), "5" + (i + 1).toString()], R.COLOR.WHITE, MonsterParty[i].Name, (function (i) {
+								var MonsterSelect = Menu.MenuItem(SelectPane, ["0" + i.toString(), "7" + (i + 1).toString()], R.COLOR.WHITE, MonsterParty[i].Name, (function (i) {
 									return function () {
-										FightMemory[i].HP = FightMemory[i].HP - Calc.GetFinalATKDamage([Calc.TypeID.Character, 0], [Calc.TypeID.Monster, Resource.SystemData.Group[GroupID][i]]);
+										FightMemory[parseInt(MonsterSelect.id.split("MonsterSelect")[1])].HP = FightMemory[parseInt(MonsterSelect.id.split("MonsterSelect")[1])].HP - Calc.GetFinalATKDamage([Calc.TypeID.Character, 0], [Calc.TypeID.Monster, Resource.SystemData.Group[GroupID][i]]);
 									}
 								})(i));
+								
+								MonsterSelect.id = "MonsterSelect" + i;
 								
 								MonsterSelect.onmouseover = (function (i) {
 									return function () {
