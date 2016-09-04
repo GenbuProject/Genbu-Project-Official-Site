@@ -139,6 +139,8 @@
 					var MonsterParty = [];
 					var MonsterCvs = [];
 					
+					FightMemory = [];
+					
 					for (var i = 0; i < Resource.SystemData.Group[GroupID].length; i++) {
 						MonsterParty[i] = Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]];
 						
@@ -148,6 +150,8 @@
 							
 						document.getElementById("RPGHelper-Main").appendChild(MonsterCvs[i]);
 						
+						FightMemory[i] = MonsterParty[i];
+						
 						var Graphic = new Image();
 							Graphic.src = "MonsterGraphic/" + MonsterParty[i].MonsterGraphic;
 							
@@ -155,7 +159,7 @@
 								return function () {
 									MonsterCvs[i].width = document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5;
 									MonsterCvs[i].height = document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5;
-									MonsterCvs[i].style.left = (document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5) * i + ((i == 0) ? 0 : 5) + "px";
+									MonsterCvs[i].style.left = (document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5) * i + "px";
 									
 									MonsterCvs[i].getContext("2d").drawImage(Graphic, 0, 0, Graphic.width, Graphic.height, 0, 0, document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5, document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5);
 								}
@@ -167,17 +171,19 @@
 							var SelectPane = Menu.MenuPanel(["35", "^^"]);
 							
 							for (var i = 0; i < MonsterParty.length; i++) {
-								var Monster = Menu.MenuItem(SelectPane, ["0" + i.toString(), "5" + (i + 1).toString()], R.COLOR.WHITE, MonsterParty[i].Name, function () {
-									
-								});
+								var MonsterSelect = Menu.MenuItem(SelectPane, ["0" + i.toString(), "5" + (i + 1).toString()], R.COLOR.WHITE, MonsterParty[i].Name, (function (i) {
+									return function () {
+										FightMemory[i].HP = FightMemory[i].HP - Calc.GetFinalATKDamage([Calc.TypeID.Character, 0], [Calc.TypeID.Monster, Resource.SystemData.Group[GroupID][i]]);
+									}
+								})(i));
 								
-								Monster.onmouseover = (function (i) {
+								MonsterSelect.onmouseover = (function (i) {
 									return function () {
 										MonsterCvs[i].className = "TheCalledName-MonsterArea";
 									}
 								})(i);
 								
-								Monster.onmouseout = (function (i) {
+								MonsterSelect.onmouseout = (function (i) {
 									return function () {
 										MonsterCvs[i].className = "";
 									}
