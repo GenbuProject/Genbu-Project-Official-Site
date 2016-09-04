@@ -144,26 +144,26 @@
 					FightMemory = [];
 					
 					for (var i = 0; i < Resource.SystemData.Group[GroupID].length; i++) {
-						MonsterParty[i] = $.extend(true, {}, Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]]);
+						Fight.MonsterParty[i] = $.extend(true, {}, Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]]);
 						
-						MonsterCvs[i] = document.createElement("Canvas");
-							MonsterCvs[i].id = "Monster" + i;
-							MonsterCvs[i].style.position = "Absolute";
+						Fight.MonsterCvs[i] = document.createElement("Canvas");
+							Fight.MonsterCvs[i].id = "Monster" + i;
+							Fight.MonsterCvs[i].style.position = "Absolute";
 							
-						document.getElementById("RPGHelper-Main").appendChild(MonsterCvs[i]);
+						document.getElementById("RPGHelper-Main").appendChild(Fight.MonsterCvs[i]);
 						
-						FightMemory[i] = MonsterParty[i];
+						FightMemory[i] = Fight.MonsterParty[i];
 						
 						var Graphic = new Image();
-							Graphic.src = "MonsterGraphic/" + MonsterParty[i].MonsterGraphic;
+							Graphic.src = "MonsterGraphic/" + Fight.MonsterParty[i].MonsterGraphic;
 							
 							Graphic.onload = (function (i) {
 								return function () {
-									MonsterCvs[i].width = document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5;
-									MonsterCvs[i].height = document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5;
-									MonsterCvs[i].style.left = (document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5) * i + "px";
+									Fight.MonsterCvs[i].width = document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5;
+									Fight.MonsterCvs[i].height = document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5;
+									Fight.MonsterCvs[i].style.left = (document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5) * i + "px";
 									
-									MonsterCvs[i].getContext("2d").drawImage(Graphic, 0, 0, Graphic.width, Graphic.height, 0, 0, document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5, document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5);
+									Fight.MonsterCvs[i].getContext("2d").drawImage(Graphic, 0, 0, Graphic.width, Graphic.height, 0, 0, document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5, document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5);
 								}
 							})(i);
 							
@@ -176,7 +176,7 @@
 						Menu.MenuItem(BattlePane, ["00", "31"], R.COLOR.WHITE, "攻撃", function () {
 							var SelectPane = Menu.MenuPanel(["35", "^^"]);
 							
-							for (var i = 0; i < MonsterParty.length; i++) {
+							for (var i = 0; i < Fight.MonsterParty.length; i++) {
 								var MonsterSelect = Menu.MenuItem(SelectPane, ["0" + i.toString(), "7" + (i + 1).toString()], R.COLOR.WHITE, MonsterParty[i].Name, (function (i) {
 									return function () {
 										SelectPane.parentElement.removeChild(SelectPane);
@@ -191,17 +191,17 @@
 									}
 								})(i));
 								
-								MonsterSelect.id = "MonsterSelect" + i;
+								Fight.MonsterSelect.id = "MonsterSelect" + i;
 								
-								MonsterSelect.onmouseover = (function (i) {
+								Fight.MonsterSelect.onmouseover = (function (i) {
 									return function () {
-										MonsterCvs[i].className = "TheCalledName-MonsterArea";
+										Fight.MonsterCvs[i].className = "TheCalledName-MonsterArea";
 									}
 								})(i);
 								
-								MonsterSelect.onmouseout = (function (i) {
+								Fight.MonsterSelect.onmouseout = (function (i) {
 									return function () {
-										MonsterCvs[i].className = "";
+										Fight.MonsterCvs[i].className = "";
 									}
 								})(i);
 							}
