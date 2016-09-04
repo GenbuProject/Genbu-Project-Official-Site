@@ -243,7 +243,9 @@ function Main() {
 									DEF: 5,
 									MAG: 5,
 									SPD: 5,
-									LUK: 5
+									LUK: 5,
+									
+									EXP: 0
 								};
 								
 								Effect.BlackOut(2.5, 0);

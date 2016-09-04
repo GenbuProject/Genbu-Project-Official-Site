@@ -137,6 +137,7 @@
 			var Fight = {
 				MonsterParty: [],
 				MonsterCvs: [],
+				GetEXP: 0,
 				
 				Init: function (GroupID, Menu, R, MsgBox, GamePad) {
 					GamePad.Disable();
@@ -193,15 +194,29 @@
 											} else {
 												Fight.MonsterParty.splice(i, 1);
 												
-												Fight.MonsterCvs[i].parentElement.removeChild(MonsterCvs[i]);
+												Fight.MonsterCvs[i].parentElement.removeChild(Fight.MonsterCvs[i]);
 												Fight.MonsterCvs.splice(i, 1);
 												
 												SelectPane.children[i].parentElement.removeChild(SelectPane.children[i]);
 												
 												FightMemory.splice(i, 1);
 												
+												Fight.GetEXP += Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]].EXP;
+												
 												MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]].Name + "は倒れた！", function () {
-													
+													if (Fight.MonsterParty.length > 0) {
+														Fight.Show(GroupID, Menu, R, MsgBox);
+													} else {
+														Resource.UserData.Character[0].EXP += Fight.GetEXP;
+														
+														MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "全ての敵を倒した！", function () {
+															MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "は" + Fight.GetEXP + "EXPを獲得！", function () {
+																Fight.MonsterParty = [];
+																Fight.MonsterCvs = [];
+																Fight.GetExp = 0;
+															});
+														});
+													}
 												});
 											}
 										});
