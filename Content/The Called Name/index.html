@@ -104,11 +104,11 @@
 					}
 					
 					if (Attacker.ATK > Victim.DEF) {
-						return Calc.GetGenericATKDamage(AttackerData[0], AttackerData[1]) * (1 + 0.1 * (Attacker.ATK - Victim.DEF));
+						return Math.round(Calc.GetGenericATKDamage(AttackerData[0], AttackerData[1]) * (1 + 0.1 * (Attacker.ATK - Victim.DEF)));
 					} else if (Attacker.ATK < Victim.DEF) {
-						return Calc.GetGenericATKDamage(AttackerData[0], AttackerData[1]) * (1 - 0.01 * (Victim.DEF - Attacker.ATK));
+						return Math.round(Calc.GetGenericATKDamage(AttackerData[0], AttackerData[1]) * (1 - 0.01 * (Victim.DEF - Attacker.ATK)));
 					} else {
-						return Calc.GetGenericATKDamage(AttackerData[0], AttackerData[1]);
+						return Math.round(Calc.GetGenericATKDamage(AttackerData[0], AttackerData[1]));
 					}
 				}
 				
@@ -126,11 +126,11 @@
 					}
 					
 					if (Attacker.MAG > Victim.DEF) {
-						return Calc.GetGenericMAGDamage(AttackerData[0], AttackerData[1], UsingMagicID) * (1 + 0.1 * (Attacker.MAG - Victim.DEF));
+						return Math.round(Calc.GetGenericMAGDamage(AttackerData[0], AttackerData[1], UsingMagicID) * (1 + 0.1 * (Attacker.MAG - Victim.DEF)));
 					} else if (Attacker.MAG < Victim.DEF) {
-						return Calc.GetGenericMAGDamage(AttackerData[0], AttackerData[1], UsingMagicID) * (1 - 0.01 * (Victim.DEF - Attacker.MAG));
+						return Math.round(Calc.GetGenericMAGDamage(AttackerData[0], AttackerData[1], UsingMagicID) * (1 - 0.01 * (Victim.DEF - Attacker.MAG)));
 					} else {
-						return Calc.GetGenericMAGDamage(AttackerData[0], AttackerData[1], UsingMagicID);
+						return Math.round(Calc.GetGenericMAGDamage(AttackerData[0], AttackerData[1], UsingMagicID));
 					}
 				}
 				
