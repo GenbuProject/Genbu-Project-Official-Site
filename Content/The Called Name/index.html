@@ -139,8 +139,9 @@
 				MonsterCvs: [],
 				GetEXP: 0,
 				
-				Init: function (GroupID, Menu, R, MsgBox, GamePad) {
+				Init: function (GroupID, BGMID, Menu, R, MsgBox, GamePad) {
 					GamePad.Disable();
+					Sound.PlayBGM(BGMID);
 					
 					FightMemory = [];
 					

@@ -26,43 +26,53 @@
 				"Volume": 1
 			},
 			
-			"Elum Village.wav": {
+			"Sadness.wav": {
 				"ID": 4,
 				"Volume": 1
 			},
 			
-			"Prospering Elum Village.wav": {
+			"Birds.wav": {
 				"ID": 5,
 				"Volume": 1
 			},
 			
-			"Battle 1.wav": {
+			"Siren.wav": {
 				"ID": 6,
 				"Volume": 1
 			},
 			
+			"Elum Village.wav": {
+				"ID": 11,
+				"Volume": 1
+			},
+			
+			"Prospering Elum Village.wav": {
+				"ID": 12,
+				"Volume": 1
+			},
+			
+			"Elum Forest.wav": {
+				"ID": 13,
+				"Volume": 1
+			},
+			
+			"Battle 1.wav": {
+				"ID": 101,
+				"Volume": 1
+			},
+			
 			"Battle 2.wav": {
-				"ID": 7,
+				"ID": 102,
 				"Volume": 1
 			},
 			
 			"Boss Battle 1.wav": {
-				"ID": 8,
+				"ID": 103,
 				"Volume": 1
 			},
 			
-			"Sadness.wav": {
-				"ID": 9,
-				"Volume": 1
-			},
-			
-			"Birds.wav": {
-				"ID": 10,
-				"Volume": 1
-			},
-			
-			"Siren.wav": {
-				"ID": 11,
+			"Boss Battle(Elum Forest).wav": {
+				"ID": 104,
 				"Volume": 1
 			}
 		},

@@ -54,12 +54,12 @@ function Main() {
 												Character.Hide();
 												
 												MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "白昼ノ空、紅ニ染ムル時、世界ガ闇騎士団ニ呪ワレル時ナリ。\n闇騎士団ヲ打チ砕キタル時、世界ハ救ワレタモウ。\n打チ砕ク者、村カラ一人現レリ。", function () {
+													ToLibrary();
+													Character.Warp(0, R.DIRECTION.N, [7, 12]);
+													
 													Effect.ColorOut(1.5, 0, "Black");
 													
 													setTimeout(function () {
-														ToLibrary();
-														Character.Warp(0, R.DIRECTION.N, [7, 12]);
-														
 														MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「これは...！」", function () {
 															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「代々伝わる書物だ。\n　この中の誰かが救い主らしい......」", function () {
 																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「ほう( ͡° ͜ʖ ͡°)」", function () {
@@ -93,7 +93,7 @@ function Main() {
 			
 			if (!Resource.UserData.Flag.Flag0001_Prologue) {
 				Sound.StopBGM();
-				Sound.PlayBGM(9);
+				Sound.PlayBGM(4);
 			}
 		}
 		
@@ -116,11 +116,34 @@ function Main() {
 					}
 				]);
 			} else {
-				Map.Show(2, [
-					function () {
-						Fight.Init(3, Menu, R, MsgBox, GamePad);
-					}
-				]);
+				MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "僕は外に出て、ただただ勇者探しの闘いを観覧していた。\nこの中から現れる訳がないと思っていた......", function () {
+					Map.Show(2, []);
+					Character.Warp(0, R.DIRECTION.S, [23, 5]);
+					
+					Effect.ColorOut(1.5, 0, "Black");
+					
+					setTimeout(function () {
+						MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村長\n「これで全員か......？\n　いや......まだ1人戦っておらん者が居るゾ^～」", function () {
+							MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "その時全員の視線が自分自身に向けられた事に気が付いた。", function () {
+								MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『.........えっ...！？』", function () {
+									MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「おいおい村長さんよぉ！\n　まさか" + Resource.UserData.Character[0].Name + "が勇者とか言うんじゃないよな？」", function () {
+										MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村長\n「それはそなたの腕を持って試してみるが良いじゃろう...」", function () {
+											MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「おう！\n　臨むところだ！」", function () {
+												MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『くそっ......\n　やるしかないか...！』", function () {
+													Effect.BlackOut(2.5, 0);
+													
+													setTimeout(function () {
+														Fight.Init(3, 103, Menu, R, MsgBox, GamePad);
+													}, 2500);
+												});
+											});
+										});
+									});
+								});
+							});
+						});
+					}, 1500);
+				});
 			}
 			
 			Character.Warp(0, R.DIRECTION.S, [23, 5]);
@@ -251,7 +274,7 @@ function Main() {
 								Effect.BlackOut(2.5, 0);
 								
 								setTimeout(function () {
-									Sound.PlayBGM(10);
+									Sound.PlayBGM(5);
 									
 									MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.CYAN, "真っ青な空が広がるある日の朝。\n僕はただ空を眺めていた。", function () {
 										MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.CYAN, "僕の名前は" + Resource.UserData.Character[0]["Name"] + "。\nエルム村育ちの普通の子供だ。", function () {
@@ -304,7 +327,7 @@ function Main() {
 																	Effect.ColorOut(1.5, 0, "Black");
 																	
 																	setTimeout(function () {
-																		Sound.PlayBGM(11);
+																		Sound.PlayBGM(6);
 																		
 																		MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, "エルム村の緊急放送\n「エルム村の村人達は蔵書庫へ集合せよ\n　繰り返す\n　エルム村の村人達は蔵書庫へ集合せよ」", function () {
 																			MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "周りの村人達が次々と蔵書庫に集まっている...\n僕も蔵書庫へ向かおう...！", function () {
@@ -428,7 +451,7 @@ function Main() {
 						});
 						
 						Menu.MenuItem(AboutPane, ["01", "^2"], R.COLOR.WHITE, "製作者：プログラマーGenboo", function () {});
-						Menu.MenuItem(AboutPane, ["02", "^3"], R.COLOR.WHITE, "最終更新日：2016年08月30日[火]", function () {});
+						Menu.MenuItem(AboutPane, ["02", "^3"], R.COLOR.WHITE, "最終更新日：2016年09月04日[日]", function () {});
 						Menu.MenuItem(AboutPane, ["03", "^4"], R.COLOR.WHITE, "バージョン：Alpha 1.3", function () {});
 				});
 		});
