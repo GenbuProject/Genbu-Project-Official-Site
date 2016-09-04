@@ -135,7 +135,7 @@ function Main() {
 													Effect.BlackOut(2.5, 0);
 													
 													setTimeout(function () {
-														Fight.Init(3, 103, Menu, R, MsgBox, GamePad);
+														Fight.Init(3, 103, Menu, Sound, R, MsgBox, GamePad);
 													}, 2500);
 												});
 											});

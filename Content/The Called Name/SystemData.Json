@@ -86,6 +86,21 @@
 			"Crow.wav": {
 				"ID": 2,
 				"Volume": 1
+			},
+			
+			"Encount.wav": {
+				"ID": 101,
+				"Volume": 1
+			},
+			
+			"Knife1.wav": {
+				"ID": 102,
+				"Volume": 1
+			},
+			
+			"Escape.wav": {
+				"ID": 103,
+				"Volume": 1
 			}
 		},
 		
