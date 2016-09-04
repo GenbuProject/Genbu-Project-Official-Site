@@ -138,7 +138,7 @@
 				MonsterParty: [],
 				MonsterCvs: [],
 				
-				Init: function (GroupID, Menu, R) {
+				Init: function (GroupID, Menu, R, GamePad) {
 					GamePad.Disable();
 					
 					FightMemory = [];
@@ -167,11 +167,11 @@
 								}
 							})(i);
 							
-						Fight.Show();
+						Fight.Show(Menu, R, MsgBox);
 					}
 				},
 				
-				Show: function () {
+				Show: function (Menu, R, MsgBox) {
 					var BattlePane = Menu.MenuPanel(["05", "3^"]);
 						Menu.MenuItem(BattlePane, ["00", "31"], R.COLOR.WHITE, "攻撃", function () {
 							var SelectPane = Menu.MenuPanel(["35", "^^"]);
@@ -186,7 +186,7 @@
 										FightMemory[i].HP -= Damage;
 										
 										MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "の攻撃！\n" + Resource.UserData.Character[0].Name + "は" + Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]] + "に" + Damage + "のダメージを与えた！", function () {
-											Fight.Show();
+											Fight.Show(Menu, R, MsgBox);
 										});
 									}
 								})(i));
