@@ -50,6 +50,8 @@ function Main() {
 											Effect.BlackOut(1.5, 0);
 											
 											setTimeout(function () {
+												Sound.StopBGM();
+												
 												Map.Hide();
 												Character.Hide();
 												
@@ -135,7 +137,7 @@ function Main() {
 													Effect.BlackOut(2.5, 0);
 													
 													setTimeout(function () {
-														Fight.Init(3, 103, Menu, Sound, R, MsgBox, GamePad);
+														Fight.Init(3, 103, Sound, Menu, MsgBox, R, GamePad);
 													}, 2500);
 												});
 											});
