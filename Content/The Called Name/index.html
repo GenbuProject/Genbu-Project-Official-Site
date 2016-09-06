@@ -139,8 +139,10 @@
 				MonsterCvs: [],
 				GetEXP: 0,
 				
-				Init: function (GroupID, BGMID, GamePad, Sound, Menu, R, MsgBox) {
+				Init: function (GroupID, BackImgPath, BGMID, GamePad, Sound, Menu, R, MsgBox) {
 					GamePad.Disable();
+					
+					Canvas.style.background = "BackGround/" + BackImgPath;
 					
 					Sound.PlaySE(101);
 					Sound.PlayBGM(BGMID);
