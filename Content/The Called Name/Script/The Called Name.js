@@ -137,6 +137,9 @@ function Main() {
 													Effect.BlackOut(2.5, 0);
 													
 													setTimeout(function () {
+														Map.Hide();
+														Character.Hide();
+														
 														Fight.Init(3, 103, GamePad, Sound, Menu, R, MsgBox);
 													}, 2500);
 												});
