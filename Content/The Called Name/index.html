@@ -142,7 +142,7 @@
 				Init: function (GroupID, BackImgPath, BGMID, GamePad, Sound, Menu, R, MsgBox) {
 					GamePad.Disable();
 					
-					Canvas.style.background = "BackGround/" + BackImgPath;
+					document.getElementById("RPGHelper-Main").style.background = "BackGround/" + BackImgPath;
 					
 					Sound.PlaySE(101);
 					Sound.PlayBGM(BGMID);

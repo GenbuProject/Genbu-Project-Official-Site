@@ -123,7 +123,7 @@ function Main() {
 				Sound.StopBGM();
 				
 				MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "僕は外に出て、ただただ勇者探しの闘いを観覧していた。\nこの中から現れる訳がないと思っていた......", function () {
-					Map.Show(2, []);
+					Map.Show(2, [null]);
 					Character.Warp(0, R.DIRECTION.S, [23, 5]);
 					
 					Effect.ColorOut(1.5, 0, "Black");
