@@ -142,21 +142,14 @@
 				Init: function (GroupID, BackImgPath, BGMID, GamePad, Sound, Menu, R, MsgBox) {
 					GamePad.Disable();
 					
+					document.getElementById("RPGHelper-Main").style.background = "URL('BackGround/" + BackImgPath + "')";
+					
 					Sound.PlaySE(101);
 					Sound.PlayBGM(BGMID);
 					
 					FightMemory = [];
 					
 					for (var i = 0; i < Resource.SystemData.Group[GroupID].length; i++) {
-						var Back = document.createElement("Canvas");
-							Back.width = document.getElementById("RPGHelper-Main").style.width;
-							Back.height = document.getElementById("RPGHelper-Main").style.height;
-							
-						var BackImg = new Image("BackGround/" + BackImgPath);
-							BackImg.onload = function () {
-								Back.getContext("2d").drawImage(BackImg, 0, 0, BackImg.width, BackImg.height, 0, 0, Back.width, Back.height);
-							}
-							
 						Fight.MonsterParty[i] = $.extend(true, {}, Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]]);
 						
 						Fight.MonsterCvs[i] = document.createElement("Canvas");
