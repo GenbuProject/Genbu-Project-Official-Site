@@ -142,7 +142,7 @@ function Main() {
 														Map.Hide();
 														Character.Hide();
 														
-														Fight.Init(3, "Elum Village.png", 103, function () {}, function () {});//GamePad, Sound, Menu, R, MsgBox);
+														Fight.Init.call(R.THIS, 3, "Elum Village.png", 103, function () {}, function () {});//GamePad, Sound, Menu, R, MsgBox);
 													}, 2500);
 												});
 											});
