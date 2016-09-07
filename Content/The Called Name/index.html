@@ -139,7 +139,7 @@
 				MonsterCvs: [],
 				GetEXP: 0,
 				
-				Init: function (GroupID, BackImgPath, BGMID, GamePad, Sound, Menu, R, MsgBox) {
+				Init: function (GroupID, BackImgPath, BGMID, OnVictoryFuc, OnLoseFuc) {
 					GamePad.Disable();
 					
 					document.getElementById("RPGHelper-Main").style.background = "URL('BackGround/" + BackImgPath + "')";
@@ -174,10 +174,10 @@
 							})(i);
 					}
 					
-					Fight.Show(GroupID, Menu, R, MsgBox);
+					Fight.Show(GroupID, OnVictoryFuc, OnLoseFuc);//Menu, R, MsgBox);
 				},
 				
-				Show: function (GroupID, Menu, R, MsgBox) {
+				Show: function (GroupID, OnVictoryFuc, OnLoseFuc) {
 					var BattlePane = Menu.MenuPanel(["05", "3^"]);
 						Menu.MenuItem(BattlePane, ["00", "31"], R.COLOR.WHITE, "攻撃", function () {
 							var SelectPane = Menu.MenuPanel(["35", "^^"]);
@@ -219,6 +219,8 @@
 																Fight.MonsterParty = [];
 																Fight.MonsterCvs = [];
 																Fight.GetExp = 0;
+																
+																OnVictoryFuc();
 															});
 														});
 													}
