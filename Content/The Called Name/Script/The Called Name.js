@@ -142,7 +142,25 @@ function Main() {
 														Map.Hide();
 														Character.Hide();
 														
-														Fight.Init.call(R.THIS, 3, "Elum Village.png", 103, function () {}, function () {});//GamePad, Sound, Menu, R, MsgBox);
+														Fight.Init.call(R.THIS, 3, 103, "Elum Village.png", function () {
+															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「何......だと...!?」", function () {
+																Sound.StopBGM();
+																Effect.BlackOut(1.5, 0);
+																
+																setTimeout(function () {
+																	document.getElementById("RPGHelper-Main").style.background = "Black";
+																	
+																	MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『...何が...起きた...!?』", function () {
+																		MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "気が付くとエンリコさんが地べたに座り込んでいた。\n僕は戦いに勝ったみたいだ...", function () {
+																			MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「お前...一体何者だ...？」", function () {
+																			});
+																		});
+																	});
+																}, 1500);
+															});
+														}, function () {
+															
+														});
 													}, 2500);
 												});
 											});
