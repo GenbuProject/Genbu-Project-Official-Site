@@ -174,16 +174,19 @@
 							})(i);
 					}
 					
-					Fight.Show.call(R.THIS, GroupID, OnVictoryFuc, OnLoseFuc);//Menu, R, MsgBox);
+					Fight.Show.call(R.THIS, GroupID, OnVictoryFuc, OnLoseFuc);
 				},
 				
 				Show: function (GroupID, OnVictoryFuc, OnLoseFuc) {
-					var BattlePane = this.Menu.MenuPanel(["05", "3^"]);
-						this.Menu.MenuItem(BattlePane, ["00", "31"], this.R.COLOR.WHITE, "攻撃", function () {
-							var SelectPane = this.Menu.MenuPanel(["35", "^^"]);
+					var Menu = this.Menu,
+						MsgBox = this.MsgBox;
+						
+					var BattlePane = Menu.MenuPanel(["05", "3^"]);
+						Menu.MenuItem(BattlePane, ["00", "31"], R.COLOR.WHITE, "攻撃", function () {
+							var SelectPane = Menu.MenuPanel(["35", "^^"]);
 							
 							for (var i = 0; i < Fight.MonsterParty.length; i++) {
-								var MonsterSelect = this.Menu.MenuItem(SelectPane, ["0" + i.toString(), "7" + (i + 1).toString()], this.R.COLOR.WHITE, Fight.MonsterParty[i].Name, (function (i) {
+								var MonsterSelect = Menu.MenuItem(SelectPane, ["0" + i.toString(), "7" + (i + 1).toString()], R.COLOR.WHITE, Fight.MonsterParty[i].Name, (function (i) {
 									return function () {
 										Fight.MonsterCvs[i].className = "";
 										
@@ -193,7 +196,7 @@
 										var Damage = Calc.GetFinalATKDamage([Calc.TypeID.Character, 0], [Calc.TypeID.Monster, Resource.SystemData.Group[GroupID][i]]);
 										FightMemory[i].HP > Damage ? FightMemory[i].HP -= Damage : FightMemory[i].HP = 0;
 										
-										MsgBox.call(R.THIS, this.R.POS.BOTTOM, this.R.SPEED.NORMAL, this.R.COLOR.WHITE, Resource.UserData.Character[0].Name + "の攻撃！\n" + Resource.UserData.Character[0].Name + "は" + Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]].Name + "に" + Damage + "のダメージを与えた！", function () {
+										MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "の攻撃！\n" + Resource.UserData.Character[0].Name + "は" + Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]].Name + "に" + Damage + "のダメージを与えた！", function () {
 											if (FightMemory[i].HP != 0) {
 												Fight.Show.call(R.THIS, GroupID, OnVictoryFuc, OnLoseFuc);
 											} else {
@@ -208,14 +211,14 @@
 												
 												Fight.GetEXP += Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]].EXP;
 												
-												MsgBox.call(R.THIS, this.R.POS.BOTTOM, this.R.SPEED.NORMAL, this.R.COLOR.WHITE, Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]].Name + "は倒れた！", function () {
+												MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]].Name + "は倒れた！", function () {
 													if (Fight.MonsterParty.length > 0) {
 														Fight.Show.call(R.THIS, GroupID, OnVictoryFuc, OnLoseFuc);
 													} else {
 														Resource.UserData.Character[0].EXP += Fight.GetEXP;
 														
-														MsgBox.call(R.THIS, this.R.POS.BOTTOM, this.R.SPEED.NORMAL, this.R.COLOR.WHITE, "全ての敵を倒した！", function () {
-															MsgBox.call(R.THIS, this.R.POS.BOTTOM, this.R.SPEED.NORMAL, this.R.COLOR.WHITE, Resource.UserData.Character[0].Name + "は" + Fight.GetEXP + "EXPを獲得！", function () {
+														MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "全ての敵を倒した！", function () {
+															MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "は" + Fight.GetEXP + "EXPを獲得！", function () {
 																Fight.MonsterParty = [];
 																Fight.MonsterCvs = [];
 																Fight.GetExp = 0;
