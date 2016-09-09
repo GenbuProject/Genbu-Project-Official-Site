@@ -135,6 +135,8 @@ function Main() {
 														Character.Hide();
 														
 														Fight.Init.call(R.THIS, 3, 103, "Elum Village.png", function () {
+															Resource.UserData.Flag.Flag0002_FindHero = true;
+															
 															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「何......だと...!?」", function () {
 																Sound.StopBGM();
 																Effect.BlackOut(1.5, 0, function () {
@@ -145,7 +147,28 @@ function Main() {
 																			MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「お前...一体何者だ...？」", function () {
 																				MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『......えっ...？』", function () {
 																					MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「......ただの奴ではなさそうだな...」", function () {
-																						Effect.BlackOut(1.5, 0);
+																						Effect.BlackOut(1.5, 0, function () {
+																							MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「エレンを...頼む...！」", function () {
+																								Effect.WhiteOut(0.5, 0, function () {
+																									Effect.BlackOut(0.25, 0, function () {
+																										MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "エンリコさんの心からの叫びが\n僕の心に鋭く突き刺さった。", function () {
+																											MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "その叫びが僕の想いを変えた。\nエレンを必ず助けだすと決意した.........", function () {
+																												ToElumVillage();
+																												Character.Warp(0, [12, 2]);
+																												
+																												Effect.ColorOut(2, 0, "Black", function () {
+																													MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「頑張れよ！」", function () {
+																														MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n「分かったンゴ！」", function () {
+																															GamePad.KeyboardType(0);
+																														});
+																													});
+																												});
+																											});
+																										});
+																									});
+																								});
+																							});
+																						});
 																					});
 																				});
 																			});
@@ -462,8 +485,8 @@ function Main() {
 						});
 						
 						Menu.MenuItem(AboutPane, ["01", "^2"], R.COLOR.WHITE, "製作者：プログラマーGenboo", function () {});
-						Menu.MenuItem(AboutPane, ["02", "^3"], R.COLOR.WHITE, "最終更新日：2016年09月04日[日]", function () {});
-						Menu.MenuItem(AboutPane, ["03", "^4"], R.COLOR.WHITE, "バージョン：Alpha 1.3", function () {});
+						Menu.MenuItem(AboutPane, ["02", "^3"], R.COLOR.WHITE, "最終更新日：2016年09月09日[金]", function () {});
+						Menu.MenuItem(AboutPane, ["03", "^4"], R.COLOR.WHITE, "RPGHelperのバージョン：Release 1.3", function () {});
 				});
 		});
 	}
