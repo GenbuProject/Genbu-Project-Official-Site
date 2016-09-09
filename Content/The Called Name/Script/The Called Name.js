@@ -47,9 +47,7 @@ function Main() {
 								MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「エレンが...闇騎士団に誘拐されたようだ...」", function () {
 									MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『闇...騎士団...って...\n　まさかそんな事が...！』", function () {
 										MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「この本を見てみろ...」", function () {
-											Effect.BlackOut(1.5, 0);
-											
-											setTimeout(function () {
+											Effect.BlackOut(1.5, 0, function () {
 												Sound.StopBGM();
 												
 												Map.Hide();
@@ -59,9 +57,7 @@ function Main() {
 													ToLibrary();
 													Character.Warp(0, R.DIRECTION.N, [7, 12]);
 													
-													Effect.ColorOut(1.5, 0, "Black");
-													
-													setTimeout(function () {
+													Effect.ColorOut(1.5, 0, "Black", function () {
 														MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「これは...！」", function () {
 															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「代々伝わる書物だ。\n　この中の誰かが救い主らしい......」", function () {
 																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「ほう( ͡° ͜ʖ ͡°)」", function () {
@@ -75,9 +71,9 @@ function Main() {
 																});
 															});
 														});
-													}, 1500);
+													});
 												});
-											}, 1500);
+											});
 										});
 									});
 								});
@@ -126,9 +122,7 @@ function Main() {
 					Map.Show(2, [null]);
 					Character.Warp(0, R.DIRECTION.S, [23, 5]);
 					
-					Effect.ColorOut(1.5, 0, "Black");
-					
-					setTimeout(function () {
+					Effect.ColorOut(1.5, 0, "Black", function () {
 						MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村長\n「これで全員か......？\n　いや......まだ1人戦っておらん者が居るゾ^～」", function () {
 							MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "その時全員の視線が自分自身に向けられた事に気が付いた。", function () {
 								MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『.........えっ...！？』", function () {
@@ -136,32 +130,33 @@ function Main() {
 										MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村長\n「それはそなたの腕を持って試してみるが良いじゃろう...」", function () {
 											MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「おう！\n　臨むところだ！」", function () {
 												MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『くそっ......\n　やるしかないか...！』", function () {
-													Effect.BlackOut(2.5, 0);
-													
-													setTimeout(function () {
+													Effect.BlackOut(2.5, 0, function () {
 														Map.Hide();
 														Character.Hide();
 														
 														Fight.Init.call(R.THIS, 3, 103, "Elum Village.png", function () {
 															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「何......だと...!?」", function () {
 																Sound.StopBGM();
-																Effect.BlackOut(1.5, 0);
-																
-																setTimeout(function () {
+																Effect.BlackOut(1.5, 0, function () {
 																	document.getElementById("RPGHelper-Main").style.background = "Black";
 																	
-																	MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『...何が...起きた...!?』", function () {
+																	MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『......!?』", function () {
 																		MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "気が付くとエンリコさんが地べたに座り込んでいた。\n僕は戦いに勝ったみたいだ...", function () {
 																			MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「お前...一体何者だ...？」", function () {
+																				MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『......えっ...？』", function () {
+																					MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「......ただの奴ではなさそうだな...」", function () {
+																						Effect.BlackOut(1.5, 0);
+																					});
+																				});
 																			});
 																		});
 																	});
-																}, 1500);
+																});
 															});
 														}, function () {
 															
 														});
-													}, 2500);
+													});
 												});
 											});
 										});
@@ -169,7 +164,7 @@ function Main() {
 								});
 							});
 						});
-					}, 1500);
+					});
 				});
 			}
 		}
@@ -262,9 +257,8 @@ function Main() {
 					Sound.StopBGM();
 					
 					StartMenu.parentElement.removeChild(StartMenu);
-					Effect.BlackOut(1.5, 0);
 					
-					setTimeout(function () {
+					Effect.BlackOut(1.5, 0, function () {
 						Canvas.style.background = "Black";
 						Sound.PlayBGM(2);
 						
@@ -296,9 +290,7 @@ function Main() {
 									EXP: 0
 								};
 								
-								Effect.BlackOut(2.5, 0);
-								
-								setTimeout(function () {
+								Effect.BlackOut(2.5, 0, function () {
 									Sound.PlayBGM(5);
 									
 									MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.CYAN, "真っ青な空が広がるある日の朝。\n僕はただ空を眺めていた。", function () {
@@ -319,17 +311,14 @@ function Main() {
 												]);
 												
 												Character.Warp(0, R.DIRECTION.S, [16, 12]);
-												Effect.ColorOut(2, 0, "Black");
 												
-												setTimeout(function () {
+												Effect.ColorOut(2, 0, "Black", function () {
 													Sound.StopBGM();
 													Sound.PlaySE(1);
 													
 													MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "？？？\n「た、大変だー！！\n　エレンが居ないぞ！！」", function () {
 														MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『...なっ、何だって...!?\n　一体何が起こったんだ.........』", function () {
-															Effect.BlackOut(2, 0);
-															
-															setTimeout(function () {
+															Effect.BlackOut(2, 0, function () {
 																Map.Hide();
 																Character.Hide();
 																
@@ -349,9 +338,8 @@ function Main() {
 																	]);
 																	
 																	Character.Warp(0, R.DIRECTION.S, [16, 12]);
-																	Effect.ColorOut(1.5, 0, "Black");
 																	
-																	setTimeout(function () {
+																	Effect.ColorOut(1.5, 0, "Black", function () {
 																		Sound.PlayBGM(6);
 																		
 																		MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, "エルム村の緊急放送\n「エルム村の村人達は蔵書庫へ集合せよ\n　繰り返す\n　エルム村の村人達は蔵書庫へ集合せよ」", function () {
@@ -442,27 +430,25 @@ function Main() {
 																				});
 																			});
 																		});
-																	}, 1500);
+																	});
 																});
-															}, 2000);
+															});
 														});
 													});
-												}, 2000);
+												});
 											});
 										});
 									});
-								}, 2500);
+								});
 							});
-					}, 1500);
+					});
 				});
 				
 				Menu.MenuItem(StartMenu, ["01", "42"], R.COLOR.WHITE, "LOAD GAME", function () {
 					Load(".sav", function () {
-						Effect.BlackOut(2, 0);
-						
-						setTimeout(function () {
+						Effect.BlackOut(2, 0, function () {
 							
-						}, 2000);
+						});
 					});
 				});
 				
