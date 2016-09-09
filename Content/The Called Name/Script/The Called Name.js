@@ -149,12 +149,12 @@ function Main() {
 																					MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「......ただの奴ではなさそうだな...」", function () {
 																						Effect.BlackOut(1.5, 0, function () {
 																							MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「エレンを...頼む...！」", function () {
-																								Effect.WhiteOut(0.5, 0, function () {
-																									Effect.BlackOut(0.25, 0, function () {
+																								Effect.WhiteOut(2, 0, function () {
+																									Effect.BlackOut(1, 0, function () {
 																										MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "エンリコさんの心からの叫びが\n僕の心に鋭く突き刺さった。", function () {
 																											MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "その叫びが僕の想いを変えた。\nエレンを必ず助けだすと決意した.........", function () {
 																												ToElumVillage();
-																												Character.Warp(0, [12, 2]);
+																												Character.Warp(0, R.DIRECTION.S, [12, 2]);
 																												
 																												Effect.ColorOut(2, 0, "Black", function () {
 																													MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「頑張れよ！」", function () {
