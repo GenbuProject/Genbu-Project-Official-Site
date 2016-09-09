@@ -137,6 +137,7 @@
 			var Fight = {
 				MonsterParty: [],
 				MonsterCvs: [],
+				MonsterAI: [],
 				GetEXP: 0,
 				
 				Init: function (GroupID, BGMID, BackImgPath, OnVictoryFuc, OnLoseFuc) {
@@ -159,6 +160,12 @@
 						document.getElementById("RPGHelper-Main").appendChild(Fight.MonsterCvs[i]);
 						
 						FightMemory[i] = Fight.MonsterParty[i];
+						
+						var AIReader = new XMLHttpRequest();
+							AIReader.open("GET", "MonsterGraphic/" + Fight.MonsterParty[i].Name + ".js", false);
+							AIReader.send(null);
+							
+						Fight.MonsterAI[i] = eval(AIReader.responseText);
 						
 						var Graphic = new Image();
 							Graphic.src = "MonsterGraphic/" + Fight.MonsterParty[i].MonsterGraphic;
@@ -198,6 +205,7 @@
 										
 										MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "の攻撃！\n" + Resource.UserData.Character[0].Name + "は" + Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]].Name + "に" + Damage + "のダメージを与えた！", function () {
 											if (FightMemory[i].HP != 0) {
+												
 												Fight.Show.call(R.THIS, GroupID, OnVictoryFuc, OnLoseFuc);
 											} else {
 												Fight.MonsterParty.splice(i, 1);
