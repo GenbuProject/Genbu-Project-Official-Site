@@ -148,8 +148,6 @@
 					this.Sound.PlaySE(101);
 					this.Sound.PlayBGM(BGMID);
 					
-					FightMemory = [];
-					
 					for (var i = 0; i < Resource.SystemData.Group[GroupID].length; i++) {
 						Fight.MonsterParty[i] = $.extend(true, {}, Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]]);
 						
@@ -159,7 +157,7 @@
 							
 						document.getElementById("RPGHelper-Main").appendChild(Fight.MonsterCvs[i]);
 						
-						FightMemory[i] = Fight.MonsterParty[i];
+						Fight.MonsterParty[i] = Fight.MonsterParty[i];
 						
 						var AIReader = new XMLHttpRequest();
 							AIReader.open("GET", "MonsterGraphic/" + Fight.MonsterParty[i].Name + ".js", false);
@@ -201,10 +199,13 @@
 										BattlePane.parentElement.removeChild(BattlePane);
 										
 										var Damage = Calc.GetFinalATKDamage([Calc.TypeID.Character, 0], [Calc.TypeID.Monster, Resource.SystemData.Group[GroupID][i]]);
-										FightMemory[i].HP > Damage ? FightMemory[i].HP -= Damage : FightMemory[i].HP = 0;
+										Fight.MonsterParty[i].HP > Damage ? Fight.MonsterParty[i].HP -= Damage : Fight.MonsterParty[i].HP = 0;
 										
 										MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "の攻撃！\n" + Resource.UserData.Character[0].Name + "は" + Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]].Name + "に" + Damage + "のダメージを与えた！", function () {
-											if (FightMemory[i].HP != 0) {
+											if (Fight.MonsterParty[i].HP != 0) {
+												for (var n = 0; n < Fight.MonsterAI.length; n++) {
+													Fight.MonsterAI[n]();
+												}
 												
 												Fight.Show.call(R.THIS, GroupID, OnVictoryFuc, OnLoseFuc);
 											} else {
@@ -214,8 +215,6 @@
 												Fight.MonsterCvs.splice(i, 1);
 												
 												SelectPane.children[i].parentElement.removeChild(SelectPane.children[i]);
-												
-												FightMemory.splice(i, 1);
 												
 												Fight.GetEXP += Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]].EXP;
 												
