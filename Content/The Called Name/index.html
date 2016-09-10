@@ -101,6 +101,12 @@
 						}
 					} else if (AttackerData[0] === Calc.TypeID.Monster) {
 						var Attacker = Resource.SystemData.Monster[AttackerData[1]];
+						
+						if (VictimData[0] === Calc.TypeID.Character) {
+							var Victim = Resource.UserData.Character[VictimData[1]];
+						} else if (VictimData[0] === Calc.TypeID.Monster) {
+							var Victim = Resource.SystemData.Monster[VictimData[1]];
+						}
 					}
 					
 					if (Attacker.ATK > Victim.DEF) {
@@ -123,6 +129,12 @@
 						}
 					} else if (AttackerData[0] === Calc.TypeID.Monster) {
 						var Attacker = Resource.SystemData.Monster[AttackerData[1]];
+						
+						if (VictimData[0] === Calc.TypeID.Character) {
+							var Victim = Resource.UserData.Character[VictimData[1]];
+						} else if (VictimData[0] === Calc.TypeID.Monster) {
+							var Victim = Resource.SystemData.Monster[VictimData[1]];
+						}
 					}
 					
 					if (Attacker.MAG > Victim.DEF) {

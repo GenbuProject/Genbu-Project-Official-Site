@@ -1,6 +1,6 @@
 (function () {
 	return function () {
-		var ID = 2;
+		var ID = 3;
 		var Percent = Math.floor(Math.random() * 100 + 1); //1～100
 		
 		if (1 <= Percent && Percent <= 85) {
