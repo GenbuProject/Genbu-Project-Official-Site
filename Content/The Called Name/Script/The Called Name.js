@@ -139,6 +139,7 @@ function Main() {
 															
 															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「何......だと...!?」", function () {
 																Sound.StopBGM();
+																
 																Effect.BlackOut(1.5, 0, function () {
 																	document.getElementById("RPGHelper-Main").style.background = "Black";
 																	

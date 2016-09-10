@@ -219,7 +219,17 @@
 													Fight.MonsterAI[n]();
 												}
 												
-												Fight.Show.call(R.THIS, GroupID, OnVictoryFuc, OnLoseFuc);
+												if (Resource.UserData.Character[0].HP != 0) {
+													Fight.Show.call(R.THIS, GroupID, OnVictoryFuc, OnLoseFuc);
+												} else {
+													MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.RED, Resource.UserData.Character[0].Name + "は力尽きた......", function () {
+														Effect.BlackOut(2, 0, function () {
+															MsgBox.call(R.THIS, R.POS.BOTTOM, 100, R.COLOR.WHITE, "GAME OVER", function () {
+																Main();
+															});
+														});
+													});
+												}
 											} else {
 												Fight.MonsterParty.splice(i, 1);
 												
