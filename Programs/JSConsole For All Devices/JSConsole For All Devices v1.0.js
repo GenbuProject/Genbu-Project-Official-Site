@@ -18,7 +18,7 @@ Function.prototype.Debug = function (DoesRunOnAllDevices) {
 		}
 	} else if (DoesRunOnAllDevices) {
 		window.addEventListener("error", function (Error) {
-			document.getElementById(window.ConsoleID).innerHTML += "[ファイル：" + Error.fileName + "] <Span Style = 'Color: Red;'>" + Error.message + "</Span> [エラー行：" + Error.lineno + "]<Br>";
+			document.getElementById(window.ConsoleID).innerHTML += "<Span Style = 'Color: Red;'>" + Error.message + "</Span> [<A Href = '" + Error.filename + "'>" + Error.filename + "</A>:" + Error.lineno + "]<Br>";
 		});
 		
 		this.apply(this);
