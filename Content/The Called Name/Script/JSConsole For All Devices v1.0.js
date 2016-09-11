@@ -20,6 +20,8 @@ Function.prototype.Debug = function (DoesRunOnAllDevices) {
 		window.addEventListener("error", function (Msg, URL, Line) {
 			document.getElementById(window.ConsoleID).innerHTML += "[ファイル：" + URL + "] <Span Style = 'Color: Red;'>" + Msg + "</Span> [エラー行：" + Line + "]<Br>";
 		});
+		
+		this.apply(this);
 	}
 }
 
