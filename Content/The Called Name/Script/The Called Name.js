@@ -158,9 +158,15 @@ function Main() {
 																												Character.Warp(0, R.DIRECTION.S, [12, 2]);
 																												
 																												Effect.ColorOut(2, 0, "Black", function () {
+																													Sound.PlayBGM(11);
+																													
 																													MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「頑張れよ！」", function () {
 																														MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n「分かったンゴ！」", function () {
-																															GamePad.KeyboardType(0);
+																															Effect.BlackOut(1, 0, function () {
+																																MsgBox(R.POS.BOTTOM, R.SPEED.FAST, R.COLOR.CYAN, "僕はエンリコさんの想いを胸に、\n故郷を後にした......", function () {
+																																	GamePad.KeyboardType(0);
+																																});
+																															});
 																														});
 																													});
 																												});
