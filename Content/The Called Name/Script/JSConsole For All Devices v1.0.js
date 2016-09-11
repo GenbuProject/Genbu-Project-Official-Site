@@ -5,11 +5,21 @@
  *##################################################################
 /*/
 
-Function.prototype.Debug = function () {
-	try {
-		this.apply(this, this.arguments);
-	} catch (Error) {
-		document.getElementById(window.ConsoleID).innerHTML += "<Span Style = 'Color: Red;'>" + Error + "</Span> [エラー行：" + Error.toSource().split(",")[Error.toSource().split(",").length - 1].replace(/[)]/g, "") + "]<Br>";
+Function.prototype.Debug = function (DoesRunOnAllDevices) {
+	if (!DoesRunOnAllDevices) {
+		try {
+			this.apply(this);
+		} catch (Error) {
+			if (Error.toSource) {
+				document.getElementById(window.ConsoleID).innerHTML += "<Span Style = 'Color: Red;'>" + Error + "</Span> [エラー行：" + Error.toSource().split(",")[Error.toSource().split(",").length - 1].replace(/[)]/g, "") + "]<Br>";
+			} else {
+				document.getElementById(window.ConsoleID).innerHTML += "<Span Style = 'Color: Red;'>" + Error + "</Span><Br>";
+			}
+		}
+	} else if (DoesRunOnAllDevices) {
+		window.addEventListener("error", function (Msg, URL, Line) {
+			document.getElementById(window.ConsoleID).innerHTML += "[ファイル：" + URL + "] <Span Style = 'Color: Red;'>" + Msg + "</Span> [エラー行：" + Line + "]<Br>";
+		});
 	}
 }
 
