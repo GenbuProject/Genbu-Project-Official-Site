@@ -294,7 +294,7 @@
 		</Style>
 	</Head>
 	
-	<Body Style = 'Color: #EEE; Font: 14px/2 "メイリオ", Meiryo, Osaka; BackGround: URL("Image/Back.jpg");' OnLoad = "Main(); KeySet();">
+	<Body Style = 'Color: #EEE; Font: 14px/2 "メイリオ", Meiryo, Osaka; BackGround: URL("Image/Back.jpg");' OnLoad = "(function () {Main();}).Debug(); KeySet();">
 		<Div ID = "RPGHelper-Main" Width = "512" Height = "512"></Div>
 		
 		<P>
