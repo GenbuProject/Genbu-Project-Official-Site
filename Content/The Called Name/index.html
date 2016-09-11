@@ -10,6 +10,7 @@
 		
 		<Script Src = "Script/JsDecoder.js"></Script>
 		<Script Src = "Script/JsColorizer.js"></Script>
+		<Script Src = "Script/JSConsole For All Devices v1.0.js"></Script>
 		<Script Src = "Script/The Called Name.js"></Script>
 		
 		<Script Src = "https://code.jquery.com/jquery-1.12.2.js"></Script>
@@ -23,6 +24,10 @@
 			ga('create', 'UA-82835508-1', 'auto');
 			ga('require', 'linkid', 'linkid.js');
 			ga('send', 'pageview');
+		</Script>
+		
+		<Script Name = "Params For JSConsole" Type = "Text/JavaScript">
+			window.ConsoleID = "Console";
 		</Script>
 		
 		<Script Type = "Text/JavaScript">
@@ -292,8 +297,12 @@
 	<Body Style = 'Color: #EEE; Font: 14px/2 "メイリオ", Meiryo, Osaka; BackGround: URL("Image/Back.jpg");' OnLoad = "Main(); KeySet();">
 		<Div ID = "RPGHelper-Main" Width = "512" Height = "512"></Div>
 		
-		<TextArea ID = "Code" Wrap = "Off" Style = "Width: 100%; Height: 250px" OnKeyDown = "Formater();" OnKeyPress = "Formater();" OnKeyUp = "Formater();"></TextArea>
-		<Pre ID = "FormatedCode" Style = "Color: MenuText; BackGround: Menu; Border: Thin Solid OrangeRed; Border-Radius: 5px; Line-Height: 1.5; Display: None;"></Pre>
-		<Button OnClick = 'eval(document.getElementById("Code").value);'>コード実行</Button>
+		<P>
+			<TextArea ID = "Code" Wrap = "Off" Style = "Width: 100%; Height: 250px" OnKeyDown = "Formater();" OnKeyPress = "Formater();" OnKeyUp = "Formater();"></TextArea>
+			<Pre ID = "FormatedCode" Style = "Width: 100%; Color: MenuText; BackGround: Menu; Border: Thin Solid OrangeRed; Border-Radius: 5px; Line-Height: 1.5; Display: None;"></Pre><Br>
+			<Div ID = "Console" Style = "Width: 100%; BackGround: LightGray; Border: Thin Solid DarkOrange; Border-Radius: 5px;"></Div>
+		</P>
+		
+		<Button OnClick = 'eval("(function () {" + document.getElementById("Code").value + "}).Debug();");'>コード実行</Button>
 	</Body>
 </HTML>

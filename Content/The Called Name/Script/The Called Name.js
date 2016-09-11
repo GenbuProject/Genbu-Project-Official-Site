@@ -244,6 +244,11 @@ function Main() {
 					function () {
 						GamePad.Disable();
 						
+						Resource.UserData.Pos = [];
+						Resource.UserData.Pos[0] = R.DIRECTION.N;
+						//Resource.UserData.Pos[1][0] = 
+						//Resource.UserData.Pos[1][1] = 
+						
 						MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {
 							GamePad.KeyboardType(0);
 						});
@@ -471,7 +476,10 @@ function Main() {
 				Menu.MenuItem(StartMenu, ["01", "42"], R.COLOR.WHITE, "LOAD GAME", function () {
 					Load(".sav", function () {
 						Effect.BlackOut(2, 0, function () {
+							Resource.UserData.Pos[0] == 3 ? ToElumVillage() : null;
+							Character.Warp(0, Resource.UserData.Pos[0], [Resource.UserData.Pos[1][0], Resource.UserData.Pos[1][1]])
 							
+							Resource.UserData.Pos = undefined;
 						});
 					});
 				});
