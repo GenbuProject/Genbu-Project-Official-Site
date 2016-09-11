@@ -1,5 +1,5 @@
 (function () {
-	return function () {
+	return function (TurnChangeFuc) {
 		var ID = 3;
 		var Percent = Math.floor(Math.random() * 100 + 1); //1～100
 		
@@ -8,7 +8,7 @@
 			Resource.UserData.Character[0].HP > Damage ? Resource.UserData.Character[0].HP -= Damage : Resource.UserData.Character[0].HP = 0;
 			
 			R.THIS.MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.SystemData.Monster[ID].Name + "の攻撃！\n" + Resource.SystemData.Monster[ID].Name + "は" + Resource.UserData.Character[0].Name + "に" + Damage + "のダメージを与えた！", function () {
-				return false;
+				TurnChangeFuc();
 			});
 		}
 	}

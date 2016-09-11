@@ -221,18 +221,18 @@
 										MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "の攻撃！\n" + Resource.UserData.Character[0].Name + "は" + Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]].Name + "に" + Damage + "のダメージを与えた！", function () {
 											if (Fight.MonsterParty[i].HP != 0) {
 												for (var n = 0; n < Fight.MonsterAI.length; n++) {
-													Fight.MonsterAI[n]();
-												}
-												
-												if (Resource.UserData.Character[0].HP != 0) {
-													Fight.Show.call(R.THIS, GroupID, OnVictoryFuc, OnLoseFuc);
-												} else {
-													MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.RED, Resource.UserData.Character[0].Name + "は力尽きた......", function () {
-														Effect.BlackOut(2, 0, function () {
-															MsgBox.call(R.THIS, R.POS.BOTTOM, 100, R.COLOR.WHITE, "GAME OVER", function () {
-																Main();
+													Fight.MonsterAI[n](function () {
+														if (Resource.UserData.Character[0].HP != 0) {
+															Fight.Show.call(R.THIS, GroupID, OnVictoryFuc, OnLoseFuc);
+														} else {
+															MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.RED, Resource.UserData.Character[0].Name + "は力尽きた......", function () {
+																Effect.BlackOut(2, 0, function () {
+																	MsgBox.call(R.THIS, R.POS.BOTTOM, 100, R.COLOR.WHITE, "GAME OVER", function () {
+																		Main();
+																	});
+																});
 															});
-														});
+														}
 													});
 												}
 											} else {
