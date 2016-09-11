@@ -141,7 +141,7 @@ function Main() {
 																Sound.StopBGM();
 																
 																Effect.BlackOut(1.5, 0, function () {
-																	document.getElementById("RPGHelper-Main").style.background = "Black";
+																	Canvas.style.background = "Black";
 																	
 																	MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『......!?』", function () {
 																		MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "気が付くとエンリコさんが地べたに座り込んでいた。\n僕は戦いに勝ったみたいだ...", function () {
@@ -151,7 +151,11 @@ function Main() {
 																						Effect.BlackOut(1.5, 0, function () {
 																							MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「エレンを...頼む...！」", function () {
 																								Effect.WhiteOut(2, 0, function () {
+																									Canvas.style.background = "White";
+																									
 																									Effect.BlackOut(1, 0, function () {
+																										Canvas.style.background = "Black";
+																										
 																										MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "エンリコさんの心からの叫びが\n僕の心に鋭く突き刺さった。", function () {
 																											MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "その叫びが僕の想いを変えた。\nエレンを必ず助けだすと決意した.........", function () {
 																												ToElumVillage();
@@ -164,7 +168,12 @@ function Main() {
 																														MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n「分かったンゴ！」", function () {
 																															Effect.BlackOut(1, 0, function () {
 																																MsgBox(R.POS.BOTTOM, R.SPEED.FAST, R.COLOR.CYAN, "僕はエンリコさんの想いを胸に、\n故郷を後にした......", function () {
-																																	GamePad.KeyboardType(0);
+																																	ToElumVillage();
+																																	Character.Warp(0, R.DIRECTION.S, [12, 2]);
+																																	
+																																	Effect.ColorOut(1, 0, "Black", function () {
+																																		GamePad.KeyboardType(0);
+																																	});
 																																});
 																															});
 																														});
@@ -250,26 +259,27 @@ function Main() {
 					function () {
 						GamePad.Disable();
 						
-						Resource.UserData.Pos = [];
-						Resource.UserData.Pos[0] = R.DIRECTION.N;
-						//Resource.UserData.Pos[1][0] = 
-						//Resource.UserData.Pos[1][1] = 
+						Resource.UserData.Pos = [3, [6, 10, R.DIRECTION.N]];
 						
 						MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {
 							GamePad.KeyboardType(0);
 						});
 						
 						Save("The Called Name " + new Date().getToday("-") + ".sav");
+						Resource.UserData.Pos = undefined;
 					},
 					
 					function () {
 						GamePad.Disable();
 						
+						Resource.UserData.Pos = [3, [7, 10, R.DIRECTION.N]];
+						
 						MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {
 							GamePad.KeyboardType(0);
 						});
 						
 						Save("The Called Name " + new Date().getToday("-") + ".sav");
+						Resource.UserData.Pos = undefined;
 					}
 				]);
 				
@@ -483,7 +493,7 @@ function Main() {
 					Load(".sav", function () {
 						Effect.BlackOut(2, 0, function () {
 							Resource.UserData.Pos[0] == 3 ? ToElumVillage() : null;
-							Character.Warp(0, Resource.UserData.Pos[0], [Resource.UserData.Pos[1][0], Resource.UserData.Pos[1][1]])
+							Character.Warp(0, Resource.UserData.Pos[1][2], [Resource.UserData.Pos[1][0], Resource.UserData.Pos[1][1]])
 							
 							Resource.UserData.Pos = undefined;
 						});
