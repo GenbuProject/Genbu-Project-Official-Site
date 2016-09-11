@@ -16,11 +16,14 @@ Function.prototype.Debug = function () {
 Debug = {
 	log: function (Obj) {
 		if (typeof Obj != "string" && typeof Obj != "number") {
+			var Result = "";
 			document.getElementById(window.ConsoleID).innerHTML += Obj + "<Br>";
 			
 			for (var Key in Obj) {
-				document.getElementById(window.ConsoleID).innerHTML += "=><Span Style = 'Color: Orange;'>" + Key + "</Span><Br>";
+				Result += "=><Span Style = 'Color: Orange;'>" + Key + "</Span><Br>";
 			}
+			
+			document.getElementById(window.ConsoleID).innerHTML += Result;
 		} else {
 			document.getElementById(window.ConsoleID).innerHTML += Obj + "<Br>";
 		}
