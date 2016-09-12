@@ -343,7 +343,7 @@ function Main() {
 								Resource.UserData.Common.PlayTime = "0sec";
 								
 								var PlayTimer = setInterval(function () {
-									Resource.UserData.Common.PlayTime = parseInt(Resource.UserData.Common.PlayTime.split("sec")[0]) + 1 + "ルナ";
+									Resource.UserData.Common.PlayTime = parseInt(Resource.UserData.Common.PlayTime.split("ルナ")[0]) + 1 + "ルナ";
 								}, 1000);
 								
 								Effect.BlackOut(2.5, 0, function () {
@@ -445,7 +445,7 @@ function Main() {
 																														
 																													});
 																													
-																													Menu.MenuItem(Panel.SideMenu, ["03", "34"], R.COLOR.WHITE, "ステータス", function () {
+																													Menu.MenuItem(Panel.SideMenu, ["03", "34"], R.COLOR.WHITE, "合成", function () {
 																														
 																													});
 																													
@@ -454,10 +454,12 @@ function Main() {
 																													});
 																													
 																													Menu.MenuItem(Panel.SideMenu, ["05", "36"], R.COLOR.WHITE, "オプション", function () {
-																														
+																														//Panel.OptionPane = Menu.MenuPanel(["30", "^6"]);
 																													});
 																													
 																												Panel.StatusPane = Menu.MenuPanel(["30", "^6"]);
+																													Menu.MenuMsgBox(Panel.StatusPane, ["00", "22"], R.COLOR.WHITE, "").style.background = "CharacterFace/MainCharacter - Normal.png";
+																													
 																													Menu.MenuMsgBox(Panel.StatusPane, ["20", "41"], R.COLOR.WHITE, "HP：");
 																													Menu.MenuMsgBox(Panel.StatusPane, ["40", "71"], Resource.UserData.Character[0].HP <= (Resource.UserData.Character[0].MaxHP / 10) ? R.COLOR.RED : Resource.UserData.Character[0].HP <= (Resource.UserData.Character[0].MaxHP / 5) ? R.COLOR.ORANGE : R.COLOR.WHITE, Resource.UserData.Character[0].HP + " / " + Resource.UserData.Character[0].MaxHP);
 																													
@@ -524,7 +526,7 @@ function Main() {
 							Resource.UserData.Pos = undefined;
 							
 							var PlayTimer = setInterval(function () {
-								Resource.UserData.Common.PlayTime = parseInt(Resource.UserData.Common.PlayTime.split("sec")[0]) + 1 + "ルナ";
+								Resource.UserData.Common.PlayTime = parseInt(Resource.UserData.Common.PlayTime.split("ルナ")[0]) + 1 + "ルナ";
 							}, 1000);
 						});
 					});
