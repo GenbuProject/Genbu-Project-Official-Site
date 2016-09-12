@@ -343,7 +343,7 @@ function Main() {
 								Resource.UserData.Common.PlayTime = "0sec";
 								
 								var PlayTimer = setInterval(function () {
-									Resource.UserData.Common.PlayTime = parseInt(Resource.UserData.Common.PlayTime.split("sec")[0] + 1).toString();
+									Resource.UserData.Common.PlayTime = parseInt(Resource.UserData.Common.PlayTime.split("sec")[0]) + 1 + "ルナ";
 								}, 1000);
 								
 								Effect.BlackOut(2.5, 0, function () {
@@ -524,7 +524,7 @@ function Main() {
 							Resource.UserData.Pos = undefined;
 							
 							var PlayTimer = setInterval(function () {
-								Resource.UserData.Common.PlayTime = parseInt(Resource.UserData.Common.PlayTime.split("sec")[0] + 1).toString();
+								Resource.UserData.Common.PlayTime = parseInt(Resource.UserData.Common.PlayTime.split("sec")[0]) + 1 + "ルナ";
 							}, 1000);
 						});
 					});
