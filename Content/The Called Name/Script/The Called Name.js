@@ -458,7 +458,7 @@ function Main() {
 																													});
 																													
 																												Panel.StatusPane = Menu.MenuPanel(["30", "^6"]);
-																													Menu.MenuMsgBox(Panel.StatusPane, ["00", "22"], R.COLOR.WHITE, "").style.background = "CharacterFace/MainCharacter - Normal.png";
+																													Menu.MenuMsgBox(Panel.StatusPane, ["00", "22"], R.COLOR.WHITE, "").style.background = "URL('CharacterFace/MainCharacter - Normal.png')";
 																													
 																													Menu.MenuMsgBox(Panel.StatusPane, ["20", "41"], R.COLOR.WHITE, "HP：");
 																													Menu.MenuMsgBox(Panel.StatusPane, ["40", "71"], Resource.UserData.Character[0].HP <= (Resource.UserData.Character[0].MaxHP / 10) ? R.COLOR.RED : Resource.UserData.Character[0].HP <= (Resource.UserData.Character[0].MaxHP / 5) ? R.COLOR.ORANGE : R.COLOR.WHITE, Resource.UserData.Character[0].HP + " / " + Resource.UserData.Character[0].MaxHP);
