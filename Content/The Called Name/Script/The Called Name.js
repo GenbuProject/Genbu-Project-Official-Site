@@ -459,10 +459,10 @@ function Main() {
 																													
 																												Panel.StatusPane = Menu.MenuPanel(["30", "^6"]);
 																													Menu.MenuMsgBox(Panel.StatusPane, ["20", "41"], R.COLOR.WHITE, "HP：");
-																													Menu.MenuMsgBox(Panel.StatusPane, ["40", "71"], Resource.UserData.Character[0].HP <= (Resource.UserData.Character[0].MaxHP / 10) ? R.COLOR.RED : Resource.UserData.Character[0].HP <= (Resource.UserData.Character[0].MaxHP / 5) ? R.COLOR.ORANGE : R.COLOR.WHITE, Resource.UserData.Character[0].HP " / " + Resource.UserData.Character[0].MaxHP);
+																													Menu.MenuMsgBox(Panel.StatusPane, ["40", "71"], Resource.UserData.Character[0].HP <= (Resource.UserData.Character[0].MaxHP / 10) ? R.COLOR.RED : Resource.UserData.Character[0].HP <= (Resource.UserData.Character[0].MaxHP / 5) ? R.COLOR.ORANGE : R.COLOR.WHITE, Resource.UserData.Character[0].HP + " / " + Resource.UserData.Character[0].MaxHP);
 																													
 																													Menu.MenuMsgBox(Panel.StatusPane, ["21", "42"], R.COLOR.WHITE, "MP：");
-																													Menu.MenuMsgBox(Panel.StatusPane, ["41", "72"], R.COLOR.WHITE, Resource.UserData.Character[0].MP " / " + Resource.UserData.Character[0].MaxMP);
+																													Menu.MenuMsgBox(Panel.StatusPane, ["41", "72"], R.COLOR.WHITE, Resource.UserData.Character[0].MP + " / " + Resource.UserData.Character[0].MaxMP);
 																													
 																													Menu.MenuMsgBox(Panel.StatusPane, ["02", "23"], R.COLOR.WHITE, "Lv " + Resource.UserData.Character[0].Lv);
 																													Menu.MenuMsgBox(Panel.StatusPane, ["22", "73"], R.COLOR.WHITE, "EXP：" + Resource.UserData.Character[0].EXP);
