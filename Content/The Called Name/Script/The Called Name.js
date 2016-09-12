@@ -340,30 +340,10 @@ function Main() {
 								
 								Resource.UserData.Common = {};
 								Resource.UserData.Common.Money = 0;
-								Resource.UserData.Common.PlayTime = "0000:00:00";
+								Resource.UserData.Common.PlayTime = "0sec";
 								
 								var PlayTimer = setInterval(function () {
-									var Time = Resource.UserData.Common.PlayTime.split(":");
-									
-									for (var i = 0; i < Time.length; i++) {
-										Time[i] = (parseInt(Time[i]) + 1).toString();
-										
-										if (i == 0) {
-											if (Time[i].length == 1) {
-												Time[i] = "000" + Time[i];
-											} else if (Time[i].length == 2) {
-												Time[i] = "00" + Time[i];
-											} else if (Time[i].length == 3) {
-												Time[i] = "0" + Time[i];
-											}
-										} else {
-											if (Time[i].length == 1) {
-												Time[i] = "0" + Time[i];
-											}
-										}
-									}
-									
-									Resource.UserData.Common.PlayTime = Time[0] + ":" + Time[1] + ":" + Time[2];
+									Resource.UserData.Common.PlayTime = parseInt(Resource.UserData.Common.PlayTime.split("sec")[0] + 1).toString();
 								}, 1000);
 								
 								Effect.BlackOut(2.5, 0, function () {
@@ -479,14 +459,14 @@ function Main() {
 																													
 																												Panel.StatusPane = Menu.MenuPanel(["30", "^6"]);
 																													Menu.MenuMsgBox(Panel.StatusPane, ["20", "41"], R.COLOR.WHITE, "HP：");
-																													Menu.MenuMsgBox(Panel.StatusPane, ["40", "71"], Resource.UserData.Character[0].HP <= (Resource.UserData.Character[0].MaxHP / 10) ? R.COLOR.RED : Resource.UserData.Character[0].HP <= (Resource.UserData.Character[0].MaxHP / 5) ? R.COLOR.ORANGE : R.COLOR.WHITE, Resource.UserData.Character[0].HP);
+																													Menu.MenuMsgBox(Panel.StatusPane, ["40", "71"], Resource.UserData.Character[0].HP <= (Resource.UserData.Character[0].MaxHP / 10) ? R.COLOR.RED : Resource.UserData.Character[0].HP <= (Resource.UserData.Character[0].MaxHP / 5) ? R.COLOR.ORANGE : R.COLOR.WHITE, Resource.UserData.Character[0].HP " / " + Resource.UserData.Character[0].MaxHP);
 																													
 																													Menu.MenuMsgBox(Panel.StatusPane, ["21", "42"], R.COLOR.WHITE, "MP：");
-																													Menu.MenuMsgBox(Panel.StatusPane, ["41", "72"], R.COLOR.WHITE, Resource.UserData.Character[0].MP);
+																													Menu.MenuMsgBox(Panel.StatusPane, ["41", "72"], R.COLOR.WHITE, Resource.UserData.Character[0].MP " / " + Resource.UserData.Character[0].MaxMP);
 																													
 																													Menu.MenuMsgBox(Panel.StatusPane, ["02", "23"], R.COLOR.WHITE, "Lv " + Resource.UserData.Character[0].Lv);
-																													Menu.MenuMsgBox(Panel.StatusPane, ["22", "73"], R.COLOR.WHITE, "Exp：" + Resource.UserData.Character[0].Exp);
-																													Menu.MenuMsgBox(Panel.StatusPane, ["23", "74"], R.COLOR.WHITE, "次のLvまで" + Resource.UserData.Character[0].Exp);
+																													Menu.MenuMsgBox(Panel.StatusPane, ["22", "73"], R.COLOR.WHITE, "EXP：" + Resource.UserData.Character[0].EXP);
+																													Menu.MenuMsgBox(Panel.StatusPane, ["23", "74"], R.COLOR.WHITE, "次のLvまで" + Resource.UserData.Character[0].EXP);
 																													
 																													Menu.MenuMsgBox(Panel.StatusPane, ["04", "75"], R.COLOR.WHITE, "所持金：" + Resource.UserData.Common.Money + "G(ゴキブリ)");
 																													Menu.MenuMsgBox(Panel.StatusPane, ["05", "76"], R.COLOR.WHITE, "プレイ時間：" + Resource.UserData.Common.PlayTime);
@@ -496,6 +476,7 @@ function Main() {
 																												Flag.IsOpening = false;
 																												
 																												Panel.SideMenu.parentElement.removeChild(Panel.SideMenu);
+																												Panel.StatusPane.parentElement.removeChild(Panel.StatusPane);
 																												Panel.ExplainPane.parentElement.removeChild(Panel.ExplainPane);
 																												
 																												if (Panel.ItemPane != null) {
@@ -543,27 +524,7 @@ function Main() {
 							Resource.UserData.Pos = undefined;
 							
 							var PlayTimer = setInterval(function () {
-								var Time = Resource.UserData.Common.PlayTime.split(":");
-								
-								for (var i = 0; i < Time.length; i++) {
-									Time[i] = (parseInt(Time[i]) + 1).toString();
-									
-									if (i == 0) {
-										if (Time[i].length == 1) {
-											Time[i] = "000" + Time[i];
-										} else if (Time[i].length == 2) {
-											Time[i] = "00" + Time[i];
-										} else if (Time[i].length == 3) {
-											Time[i] = "0" + Time[i];
-										}
-									} else {
-										if (Time[i].length == 1) {
-											Time[i] = "0" + Time[i];
-										}
-									}
-								}
-								
-								Resource.UserData.Common.PlayTime = Time[0] + ":" + Time[1] + ":" + Time[2];
+								Resource.UserData.Common.PlayTime = parseInt(Resource.UserData.Common.PlayTime.split("sec")[0] + 1).toString();
 							}, 1000);
 						});
 					});
