@@ -9,9 +9,10 @@ function Main() {
 		
 		var Panel = {
 			SideMenu: null,
+			StatusPane: null,
+			ExplainPane: null,
 			ItemPane: null,
-			MagicPane: null,
-			ExplainPane: null
+			MagicPane: null
 		}
 		
 		Resource.UserData.Flag = {
@@ -318,12 +319,14 @@ function Main() {
 								
 								Resource.UserData.Character[0] = {
 									Name: PropPane.children[1].value,
-									Job: "勇者",
+									Lv: 1,
 									
 									CharacterTip: "MainCharacter.png",
 									CharacterFace: "MainCharacter.png",
 									
+									MaxHP: 50,
 									HP: 50,
+									MaxMP: 5,
 									MP: 5,
 									
 									ATK: 5,
@@ -334,6 +337,34 @@ function Main() {
 									
 									EXP: 0
 								};
+								
+								Resource.UserData.Common = {};
+								Resource.UserData.Common.Money = 0;
+								Resource.UserData.Common.PlayTime = "0000:00:00";
+								
+								var PlayTimer = setInterval(function () {
+									var Time = Resource.UserData.Common.PlayTime.split(":");
+									
+									for (var i = 0; i < Time.length; i++) {
+										Time[i] = (parseInt(Time[i]) + 1).toString();
+										
+										if (i == 0) {
+											if (Time[i].length == 1) {
+												Time[i] = "000" + Time[i];
+											} else if (Time[i].length == 2) {
+												Time[i] = "00" + Time[i];
+											} else if (Time[i].length == 3) {
+												Time[i] = "0" + Time[i];
+											}
+										} else {
+											if (Time[i].length == 1) {
+												Time[i] = "0" + Time[i];
+											}
+										}
+									}
+									
+									Resource.UserData.Common.PlayTime = Time[0] + ":" + Time[1] + ":" + Time[2];
+								}, 1000);
 								
 								Effect.BlackOut(2.5, 0, function () {
 									Sound.PlayBGM(5);
@@ -395,7 +426,7 @@ function Main() {
 																							MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.ORANGE, "それではThe Called Nameの世界観をお楽しみ下さい。", function () {
 																								GamePad.KeyboardType(0);
 																								
-																								document.addEventListener("keydown", function (Event) {
+																								document.addEventListener("keydown", function OnPressX(Event) {
 																									var MagicPage = 1;
 																									
 																									switch (Event.keyCode) {
@@ -445,6 +476,20 @@ function Main() {
 																													Menu.MenuItem(Panel.SideMenu, ["05", "36"], R.COLOR.WHITE, "オプション", function () {
 																														
 																													});
+																													
+																												Panel.StatusPane = Menu.MenuPanel(["30", "^6"]);
+																													Menu.MenuMsgBox(Panel.StatusPane, ["20", "41"], R.COLOR.WHITE, "HP：");
+																													Menu.MenuMsgBox(Panel.StatusPane, ["40", "71"], Resource.UserData.Character[0].HP <= (Resource.UserData.Character[0].MaxHP / 10) ? R.COLOR.RED : Resource.UserData.Character[0].HP <= (Resource.UserData.Character[0].MaxHP / 5) ? R.COLOR.ORANGE : R.COLOR.WHITE, Resource.UserData.Character[0].HP);
+																													
+																													Menu.MenuMsgBox(Panel.StatusPane, ["21", "42"], R.COLOR.WHITE, "MP：");
+																													Menu.MenuMsgBox(Panel.StatusPane, ["41", "72"], R.COLOR.WHITE, Resource.UserData.Character[0].MP);
+																													
+																													Menu.MenuMsgBox(Panel.StatusPane, ["02", "23"], R.COLOR.WHITE, "Lv " + Resource.UserData.Character[0].Lv);
+																													Menu.MenuMsgBox(Panel.StatusPane, ["22", "73"], R.COLOR.WHITE, "Exp：" + Resource.UserData.Character[0].Exp);
+																													Menu.MenuMsgBox(Panel.StatusPane, ["23", "74"], R.COLOR.WHITE, "次のLvまで" + Resource.UserData.Character[0].Exp);
+																													
+																													Menu.MenuMsgBox(Panel.StatusPane, ["04", "75"], R.COLOR.WHITE, "所持金：" + Resource.UserData.Common.Money + "G(ゴキブリ)");
+																													Menu.MenuMsgBox(Panel.StatusPane, ["05", "76"], R.COLOR.WHITE, "プレイ時間：" + Resource.UserData.Common.PlayTime);
 																													
 																												Panel.ExplainPane = Menu.MenuPanel(["06", "^^"]);
 																											} else if (Flag.IsOpening) {
@@ -496,6 +541,30 @@ function Main() {
 							Character.Warp(0, Resource.UserData.Pos[1][2], [Resource.UserData.Pos[1][0], Resource.UserData.Pos[1][1]])
 							
 							Resource.UserData.Pos = undefined;
+							
+							var PlayTimer = setInterval(function () {
+								var Time = Resource.UserData.Common.PlayTime.split(":");
+								
+								for (var i = 0; i < Time.length; i++) {
+									Time[i] = (parseInt(Time[i]) + 1).toString();
+									
+									if (i == 0) {
+										if (Time[i].length == 1) {
+											Time[i] = "000" + Time[i];
+										} else if (Time[i].length == 2) {
+											Time[i] = "00" + Time[i];
+										} else if (Time[i].length == 3) {
+											Time[i] = "0" + Time[i];
+										}
+									} else {
+										if (Time[i].length == 1) {
+											Time[i] = "0" + Time[i];
+										}
+									}
+								}
+								
+								Resource.UserData.Common.PlayTime = Time[0] + ":" + Time[1] + ":" + Time[2];
+							}, 1000);
 						});
 					});
 				});
@@ -510,7 +579,7 @@ function Main() {
 						});
 						
 						Menu.MenuItem(AboutPane, ["01", "^2"], R.COLOR.WHITE, "製作者：プログラマーGenboo", function () {});
-						Menu.MenuItem(AboutPane, ["02", "^3"], R.COLOR.WHITE, "最終更新日：2016年09月09日[金]", function () {});
+						Menu.MenuItem(AboutPane, ["02", "^3"], R.COLOR.WHITE, "最終更新日：2016年09月12日[月]", function () {});
 						Menu.MenuItem(AboutPane, ["03", "^4"], R.COLOR.WHITE, "RPGHelperのバージョン：Release 1.3", function () {});
 				});
 		});
