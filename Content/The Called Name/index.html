@@ -150,7 +150,9 @@
 						return Math.round(Calc.GetGenericMAGDamage(AttackerData[0], AttackerData[1], UsingMagicID));
 					}
 				}
-				
+		</Script>
+		
+		<Script Name = "Fight-Object" Type = "Text/JavaScript">
 			var Fight = {
 				MonsterParty: [],
 				MonsterCvs: [],
@@ -203,6 +205,12 @@
 					var Menu = this.Menu,
 						MsgBox = this.MsgBox;
 						
+					var StatusPane = Menu.MenuPanel(["04", "^5"]);
+						Menu.MenuMsgBox(StatusPane, ["00", "41"], R.COLOR.WHITE, "HP：" + Resource.UserData.Character[0].HP);
+						Menu.MenuMsgBox(StatusPane, ["40", "81"], R.COLOR.WHITE, "MP：" + Resource.UserData.Character[0].MP);
+						Menu.MenuMsgBox(StatusPane, ["80", "91"], R.COLOR.WHITE, ""); //ステータス異常アイコン
+						Menu.MenuMsgBox(StatusPane, ["80", "^1"], R.COLOR.WHITE, ""); //ステータス異常アイコン
+						
 					var BattlePane = Menu.MenuPanel(["05", "3^"]);
 						Menu.MenuItem(BattlePane, ["00", "31"], R.COLOR.WHITE, "攻撃", function () {
 							var SelectPane = Menu.MenuPanel(["35", "^^"]);
@@ -212,8 +220,11 @@
 									return function () {
 										Fight.MonsterCvs[i].className = "";
 										
-										SelectPane.parentElement.removeChild(SelectPane);
 										BattlePane.parentElement.removeChild(BattlePane);
+										SelectPane.parentElement.removeChild(SelectPane);
+										StatusPane.parentElement.removeChild(StatusPane);
+										
+										Sound.PlaySE(102);
 										
 										var Damage = Calc.GetFinalATKDamage([Calc.TypeID.Character, 0], [Calc.TypeID.Monster, Resource.SystemData.Group[GroupID][i]]);
 										Fight.MonsterParty[i].HP > Damage ? Fight.MonsterParty[i].HP -= Damage : Fight.MonsterParty[i].HP = 0;
@@ -281,6 +292,18 @@
 									}
 								})(i);
 							}
+						});
+						
+						Menu.MenuItem(BattlePane, ["01", "32"], R.COLOR.WHITE, "魔法", function () {
+							
+						});
+						
+						Menu.MenuItem(BattlePane, ["02", "33"], R.COLOR.WHITE, "アイテム", function () {
+							
+						});
+						
+						Menu.MenuItem(BattlePane, ["03", "34"], R.COLOR.WHITE, "逃走", function () {
+							
 						});
 				}
 			}
