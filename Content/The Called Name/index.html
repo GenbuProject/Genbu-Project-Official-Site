@@ -167,14 +167,22 @@
 					this.Sound.PlaySE(101);
 					this.Sound.PlayBGM(BGMID);
 					
+					var MonsterTable = document.createElement("Table");
+						MonsterTable.border = "0";
+						MonsterTable.insertRow(-1);
+						
+					document.getElementById("RPGHelper-Main").appendChild(MonsterTable);
+					
 					for (var i = 0; i < Resource.SystemData.Group[GroupID].length; i++) {
+						var MonsterTableD = document.createElement("TD");
+							MonsterTable.rows[0].appendChild(MonsterTableD);
+							
 						Fight.MonsterParty[i] = $.extend(true, {}, Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]]);
 						
 						Fight.MonsterCvs[i] = document.createElement("Canvas");
 							Fight.MonsterCvs[i].id = "Monster" + i;
-							Fight.MonsterCvs[i].style.position = "Absolute";
 							
-						document.getElementById("RPGHelper-Main").appendChild(Fight.MonsterCvs[i]);
+						MonsterTableD.appendChild(Fight.MonsterCvs[i]);
 						
 						Fight.MonsterParty[i] = Fight.MonsterParty[i];
 						
@@ -206,15 +214,15 @@
 						Menu = this.Menu,
 						MsgBox = this.MsgBox;
 						
-					var StatusPane = Menu.MenuPanel(["04", "^5"]);
+					var StatusPane = Menu.MenuPanel(["05", "^6"]);
 						Menu.MenuMsgBox(StatusPane, ["00", "41"], R.COLOR.WHITE, "HP：" + Resource.UserData.Character[0].HP);
 						Menu.MenuMsgBox(StatusPane, ["40", "81"], R.COLOR.WHITE, "MP：" + Resource.UserData.Character[0].MP);
 						Menu.MenuMsgBox(StatusPane, ["80", "91"], R.COLOR.WHITE, ""); //ステータス異常アイコン
 						Menu.MenuMsgBox(StatusPane, ["80", "^1"], R.COLOR.WHITE, ""); //ステータス異常アイコン
 						
-					var BattlePane = Menu.MenuPanel(["05", "3^"]);
+					var BattlePane = Menu.MenuPanel(["06", "3^"]);
 						Menu.MenuItem(BattlePane, ["00", "31"], R.COLOR.WHITE, "攻撃", function () {
-							var SelectPane = Menu.MenuPanel(["35", "^^"]);
+							var SelectPane = Menu.MenuPanel(["36", "^^"]);
 							
 							for (var i = 0; i < Fight.MonsterParty.length; i++) {
 								var MonsterSelect = Menu.MenuItem(SelectPane, ["0" + i.toString(), "7" + (i + 1).toString()], R.COLOR.WHITE, Fight.MonsterParty[i].Name, (function (i) {
