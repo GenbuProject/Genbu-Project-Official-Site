@@ -168,7 +168,12 @@
 					this.Sound.PlayBGM(BGMID);
 					
 					var MonsterTable = document.createElement("Table");
+						MonsterTable.setAttribute("Align", "Center");
 						MonsterTable.border = "0";
+						
+						MonsterTable.style.potision = "Absolute";
+						MonsterTable.style.top = "20%";
+						
 						MonsterTable.insertRow(-1);
 						
 					document.getElementById("RPGHelper-Main").appendChild(MonsterTable);
@@ -197,9 +202,8 @@
 							
 							Graphic.onload = (function (i) {
 								return function () {
-									Fight.MonsterCvs[i].width = document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5;
-									Fight.MonsterCvs[i].height = document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5;
-									Fight.MonsterCvs[i].style.left = (document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5) * i + "px";
+									//Fight.MonsterCvs[i].width = document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5;
+									//Fight.MonsterCvs[i].height = document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5;
 									
 									Fight.MonsterCvs[i].getContext("2d").drawImage(Graphic, 0, 0, Graphic.width, Graphic.height, 0, 0, document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5, document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5);
 								}
