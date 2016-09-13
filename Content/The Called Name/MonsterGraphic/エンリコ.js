@@ -4,6 +4,8 @@
 		var Percent = Math.floor(Math.random() * 100 + 1); //1～100
 		
 		if (1 <= Percent && Percent <= 85) {
+			R.THIS.Sound.PlaySE(102);
+			
 			var Damage = Calc.GetFinalATKDamage([Calc.TypeID.Monster, ID], [Calc.TypeID.Character, 0]);
 			Resource.UserData.Character[0].HP > Damage ? Resource.UserData.Character[0].HP -= Damage : Resource.UserData.Character[0].HP = 0;
 			
