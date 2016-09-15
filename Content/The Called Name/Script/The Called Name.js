@@ -195,6 +195,8 @@ function Main() {
 															});
 														}, function () {
 															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n『こいつ...出来るっ！』", function () {
+																
+															});
 														});
 													});
 												});
