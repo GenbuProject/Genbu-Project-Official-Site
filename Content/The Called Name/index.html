@@ -168,6 +168,7 @@
 					this.Sound.PlayBGM(BGMID);
 					
 					var MonsterTable = document.createElement("Table");
+						MonsterTable.id = "MonsterTable";
 						MonsterTable.setAttribute("Align", "Center");
 						MonsterTable.border = "0";
 						
@@ -273,6 +274,7 @@
 													if (Fight.MonsterParty.length > 0) {
 														Fight.Show.call(R.THIS, GroupID, OnVictoryFuc, OnLoseFuc);
 													} else {
+														document.getElementById("MonsterTable").parentElement.removeChild(document.getElementById("MonsterTable"));
 														Resource.UserData.Character[0].EXP += Fight.GetEXP;
 														
 														MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "全ての敵を倒した！", function () {
