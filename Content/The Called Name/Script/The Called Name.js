@@ -194,7 +194,7 @@ function Main() {
 																});
 															});
 														}, function () {
-															
+															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n『こいつ...出来るっ！』", function () {
 														});
 													});
 												});
@@ -528,6 +528,8 @@ function Main() {
 							var PlayTimer = setInterval(function () {
 								Resource.UserData.Common.PlayTime = parseInt(Resource.UserData.Common.PlayTime.split("ルナ")[0]) + 1 + "ルナ";
 							}, 1000);
+							
+							GamePad.KeyboardType(0);
 						});
 					});
 				});
