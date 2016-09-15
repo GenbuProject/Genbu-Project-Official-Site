@@ -28,74 +28,6 @@ function Main() {
 			Flag0010: false
 		}
 		
-		function ToLibrary() {
-			Map.Hide();
-			Character.Hide();
-			
-			Map.Show(1, [
-				function () {
-					ToElumVillage();
-				},
-				
-				function () {
-					ToElumVillage();
-				},
-				
-				function () {
-					if (!Resource.UserData.Flag.Flag0001_Prologue) {
-						MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『空気が異様に重々しい...\n　この本は...？』", function () {
-							MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「一体何があったんですか...？」", function () {
-								MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「エレンが...闇騎士団に誘拐されたようだ...」", function () {
-									MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『闇...騎士団...って...\n　まさかそんな事が...！』", function () {
-										MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「この本を見てみろ...」", function () {
-											Effect.BlackOut(1.5, 0, function () {
-												Sound.StopBGM();
-												
-												Map.Hide();
-												Character.Hide();
-												
-												MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "白昼ノ空、紅ニ染ムル時、世界ガ闇騎士団ニ呪ワレル時ナリ。\n闇騎士団ヲ打チ砕キタル時、世界ハ救ワレタモウ。\n打チ砕ク者、村カラ一人現レリ。", function () {
-													ToLibrary();
-													Character.Warp(0, R.DIRECTION.N, [7, 12]);
-													
-													Effect.ColorOut(1.5, 0, "Black", function () {
-														MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「これは...！」", function () {
-															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「代々伝わる書物だ。\n　この中の誰かが救い主らしい......」", function () {
-																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「ほう( ͡° ͜ʖ ͡°)」", function () {
-																	MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「これから外で勇者探しが行われるらしい...\n　俺は先に行ってるぞ...」", function () {
-																		MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "勇者探し...か......\n僕も見に行くとするか...", function () {
-																			Resource.UserData.Flag.Flag0001_Prologue = true;
-																			
-																			GamePad.KeyboardType(0);
-																		});
-																	});
-																});
-															});
-														});
-													});
-												});
-											});
-										});
-									});
-								});
-							});
-						});
-					} else {
-						MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『遥か昔から残されてきたとされる書物だ...』", function () {
-							GamePad.KeyboardType(0);
-						});
-					}
-				}
-			]);
-			
-			Character.Warp(0, R.DIRECTION.N, [1, 13], 3);
-			
-			if (!Resource.UserData.Flag.Flag0001_Prologue) {
-				Sound.StopBGM();
-				Sound.PlayBGM(4);
-			}
-		}
-		
 		function ToElumVillage() {
 			Map.Hide();
 			Character.Hide();
@@ -104,18 +36,19 @@ function Main() {
 				Map.Show(0, [
 					function () {
 						ToElumForest();
+						Character.Warp(0, R.DIRECTION.N, [2, 14]);
 					},
 					
 					function () {
 						ToLibrary();
+						Character.Warp(0, R.DIRECTION.N, [1, 13], 3);
 					},
 					
 					function () {
 						ToLibrary();
+						Character.Warp(0, R.DIRECTION.N, [2, 13], 3);
 					}
 				]);
-				
-				Character.Warp(0, R.DIRECTION.S, [23, 5]);
 			} else {
 				Sound.StopBGM();
 				
@@ -211,51 +144,87 @@ function Main() {
 			}
 		}
 		
+		function ToLibrary() {
+			Map.Hide();
+			Character.Hide();
+			
+			Map.Show(1, [
+				function () {
+					ToElumVillage();
+					Character.Warp(0, R.DIRECTION.S, [23, 5]);
+				},
+				
+				function () {
+					ToElumVillage();
+					Character.Warp(0, R.DIRECTION.S, [24, 5]);
+				},
+				
+				function () {
+					if (!Resource.UserData.Flag.Flag0001_Prologue) {
+						MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『空気が異様に重々しい...\n　この本は...？』", function () {
+							MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「一体何があったんですか...？」", function () {
+								MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「エレンが...闇騎士団に誘拐されたようだ...」", function () {
+									MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『闇...騎士団...って...\n　まさかそんな事が...！』", function () {
+										MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「この本を見てみろ...」", function () {
+											Effect.BlackOut(1.5, 0, function () {
+												Sound.StopBGM();
+												
+												Map.Hide();
+												Character.Hide();
+												
+												MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "白昼ノ空、紅ニ染ムル時、世界ガ闇騎士団ニ呪ワレル時ナリ。\n闇騎士団ヲ打チ砕キタル時、世界ハ救ワレタモウ。\n打チ砕ク者、村カラ一人現レリ。", function () {
+													ToLibrary();
+													Character.Warp(0, R.DIRECTION.N, [7, 12]);
+													
+													Effect.ColorOut(1.5, 0, "Black", function () {
+														MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「これは...！」", function () {
+															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「代々伝わる書物だ。\n　この中の誰かが救い主らしい......」", function () {
+																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「ほう( ͡° ͜ʖ ͡°)」", function () {
+																	MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「これから外で勇者探しが行われるらしい...\n　俺は先に行ってるぞ...」", function () {
+																		MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "勇者探し...か......\n僕も見に行くとするか...", function () {
+																			Resource.UserData.Flag.Flag0001_Prologue = true;
+																			
+																			GamePad.KeyboardType(0);
+																		});
+																	});
+																});
+															});
+														});
+													});
+												});
+											});
+										});
+									});
+								});
+							});
+						});
+					} else {
+						MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『遥か昔から残されてきたとされる書物だ...』", function () {
+							GamePad.KeyboardType(0);
+						});
+					}
+				}
+			]);
+			
+			if (!Resource.UserData.Flag.Flag0001_Prologue) {
+				Sound.StopBGM();
+				Sound.PlayBGM(4);
+			}
+		}
+		
 		function ToElumForest() {
 			if (Resource.UserData.Flag.Flag0002_FindHero) {
 				Map.Hide();
 				Character.Hide();
 				
-				Map.Show(3, [
+				Map.Show(4, [
 					function () {
-						Map.Hide();
-						Character.Hide();
-						
-						Map.Show(0, [
-							function () {
-								ToElumForest();
-							},
-							
-							function () {
-								ToLibrary();
-							},
-							
-							function () {
-								ToLibrary();
-							}
-						]);
-						
+						ToElumVillage();
 						Character.Warp(0, R.DIRECTION.S, [12, 2]);
 					},
 					
 					function () {
-						Map.Hide();
-						Character.Hide();
-						
-						Map.Show(0, [
-							function () {
-								ToElumForest();
-							},
-							
-							function () {
-								ToLibrary();
-							},
-							
-							function () {
-								ToLibrary();
-							}
-						]);
-						
+						ToElumVillage();
 						Character.Warp(0, R.DIRECTION.S, [12, 2]);
 					},
 					
@@ -285,8 +254,6 @@ function Main() {
 						Resource.UserData.Pos = undefined;
 					}
 				]);
-				
-				Character.Warp(0, R.DIRECTION.N, [2, 14]);
 			} else {
 				GamePad.Disable();
 				Character.Warp(0, R.DIRECTION.S, [12, 2]);
