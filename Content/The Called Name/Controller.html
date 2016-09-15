@@ -37,6 +37,22 @@
 					
 				window.parent.document.dispatchEvent(Event);
 			}
+			
+			function OnPressZ() {
+				Event = document.createEvent("Event");
+					Event.initEvent("keydown", true, true);
+					Event.keyCode = 39;
+					
+				window.parent.document.dispatchEvent(Event);
+			}
+			
+			function OnPressX() {
+				Event = document.createEvent("Event");
+					Event.initEvent("keydown", true, true);
+					Event.keyCode = 39;
+					
+				window.parent.document.dispatchEvent(Event);
+			}
 		</Script>
 	</Head>
 	
@@ -50,6 +66,14 @@
 			<Area Shape = "Rect" Coords = "40, 84, 60, 100" Href = "JavaScript:void(0)" OnClick = "OnPressDown();">
 			<Area Shape = "Rect" Coords = "0, 40, 16, 60" Href = "JavaScript:void(0)" OnClick = "OnPressLeft();">
 			<Area Shape = "Rect" Coords = "84, 40, 100, 60" Href = "JavaScript:void(0)" OnClick = "OnPressRight();">
+		</Map>
+		
+		<Map Name = "Z">
+			<Area Shape = "Circle" Coords = "50, 50, 50" Href = "JavaScript:void(0)" OnClick = "OnPressZ();">
+		</Map>
+		
+		<Map Name = "X">
+			<Area Shape = "Circle" Coords = "50, 50, 50" Href = "JavaScript:void(0)" OnClick = "OnPressX();">
 		</Map>
 	</Body>
 </HTML>

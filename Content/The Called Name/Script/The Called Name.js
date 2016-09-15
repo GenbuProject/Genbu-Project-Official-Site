@@ -520,7 +520,7 @@ function Main() {
 				Menu.MenuItem(StartMenu, ["01", "42"], R.COLOR.WHITE, "LOAD GAME", function () {
 					Load(".sav", function () {
 						Effect.BlackOut(2, 0, function () {
-							Resource.UserData.Pos[0] == 3 ? ToElumVillage() : null;
+							Resource.UserData.Pos[0] == 3 ? ToElumForest() : null;
 							Character.Warp(0, Resource.UserData.Pos[1][2], [Resource.UserData.Pos[1][0], Resource.UserData.Pos[1][1]])
 							
 							Resource.UserData.Pos = undefined;
