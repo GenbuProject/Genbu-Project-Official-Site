@@ -36,8 +36,17 @@ function Main() {
 				if ((Resource.UserData.Flag.Flag0001_Prologue && Resource.UserData.Flag.Flag0002_FindHero) || (!Resource.UserData.Flag.Flag0001_Prologue && !Resource.UserData.Flag.Flag0002_FindHero)) {
 					Map.Show(0, [
 						function () {
-							Warps.ElumForest.To0014();
-							Character.Warp(0, R.DIRECTION.N, [2, 14]);
+							if (Resource.UserData.Flag.Flag0002_FindHero) {
+								Warps.ElumForest.To0014();
+								Character.Warp(0, R.DIRECTION.N, [2, 14]);
+							} else {
+								GamePad.Disable();
+								Character.Warp(0, R.DIRECTION.S, [12, 2]);
+								
+								MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「先に蔵書庫に行かなきゃ...！」", function () {
+									GamePad.KeyboardType(0);
+								});
+							}
 						},
 						
 						function () {
@@ -226,55 +235,46 @@ function Main() {
 				},
 				
 				To0014: function () {
-					if (Resource.UserData.Flag.Flag0002_FindHero) {
-						Map.Hide();
-						Character.Hide();
+					Map.Hide();
+					Character.Hide();
+					
+					Map.Show(4, [
+						function () {
+							Warps.ToElumVillage();
+							Character.Warp(0, R.DIRECTION.S, [12, 2]);
+						},
 						
-						Map.Show(4, [
-							function () {
-								Warps.ToElumVillage();
-								Character.Warp(0, R.DIRECTION.S, [12, 2]);
-							},
-							
-							function () {
-								Warps.ToElumVillage();
-								Character.Warp(0, R.DIRECTION.S, [12, 2]);
-							},
-							
-							function () {
-								GamePad.Disable();
-								
-								Resource.UserData.Pos = [3, [6, 10, R.DIRECTION.N]];
-								
-								MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {
-									GamePad.KeyboardType(0);
-								});
-								
-								Save("The Called Name " + new Date().getToday("-") + ".sav");
-								Resource.UserData.Pos = undefined;
-							},
-							
-							function () {
-								GamePad.Disable();
-								
-								Resource.UserData.Pos = [3, [7, 10, R.DIRECTION.N]];
-								
-								MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {
-									GamePad.KeyboardType(0);
-								});
-								
-								Save("The Called Name " + new Date().getToday("-") + ".sav");
-								Resource.UserData.Pos = undefined;
-							}
-						]);
-					} else {
-						GamePad.Disable();
-						Character.Warp(0, R.DIRECTION.S, [12, 2]);
+						function () {
+							Warps.ToElumVillage();
+							Character.Warp(0, R.DIRECTION.S, [12, 2]);
+						},
 						
-						MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「先に蔵書庫に行かなきゃ...！」", function () {
-							GamePad.KeyboardType(0);
-						});
-					}
+						function () {
+							GamePad.Disable();
+							
+							Resource.UserData.Pos = [3, [6, 10, R.DIRECTION.N]];
+							
+							MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {
+								GamePad.KeyboardType(0);
+							});
+							
+							Save("The Called Name " + new Date().getToday("-") + ".sav");
+							Resource.UserData.Pos = undefined;
+						},
+						
+						function () {
+							GamePad.Disable();
+							
+							Resource.UserData.Pos = [3, [7, 10, R.DIRECTION.N]];
+							
+							MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {
+								GamePad.KeyboardType(0);
+							});
+							
+							Save("The Called Name " + new Date().getToday("-") + ".sav");
+							Resource.UserData.Pos = undefined;
+						}
+					]);
 				}
 			}
 		}
