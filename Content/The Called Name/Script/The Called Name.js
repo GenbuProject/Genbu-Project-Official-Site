@@ -231,7 +231,56 @@ function Main() {
 				},
 				
 				To0010: function () {
+					Map.Hide();
+					Character.Hide();
 					
+					Map.Show(3, [
+						function () {
+							Warps.ElumForest.To0014();
+							Character.Warp(0, R.DIRECTION.S, [2, 1]);
+						},
+						
+						function () {
+							Warps.ElumForest.To0014();
+							Character.Warp(0, R.DIRECTION.S, [2, 1]);
+						},
+						
+						function () {
+							Warps.ElumForest.To0014();
+							Character.Warp(0, R.DIRECTION.S, [14, 1]);
+						},
+						
+						function () {
+							Warps.ElumForest.To0014();
+							Character.Warp(0, R.DIRECTION.S, [15, 1]);
+						},
+						
+						function () {
+							Warps.ElumForest.To0014();
+							Character.Warp(0, R.DIRECTION.S, [16, 1]);
+						},
+						
+						function () {
+							Warps.ElumForest.To0014();
+							Character.Warp(0, R.DIRECTION.S, [17, 1]);
+						},
+						
+						function () {
+							
+						},
+						
+						function () {
+							
+						},
+						
+						function () {
+							
+						},
+						
+						function () {
+							
+						}
+					]);
 				},
 				
 				To0014: function () {
@@ -273,7 +322,37 @@ function Main() {
 							
 							Save("The Called Name " + new Date().getToday("-") + ".sav");
 							Resource.UserData.Pos = undefined;
-						}
+						},
+						
+						function () {
+							Warps.ElumForest.To0010();
+							Character.Warp(0, R.DIRECTION.N, [2, 14]);
+						},
+						
+						function () {
+							Warps.ElumForest.To0010();
+							Character.Warp(0, R.DIRECTION.N, [3, 14]);
+						},
+						
+						function () {
+							Warps.ElumForest.To0010();
+							Character.Warp(0, R.DIRECTION.N, [14, 14]);
+						},
+						
+						function () {
+							Warps.ElumForest.To0010();
+							Character.Warp(0, R.DIRECTION.N, [15, 14]);
+						},
+						
+						function () {
+							Warps.ElumForest.To0010();
+							Character.Warp(0, R.DIRECTION.N, [16, 14]);
+						},
+						
+						function () {
+							Warps.ElumForest.To0010();
+							Character.Warp(0, R.DIRECTION.N, [17, 14]);
+						},
 					]);
 				}
 			}
