@@ -28,85 +28,90 @@ function Main() {
 			Flag0010: false
 		}
 		
-		function ToElumVillage() {
-			Map.Hide();
-			Character.Hide();
-			
-			if ((Resource.UserData.Flag.Flag0001_Prologue && Resource.UserData.Flag.Flag0002_FindHero) || (!Resource.UserData.Flag.Flag0001_Prologue && !Resource.UserData.Flag.Flag0002_FindHero)) {
-				Map.Show(0, [
-					function () {
-						ToElumForest();
-						Character.Warp(0, R.DIRECTION.N, [2, 14]);
-					},
-					
-					function () {
-						ToLibrary();
-						Character.Warp(0, R.DIRECTION.N, [1, 13], 3);
-					},
-					
-					function () {
-						ToLibrary();
-						Character.Warp(0, R.DIRECTION.N, [2, 13], 3);
-					}
-				]);
-			} else {
-				Sound.StopBGM();
+		var Warps = {
+			ToElumVillage: function () {
+				Map.Hide();
+				Character.Hide();
 				
-				MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "僕は外に出て、ただただ勇者探しの闘いを観覧していた。\nこの中から現れる訳がないと思っていた......", function () {
-					Map.Show(2, [null]);
-					Character.Warp(0, R.DIRECTION.S, [23, 5]);
+				if ((Resource.UserData.Flag.Flag0001_Prologue && Resource.UserData.Flag.Flag0002_FindHero) || (!Resource.UserData.Flag.Flag0001_Prologue && !Resource.UserData.Flag.Flag0002_FindHero)) {
+					Map.Show(0, [
+						function () {
+							Warps.ElumForest.To0014();
+							Character.Warp(0, R.DIRECTION.N, [2, 14]);
+						},
+						
+						function () {
+							Warps.ToLibrary();
+							Character.Warp(0, R.DIRECTION.N, [1, 13], 3);
+						},
+						
+						function () {
+							Warps.ToLibrary();
+							Character.Warp(0, R.DIRECTION.N, [2, 13], 3);
+						}
+					]);
+				} else {
+					Sound.StopBGM();
 					
-					Effect.ColorOut(1.5, 0, "Black", function () {
-						MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村長\n「これで全員か......？\n　いや......まだ1人戦っておらん者が居るゾ^～」", function () {
-							MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "その時全員の視線が自分自身に向けられた事に気が付いた。", function () {
-								MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『.........えっ...！？』", function () {
-									MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「おいおい村長さんよぉ！\n　まさか" + Resource.UserData.Character[0].Name + "が勇者とか言うんじゃないよな？」", function () {
-										MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村長\n「それはそなたの腕を持って試してみるが良いじゃろう...」", function () {
-											MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「おう！\n　臨むところだ！」", function () {
-												MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『くそっ......\n　やるしかないか...！』", function () {
-													Effect.BlackOut(2.5, 0, function () {
-														Map.Hide();
-														Character.Hide();
-														
-														Fight.Init.call(R.THIS, 3, 103, "Elum Village.png", function () {
-															Resource.UserData.Flag.Flag0002_FindHero = true;
+					MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "僕は外に出て、ただただ勇者探しの闘いを観覧していた。\nこの中から現れる訳がないと思っていた......", function () {
+						Map.Show(2, [function () {}]);
+						Character.Warp(0, R.DIRECTION.S, [23, 5]);
+						
+						Effect.ColorOut(1.5, 0, "Black", function () {
+							MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村長\n「これで全員か......？\n　いや......まだ1人戦っておらん者が居るゾ^～」", function () {
+								MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "その時全員の視線が自分自身に向けられた事に気が付いた。", function () {
+									MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『.........えっ...！？』", function () {
+										MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「おいおい村長さんよぉ！\n　まさか" + Resource.UserData.Character[0].Name + "が勇者とか言うんじゃないよな？」", function () {
+											MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村長\n「それはそなたの腕を持って試してみるが良いじゃろう...」", function () {
+												MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「おう！\n　臨むところだ！」", function () {
+													MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『くそっ......\n　やるしかないか...！』", function () {
+														Effect.BlackOut(2.5, 0, function () {
+															Map.Hide();
+															Character.Hide();
 															
-															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「何......だと...!?」", function () {
-																Sound.StopBGM();
+															Fight.Init.call(R.THIS, 3, 103, "Elum Village.png", function () {
+																Resource.UserData.Flag.Flag0002_FindHero = true;
 																
-																Effect.BlackOut(1.5, 0, function () {
-																	Canvas.style.background = "Black";
+																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「何......だと...!?」", function () {
+																	Sound.StopBGM();
 																	
-																	MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『......!?』", function () {
-																		MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "気が付くとエンリコさんが地べたに座り込んでいた。\n僕は戦いに勝ったみたいだ...", function () {
-																			MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「お前...一体何者だ...？」", function () {
-																				MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『......えっ...？』", function () {
-																					MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「......ただの奴ではなさそうだな...」", function () {
-																						Effect.BlackOut(1.5, 0, function () {
-																							MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「エレンを...頼む...！」", function () {
-																								Effect.WhiteOut(2, 0, function () {
-																									Canvas.style.background = "White";
-																									
-																									Effect.BlackOut(1, 0, function () {
-																										Canvas.style.background = "Black";
+																	Effect.BlackOut(1.5, 0, function () {
+																		Canvas.style.background = "Black";
+																		
+																		MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『......!?』", function () {
+																			MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "気が付くとエンリコさんが地べたに座り込んでいた。\n僕は戦いに勝ったみたいだ...", function () {
+																				MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「お前...一体何者だ...？」", function () {
+																					MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『......えっ...？』", function () {
+																						MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「......ただの奴ではなさそうだな...」", function () {
+																							Effect.BlackOut(1.5, 0, function () {
+																								MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「エレンを...頼む...！」", function () {
+																									Effect.WhiteOut(2, 0, function () {
+																										Canvas.style.background = "White";
 																										
-																										MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "エンリコさんの心からの叫びが\n僕の心に鋭く突き刺さった。", function () {
-																											MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "その叫びが僕の想いを変えた。\nエレンを必ず助けだすと決意した.........", function () {
-																												ToElumVillage();
-																												Character.Warp(0, R.DIRECTION.S, [12, 2]);
-																												
-																												Effect.ColorOut(2, 0, "Black", function () {
-																													Sound.PlayBGM(11);
+																										Effect.BlackOut(1, 0, function () {
+																											Canvas.style.background = "Black";
+																											
+																											MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "エンリコさんの心からの叫びが\n僕の心に鋭く突き刺さった。", function () {
+																												MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "その叫びが僕の想いを変えた。\nエレンを必ず助けだすと決意した.........", function () {
+																													Warps.ToElumVillage();
+																													Character.Warp(0, R.DIRECTION.S, [12, 2]);
 																													
-																													MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「頑張れよ！」", function () {
-																														MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n「分かったンゴ！」", function () {
-																															Effect.BlackOut(1, 0, function () {
-																																MsgBox(R.POS.BOTTOM, R.SPEED.FAST, R.COLOR.CYAN, "僕はエンリコさんの想いを胸に、\n故郷を後にした......", function () {
-																																	ToElumVillage();
-																																	Character.Warp(0, R.DIRECTION.S, [12, 2]);
+																													Effect.ColorOut(2, 0, "Black", function () {
+																														Sound.PlayBGM(11);
+																														
+																														MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「頑張れよ！」", function () {
+																															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n「分かったンゴ！」", function () {
+																																Effect.BlackOut(1, 0, function () {
+																																	Map.Hide();
+																																	Character.Hide();
 																																	
-																																	Effect.ColorOut(1, 0, "Black", function () {
-																																		GamePad.KeyboardType(0);
+																																	MsgBox(R.POS.BOTTOM, R.SPEED.FAST, R.COLOR.CYAN, "僕はエンリコさんの想いを胸に、\n故郷を後にした......", function () {
+																																		Warps.ToElumVillage();
+																																		Character.Warp(0, R.DIRECTION.S, [12, 2]);
+																																		
+																																		Effect.ColorOut(1, 0, "Black", function () {
+																																			GamePad.KeyboardType(0);
+																																		});
 																																	});
 																																});
 																															});
@@ -125,10 +130,10 @@ function Main() {
 																		});
 																	});
 																});
-															});
-														}, function () {
-															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n『こいつ...出来るっ！』", function () {
-																
+															}, function () {
+																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n『こいつ...出来るっ！』", function () {
+																	
+																});
 															});
 														});
 													});
@@ -140,51 +145,51 @@ function Main() {
 							});
 						});
 					});
-				});
-			}
-		}
-		
-		function ToLibrary() {
-			Map.Hide();
-			Character.Hide();
+				}
+			},
 			
-			Map.Show(1, [
-				function () {
-					ToElumVillage();
-					Character.Warp(0, R.DIRECTION.S, [23, 5]);
-				},
+			ToLibrary: function () {
+				Map.Hide();
+				Character.Hide();
 				
-				function () {
-					ToElumVillage();
-					Character.Warp(0, R.DIRECTION.S, [24, 5]);
-				},
-				
-				function () {
-					if (!Resource.UserData.Flag.Flag0001_Prologue) {
-						MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『空気が異様に重々しい...\n　この本は...？』", function () {
-							MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「一体何があったんですか...？」", function () {
-								MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「エレンが...闇騎士団に誘拐されたようだ...」", function () {
-									MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『闇...騎士団...って...\n　まさかそんな事が...！』", function () {
-										MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「この本を見てみろ...」", function () {
-											Effect.BlackOut(1.5, 0, function () {
-												Sound.StopBGM();
-												
-												Map.Hide();
-												Character.Hide();
-												
-												MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "白昼ノ空、紅ニ染ムル時、世界ガ闇騎士団ニ呪ワレル時ナリ。\n闇騎士団ヲ打チ砕キタル時、世界ハ救ワレタモウ。\n打チ砕ク者、村カラ一人現レリ。", function () {
-													ToLibrary();
-													Character.Warp(0, R.DIRECTION.N, [7, 12]);
+				Map.Show(1, [
+					function () {
+						Warps.ToElumVillage();
+						Character.Warp(0, R.DIRECTION.S, [23, 5]);
+					},
+					
+					function () {
+						Warps.ToElumVillage();
+						Character.Warp(0, R.DIRECTION.S, [24, 5]);
+					},
+					
+					function () {
+						if (!Resource.UserData.Flag.Flag0001_Prologue) {
+							MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『空気が異様に重々しい...\n　この本は...？』", function () {
+								MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「一体何があったんですか...？」", function () {
+									MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「エレンが...闇騎士団に誘拐されたようだ...」", function () {
+										MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『闇...騎士団...って...\n　まさかそんな事が...！』", function () {
+											MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「この本を見てみろ...」", function () {
+												Effect.BlackOut(1.5, 0, function () {
+													Sound.StopBGM();
 													
-													Effect.ColorOut(1.5, 0, "Black", function () {
-														MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「これは...！」", function () {
-															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「代々伝わる書物だ。\n　この中の誰かが救い主らしい......」", function () {
-																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「ほう( ͡° ͜ʖ ͡°)」", function () {
-																	MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「これから外で勇者探しが行われるらしい...\n　俺は先に行ってるぞ...」", function () {
-																		MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "勇者探し...か......\n僕も見に行くとするか...", function () {
-																			Resource.UserData.Flag.Flag0001_Prologue = true;
-																			
-																			GamePad.KeyboardType(0);
+													Map.Hide();
+													Character.Hide();
+													
+													MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "白昼ノ空、紅ニ染ムル時、世界ガ闇騎士団ニ呪ワレル時ナリ。\n闇騎士団ヲ打チ砕キタル時、世界ハ救ワレタモウ。\n打チ砕ク者、村カラ一人現レリ。", function () {
+														Warps.ToLibrary();
+														Character.Warp(0, R.DIRECTION.N, [7, 12]);
+														
+														Effect.ColorOut(1.5, 0, "Black", function () {
+															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「これは...！」", function () {
+																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「代々伝わる書物だ。\n　この中の誰かが救い主らしい......」", function () {
+																	MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「ほう( ͡° ͜ʖ ͡°)」", function () {
+																		MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「これから外で勇者探しが行われるらしい...\n　俺は先に行ってるぞ...」", function () {
+																			MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "勇者探し...か......\n僕も見に行くとするか...", function () {
+																				Resource.UserData.Flag.Flag0001_Prologue = true;
+																				
+																				GamePad.KeyboardType(0);
+																			});
 																		});
 																	});
 																});
@@ -197,70 +202,80 @@ function Main() {
 									});
 								});
 							});
-						});
+						} else {
+							MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『遥か昔から残されてきたとされる書物だ...』", function () {
+								GamePad.KeyboardType(0);
+							});
+						}
+					}
+				]);
+				
+				if (!Resource.UserData.Flag.Flag0001_Prologue) {
+					Sound.StopBGM();
+					Sound.PlayBGM(4);
+				}
+			},
+			
+			ElumForest: {
+				To0001: function () {
+					
+				},
+				
+				To0010: function () {
+					
+				},
+				
+				To0014: function () {
+					if (Resource.UserData.Flag.Flag0002_FindHero) {
+						Map.Hide();
+						Character.Hide();
+						
+						Map.Show(4, [
+							function () {
+								Warps.ToElumVillage();
+								Character.Warp(0, R.DIRECTION.S, [12, 2]);
+							},
+							
+							function () {
+								Warps.ToElumVillage();
+								Character.Warp(0, R.DIRECTION.S, [12, 2]);
+							},
+							
+							function () {
+								GamePad.Disable();
+								
+								Resource.UserData.Pos = [3, [6, 10, R.DIRECTION.N]];
+								
+								MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {
+									GamePad.KeyboardType(0);
+								});
+								
+								Save("The Called Name " + new Date().getToday("-") + ".sav");
+								Resource.UserData.Pos = undefined;
+							},
+							
+							function () {
+								GamePad.Disable();
+								
+								Resource.UserData.Pos = [3, [7, 10, R.DIRECTION.N]];
+								
+								MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {
+									GamePad.KeyboardType(0);
+								});
+								
+								Save("The Called Name " + new Date().getToday("-") + ".sav");
+								Resource.UserData.Pos = undefined;
+							}
+						]);
 					} else {
-						MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『遥か昔から残されてきたとされる書物だ...』", function () {
+						GamePad.Disable();
+						Character.Warp(0, R.DIRECTION.S, [12, 2]);
+						
+						MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「先に蔵書庫に行かなきゃ...！」", function () {
 							GamePad.KeyboardType(0);
 						});
 					}
 				}
-			]);
-			
-			if (!Resource.UserData.Flag.Flag0001_Prologue) {
-				Sound.StopBGM();
-				Sound.PlayBGM(4);
-			}
-		}
-		
-		function ToElumForest() {
-			if (Resource.UserData.Flag.Flag0002_FindHero) {
-				Map.Hide();
-				Character.Hide();
-				
-				Map.Show(4, [
-					function () {
-						ToElumVillage();
-						Character.Warp(0, R.DIRECTION.S, [12, 2]);
-					},
-					
-					function () {
-						ToElumVillage();
-						Character.Warp(0, R.DIRECTION.S, [12, 2]);
-					},
-					
-					function () {
-						GamePad.Disable();
-						
-						Resource.UserData.Pos = [3, [6, 10, R.DIRECTION.N]];
-						
-						MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {
-							GamePad.KeyboardType(0);
-						});
-						
-						Save("The Called Name " + new Date().getToday("-") + ".sav");
-						Resource.UserData.Pos = undefined;
-					},
-					
-					function () {
-						GamePad.Disable();
-						
-						Resource.UserData.Pos = [3, [7, 10, R.DIRECTION.N]];
-						
-						MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {
-							GamePad.KeyboardType(0);
-						});
-						
-						Save("The Called Name " + new Date().getToday("-") + ".sav");
-						Resource.UserData.Pos = undefined;
-					}
-				]);
-			} else {
-				GamePad.Disable();
-				Character.Warp(0, R.DIRECTION.S, [12, 2]);
-				
-				MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「先に蔵書庫に行かなきゃ...！」", function () {
-					GamePad.KeyboardType(0);
-				});
 			}
 		}
 		
@@ -321,20 +336,7 @@ function Main() {
 									MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.CYAN, "真っ青な空が広がるある日の朝。\n僕はただ空を眺めていた。", function () {
 										MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.CYAN, "僕の名前は" + Resource.UserData.Character[0]["Name"] + "。\nエルム村育ちの普通の子供だ。", function () {
 											MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.CYAN, "このエルム村は森に囲まれた場所にあり、\nあまり栄えているとはいえない。\n人口は僕を含めて13人。\nだから他から干渉を受けない場所のはずだった...", function () {
-												Map.Show(0, [
-													function () {
-														ToElumForest();
-													},
-													
-													function () {
-														ToLibrary();
-													},
-													
-													function () {
-														ToLibrary();
-													}
-												]);
-												
+												Warps.ToElumVillage();
 												Character.Warp(0, R.DIRECTION.S, [16, 12]);
 												
 												Effect.ColorOut(2, 0, "Black", function () {
@@ -348,20 +350,7 @@ function Main() {
 																Character.Hide();
 																
 																MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "誰かの叫び声が聞こえてから暫くすると、\n蔵書庫へ集合する旨の放送が流れた...", function () {
-																	Map.Show(0, [
-																		function () {
-																			ToElumForest();
-																		},
-																		
-																		function () {
-																			ToLibrary();
-																		},
-																		
-																		function () {
-																			ToLibrary();
-																		}
-																	]);
-																	
+																	Warps.ToElumVillage();
 																	Character.Warp(0, R.DIRECTION.S, [16, 12]);
 																	
 																	Effect.ColorOut(1.5, 0, "Black", function () {
