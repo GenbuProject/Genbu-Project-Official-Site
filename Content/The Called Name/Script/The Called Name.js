@@ -164,12 +164,18 @@ function Main() {
 				Map.Show(1, [
 					function () {
 						Warps.ToElumVillage();
-						Character.Warp(0, R.DIRECTION.S, [23, 5]);
+						
+						if ((Resource.UserData.Flag.Flag0001_Prologue && Resource.UserData.Flag.Flag0002_FindHero) || (!Resource.UserData.Flag.Flag0001_Prologue && !Resource.UserData.Flag.Flag0002_FindHero)) {
+							Character.Warp(0, R.DIRECTION.S, [23, 5]);
+						}
 					},
 					
 					function () {
 						Warps.ToElumVillage();
-						Character.Warp(0, R.DIRECTION.S, [24, 5]);
+						
+						if ((Resource.UserData.Flag.Flag0001_Prologue && Resource.UserData.Flag.Flag0002_FindHero) || (!Resource.UserData.Flag.Flag0001_Prologue && !Resource.UserData.Flag.Flag0002_FindHero)) {
+							Character.Warp(0, R.DIRECTION.S, [24, 5]);
+						}
 					},
 					
 					function () {
