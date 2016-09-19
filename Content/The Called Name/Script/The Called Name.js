@@ -18,7 +18,7 @@ function Main() {
 		Resource.UserData.Flag = {
 			Flag0001_Prologue: false,
 			Flag0002_FindHero: false,
-			Flag0003_OpenForest: false,
+			Flag0003_WonToKarasawa: false,
 			Flag0004: false,
 			Flag0005: false,
 			Flag0006: false,
@@ -236,11 +236,49 @@ function Main() {
 					
 				},
 				
+				To0005: function () {
+					Map.Hide();
+					Character.Hide();
+				},
+				
+				To0009: function () {
+					Map.Hide();
+					Character.Hide();
+					
+					Map.Show(4, [
+						function () {
+							Warps.ElumForest.To0010();
+							Character.Warp(0, R.DIRECTION.W, [1, 6]);
+						},
+						
+						function () {
+							Warps.ElumForest.To0010();
+							Character.Warp(0, R.DIRECTION.W, [1, 7]);
+						},
+						
+						function () {
+							
+						},
+						
+						function () {
+							
+						},
+						
+						function () {
+							
+						},
+						
+						function () {
+							
+						}
+					]);
+				},
+				
 				To0010: function () {
 					Map.Hide();
 					Character.Hide();
 					
-					Map.Show(3, [
+					Map.Show(5, [
 						function () {
 							Warps.ElumForest.To0014();
 							Character.Warp(0, R.DIRECTION.S, [2, 1]);
@@ -272,11 +310,13 @@ function Main() {
 						},
 						
 						function () {
-							
+							Warps.ElumForest.To0009();
+							Character.Warp(0, R.DIRECTION.W, [18, 6]);
 						},
 						
 						function () {
-							
+							Warps.ElumForest.To0009();
+							Character.Warp(0, R.DIRECTION.W, [18, 7]);
 						},
 						
 						function () {
@@ -293,73 +333,143 @@ function Main() {
 					Map.Hide();
 					Character.Hide();
 					
-					Map.Show(4, [
-						function () {
-							Warps.ToElumVillage();
-							Character.Warp(0, R.DIRECTION.S, [12, 2]);
-						},
-						
-						function () {
-							Warps.ToElumVillage();
-							Character.Warp(0, R.DIRECTION.S, [12, 2]);
-						},
-						
-						function () {
-							GamePad.Disable();
+					if (Resource.UserData.Flag.Flag0003_WonToKarasawa) {
+						Map.Show(7, [
+							function () {
+								Warps.ToElumVillage();
+								Character.Warp(0, R.DIRECTION.S, [12, 2]);
+							},
 							
-							Resource.UserData.Pos = [3, [6, 10, R.DIRECTION.N]];
+							function () {
+								Warps.ToElumVillage();
+								Character.Warp(0, R.DIRECTION.S, [12, 2]);
+							},
 							
-							MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {
-								GamePad.KeyboardType(0);
-							});
+							function () {
+								GamePad.Disable();
+								
+								Resource.UserData.Pos = [3, [6, 10, R.DIRECTION.N]];
+								
+								MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {
+									GamePad.KeyboardType(0);
+								});
+								
+								Save("The Called Name " + new Date().getToday("-") + ".sav");
+								Resource.UserData.Pos = undefined;
+							},
 							
-							Save("The Called Name " + new Date().getToday("-") + ".sav");
-							Resource.UserData.Pos = undefined;
-						},
-						
-						function () {
-							GamePad.Disable();
+							function () {
+								GamePad.Disable();
+								
+								Resource.UserData.Pos = [3, [7, 10, R.DIRECTION.N]];
+								
+								MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {
+									GamePad.KeyboardType(0);
+								});
+								
+								Save("The Called Name " + new Date().getToday("-") + ".sav");
+								Resource.UserData.Pos = undefined;
+							},
 							
-							Resource.UserData.Pos = [3, [7, 10, R.DIRECTION.N]];
+							function () {
+								Warps.ElumForest.To0010();
+								Character.Warp(0, R.DIRECTION.N, [2, 14]);
+							},
 							
-							MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {
-								GamePad.KeyboardType(0);
-							});
+							function () {
+								Warps.ElumForest.To0010();
+								Character.Warp(0, R.DIRECTION.N, [3, 14]);
+							},
 							
-							Save("The Called Name " + new Date().getToday("-") + ".sav");
-							Resource.UserData.Pos = undefined;
-						},
-						
-						function () {
-							Warps.ElumForest.To0010();
-							Character.Warp(0, R.DIRECTION.N, [2, 14]);
-						},
-						
-						function () {
-							Warps.ElumForest.To0010();
-							Character.Warp(0, R.DIRECTION.N, [3, 14]);
-						},
-						
-						function () {
-							Warps.ElumForest.To0010();
-							Character.Warp(0, R.DIRECTION.N, [14, 14]);
-						},
-						
-						function () {
-							Warps.ElumForest.To0010();
-							Character.Warp(0, R.DIRECTION.N, [15, 14]);
-						},
-						
-						function () {
-							Warps.ElumForest.To0010();
-							Character.Warp(0, R.DIRECTION.N, [16, 14]);
-						},
-						
-						function () {
-							Warps.ElumForest.To0010();
-							Character.Warp(0, R.DIRECTION.N, [17, 14]);
-						},
-					]);
+							function () {
+								Warps.ElumForest.To0010();
+								Character.Warp(0, R.DIRECTION.N, [14, 14]);
+							},
+							
+							function () {
+								Warps.ElumForest.To0010();
+								Character.Warp(0, R.DIRECTION.N, [15, 14]);
+							},
+							
+							function () {
+								Warps.ElumForest.To0010();
+								Character.Warp(0, R.DIRECTION.N, [16, 14]);
+							},
+							
+							function () {
+								Warps.ElumForest.To0010();
+								Character.Warp(0, R.DIRECTION.N, [17, 14]);
+							},
+						]);
+					} else {
+						Map.Show(6, [
+							function () {
+								Warps.ToElumVillage();
+								Character.Warp(0, R.DIRECTION.S, [12, 2]);
+							},
+							
+							function () {
+								Warps.ToElumVillage();
+								Character.Warp(0, R.DIRECTION.S, [12, 2]);
+							},
+							
+							function () {
+								GamePad.Disable();
+								
+								Resource.UserData.Pos = [3, [6, 10, R.DIRECTION.N]];
+								
+								MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {
+									GamePad.KeyboardType(0);
+								});
+								
+								Save("The Called Name " + new Date().getToday("-") + ".sav");
+								Resource.UserData.Pos = undefined;
+							},
+							
+							function () {
+								GamePad.Disable();
+								
+								Resource.UserData.Pos = [3, [7, 10, R.DIRECTION.N]];
+								
+								MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", function () {
+									GamePad.KeyboardType(0);
+								});
+								
+								Save("The Called Name " + new Date().getToday("-") + ".sav");
+								Resource.UserData.Pos = undefined;
+							},
+							
+							function () {
+								Warps.ElumForest.To0010();
+								Character.Warp(0, R.DIRECTION.N, [2, 14]);
+							},
+							
+							function () {
+								Warps.ElumForest.To0010();
+								Character.Warp(0, R.DIRECTION.N, [3, 14]);
+							},
+							
+							function () {
+								Warps.ElumForest.To0010();
+								Character.Warp(0, R.DIRECTION.N, [14, 14]);
+							},
+							
+							function () {
+								Warps.ElumForest.To0010();
+								Character.Warp(0, R.DIRECTION.N, [15, 14]);
+							},
+							
+							function () {
+								Warps.ElumForest.To0010();
+								Character.Warp(0, R.DIRECTION.N, [16, 14]);
+							},
+							
+							function () {
+								Warps.ElumForest.To0010();
+								Character.Warp(0, R.DIRECTION.N, [17, 14]);
+							},
+						]);
+					}
 				}
 			}
 		}

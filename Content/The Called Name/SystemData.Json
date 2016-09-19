@@ -137,6 +137,20 @@
 		},
 		
 		{
+			"MapFile": "エルム森/0005.map",
+			"MapName": "エルム森",
+			
+			"TileID": 0
+		},
+		
+		{
+			"MapFile": "エルム森/0009.map",
+			"MapName": "エルム森",
+			
+			"TileID": 0
+		},
+		
+		{
 			"MapFile": "エルム森/0010.map",
 			"MapName": "エルム森",
 			
@@ -144,7 +158,14 @@
 		},
 		
 		{
-			"MapFile": "エルム森/0014.map",
+			"MapFile": "エルム森/0014 - Before.map",
+			"MapName": "エルム森",
+			
+			"TileID": 0
+		},
+		
+		{
+			"MapFile": "エルム森/0014 - After.map",
 			"MapName": "エルム森",
 			
 			"TileID": 0
