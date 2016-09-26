@@ -1121,6 +1121,30 @@
 			"Position": [19, 3],
 			"TipID": 1,
 			"Type": 1
+		},
+		
+		{
+			"Position": [14, 10],
+			"TipID": 1,
+			"Type": 1
+		},
+		
+		{
+			"Position": [15, 10],
+			"TipID": 1,
+			"Type": 1
+		},
+		
+		{
+			"Position": [16, 10],
+			"TipID": 1,
+			"Type": 1
+		},
+		
+		{
+			"Position": [17, 10],
+			"TipID": 1,
+			"Type": 1
 		}
 	]
 ]
