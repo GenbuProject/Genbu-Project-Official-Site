@@ -172,7 +172,7 @@
 						MonsterTable.setAttribute("Align", "Center");
 						MonsterTable.border = "0";
 						
-						MonsterTable.style.potision = "Absolute";
+						MonsterTable.style.position = "Relative";
 						MonsterTable.style.top = "20%";
 						
 						MonsterTable.insertRow(-1);
@@ -244,7 +244,7 @@
 										var Damage = Calc.GetFinalATKDamage([Calc.TypeID.Character, 0], [Calc.TypeID.Monster, Resource.SystemData.Group[GroupID][i]]);
 										Fight.MonsterParty[i].HP > Damage ? Fight.MonsterParty[i].HP -= Damage : Fight.MonsterParty[i].HP = 0;
 										
-										MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "の攻撃！\n" + Resource.UserData.Character[0].Name + "は" + Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]].Name + "に" + Damage + "のダメージを与えた！", function () {
+										MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "の攻撃！\n" + Resource.UserData.Character[0].Name + "は" + Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]].Name + "に" + Damage + "のダメージを与えた！", "", function () {
 											if (Fight.MonsterParty[i].HP != 0) {
 												for (var n = 0; n < Fight.MonsterAI.length; n++) {
 													Fight.MonsterAI[n](function () {
@@ -253,7 +253,7 @@
 														} else {
 															MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.RED, Resource.UserData.Character[0].Name + "は力尽きた......", function () {
 																Effect.BlackOut(2, 0, function () {
-																	MsgBox.call(R.THIS, R.POS.BOTTOM, 100, R.COLOR.WHITE, "GAME OVER", function () {
+																	MsgBox.call(R.THIS, R.POS.BOTTOM, 100, R.COLOR.WHITE, "GAME OVER", "", function () {
 																		Main();
 																	});
 																});
