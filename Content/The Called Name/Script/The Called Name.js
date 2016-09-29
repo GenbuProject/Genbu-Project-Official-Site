@@ -2,7 +2,9 @@
 //感情とか：R.COLOR.CYAN
 //イベントとか：R.COLOR.ORANGE
 function Main() {
-	with (new RPGHelper()) {
+	var Base = new RPGHelper();
+	
+	with (Base) {
 		var Flag = {
 			IsOpening: false,
 		}
