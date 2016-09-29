@@ -37,8 +37,10 @@ function Main() {
 				Map.Hide();
 				Character.Hide();
 				
-				if ((Resource.UserData.Flag.Flag0001_Prologue && Resource.UserData.Flag.Flag0002_FindHero) || (!Resource.UserData.Flag.Flag0001_Prologue && !Resource.UserData.Flag.Flag0002_FindHero) || (Resource.UserData.Flag.Flag0001_Prologue && !Resource.UserData.Flag.Flag0002_FindHero)) {
-					Sound.PlayBGM(11);
+				if ((Resource.UserData.Flag.Flag0001_Prologue && Resource.UserData.Flag.Flag0002_FindHero) || (!Resource.UserData.Flag.Flag0001_Prologue && !Resource.UserData.Flag.Flag0002_FindHero)) {
+					if (Resource.UserData.Flag.Flag0002_FindHero) {
+						Sound.PlayBGM(11);
+					}
 					
 					Map.Show(0, [
 						function () {
