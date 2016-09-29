@@ -3,6 +3,13 @@
 //イベントとか：R.COLOR.ORANGE
 function Main() {
 	with (new RPGHelper()) {
+		R.THIS.GamePad.Disable = function () {
+			if (sessionStorage.getItem("GamePad") != null) {
+				document.removeEventListener("keydown", this.PadFunc, false);
+				sessionStorage.removeItem("GamePad");
+			}
+		}
+		
 		var Flag = {
 			IsOpening: false,
 		}
