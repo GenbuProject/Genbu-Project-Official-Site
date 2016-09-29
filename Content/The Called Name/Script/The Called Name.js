@@ -3,6 +3,12 @@
 //イベントとか：R.COLOR.ORANGE
 function Main() {
 	with (new RPGHelper()) {
+		GamePad.KeyboardType = function (CharacterID) {
+			if (sessionStorage.getItem("GamePad") != null) {
+				document.removeEventListener("keydown", R.THIS.PadFunc, false);
+			}
+		}
+		
 		var Flag = {
 			IsOpening: false,
 		}
@@ -329,7 +335,12 @@ function Main() {
 						
 						function () {
 							if (!Resource.UserData.Flag.Flag0003_MeetToKarasawa) {
-								
+								MsgBox(R.POS.BOTTOM, R.SPEED.FAST, R.COLOR.WHITE, "？？？\n「そこの君！\n　待つナリよ！」", "", function () {
+									MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "後ろを振り返るとあの有名な男が立っていた...", "", function () {
+										MsgBox(R.POS.BOTTOM, R.SPEED.FAST, R.COLOR.WHITE, "唐澤弁護士\n「当職は弁護士ナリ\n　お前とは違うナリよ」", "CharacterFace/Karasawa - Normal.png", function () {
+										});
+									});
+								});
 							}
 						},
 						
