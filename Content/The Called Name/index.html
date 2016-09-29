@@ -251,7 +251,7 @@
 														if (Resource.UserData.Character[0].HP != 0) {
 															Fight.Show.call(R.THIS, GroupID, OnVictoryFuc, OnLoseFuc);
 														} else {
-															MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.RED, Resource.UserData.Character[0].Name + "は力尽きた......", function () {
+															MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.RED, Resource.UserData.Character[0].Name + "は力尽きた......", "", function () {
 																Effect.BlackOut(2, 0, function () {
 																	MsgBox.call(R.THIS, R.POS.BOTTOM, 100, R.COLOR.WHITE, "GAME OVER", "", function () {
 																		Main();
@@ -271,15 +271,15 @@
 												
 												Fight.GetEXP += Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]].EXP;
 												
-												MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]].Name + "は倒れた！", function () {
+												MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]].Name + "は倒れた！", "", function () {
 													if (Fight.MonsterParty.length > 0) {
 														Fight.Show.call(R.THIS, GroupID, OnVictoryFuc, OnLoseFuc);
 													} else {
 														document.getElementById("MonsterTable").parentElement.removeChild(document.getElementById("MonsterTable"));
 														Resource.UserData.Character[0].EXP += Fight.GetEXP;
 														
-														MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "全ての敵を倒した！", function () {
-															MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "は" + Fight.GetEXP + "EXPを獲得！", function () {
+														MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "全ての敵を倒した！", "", function () {
+															MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "は" + Fight.GetEXP + "EXPを獲得！", "", function () {
 																Fight.MonsterParty = [];
 																Fight.MonsterCvs = [];
 																Fight.GetExp = 0;
