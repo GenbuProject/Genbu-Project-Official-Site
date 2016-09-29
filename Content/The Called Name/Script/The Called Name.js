@@ -1,9 +1,11 @@
 //普通のセリフ：R.COLOR.WHITE
 //感情とか：R.COLOR.CYAN
 //イベントとか：R.COLOR.ORANGE
-var Base = new RPGHelper();
+var Base = null;
 
 function Main() {
+	Base = new RPGHelper();
+	
 	with (Base) {
 		var Flag = {
 			IsOpening: false,
