@@ -34,6 +34,8 @@ function Main() {
 		
 		var Warps = {
 			ToElumVillage: function () {
+				Sound.PlayBGM(11);
+				
 				Map.Hide();
 				Character.Hide();
 				
@@ -359,6 +361,8 @@ function Main() {
 				},
 				
 				To0014: function () {
+					Sound.PlayBGM(13);
+					
 					Map.Hide();
 					Character.Hide();
 					
