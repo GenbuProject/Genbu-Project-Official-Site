@@ -381,29 +381,11 @@ function Main() {
 							},
 							
 							function () {
-								GamePad.Disable();
-								
-								Resource.UserData.Pos = [3, [6, 10, R.DIRECTION.N]];
-								
-								MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", "", function () {
-									GamePad.KeyboardType(0);
-								});
-								
-								Save("The Called Name " + new Date().getToday("-") + ".sav");
-								Resource.UserData.Pos = undefined;
+								Commons.Saving([3, [6, 10, R.DIRECTION.N]]);
 							},
 							
 							function () {
-								GamePad.Disable();
-								
-								Resource.UserData.Pos = [3, [7, 10, R.DIRECTION.N]];
-								
-								MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", "", function () {
-									GamePad.KeyboardType(0);
-								});
-								
-								Save("The Called Name " + new Date().getToday("-") + ".sav");
-								Resource.UserData.Pos = undefined;
+								Commons.Saving([3, [7, 10, R.DIRECTION.N]]);
 							},
 							
 							function () {
@@ -449,29 +431,11 @@ function Main() {
 							},
 							
 							function () {
-								GamePad.Disable();
-								
-								Resource.UserData.Pos = [3, [6, 10, R.DIRECTION.N]];
-								
-								MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", "", function () {
-									GamePad.KeyboardType(0);
-								});
-								
-								Save("The Called Name " + new Date().getToday("-") + ".sav");
-								Resource.UserData.Pos = undefined;
+								Commons.Saving([3, [6, 10, R.DIRECTION.N]]);
 							},
 							
 							function () {
-								GamePad.Disable();
-								
-								Resource.UserData.Pos = [3, [7, 10, R.DIRECTION.N]];
-								
-								MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.WHITE, "セーブします...", "", function () {
-									GamePad.KeyboardType(0);
-								});
-								
-								Save("The Called Name " + new Date().getToday("-") + ".sav");
-								Resource.UserData.Pos = undefined;
+								Commons.Saving([3, [7, 10, R.DIRECTION.N]]);
 							},
 							
 							function () {
@@ -506,6 +470,31 @@ function Main() {
 						]);
 					}
 				}
+			}
+		}
+		
+		var Commons = {
+			Saving: function (Data) {
+				GamePad.Disable();
+				Resource.UserData.Pos = Data;
+				
+				var Pane = Menu.MenuPanel(["04", "^7"]);
+					Menu.MenuMsgBox(Pane, ["00", "^2"], R.COLOR.WHITE, "セーブしますか？");
+					
+					Menu.MenuItem(Pane, ["02", "53"], R.COLOR.WHITE, "はい", function () {
+						Pane.parentElement.removeChild(Pane);
+						
+						Save("The Called Name " + new Date().getToday("-") + ".sav");
+						Resource.UserData.Pos = undefined;
+						
+						GamePad.KeyboardType(0);
+					});
+					
+					Menu.MenuItem(Pane, ["52", "^3"], R.COLOR.WHITE, "いいえ", function () {
+						Pane.parentElement.removeChild(Pane);
+						
+						GamePad.KeyboardType(0);
+					});
 			}
 		}
 		
