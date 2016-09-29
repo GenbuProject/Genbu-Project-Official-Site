@@ -1,9 +1,9 @@
 //普通のセリフ：R.COLOR.WHITE
 //感情とか：R.COLOR.CYAN
 //イベントとか：R.COLOR.ORANGE
+var Base = new RPGHelper();
+
 function Main() {
-	var Base = new RPGHelper();
-	
 	with (Base) {
 		var Flag = {
 			IsOpening: false,
@@ -335,7 +335,7 @@ function Main() {
 								
 								MsgBox(R.POS.BOTTOM, R.SPEED.FAST, R.COLOR.WHITE, "？？？\n「そこの君！\n　待つナリよ！」", "", function () {
 									MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "後ろを振り返るとあの有名な男が立っていた...", "", function () {
-										MsgBox(R.POS.BOTTOM, R.SPEED.FAST, R.COLOR.WHITE, "唐澤弁護士\n「当職は弁護士ナリ\n　お前とは違うナリよ」", "CharacterFace/Karasawa - Normal.png", function () {
+										MsgBox(R.POS.BOTTOM, R.SPEED.FAST, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「当職は弁護士ナリ\n　お前とは違うナリよ」", "CharacterFace/Karasawa - Normal.png", function () {
 										});
 									});
 								});
