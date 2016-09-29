@@ -51,7 +51,7 @@ function Main() {
 								GamePad.Disable();
 								Character.Warp(0, R.DIRECTION.S, [12, 2]);
 								
-								MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「先に蔵書庫に行かなきゃ...！」", "", function () {
+								MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「先に蔵書庫に行かなきゃ...！」", "CharacterFace/MainCharacter - Normal.png", function () {
 									GamePad.KeyboardType(0);
 								});
 							}
