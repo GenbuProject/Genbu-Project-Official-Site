@@ -34,12 +34,12 @@ function Main() {
 		
 		var Warps = {
 			ToElumVillage: function () {
-				Sound.PlayBGM(11);
-				
 				Map.Hide();
 				Character.Hide();
 				
 				if ((Resource.UserData.Flag.Flag0001_Prologue && Resource.UserData.Flag.Flag0002_FindHero) || (!Resource.UserData.Flag.Flag0001_Prologue && !Resource.UserData.Flag.Flag0002_FindHero)) {
+					Sound.PlayBGM(11);
+					
 					Map.Show(0, [
 						function () {
 							if (Resource.UserData.Flag.Flag0002_FindHero) {
