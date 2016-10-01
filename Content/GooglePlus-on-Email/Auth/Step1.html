@@ -6,7 +6,7 @@
 		<Title>しばらくお待ちください...</Title>
 		
 		<Script Type = "Text/JavaScript">
-			function CheckToken1() {
+			function CheckToken() {
 				var Token = location.search.split("&")[0].replace("?code=", "");
 				
 				var Sender = new XMLHttpRequest();
@@ -36,7 +36,7 @@
 		</Style>
 	</Head>
 	
-	<Body>
+	<Body OnLoad = "CheckToken();">
 		<P ID = "ShowToken">
 			あなたのトークンは<Input Type = "TextBox" Value = "" ReadOnly = "ReadOnly">です
 		</P>
