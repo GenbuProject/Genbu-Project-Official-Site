@@ -7,12 +7,38 @@
 		
 		<Script Type = "Text/JavaScript">
 			function CheckToken1() {
+				var Token = location.search.split("&")[0].replace("?code=", "");
 				
+				var Sender = new XMLHttpRequest();
+					Sender.open("POST", "https://www.googleapis.com/oauth2/v4/token?client_id=561405874807-tc32h0o88d880gqdt1ofa5qhtfqqq4j8.apps.googleusercontent.com&client_secret=sYFFO7yBzyveLEJflhQwc2Dn&redirect_uri=https://genbuproject.github.io/Genbu-Project-Official-Site/Content/GooglePlus-on-Email/Auth/Step1.html&grant_type=authorization_code&code=" + Token, false);
+					Sender.send(null);
+					
+				document.getElementsByTagName("Input")[0].value = JSON.parse(Sender.response).access_token;
+			}
+			
+			function CopyToken() {
+				document.getElementsByTagName("Input")[0].select();
+				document.execCommand("copy");
+			}
+			
+			document.getElementsByTagName("Input")[0].onclick = function () {
+				CopyToken();
 			}
 		</Script>
+		
+		<Style>
+			#ShowToken {
+				BackGround: Gray;
+				Border: Thin Solid LightGreen;
+				Border-Radius: 5px;
+				Color: DarkOrange;
+			}
+		</Style>
 	</Head>
 	
 	<Body>
-		
+		<P ID = "ShowToken">
+			あなたのトークンは<Input Type = "TextBox" Value = "" ReadOnly = "ReadOnly">です
+		</P>
 	</Body>
 </HTML>
