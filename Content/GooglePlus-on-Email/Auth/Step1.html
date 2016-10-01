@@ -20,10 +20,6 @@
 				document.getElementsByTagName("Input")[0].select();
 				document.execCommand("copy");
 			}
-			
-			document.getElementsByTagName("Input")[0].onclick = function () {
-				CopyToken();
-			}
 		</Script>
 		
 		<Style>
@@ -38,7 +34,7 @@
 	
 	<Body OnLoad = "CheckToken();">
 		<P ID = "ShowToken">
-			あなたのトークンは<Input Type = "TextBox" Value = "" ReadOnly = "ReadOnly">です
+			あなたのトークンは<Input Type = "TextBox" Value = "" ReadOnly = "ReadOnly" OnClick = "CopyToken();">です
 		</P>
 	</Body>
 </HTML>
