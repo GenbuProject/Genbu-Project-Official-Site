@@ -93,8 +93,8 @@
 				Calc.GetGenericMAGDamage = function (TypeID, CharacterOrMonsterID, UsingMagicID) {
 					for (var i = 0; i < Resource.SystemData.Magic.length; i++) {
 						if (Resource.SystemData.Magic[i].ID == UsingMagicID) {
-							if (TypeID === Calc.TypeID.Character) return (Resource.UserData.Character[CharacterOrMonsterID].MAG + Math.floor(Math.random() * 5 + 1)) * Resource.SystemData.Magic[UsingMagicID].GenericDamage;
-							if (TypeID === Calc.TypeID.Monster) return (Resource.SystemData.Monster[CharacterOrMonsterID].MAG + Math.floor(Math.random() * 5 + 1)) * Resource.SystemData.Magic[UsingMagicID].GenericDamage;
+							if (TypeID === Calc.TypeID.Character) return (Resource.UserData.Character[CharacterOrMonsterID].MAG + Math.floor(Math.random() * 5 + 1)) * Resource.SystemData.Magic[i].GenericDamage;
+							if (TypeID === Calc.TypeID.Monster) return (Resource.SystemData.Monster[CharacterOrMonsterID].MAG + Math.floor(Math.random() * 5 + 1)) * Resource.SystemData.Magic[i].GenericDamage;
 						}
 					}
 				}
