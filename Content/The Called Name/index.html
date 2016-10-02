@@ -160,16 +160,16 @@
 				GetEXP: 0,
 				
 				Init: function (GroupID, BGMID, BackImgPath, OnVictoryFuc) {
-					this.Effect.BlackOut(2.5, 0, function () {
-						this.Map.Hide();
-						this.Character.Hide();
+					R.THIS.Effect.BlackOut(2.5, 0, function () {
+						R.THIS.Map.Hide();
+						R.THIS.Character.Hide();
 						
-						this.GamePad.Disable();
+						R.THIS.GamePad.Disable();
 						
 						document.getElementById("RPGHelper-Main").style.background = "URL('BackGround/" + BackImgPath + "')";
 						
-						this.Sound.PlaySE(101);
-						this.Sound.PlayBGM(BGMID);
+						R.THIS.Sound.PlaySE(101);
+						R.THIS.Sound.PlayBGM(BGMID);
 						
 						var MonsterTable = document.createElement("Table");
 							MonsterTable.id = "MonsterTable";
