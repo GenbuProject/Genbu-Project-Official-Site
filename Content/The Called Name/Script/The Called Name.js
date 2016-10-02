@@ -382,11 +382,11 @@ function Main() {
 							},
 							
 							function () {
-								Commons.Saving([3, [6, 10, R.DIRECTION.N]]);
+								Commons.Saving([0, [6, 10, R.DIRECTION.N]]);
 							},
 							
 							function () {
-								Commons.Saving([3, [7, 10, R.DIRECTION.N]]);
+								Commons.Saving([0, [7, 10, R.DIRECTION.N]]);
 							},
 							
 							function () {
@@ -432,11 +432,11 @@ function Main() {
 							},
 							
 							function () {
-								Commons.Saving([3, [6, 10, R.DIRECTION.N]]);
+								Commons.Saving([0, [6, 10, R.DIRECTION.N]]);
 							},
 							
 							function () {
-								Commons.Saving([3, [7, 10, R.DIRECTION.N]]);
+								Commons.Saving([0, [7, 10, R.DIRECTION.N]]);
 							},
 							
 							function () {
@@ -698,7 +698,7 @@ function Main() {
 				Menu.MenuItem(StartMenu, ["01", "42"], R.COLOR.WHITE, "LOAD GAME", function () {
 					Load(".sav", function () {
 						Effect.BlackOut(2, 0, function () {
-							Resource.UserData.Pos[0] == 3 ? ToElumForest() : null;
+							Resource.UserData.Pos[0] == 0 ? Warps.ElumForest.To0014() : null;
 							Character.Warp(0, Resource.UserData.Pos[1][2], [Resource.UserData.Pos[1][0], Resource.UserData.Pos[1][1]])
 							
 							Resource.UserData.Pos = undefined;
