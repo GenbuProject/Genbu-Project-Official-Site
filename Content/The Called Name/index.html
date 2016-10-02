@@ -159,62 +159,67 @@
 				MonsterAI: [],
 				GetEXP: 0,
 				
-				Init: function (GroupID, BGMID, BackImgPath, OnVictoryFuc, OnLoseFuc) {
-					this.GamePad.Disable();
-					
-					document.getElementById("RPGHelper-Main").style.background = "URL('BackGround/" + BackImgPath + "')";
-					
-					this.Sound.PlaySE(101);
-					this.Sound.PlayBGM(BGMID);
-					
-					var MonsterTable = document.createElement("Table");
-						MonsterTable.id = "MonsterTable";
-						MonsterTable.setAttribute("Align", "Center");
-						MonsterTable.border = "0";
+				Init: function (GroupID, BGMID, BackImgPath, OnVictoryFuc) {
+					this.Effect.BlackOut(2.5, 0, function () {
+						this.Map.Hide();
+						this.Character.Hide();
 						
-						MonsterTable.style.position = "Relative";
-						MonsterTable.style.top = "20%";
+						this.GamePad.Disable();
 						
-						MonsterTable.insertRow(-1);
+						document.getElementById("RPGHelper-Main").style.background = "URL('BackGround/" + BackImgPath + "')";
 						
-					document.getElementById("RPGHelper-Main").appendChild(MonsterTable);
-					
-					for (var i = 0; i < Resource.SystemData.Group[GroupID].length; i++) {
-						var MonsterTableD = document.createElement("TD");
-							MonsterTable.rows[0].appendChild(MonsterTableD);
+						this.Sound.PlaySE(101);
+						this.Sound.PlayBGM(BGMID);
+						
+						var MonsterTable = document.createElement("Table");
+							MonsterTable.id = "MonsterTable";
+							MonsterTable.setAttribute("Align", "Center");
+							MonsterTable.border = "0";
 							
-						Fight.MonsterParty[i] = $.extend(true, {}, Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]]);
-						
-						Fight.MonsterCvs[i] = document.createElement("Canvas");
-							Fight.MonsterCvs[i].id = "Monster" + i;
+							MonsterTable.style.position = "Relative";
+							MonsterTable.style.top = "20%";
 							
-						MonsterTableD.appendChild(Fight.MonsterCvs[i]);
-						
-						Fight.MonsterParty[i] = Fight.MonsterParty[i];
-						
-						var AIReader = new XMLHttpRequest();
-							AIReader.open("GET", "MonsterGraphic/" + Fight.MonsterParty[i].Name + ".js", false);
-							AIReader.send(null);
+							MonsterTable.insertRow(-1);
 							
-						Fight.MonsterAI[i] = eval(AIReader.responseText);
+						document.getElementById("RPGHelper-Main").appendChild(MonsterTable);
 						
-						var Graphic = new Image();
-							Graphic.src = "MonsterGraphic/" + Fight.MonsterParty[i].MonsterGraphic;
+						for (var i = 0; i < Resource.SystemData.Group[GroupID].length; i++) {
+							var MonsterTableD = document.createElement("TD");
+								MonsterTable.rows[0].appendChild(MonsterTableD);
+								
+							Fight.MonsterParty[i] = $.extend(true, {}, Resource.SystemData.Monster[Resource.SystemData.Group[GroupID][i]]);
 							
-							Graphic.onload = (function (i) {
-								return function () {
-									Fight.MonsterCvs[i].width = document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5;
-									Fight.MonsterCvs[i].height = document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5;
-									
-									Fight.MonsterCvs[i].getContext("2d").drawImage(Graphic, 0, 0, Graphic.width, Graphic.height, 0, 0, document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5, document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5);
-								}
-							})(i);
+							Fight.MonsterCvs[i] = document.createElement("Canvas");
+								Fight.MonsterCvs[i].id = "Monster" + i;
+								
+							MonsterTableD.appendChild(Fight.MonsterCvs[i]);
+							
+							Fight.MonsterParty[i] = Fight.MonsterParty[i];
+							
+							var AIReader = new XMLHttpRequest();
+								AIReader.open("GET", "MonsterGraphic/" + Fight.MonsterParty[i].Name + ".js", false);
+								AIReader.send(null);
+								
+							Fight.MonsterAI[i] = eval(AIReader.responseText);
+							
+							var Graphic = new Image();
+								Graphic.src = "MonsterGraphic/" + Fight.MonsterParty[i].MonsterGraphic;
+								
+								Graphic.onload = (function (i) {
+									return function () {
+										Fight.MonsterCvs[i].width = document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5;
+										Fight.MonsterCvs[i].height = document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5;
+										
+										Fight.MonsterCvs[i].getContext("2d").drawImage(Graphic, 0, 0, Graphic.width, Graphic.height, 0, 0, document.getElementById("RPGHelper-Main").style.width.split("px")[0] / 5, document.getElementById("RPGHelper-Main").style.height.split("px")[0] / 5);
+									}
+								})(i);
+						}
+						
+						Fight.Show.call(R.THIS, GroupID, OnVictoryFuc);
 					}
-					
-					Fight.Show.call(R.THIS, GroupID, OnVictoryFuc, OnLoseFuc);
 				},
 				
-				Show: function (GroupID, OnVictoryFuc, OnLoseFuc) {
+				Show: function (GroupID, OnVictoryFuc) {
 					var Sound = this.Sound,
 						Effect = this.Effect,
 						Menu = this.Menu,
@@ -249,7 +254,7 @@
 												for (var n = 0; n < Fight.MonsterAI.length; n++) {
 													Fight.MonsterAI[n](function () {
 														if (Resource.UserData.Character[0].HP != 0) {
-															Fight.Show.call(R.THIS, GroupID, OnVictoryFuc, OnLoseFuc);
+															Fight.Show.call(R.THIS, GroupID, OnVictoryFuc);
 														} else {
 															MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.RED, Resource.UserData.Character[0].Name + "は力尽きた......", "", function () {
 																Effect.BlackOut(2, 0, function () {

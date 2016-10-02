@@ -82,53 +82,48 @@ function Main() {
 											MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村長\n「それはそなたの腕を持って試してみるが良いじゃろう...」", "", function () {
 												MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「おう！\n　臨むところだ！」", "", function () {
 													MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『くそっ......\n　やるしかないか...！』", "CharacterFace/MainCharacter - Normal.png", function () {
-														Effect.BlackOut(2.5, 0, function () {
-															Map.Hide();
-															Character.Hide();
+														Fight.Init.call(R.THIS, 3, 103, "Elum Village.png", function () {
+															Resource.UserData.Flag.Flag0002_FindHero = true;
 															
-															Fight.Init.call(R.THIS, 3, 103, "Elum Village.png", function () {
-																Resource.UserData.Flag.Flag0002_FindHero = true;
+															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「何......だと...!?」", "", function () {
+																Sound.StopBGM();
 																
-																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「何......だと...!?」", "", function () {
-																	Sound.StopBGM();
+																Effect.BlackOut(1.5, 0, function () {
+																	Canvas.style.background = "Black";
 																	
-																	Effect.BlackOut(1.5, 0, function () {
-																		Canvas.style.background = "Black";
-																		
-																		MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『......!?』", "CharacterFace/MainCharacter - Normal.png", function () {
-																			MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "気が付くとエンリコさんが地べたに座り込んでいた。\n僕は戦いに勝ったみたいだ...", "", function () {
-																				MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「お前...一体何者だ...？」", "", function () {
-																					MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『......えっ...？』", "CharacterFace/MainCharacter - Normal.png", function () {
-																						MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「......ただの奴ではなさそうだな...」", "", function () {
-																							Effect.BlackOut(1.5, 0, function () {
-																								MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「エレンを...頼む...！」", "", function () {
-																									Effect.WhiteOut(2, 0, function () {
-																										Canvas.style.background = "White";
+																	MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『......!?』", "CharacterFace/MainCharacter - Normal.png", function () {
+																		MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "気が付くとエンリコさんが地べたに座り込んでいた。\n僕は戦いに勝ったみたいだ...", "", function () {
+																			MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「お前...一体何者だ...？」", "", function () {
+																				MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『......えっ...？』", "CharacterFace/MainCharacter - Normal.png", function () {
+																					MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「......ただの奴ではなさそうだな...」", "", function () {
+																						Effect.BlackOut(1.5, 0, function () {
+																							MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「エレンを...頼む...！」", "", function () {
+																								Effect.WhiteOut(2, 0, function () {
+																									Canvas.style.background = "White";
+																									
+																									Effect.BlackOut(1, 0, function () {
+																										Canvas.style.background = "Black";
 																										
-																										Effect.BlackOut(1, 0, function () {
-																											Canvas.style.background = "Black";
-																											
-																											MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "エンリコさんの心からの叫びが\n僕の心に鋭く突き刺さった。", "", function () {
-																												MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "その叫びが僕の想いを変えた。\nエレンを必ず助けだすと決意した.........", "", function () {
-																													Warps.ToElumVillage();
-																													Character.Warp(0, R.DIRECTION.S, [12, 2]);
+																										MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "エンリコさんの心からの叫びが\n僕の心に鋭く突き刺さった。", "", function () {
+																											MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "その叫びが僕の想いを変えた。\nエレンを必ず助けだすと決意した.........", "", function () {
+																												Warps.ToElumVillage();
+																												Character.Warp(0, R.DIRECTION.S, [12, 2]);
+																												
+																												Effect.ColorOut(2, 0, "Black", function () {
+																													Sound.PlayBGM(11);
 																													
-																													Effect.ColorOut(2, 0, "Black", function () {
-																														Sound.PlayBGM(11);
-																														
-																														MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「頑張れよ！」", "", function () {
-																															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n「分かったンゴ！」", "CharacterFace/MainCharacter - Normal.png", function () {
-																																Effect.BlackOut(1, 0, function () {
-																																	Map.Hide();
-																																	Character.Hide();
+																													MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「頑張れよ！」", "", function () {
+																														MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n「分かったンゴ！」", "CharacterFace/MainCharacter - Normal.png", function () {
+																															Effect.BlackOut(1, 0, function () {
+																																Map.Hide();
+																																Character.Hide();
+																																
+																																MsgBox(R.POS.BOTTOM, R.SPEED.FAST, R.COLOR.CYAN, "僕はエンリコさんの想いを胸に、\n故郷を後にした......", "", function () {
+																																	Warps.ToElumVillage();
+																																	Character.Warp(0, R.DIRECTION.S, [12, 2]);
 																																	
-																																	MsgBox(R.POS.BOTTOM, R.SPEED.FAST, R.COLOR.CYAN, "僕はエンリコさんの想いを胸に、\n故郷を後にした......", "", function () {
-																																		Warps.ToElumVillage();
-																																		Character.Warp(0, R.DIRECTION.S, [12, 2]);
-																																		
-																																		Effect.ColorOut(1, 0, "Black", function () {
-																																			GamePad.KeyboardType(0);
-																																		});
+																																	Effect.ColorOut(1, 0, "Black", function () {
+																																		GamePad.KeyboardType(0);
 																																	});
 																																});
 																															});
@@ -146,10 +141,6 @@ function Main() {
 																			});
 																		});
 																	});
-																});
-															}, function () {
-																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n『こいつ...出来るっ！』", "", function () {
-																	
 																});
 															});
 														});
@@ -344,16 +335,29 @@ function Main() {
 										Sound.PlayBGM(5);
 										
 										MsgBox(R.POS.BOTTOM, R.SPEED.FAST, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「当職は弁護士ナリ\n　お前とは違うナリよ」", "CharacterFace/Karasawa - Normal.png", function () {
-											MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『はっ!?』", "CharacterFace/MainCharacter - Normal.png", function () {
-												MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『はっ!?』", "CharacterFace/MainCharacter - Normal.png", function () {
-													MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「あなたは...尊師,,,!?」", "CharacterFace/MainCharacter - Normal.png", function () {
-														MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「そうですを\n　弁護士の唐澤です」", "CharacterFace/Karasawa - Normal.png", function () {
-															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「まず初めに書いて置きますが、\n　僕は文章を書くのは得意ではないので\n　読みにくかったらもうしわけありません。」", "CharacterFace/Karasawa - Normal.png", function () {
+											MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『ﾌｧｯ!?』", "CharacterFace/MainCharacter - Normal.png", function () {
+												MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「あなたは...尊師...!?」", "CharacterFace/MainCharacter - Normal.png", function () {
+													MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「そうですを\n　弁護士の唐澤です」", "CharacterFace/Karasawa - Normal.png", function () {
+														MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「まず初めに書いて置きますが、\n　僕は文章を書くのは得意ではないので\n　読みにくかったらもうしわけありません。」", "CharacterFace/Karasawa - Normal.png", function () {
+															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『まさか生で尊師を見れるなんて............』", "CharacterFace/MainCharacter - Normal.png", function () {
+																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「貴方にお願いします。\n　争うのはもうやめにしませんか。\n　ひろゆきさんお答えください。」", "CharacterFace/Karasawa - Normal.png", function () {
+																	MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「争うも何も......\n　ってか(ひろゆきじゃ)ないです。」", "CharacterFace/MainCharacter - Normal.png", function () {
+																		MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「FOXさんはあなたの大事な仲間ではなかったのですか。」", "CharacterFace/Karasawa - Normal.png", function () {
+																			MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「だから私の名前は" + Resource.UserData.Character[0]["Name"] + "だ。」", "CharacterFace/MainCharacter - Normal.png", function () {
+																				MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「これはいけない。\n　しっかり罪を認識しなさい。」", "CharacterFace/Karasawa - Normal.png", function () {
+																					Fight.Init.call(R.THIS, 4, 103, "Elum Forest.png", function () {
+																						
+																					});
+																				});
+																			});
+																		});
+																	});
+																});
 															});
 														});
 													});
 												});
-											});				
+											});
 										});
 									});
 								});

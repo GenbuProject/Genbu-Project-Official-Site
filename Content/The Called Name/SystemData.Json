@@ -295,15 +295,30 @@
 			"Name": "エンリコ",
 			"MonsterGraphic": "Enlico.png",
 			
-			"HP": 50,
+			"HP": 25,
 			"MP": 0,
-			"ATK": 4,
-			"DEF": 3,
+			"ATK": 3,
+			"DEF": 2,
 			"MAG": 0,
 			"SPD": 1,
 			"LUK": 2,
 			
 			"EXP": 20
+		},
+		
+		{
+			"Name": "弁護士唐澤貴洋弁護士",
+			"MonsterGraphic": "Karasawa.png",
+			
+			"HP": 20,
+			"MP": 5,
+			"ATK": 2,
+			"DEF": 1,
+			"MAG": 2,
+			"SPD": 2,
+			"LUK": 5,
+			
+			"EXP": 25
 		}
 	],
 	
@@ -311,7 +326,8 @@
 		[0, 0, 0],
 		[1, 1, 1],
 		[2, 2, 2],
-		[3]
+		[3],
+		[4]
 	],
 	
 	"Weapon": {
