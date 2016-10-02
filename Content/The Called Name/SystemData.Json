@@ -103,13 +103,43 @@
 				"Volume": 1
 			},
 			
-			"Attack.wav": {
+			"Attack - Blow.wav": {
 				"ID": 102,
 				"Volume": 1
 			},
 			
-			"Escape.wav": {
+			"Attack - Slash.wav": {
 				"ID": 103,
+				"Volume": 1
+			},
+			
+			"Attack - Fire.wav": {
+				"ID": 104,
+				"Volume": 1
+			},
+			
+			"Attack - Water.wav": {
+				"ID": 105,
+				"Volume": 1
+			},
+			
+			"Attack - Wind.wav": {
+				"ID": 106,
+				"Volume": 1
+			},
+			
+			"Attack - Shock.wav": {
+				"ID": 107,
+				"Volume": 1
+			},
+			
+			"Attack - Mechanic.wav": {
+				"ID": 108,
+				"Volume": 1
+			},
+			
+			"Escape.wav": {
+				"ID": 109,
 				"Volume": 1
 			}
 		},

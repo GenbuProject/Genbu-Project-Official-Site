@@ -13,7 +13,7 @@
 				TurnChangeFuc();
 			});
 		} else {
-			R.THIS.Sound.PlaySE(102);
+			R.THIS.Sound.PlaySE(108);
 			
 			var Damage = Calc.GetFinalMAGDamage([Calc.TypeID.Monster, ID], [Calc.TypeID.Character, 0], 101);
 			Resource.UserData.Character[0].HP > Damage ? Resource.UserData.Character[0].HP -= Damage : Resource.UserData.Character[0].HP = 0;
