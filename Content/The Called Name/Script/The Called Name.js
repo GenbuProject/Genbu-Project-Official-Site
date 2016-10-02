@@ -110,8 +110,6 @@ function Main() {
 																												Character.Warp(0, R.DIRECTION.S, [12, 2]);
 																												
 																												Effect.ColorOut(2, 0, "Black", function () {
-																													Sound.PlayBGM(11);
-																													
 																													MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「頑張れよ！」", "", function () {
 																														MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n「分かったンゴ！」", "CharacterFace/MainCharacter - Normal.png", function () {
 																															Effect.BlackOut(1, 0, function () {
@@ -342,7 +340,7 @@ function Main() {
 															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『まさか生で尊師を見れるなんて............』", "CharacterFace/MainCharacter - Normal.png", function () {
 																MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「貴方にお願いします。\n　争うのはもうやめにしませんか。\n　ひろゆきさんお答えください。」", "CharacterFace/Karasawa - Normal.png", function () {
 																	MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「争うも何も......\n　ってか(ひろゆきじゃ)ないです。」", "CharacterFace/MainCharacter - Normal.png", function () {
-																		MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「FOXさんはあなたの大事な仲間ではなかったのですか。」", "CharacterFace/Karasawa - Normal.png", function () {
+																		MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「FOXさんはあなたの大事な\n　仲間ではなかったのですか。」", "CharacterFace/Karasawa - Normal.png", function () {
 																			MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「だから私の名前は" + Resource.UserData.Character[0]["Name"] + "だ。」", "CharacterFace/MainCharacter - Normal.png", function () {
 																				MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「これはいけない。\n　しっかり罪を認識しなさい。」", "CharacterFace/Karasawa - Normal.png", function () {
 																					Fight.Init.call(R.THIS, 4, 103, "Elum Forest.png", function () {

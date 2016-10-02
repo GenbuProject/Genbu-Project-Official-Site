@@ -191,6 +191,7 @@
 	
 	"Magic": [
 		{
+			"ID": 1,
 			"Name": "ファイア",
 			"Type": "Fire",
 			
@@ -200,6 +201,7 @@
 		},
 		
 		{
+			"ID": 2,
 			"Name": "ファイラ",
 			"Type": "Fire",
 			
@@ -209,6 +211,7 @@
 		},
 		
 		{
+			"ID": 3,
 			"Name": "ファイガ",
 			"Type": "Fire",
 			
@@ -218,6 +221,7 @@
 		},
 		
 		{
+			"ID": 4,
 			"Name": "サマファイア",
 			"Type": "Fire",
 			
@@ -227,6 +231,7 @@
 		},
 		
 		{
+			"ID": 5,
 			"Name": "サマファイラ",
 			"Type": "Fire",
 			
@@ -236,12 +241,23 @@
 		},
 		
 		{
+			"ID": 6,
 			"Name": "サマファイガ",
 			"Type": "Fire",
 			
 			"GenericDamage": 7,
 			"UseMP": 12,
 			"DamageRange": "All"
+		},
+		
+		{
+			"ID": 101,
+			"Name": "IP開示",
+			"Type": "Other",
+			
+			"GenericDamage": 2,
+			"UseMP": 2,
+			"DamageRange": 1
 		}
 	],
 	
