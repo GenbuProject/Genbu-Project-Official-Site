@@ -341,8 +341,19 @@ function Main() {
 								
 								MsgBox(R.POS.BOTTOM, R.SPEED.FAST, R.COLOR.WHITE, "？？？\n「そこの君！\n　待つナリよ！」", "", function () {
 									MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "後ろを振り返るとあの有名な男が立っていた...", "", function () {
+										Sound.PlayBGM(5);
+										
 										MsgBox(R.POS.BOTTOM, R.SPEED.FAST, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「当職は弁護士ナリ\n　お前とは違うナリよ」", "CharacterFace/Karasawa - Normal.png", function () {
-											
+											MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『はっ!?』", "CharacterFace/MainCharacter - Normal.png", function () {
+												MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n『はっ!?』", "CharacterFace/MainCharacter - Normal.png", function () {
+													MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「あなたは...尊師,,,!?」", "CharacterFace/MainCharacter - Normal.png", function () {
+														MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「そうですを\n　弁護士の唐澤です」", "CharacterFace/Karasawa - Normal.png", function () {
+															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「まず初めに書いて置きますが、\n　僕は文章を書くのは得意ではないので\n　読みにくかったらもうしわけありません。」", "CharacterFace/Karasawa - Normal.png", function () {
+															});
+														});
+													});
+												});
+											});				
 										});
 									});
 								});
@@ -551,7 +562,7 @@ function Main() {
 								}, 1000);
 								
 								Effect.BlackOut(2.5, 0, function () {
-									Sound.PlayBGM(5);
+									Sound.PlayBGM(51);
 									
 									MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.CYAN, "真っ青な空が広がるある日の朝。\n僕はただ空を眺めていた。", "", function () {
 										MsgBox(R.POS.CENTER, R.SPEED.NORMAL, R.COLOR.CYAN, "僕の名前は" + Resource.UserData.Character[0]["Name"] + "。\nエルム村育ちの普通の子供だ。", "", function () {
@@ -574,7 +585,7 @@ function Main() {
 																	Character.Warp(0, R.DIRECTION.S, [16, 12]);
 																	
 																	Effect.ColorOut(1.5, 0, "Black", function () {
-																		Sound.PlayBGM(6);
+																		Sound.PlayBGM(52);
 																		
 																		MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, "エルム村の緊急放送\n「エルム村の村人達は蔵書庫へ集合せよ\n　繰り返す\n　エルム村の村人達は蔵書庫へ集合せよ」", "", function () {
 																			MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "周りの村人達が次々と蔵書庫に集まっている...\n僕も蔵書庫へ向かおう...！", "", function () {

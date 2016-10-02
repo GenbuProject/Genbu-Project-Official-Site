@@ -36,13 +36,8 @@
 				"Volume": 1
 			},
 			
-			"Birds.wav": {
+			"Comical.wav": {
 				"ID": 5,
-				"Volume": 1
-			},
-			
-			"Siren.wav": {
-				"ID": 6,
 				"Volume": 1
 			},
 			
@@ -58,6 +53,16 @@
 			
 			"Elum Forest.wav": {
 				"ID": 13,
+				"Volume": 1
+			},
+			
+			"Birds.wav": {
+				"ID": 51,
+				"Volume": 1
+			},
+			
+			"Siren.wav": {
+				"ID": 52,
 				"Volume": 1
 			},
 			
