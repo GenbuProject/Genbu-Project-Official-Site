@@ -83,8 +83,6 @@ function Main() {
 												MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「おう！\n　臨むところだ！」", "", function () {
 													MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0].Name + "\n『くそっ......\n　やるしかないか...！』", "CharacterFace/MainCharacter - Normal.png", function () {
 														Fight.Init.call(R.THIS, 3, 103, "Elum Village.png", function () {
-															Resource.UserData.Flag.Flag0002_FindHero = true;
-															
 															MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "エンリコ\n「何......だと...!?」", "", function () {
 																Sound.StopBGM();
 																
@@ -117,6 +115,8 @@ function Main() {
 																																Character.Hide();
 																																
 																																MsgBox(R.POS.BOTTOM, R.SPEED.FAST, R.COLOR.CYAN, "僕はエンリコさんの想いを胸に、\n故郷を後にした......", "", function () {
+																																	Resource.UserData.Flag.Flag0002_FindHero = true;
+																																	
 																																	Warps.ToElumVillage();
 																																	Character.Warp(0, R.DIRECTION.S, [12, 2]);
 																																	
@@ -199,7 +199,6 @@ function Main() {
 																		MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "村人\n「これから外で勇者探しが行われるらしい...\n　俺は先に行ってるぞ...」", "", function () {
 																			MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.CYAN, "勇者探し...か......\n僕も見に行くとするか...", "", function () {
 																				Resource.UserData.Flag.Flag0001_Prologue = true;
-																				
 																				GamePad.KeyboardType(0);
 																			});
 																		});
@@ -344,8 +343,6 @@ function Main() {
 																			MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「だから私の名前は" + Resource.UserData.Character[0]["Name"] + "だ。」", "CharacterFace/MainCharacter - Normal.png", function () {
 																				MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「これはいけない。\n　しっかり罪を認識しなさい。」", "CharacterFace/Karasawa - Normal.png", function () {
 																					Fight.Init.call(R.THIS, 4, 103, "Elum Forest.png", function () {
-																						Resource.UserData.Flag.Flag0003_MeetToKarasawa = true;
-																						
 																						Effect.BlackOut(2.5, 0, function () {
 																							Sound.StopBGM();
 																							Canvas.style.background = "Black";
@@ -357,6 +354,9 @@ function Main() {
 																											MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「空は何色か\n　俺は君に人を傷付けるのではなく\n　人を助ける人間になってほしい\n　俺は君の20年後を見ている」", "CharacterFace/Karasawa - Normal.png", function () {
 																												MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「すべての人との出会いに感謝。」", "CharacterFace/Karasawa - Normal.png", function () {
 																													MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「声なき声に力を。\n　愛なき時代に愛を。」", "CharacterFace/Karasawa - Normal.png", function () {
+																														Resource.UserData.Flag.Flag0003_MeetToKarasawa = true;
+																														Sound.PlayBGM(13);
+																														
 																														Warps.ElumForest.To0010();
 																														Character.Warp(0, R.DIRECTION.N, [14, 9]);
 																														
