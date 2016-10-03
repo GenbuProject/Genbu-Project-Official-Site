@@ -347,6 +347,7 @@ function Main() {
 																						Resource.UserData.Flag.Flag0003_MeetToKarasawa = true;
 																						
 																						Effect.BlackOut(2.5, 0, function () {
+																							Sound.StopBGM();
 																							Canvas.style.background = "Black";
 																							
 																							MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「......弟を青春時代に失ったことが\n　全ての基点だった。\n　自分の無力感。」", "CharacterFace/Karasawa - Normal.png", function () {
