@@ -344,19 +344,24 @@ function Main() {
 																			MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.UserData.Character[0]["Name"] + "\n「だから私の名前は" + Resource.UserData.Character[0]["Name"] + "だ。」", "CharacterFace/MainCharacter - Normal.png", function () {
 																				MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「これはいけない。\n　しっかり罪を認識しなさい。」", "CharacterFace/Karasawa - Normal.png", function () {
 																					Fight.Init.call(R.THIS, 4, 103, "Elum Forest.png", function () {
-																						Warps.ElumForest.To0010();
-																						Character.Warp(0, R.DIRECTION.N, [14, 9]);
+																						Resource.UserData.Flag.Flag0003_MeetToKarasawa = true;
 																						
 																						Effect.BlackOut(2.5, 0, function () {
-																							Canvas.style.background = "Transparent";
+																							Canvas.style.background = "Black";
 																							
-																							MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「......弟を青春時代に失ったことが全ての基点だった。\n　自分の無力感。」", "CharacterFace/Karasawa - Normal.png", function () {
+																							MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「......弟を青春時代に失ったことが\n　全ての基点だった。\n　自分の無力感。」", "CharacterFace/Karasawa - Normal.png", function () {
 																								MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「なぜこんなに無力なんだ。」", "CharacterFace/Karasawa - Normal.png", function () {
 																									MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「自問自答する日々。\n　最終的に出会ったのが法律だった。」", "CharacterFace/Karasawa - Normal.png", function () {
 																										MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「弟を失い、いつか自分の力で弟のような\n　犠牲者を出さない社会をつくりたい、\n　人が人に優しい社会をつくりたいと\n　思うようになりました。」", "CharacterFace/Karasawa - Normal.png", function () {
-																											MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「空は何色か\n　俺は君に人を傷付けるのではなく人を助ける人間になってほしい\n　俺は君の20年後を見ている」", "CharacterFace/Karasawa - Normal.png", function () {
+																											MsgBox(R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「空は何色か\n　俺は君に人を傷付けるのではなく\n　人を助ける人間になってほしい\n　俺は君の20年後を見ている」", "CharacterFace/Karasawa - Normal.png", function () {
 																												MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「すべての人との出会いに感謝。」", "CharacterFace/Karasawa - Normal.png", function () {
 																													MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.WHITE, "弁護士唐澤貴洋弁護士\n「声なき声に力を。\n　愛なき時代に愛を。」", "CharacterFace/Karasawa - Normal.png", function () {
+																														Warps.ElumForest.To0010();
+																														Character.Warp(0, R.DIRECTION.N, [14, 9]);
+																														
+																														Effect.ColorOut(2, 0, "Black", function () {
+																															GamePad.KeyboardType(0);
+																														});
 																													});
 																												});
 																											});
