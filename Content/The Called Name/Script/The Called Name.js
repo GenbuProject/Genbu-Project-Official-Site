@@ -408,7 +408,7 @@ function Main() {
 					Map.Hide();
 					Character.Hide();
 					
-					if (Resource.UserData.Flag.Flag0003_WonToKarasawa) {
+					if (Resource.UserData.Flag.Flag0003_MeetToKarasawa) {
 						Map.Show(7, [
 							function () {
 								Warps.ToElumVillage();
