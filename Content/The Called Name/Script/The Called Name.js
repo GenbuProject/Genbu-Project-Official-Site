@@ -104,6 +104,8 @@ function Main() {
 																										
 																										MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "エンリコさんの心からの叫びが\n僕の心に鋭く突き刺さった。", "", function () {
 																											MsgBox(R.POS.BOTTOM, R.SPEED.SLOW, R.COLOR.CYAN, "その叫びが僕の想いを変えた。\nエレンを必ず助けだすと決意した.........", "", function () {
+																												Resource.UserData.Flag.Flag0002_FindHero = true;
+																												
 																												Warps.ToElumVillage();
 																												Character.Warp(0, R.DIRECTION.S, [12, 2]);
 																												
@@ -115,8 +117,6 @@ function Main() {
 																																Character.Hide();
 																																
 																																MsgBox(R.POS.BOTTOM, R.SPEED.FAST, R.COLOR.CYAN, "僕はエンリコさんの想いを胸に、\n故郷を後にした......", "", function () {
-																																	Resource.UserData.Flag.Flag0002_FindHero = true;
-																																	
 																																	Warps.ToElumVillage();
 																																	Character.Warp(0, R.DIRECTION.S, [12, 2]);
 																																	
