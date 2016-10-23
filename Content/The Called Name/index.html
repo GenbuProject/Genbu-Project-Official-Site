@@ -201,7 +201,7 @@
 							Fight.MonsterParty[i] = Fight.MonsterParty[i];
 							
 							var AIReader = new XMLHttpRequest();
-								AIReader.open("GET", "MonsterGraphic/" + Fight.MonsterParty[i].Name + ".js", false);
+								AIReader.open("GET", Fight.MonsterParty[i].AI, false);
 								AIReader.send(null);
 								
 							Fight.MonsterAI[i] = eval(AIReader.responseText);

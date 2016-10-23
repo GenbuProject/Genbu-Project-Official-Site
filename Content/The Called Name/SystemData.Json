@@ -341,7 +341,7 @@
 			"Name": "エンリコ",
 			"MonsterGraphic": "Enlico.png",
 			
-			"HP": 25,
+			"HP": 30,
 			"MP": 0,
 			"ATK": 3,
 			"DEF": 2,
@@ -349,22 +349,26 @@
 			"SPD": 1,
 			"LUK": 2,
 			
-			"EXP": 20
+			"EXP": 20,
+			
+			"AI": "MonsterAI/Enlico.js"
 		},
 		
 		{
 			"Name": "弁護士唐澤貴洋弁護士",
 			"MonsterGraphic": "Karasawa.png",
 			
-			"HP": 20,
-			"MP": 5,
+			"HP": 50,
+			"MP": 12,
 			"ATK": 2,
 			"DEF": 1,
 			"MAG": 2,
 			"SPD": 2,
 			"LUK": 5,
 			
-			"EXP": 25
+			"EXP": 25,
+			
+			"AI": "MonsterAI/Karasawa.js"
 		}
 	],
 	
