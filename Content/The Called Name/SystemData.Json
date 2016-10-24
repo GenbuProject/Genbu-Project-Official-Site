@@ -141,6 +141,11 @@
 			"Escape.wav": {
 				"ID": 109,
 				"Volume": 1
+			},
+			
+			"MainCharacter - Damage1.wav": {
+				"ID": 110,
+				"Volume": 1
 			}
 		},
 		

@@ -9,6 +9,8 @@
 			var Damage = Calc.GetFinalMAGDamage([Calc.TypeID.Monster, ID], [Calc.TypeID.Character, 0], 101);
 			Resource.UserData.Character[0].HP > Damage ? Resource.UserData.Character[0].HP -= Damage : Resource.UserData.Character[0].HP = 0;
 			
+			R.THIS.Sound.PlaySE(110);
+			
 			R.THIS.MsgBox.call(R.THIS, R.POS.BOTTOM, R.SPEED.NORMAL, R.COLOR.WHITE, Resource.SystemData.Monster[ID].Name + "はIP開示を実行！\n" + Resource.SystemData.Monster[ID].Name + "は" + Resource.UserData.Character[0].Name + "に" + Damage + "のダメージを与えた！", "", function () {
 				TurnChangeFuc();
 			});
