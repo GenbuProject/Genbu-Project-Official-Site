@@ -2,23 +2,46 @@ var ToneLine = function () {
 	TL_this = this;
 	
 	this.Ctx = new (window.webkitAudioContext || window.AudioContext)();
-	this.ToneType = "sine";
+	this.BPM = null;
+	this.ToneType = null;
 	
-	this.Play = function (Level, Length) {
-		var Audio = this.Ctx.createOscillator();
-			Audio.type = this.ToneType;
-			Audio.frequency.value = 27.500 * Math.pow(Math.pow(Math.sqrt(2), 1 / (12 / 2)), Level - 1);
-			
-			Audio.connect(this.Ctx.destination);
-			Audio.start(0);
-			
-		setTimeout(function () {
-			Audio.stop();
-		}, Length);
+	this.System = {
+		Play: function (Level, Length) {
+			var Audio = TL_this.Ctx.createOscillator();
+				Audio.type = TL_this.ToneType;
+				Audio.frequency.value = 27.500 * Math.pow(Math.pow(Math.sqrt(2), 1 / (12 / 2)), Level - 1);
+				
+				Audio.connect(TL_this.Ctx.destination);
+				Audio.start(0);
+				
+			setTimeout(function () {
+				Audio.stop();
+			}, (60 / TL_this.BPM) * Length * 1000);
+		}
 	}
 	
-	this.ChangeToneType = function (ID) {
-		this.ToneType = ID == 0 ? "sine" : Type == 1 ? "square" : Type == 2 ? "sawtooth" : Type == 3 ? "triangle" : "sine";
+	this.Control = {
+		ChangeBPM: function (BPM) {
+			TL_this.BPM = BPM;
+		},
+		
+		ChangeToneType: function (ID) {
+			TL_this.ToneType = ID == 0 ? "sine" : ID == 1 ? "square" : ID == 2 ? "sawtooth" : ID == 3 ? "triangle" : "sine";
+		}
+	}
+	
+	this.Maker = {
+		Tone: function (Pos, Pitch, Length) {
+			return {
+				Type: "Tone",
+				
+				Value: {
+					Pos: Pos,
+					Pitch: Pitch,
+					Length: Length
+				}
+			}
+		}
 	}
 	
 	this.Run = function (Ary) {
@@ -43,16 +66,23 @@ var ToneLine = function () {
 		
 		for (let i = 0; i < Tones.length; i++) {
 			setTimeout(function () {
-				TL_this.Play(Tones[i][1], Tones[i][2]);
-			}, Tones[i][0]);
+				TL_this.System.Play(Tones[i][1], Tones[i][2]);
+			}, (60 / TL_this.BPM) * Tones[i][0] * 1000);
 		}
 		
 		for (let i = 0; i < Events.length; i++) {
 			switch (Events[i][1].toLowerCase()) {
+				case "bpm":
+					setTimeout(function () {
+						TL_this.Control.ChangeBPM(Events[i][2].BPM);
+					}, (60 / TL_this.BPM) * Tones[i][0] * 1000);
+					
+					break;
+					
 				case "tonetype":
 					setTimeout(function () {
-						TL_this.ChangeToneType(Events[i][2].ID);
-					}, Tones[i][0]);
+						TL_this.Control.ChangeToneType(Events[i][2].ID);
+					}, (60 / TL_this.BPM) * Tones[i][0] * 1000);
 					
 					break;
 					
@@ -64,80 +94,40 @@ var ToneLine = function () {
 }
 
 with (new ToneLine()) {
-	var Frog = [
-		{
-			Type: "Event",
-			
-			Value: {
-				Pos: 0,
-				Type: "ToneType",
-				
-				Data: {
-					ID: 0
-				}
-			}
-		},
+	Control.ChangeBPM(120);
+	Control.ChangeToneType(0);
+	
+	var Song = [
+		Maker.Tone(0, 52, 1),
+		Maker.Tone(1, 54, 1),
+		Maker.Tone(2, 56, 2),
+		Maker.Tone(4, 52, 1),
+		Maker.Tone(5, 54, 1),
+		Maker.Tone(6, 56, 2),
 		
-		{
-			Type: "Tone",
-			
-			Value: {
-				Pos: 0,
-				Pitch: 52,
-				Length: 500
-			}
-		},
+		Maker.Tone(8, 59, 1),
+		Maker.Tone(9, 56, 1),
+		Maker.Tone(10, 54, 1),
+		Maker.Tone(11, 52, 1),
+		Maker.Tone(12, 54, 1),
+		Maker.Tone(13, 56, 1),
+		Maker.Tone(14, 54, 2),
 		
-		{
-			Type: "Tone",
-			
-			Value: {
-				Pos: 500,
-				Pitch: 54,
-				Length: 500
-			}
-		},
+		Maker.Tone(16, 52, 1),
+		Maker.Tone(17, 54, 1),
+		Maker.Tone(18, 56, 2),
+		Maker.Tone(20, 52, 1),
+		Maker.Tone(21, 54, 1),
+		Maker.Tone(22, 56, 2),
 		
-		{
-			Type: "Tone",
-			
-			Value: {
-				Pos: 1000,
-				Pitch: 56,
-				Length: 1000
-			}
-		},
-		
-		{
-			Type: "Tone",
-			
-			Value: {
-				Pos: 2000,
-				Pitch: 52,
-				Length: 500
-			}
-		},
-		
-		{
-			Type: "Tone",
-			
-			Value: {
-				Pos: 2500,
-				Pitch: 54,
-				Length: 500
-			}
-		},
-		
-		{
-			Type: "Tone",
-			
-			Value: {
-				Pos: 3000,
-				Pitch: 56,
-				Length: 1000
-			}
-		}
+		Maker.Tone(24, 59, 1),
+		Maker.Tone(25, 56, 1),
+		Maker.Tone(26, 54, 1),
+		Maker.Tone(27, 52, 1),
+		Maker.Tone(28, 54, 1),
+		Maker.Tone(29, 56, 1),
+		Maker.Tone(30, 52, 2),
 	];
 	
-	Run(Frog);
+	Run(Song);
 }
