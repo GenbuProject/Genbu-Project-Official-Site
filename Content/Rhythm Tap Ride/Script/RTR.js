@@ -13,8 +13,13 @@ var RTR = function () {
 			}
 			
 			if (Querys.CODE) {
+				var Elem = document.createElement("A");
+					Elem.href = "https://github.com/login/oauth/access_token?client_id=9949bdc61a863614cd97&client_secret=b7e88b65fc0060a2e29a312f99de7a6627941470&code=" + Querys.CODE;
+					
+				document.body.appendChild(Elem);
+				
 				var TokenGetter = new XMLHttpRequest();
-					TokenGetter.open("POST", "https://github.com/login/oauth/access_token?client_id=9949bdc61a863614cd97&client_secret=b7e88b65fc0060a2e29a312f99de7a6627941470&redirect_uri=https://genbuproject.github.io/Genbu-Project-Official-Site/Content/Rhythm%20Tap%20Ride&code=" + Querys.CODE, false);
+					TokenGetter.open("POST", "https://github.com/login/oauth/access_token?client_id=9949bdc61a863614cd97&client_secret=b7e88b65fc0060a2e29a312f99de7a6627941470&code=" + Querys.CODE, false);
 					TokenGetter.send(null);
 			}
 		},
