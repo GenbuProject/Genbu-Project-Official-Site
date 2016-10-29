@@ -12,15 +12,17 @@ var RTR = function () {
 				
 				SongListGetter.onload = function () {
 					for (let i = 0; i < SongListGetter.response.length; i++) {
-						var SongGetter = new XMLHttpRequest();
-							SongGetter.responseType = "json";
-							SongGetter.open("GET", SongListGetter.response[i].url, true);
+						var SongGetter;
+						
+						SongGetter[i] = new XMLHttpRequest();
+							SongGetter[i].responseType = "json";
+							SongGetter[i].open("GET", SongListGetter.response[i].url, true);
 							
-							SongGetter.onload = function () {
-								RTR_this.Song[i] = JSON.parse(atob(SongGetter.response.content));
+							SongGetter[i].onload = function () {
+								RTR_this.Song[i] = JSON.parse(atob(SongGetter[i].response.content));
 							}
 							
-							SongGetter.send(null);
+							SongGetter[i].send(null);
 					}
 					
 					OnLoad();
@@ -47,6 +49,8 @@ var RTR = function () {
 
 function Init() {
 	with (new RTR()) {
-		System.Load();
+		System.Load(function () {
+			
+		});
 	}
 }
