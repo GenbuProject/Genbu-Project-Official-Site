@@ -14,7 +14,7 @@ var RTR = function () {
 			
 			if (Querys.CODE) {
 				var TokenGetter = new XMLHttpRequest();
-					TokenGetter.open("GET", "https://github.com/login/oauth/access_token?code=" + Querys.CODE + "&client_id=9949bdc61a863614cd97&client_secret=8ee6a6c35d9e544060516035f06f670323d00912", false);
+					TokenGetter.open("GET", "https://github.com/login/oauth/access_token?code=" + Querys.CODE + "&client_id=9949bdc61a863614cd97&client_secret=b7e88b65fc0060a2e29a312f99de7a6627941470", false);
 					TokenGetter.send(null);
 			}
 		},
