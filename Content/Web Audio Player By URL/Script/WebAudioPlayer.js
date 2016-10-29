@@ -10,7 +10,7 @@ function Play() {
 	
 	var Player = new Audio(Querys.URL);
 		Player.controls = "Controls";
-		Player.loop = Querys.LOOP.toLowerCase() == "true" ? true : Querys.LOOP.toLowerCase() == "false" ? false : false;
+		if (Querys.LOOP) Player.loop = Querys.LOOP.toLowerCase() == "true" ? true : Querys.LOOP.toLowerCase() == "false" ? false : false;
 		
 		Player.play();
 		
