@@ -737,6 +737,9 @@ function Main() {
 				Menu.MenuItem(StartMenu, ["01", "42"], R.COLOR.WHITE, "LOAD GAME", function () {
 					Load(".sav", function () {
 						Effect.BlackOut(2, 0, function () {
+							Canvas.style.background = "Black";
+							StartMenu.parentElement.removeChild(StartMenu);
+							
 							Resource.UserData.Pos[0] == 0 ? Warps.ElumForest.To0014() : null;
 							Character.Warp(0, Resource.UserData.Pos[1][2], [Resource.UserData.Pos[1][0], Resource.UserData.Pos[1][1]])
 							
@@ -747,6 +750,98 @@ function Main() {
 							}, 1000);
 							
 							GamePad.KeyboardType(0);
+							
+							document.addEventListener("keydown", function OnPressX(Event) {
+								var MagicPage = 1;
+								
+								switch (Event.keyCode) {
+									case Resource.SystemData.Key.Cancel:
+										if (!Flag.IsOpening) {
+											Flag.IsOpening = true;
+											
+											Panel.SideMenu = Menu.MenuPanel(["00", "36"]);
+												Menu.MenuItem(Panel.SideMenu, ["00", "31"], R.COLOR.WHITE, "アイテム", function () {
+													if (Panel.ItemPane != null) {
+														Panel.ItemPane.parentElement.removeChild(Panel.ItemPane);
+														Panel.ItemPane = null;
+													}
+													
+													Panel.ItemPane = Menu.MenuPanel(["30", "^6"]);
+														Menu.MenuItem(Panel.ItemPane, ["00", "11"], R.COLOR.WHITE, "←", function () {
+															Panel.ItemPane.parentElement.removeChild(Panel.ItemPane);
+															Panel.ItemPane = null;
+														});
+												});
+												
+												Menu.MenuItem(Panel.SideMenu, ["01", "32"], R.COLOR.WHITE, "魔法", function () {
+													if (Panel.MagicPane != null) {
+														Panel.MagicPane.parentElement.removeChild(Panel.MagicPane);
+														Panel.MagicPane = null;
+													}
+													
+													Panel.MagicPane = Menu.MenuPanel(["30", "^6"]);
+														Menu.MenuItem(Panel.MagicPane, ["00", "11"], R.COLOR.WHITE, "←", function () {
+															Panel.MagicPane.parentElement.removeChild(Panel.MagicPane);
+															Panel.MagicPane = null;
+														});
+												});
+												
+												Menu.MenuItem(Panel.SideMenu, ["02", "33"], R.COLOR.WHITE, "装備", function () {
+													
+												});
+												
+												Menu.MenuItem(Panel.SideMenu, ["03", "34"], R.COLOR.WHITE, "合成", function () {
+													
+												});
+												
+												Menu.MenuItem(Panel.SideMenu, ["04", "35"], R.COLOR.WHITE, "イベント", function () {
+													
+												});
+												
+												Menu.MenuItem(Panel.SideMenu, ["05", "36"], R.COLOR.WHITE, "オプション", function () {
+													//Panel.OptionPane = Menu.MenuPanel(["30", "^6"]);
+												});
+												
+											Panel.StatusPane = Menu.MenuPanel(["30", "^6"]);
+												Menu.MenuMsgBox(Panel.StatusPane, ["00", "22"], R.COLOR.WHITE, "").style.background = "URL('CharacterFace/MainCharacter - Normal.png') DarkSlateGray Left Top / 100% 100%";
+												
+												Menu.MenuMsgBox(Panel.StatusPane, ["20", "41"], R.COLOR.WHITE, "HP：");
+												Menu.MenuMsgBox(Panel.StatusPane, ["40", "71"], Resource.UserData.Character[0].HP <= (Resource.UserData.Character[0].MaxHP / 10) ? R.COLOR.RED : Resource.UserData.Character[0].HP <= (Resource.UserData.Character[0].MaxHP / 5) ? R.COLOR.ORANGE : R.COLOR.WHITE, Resource.UserData.Character[0].HP + " / " + Resource.UserData.Character[0].MaxHP);
+												
+												Menu.MenuMsgBox(Panel.StatusPane, ["21", "42"], R.COLOR.WHITE, "MP：");
+												Menu.MenuMsgBox(Panel.StatusPane, ["41", "72"], R.COLOR.WHITE, Resource.UserData.Character[0].MP + " / " + Resource.UserData.Character[0].MaxMP);
+												
+												Menu.MenuMsgBox(Panel.StatusPane, ["02", "23"], R.COLOR.WHITE, "Lv " + Resource.UserData.Character[0].Lv);
+												Menu.MenuMsgBox(Panel.StatusPane, ["22", "73"], R.COLOR.WHITE, "EXP：" + Resource.UserData.Character[0].EXP);
+												Menu.MenuMsgBox(Panel.StatusPane, ["23", "74"], R.COLOR.WHITE, "次のLvまで" + Resource.UserData.Character[0].EXP);
+												
+												Menu.MenuMsgBox(Panel.StatusPane, ["04", "75"], R.COLOR.WHITE, "所持金：" + Resource.UserData.Common.Money + "G(ゴキブリ)");
+												Menu.MenuMsgBox(Panel.StatusPane, ["05", "76"], R.COLOR.WHITE, "プレイ時間：" + Resource.UserData.Common.PlayTime);
+												
+											Panel.ExplainPane = Menu.MenuPanel(["06", "^^"]);
+										} else if (Flag.IsOpening) {
+											Flag.IsOpening = false;
+											
+											Panel.SideMenu.parentElement.removeChild(Panel.SideMenu);
+											Panel.StatusPane.parentElement.removeChild(Panel.StatusPane);
+											Panel.ExplainPane.parentElement.removeChild(Panel.ExplainPane);
+											
+											if (Panel.ItemPane != null) {
+												Panel.ItemPane.parentElement.removeChild(Panel.ItemPane);
+												Panel.ItemPane = null;
+											}
+											
+											if (Panel.MagicPane != null) {
+												Panel.MagicPane.parentElement.removeChild(Panel.MagicPane);
+												Panel.MagicPane = null;
+											}
+										}
+										
+										Sound.PlaySE("Click");
+										
+										break;
+								}
+							});
 						});
 					});
 				});
@@ -761,8 +856,8 @@ function Main() {
 						});
 						
 						Menu.MenuItem(AboutPane, ["01", "^2"], R.COLOR.WHITE, "製作者：プログラマーGenboo", function () {});
-						Menu.MenuItem(AboutPane, ["02", "^3"], R.COLOR.WHITE, "最終更新日：2016年09月12日[月]", function () {});
-						Menu.MenuItem(AboutPane, ["03", "^4"], R.COLOR.WHITE, "RPGHelperのバージョン：Release 1.3", function () {});
+						Menu.MenuItem(AboutPane, ["02", "^3"], R.COLOR.WHITE, "最終更新日：2016年10月25日[火]", function () {});
+						Menu.MenuItem(AboutPane, ["03", "^4"], R.COLOR.WHITE, "RPGHelperのバージョン：Release 1.4", function () {});
 				});
 		});
 	}
