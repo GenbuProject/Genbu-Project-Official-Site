@@ -16,7 +16,7 @@ var RTR = function () {
 					for (let i = 0; i < SongListGetter.response.length; i++) {
 						SongGetter[i] = new XMLHttpRequest();
 							SongGetter[i].responseType = "json";
-							SongGetter[i].open("GET", SongListGetter.response[i].url, true);
+							SongGetter[i].open("GET", SongListGetter.response[i].git_url, true);
 							
 							SongGetter[i].onload = function () {
 								RTR_this.Song[i] = JSON.parse(atob(SongGetter[i].response.content));
