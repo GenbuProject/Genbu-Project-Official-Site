@@ -6,15 +6,27 @@ var RTR = function () {
 	
 	this.System = {
 		Load: function (OnLoad) {
-			var SongGetter = new XMLHttpRequest();
-				SongGetter.open("GET", "", true);
+			var SongListGetter = new XMLHttpRequest();
+				SongListGetter.responseType = "json";
+				SongListGetter.open("GET", "https://api.github.com/repos/GenbuProject/RhythmTapRide/contents/Songs", true);
 				
-				SongGetter.onload = function () {
-					RTR_this.Songs = null;
+				SongListGetter.onload = function () {
+					for (let i = 0; i < SongListGetter.response.length; i++) {
+						var SongGetter = new XMLHttpRequest();
+							SongGetter.responseType = "json";
+							SongGetter.open("GET", SongListGetter.response[i].url, true);
+							
+							SongGetter.onload = function () {
+								RTR_this.Song[i] = JSON.parse(atob(SongGetter.response.content));
+							}
+							
+							SongGetter.send(null);
+					}
+					
 					OnLoad();
 				}
 				
-				SongGetter.send(null);
+				SongListGetter.send(null);
 		}
 	}
 	
@@ -35,5 +47,6 @@ var RTR = function () {
 
 function Init() {
 	with (new RTR()) {
+		System.Load();
 	}
 }
