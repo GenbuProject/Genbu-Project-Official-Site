@@ -11,9 +11,9 @@ var RTR = function () {
 				SongListGetter.open("GET", "https://api.github.com/repos/GenbuProject/RhythmTapRide/contents/Songs", true);
 				
 				SongListGetter.onload = function () {
+					var SongGetter = [];
+					
 					for (let i = 0; i < SongListGetter.response.length; i++) {
-						var SongGetter;
-						
 						SongGetter[i] = new XMLHttpRequest();
 							SongGetter[i].responseType = "json";
 							SongGetter[i].open("GET", SongListGetter.response[i].url, true);
