@@ -4,13 +4,19 @@ var RTR = function () {
 	
 	this.System = {
 		Load: function (OnLoad) {
-			var Getter = new XMLHttpRequest();
-				Getter.open("GET", "https://api.github.com/", true);
+			var TokenGetter = new XMLHttpRequest();
+				TokenGetter.open("GET", "https://github.com/login/oauth/access_token?" + location.search.split("?")[0] + "&client_id=9949bdc61a863614cd97&client_secret=8ee6a6c35d9e544060516035f06f670323d00912", false);
+				TokenGetter.send(null);
 				
-				Getter.onload = function () {
+			var SongGetter = new XMLHttpRequest();
+				SongGetter.open("GET", "", true);
+				
+				SongGetter.onload = function () {
 					RTR_this.Songs = null;
 					OnLoad();
 				}
+				
+				SongGetter.send(null);
 		}
 	}
 	
@@ -29,10 +35,6 @@ var RTR = function () {
 	}
 }
 
-var Base = new RPGHelper();
-
 function Init() {
-	with (Base) {
-		Menu.MenuPanel(["36", "79"]);
-	}
+	
 }
