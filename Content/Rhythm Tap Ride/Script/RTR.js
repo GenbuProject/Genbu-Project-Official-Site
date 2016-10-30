@@ -1,4 +1,4 @@
-//アクセストークン：aba04ef2d8a7dae6d075d6550db70c779d7da18e
+//アクセストークン：atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw==")
 var RTR = function () {
 	RTR_this = this;
 	
@@ -8,7 +8,7 @@ var RTR = function () {
 		Load: function (OnLoad) {
 			var SongListGetter = new XMLHttpRequest();
 				SongListGetter.responseType = "json";
-				SongListGetter.open("GET", "https://api.github.com/repos/GenbuProject/RhythmTapRide/contents/Songs?access_token=aba04ef2d8a7dae6d075d6550db70c779d7da18e", true);
+				SongListGetter.open("GET", "https://api.github.com/repos/GenbuProject/RhythmTapRide/contents/Songs?access_token=" + atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw=="), true);
 				
 				SongListGetter.onload = function () {
 					var SongGetter = [];
@@ -16,7 +16,7 @@ var RTR = function () {
 					for (let i = 0; i < SongListGetter.response.length; i++) {
 						SongGetter[i] = new XMLHttpRequest();
 							SongGetter[i].responseType = "json";
-							SongGetter[i].open("GET", SongListGetter.response[i].git_url + "?access_token=aba04ef2d8a7dae6d075d6550db70c779d7da18e", true);
+							SongGetter[i].open("GET", SongListGetter.response[i].git_url + "?access_token=" + atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw=="), true);
 							
 							SongGetter[i].onload = function () {
 								RTR_this.Song[i] = JSON.parse(atob(SongGetter[i].response.content));
