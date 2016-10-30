@@ -57,7 +57,8 @@ var RTR = function () {
 				Accept.onclick = function () {
 					console.log("[" + RTR_this.Song[Selecter.selectedIndex].Name + "] Music Start!");
 					
-					new Audio(RTR_this.Song[Selecter.selectedIndex].Music);
+					var Media = new Audio(RTR_this.Song[Selecter.selectedIndex].Music);
+						Media.play();
 				}
 				
 			document.getElementById("SongSelecter").appendChild(Selecter);
