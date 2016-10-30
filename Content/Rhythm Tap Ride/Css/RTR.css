@@ -1,0 +1,10 @@
+Select {
+	BackGround: LightBlue;
+	Border: 2.5px Double DarkGreen;
+	Border-Radius: 10px;
+}
+
+Button {
+	Border: 2.5px Outset ActiveBorder;
+	Border-Radius: 10px;
+}

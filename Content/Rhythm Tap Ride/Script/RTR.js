@@ -1,4 +1,4 @@
-//アクセストークン：ec4a5f7617aaa8d3ce0d26e94c4bd83909c3dc4c
+//アクセストークン：aba04ef2d8a7dae6d075d6550db70c779d7da18e
 var RTR = function () {
 	RTR_this = this;
 	
@@ -8,7 +8,7 @@ var RTR = function () {
 		Load: function (OnLoad) {
 			var SongListGetter = new XMLHttpRequest();
 				SongListGetter.responseType = "json";
-				SongListGetter.open("GET", "https://api.github.com/repos/GenbuProject/RhythmTapRide/contents/Songs", true);
+				SongListGetter.open("GET", "https://api.github.com/repos/GenbuProject/RhythmTapRide/contents/Songs?access_token=aba04ef2d8a7dae6d075d6550db70c779d7da18e", true);
 				
 				SongListGetter.onload = function () {
 					var SongGetter = [];
@@ -16,16 +16,26 @@ var RTR = function () {
 					for (let i = 0; i < SongListGetter.response.length; i++) {
 						SongGetter[i] = new XMLHttpRequest();
 							SongGetter[i].responseType = "json";
-							SongGetter[i].open("GET", SongListGetter.response[i].git_url, true);
+							SongGetter[i].open("GET", SongListGetter.response[i].git_url + "?access_token=aba04ef2d8a7dae6d075d6550db70c779d7da18e", true);
 							
 							SongGetter[i].onload = function () {
 								RTR_this.Song[i] = JSON.parse(atob(SongGetter[i].response.content));
+								
+								var Count = 0;
+								
+								for (var j = 0; j < SongListGetter.response.length; j++) {
+									if (RTR_this.Song[j] != null) {
+										Count++;
+									}
+								}
+								
+								if (Count == SongListGetter.response.length) {
+									OnLoad();
+								}
 							}
 							
 							SongGetter[i].send(null);
 					}
-					
-					OnLoad();
 				}
 				
 				SongListGetter.send(null);
@@ -34,7 +44,24 @@ var RTR = function () {
 	
 	this.Node = {
 		Play: function () {
+			var Selecter = document.createElement("Select");
 			
+			for (var i = 0; i < RTR_this.Song.length; i++) {
+				var Item = new Option(RTR_this.Song[i].Name + " / " + RTR_this.Song[i].Author, RTR_this.Song[i].Name);
+				Selecter.appendChild(Item);
+			}
+			
+			var Accept = document.createElement("Button");
+				Accept.textContent = "Let's Play!";
+				
+				Accept.onclick = function () {
+					console.log("[" + RTR_this.Song[Selecter.selectedIndex].Name + "] Music Start!");
+					
+					new Audio(RTR_this.Song[Selecter.selectedIndex].Music);
+				}
+				
+			document.getElementById("SongSelecter").appendChild(Selecter);
+			document.getElementById("SongSelecter").appendChild(Accept);
 		},
 		
 		SongMaker: function () {
@@ -50,7 +77,7 @@ var RTR = function () {
 function Init() {
 	with (new RTR()) {
 		System.Load(function () {
-			
+			Node.Play();
 		});
 	}
 }
