@@ -55,7 +55,13 @@ var RTR = function () {
 				Accept.textContent = "Let's Play!";
 				
 				Accept.onclick = function () {
-					console.log("[" + RTR_this.Song[Selecter.selectedIndex].Name + "] Music Start!");
+					var StartMsg = document.createElement("Span");
+						StartMsg.id = "Message";
+						StartMsg.textContent = "Music Start";
+						
+					document.body.appendChild(StartMsg);
+					
+					document.getElementById("SongSelecter").parentElement.removeChild(document.getElementById("SongSelecter"));
 					
 					var Media = new Audio(RTR_this.Song[Selecter.selectedIndex].Music);
 						Media.play();

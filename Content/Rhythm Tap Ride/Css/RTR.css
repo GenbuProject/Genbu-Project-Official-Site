@@ -8,3 +8,26 @@ Button {
 	Border: 2.5px Outset ActiveBorder;
 	Border-Radius: 10px;
 }
+
+#Message {
+	Position: Relative;
+	Top: 30%;
+	Display: Block;
+	Margin: Auto;
+	
+	Font-Size: 72pt;
+	Text-Align: Center;
+	Transform: Rotate(30deg);
+	
+	Animation: Fades 2s Linear 0s Infinite Alternate;
+}
+
+@KeyFrames Fades{
+	0% {
+		Color: LightGray;
+	}
+	
+	100% {
+		Color: Transparent;
+	}
+}
