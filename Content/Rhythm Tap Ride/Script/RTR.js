@@ -55,11 +55,7 @@ var RTR = function () {
 				Accept.textContent = "Let's Play!";
 				
 				Accept.onclick = function () {
-					var StartMsg = document.createElement("Span");
-						StartMsg.id = "Message";
-						StartMsg.textContent = "Music Start";
-						
-					document.body.appendChild(StartMsg);
+					var StartMsg = RTR_this.Util.Message(document.body, "Music Start in 3 seconds", 30);
 					document.getElementById("SongSelecter").parentElement.removeChild(document.getElementById("SongSelecter"));
 					
 					setTimeout(function () {
@@ -104,11 +100,28 @@ var RTR = function () {
 			
 		}
 	}
+	
+	this.Util = {
+		Message: function (Elem, Text, Angle) {
+			var Msg = document.createElement("Span");
+				Msg.className = "Message";
+				Msg.textContent = Text;
+				
+				Msg.style.transform = "Rotate(" + Angle + "deg);";
+				
+			Elem.appendChild(Msg);
+			
+			return Msg;
+		}
+	}
 }
 
 function Init() {
 	with (new RTR()) {
+		Util.Message(document.getElementById("SongSelecter"), "Now Loading...", 0);
+		
 		System.Load(function () {
+			document.getElementsByClassName("Message")[0].parentElement.removeChild(document.getElementsByClassName("Message")[0]);
 			Node.Play();
 		});
 	}

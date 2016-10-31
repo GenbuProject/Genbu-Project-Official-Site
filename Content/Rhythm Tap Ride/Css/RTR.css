@@ -57,15 +57,14 @@ Button {
 	Float: Left;
 }
 
-#Message {
+.Message {
 	Display: Block;
 	Margin: Auto;
 	
 	Font-Size: 72pt;
 	Text-Align: Center;
-	Transform: Rotate(30deg);
 	
-	Animation: Fades 1.5s Linear 0s 2 Alternate;
+	Animation: Fades 1.5s Linear 0s Infinite Alternate;
 }
 
 @KeyFrames Fades{
