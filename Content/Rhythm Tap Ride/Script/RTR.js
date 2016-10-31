@@ -60,11 +60,36 @@ var RTR = function () {
 						StartMsg.textContent = "Music Start";
 						
 					document.body.appendChild(StartMsg);
-					
 					document.getElementById("SongSelecter").parentElement.removeChild(document.getElementById("SongSelecter"));
 					
-					var Media = new Audio(RTR_this.Song[Selecter.selectedIndex].Music);
-						Media.play();
+					setTimeout(function () {
+						StartMsg.parentElement.removeChild(StartMsg);
+						
+						var Media = new Audio(RTR_this.Song[Selecter.selectedIndex].Music);
+							Media.play();
+							
+						var PlayArea = document.createElement("Div");
+							PlayArea.id = "PlayArea";
+							
+						document.body.appendChild(PlayArea);
+						
+						var TapArea = document.createElement("Div");
+							TapArea.id = "TapArea";
+							
+						var ToneArea = document.createElement("Div");
+							ToneArea.id = "ToneArea";
+							
+						PlayArea.appendChild(TapArea);
+						PlayArea.appendChild(ToneArea);
+						
+						for (var i = 0; i < 4; i++) {
+							var Btn = document.createElement("Div");
+								Btn.id = "Btn" + (i + 1);
+								Btn.textContent = i == 0 ? "↑" : i == 1 ? "↓" : i == 2 ? "←" : i == 3 ? "→" : "";
+								
+							TapArea.appendChild(Btn);
+						}
+					}, 3000);
 				}
 				
 			document.getElementById("SongSelecter").appendChild(Selecter);

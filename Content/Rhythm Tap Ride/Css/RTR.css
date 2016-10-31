@@ -1,5 +1,14 @@
+HTML {
+	Height: 100%;
+}
+
+Body {
+	Height: 95%;
+}
+
 Select {
 	BackGround: LightBlue;
+	
 	Border: 2.5px Double DarkGreen;
 	Border-Radius: 10px;
 }
@@ -9,9 +18,46 @@ Button {
 	Border-Radius: 10px;
 }
 
-#Message {
+#PlayArea {
+	Height: 50%;
+	
+	Border: 5px Ridge DarkOrchid;
+}
+
+#TapArea {
+	Width: 5%;
+	Height: 100%;
+	
+	Border: 5px Ridge DarkOrchid;
+	Margin: -5px;
+	
+	Float: Left;
+}
+
+#TapArea > Div {
+	Height: 23.75%;
+	
+	Border: 5px Ridge DarkOrchid;
+	Margin: -5px;
+	
+	Text-Align: Center;
+	Line-Height: 500%;
+}
+
+#ToneArea {
+	Width: Calc(95% - 5px);
+	Height: 100%;
+	
 	Position: Relative;
-	Top: 30%;
+	Left: 5px;
+	
+	Border: 5px Ridge DarkOrchid;
+	Margin: -5px;
+	
+	Float: Left;
+}
+
+#Message {
 	Display: Block;
 	Margin: Auto;
 	
@@ -19,15 +65,15 @@ Button {
 	Text-Align: Center;
 	Transform: Rotate(30deg);
 	
-	Animation: Fades 2s Linear 0s Infinite Alternate;
+	Animation: Fades 1.5s Linear 0s 2 Alternate;
 }
 
 @KeyFrames Fades{
 	0% {
-		Color: LightGray;
+		Color: Transparent;
 	}
 	
 	100% {
-		Color: Transparent;
+		Color: LightGray;
 	}
 }
