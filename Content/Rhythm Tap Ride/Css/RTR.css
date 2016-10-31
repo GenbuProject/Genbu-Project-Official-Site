@@ -42,6 +42,15 @@ Button {
 	
 	Text-Align: Center;
 	Line-Height: 500%;
+	
+	User-Select: None;
+	-Ms-User-Select: None;
+	-Moz-User-Select: None;
+	-Webkit-User-Select: None;
+}
+
+#TapArea > Div:Hover {
+	BackGround: Brown;
 }
 
 #ToneArea {
@@ -55,6 +64,11 @@ Button {
 	Margin: -5px;
 	
 	Float: Left;
+}
+
+#ToneCanvas {
+	Width: 100%;
+	Height: 100%;
 }
 
 .Message {

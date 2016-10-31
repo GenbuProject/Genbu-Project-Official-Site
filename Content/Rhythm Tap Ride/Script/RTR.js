@@ -102,12 +102,36 @@ var RTR = function () {
 	}
 	
 	this.Util = {
+		Draw: {
+			Cvs: null,
+			Ctx: null,
+			
+			Init: function (Elem) {
+				var Cvs = document.createElement("Canvas");
+					Cvs.id = "ToneCanvas";
+					
+				Elem.appendChild(Cvs);
+				
+				this.Cvs = Cvs;
+				this.Ctx = Cvs.getContext("2d");
+			},
+			
+			Tone: function (ID, Left, Type) {
+				var Img = new Image();
+					Img.src = "Image/Tone" + Type + ".png";
+					
+					Img.onload = function () {
+						RTR_this.Util.Draw.Ctx.drawImage(Img, 0, 0, document.getElementById("Btn1").clientWidth, document.getElementById("Btn1").clientHeight);
+					}
+			}
+		},
+		
 		Message: function (Elem, Text, Angle) {
 			var Msg = document.createElement("Span");
 				Msg.className = "Message";
 				Msg.textContent = Text;
 				
-				Msg.style.transform = "Rotate(" + Angle + "deg);";
+				Msg.style.transform = "rotate(" + Angle + "deg)";
 				
 			Elem.appendChild(Msg);
 			
