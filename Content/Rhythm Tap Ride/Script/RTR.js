@@ -85,6 +85,13 @@ var RTR = function () {
 								
 							TapArea.appendChild(Btn);
 						}
+						
+						var DrawArea = document.createElement("Canvas");
+							DrawArea.id = "DrawArea";
+							DrawArea.width = document.clientWidth;
+							DrawArea.height = document.clientHeight;
+							
+						ToneArea.appendChild(DrawArea);
 					}, 3000);
 				}
 				

@@ -66,9 +66,8 @@ Button {
 	Float: Left;
 }
 
-#ToneCanvas {
-	Width: 100%;
-	Height: 100%;
+#DrawArea {
+	
 }
 
 .Message {
