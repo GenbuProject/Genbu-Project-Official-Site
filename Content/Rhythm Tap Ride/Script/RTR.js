@@ -99,6 +99,10 @@ var RTR = function () {
 							DrawArea.height = ToneArea.clientHeight;
 							
 						ToneArea.appendChild(DrawArea);
+						
+						for (var i = 0; i < RTR_this.Song[RTR_this.PlayingID].Data.Up.length; i++) {
+							
+						}
 					}, 3000);
 				}
 				
