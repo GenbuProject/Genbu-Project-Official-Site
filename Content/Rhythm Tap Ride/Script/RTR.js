@@ -1,8 +1,10 @@
 //アクセストークン：atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw==")
+//BPM * x = 60 * 1000
 var RTR = function () {
 	RTR_this = this;
 	
 	this.Song = [];
+	this.PlayingID = 0;
 	
 	this.System = {
 		Load: function (OnLoad) {
@@ -45,7 +47,10 @@ var RTR = function () {
 	this.Node = {
 		Play: function () {
 			var Selecter = document.createElement("Select");
-			
+				Selecter.onchange = function () {
+					RTR_this.Util.ShowInfo(Selecter.selectedIndex);
+				}
+				
 			for (var i = 0; i < RTR_this.Song.length; i++) {
 				var Item = new Option(RTR_this.Song[i].Name + " / " + RTR_this.Song[i].Author, RTR_this.Song[i].Name);
 				Selecter.appendChild(Item);
@@ -55,13 +60,15 @@ var RTR = function () {
 				Accept.textContent = "Let's Play!";
 				
 				Accept.onclick = function () {
+					RTR_this.PlayingID = Selecter.selectedIndex;
+					
 					var StartMsg = RTR_this.Util.Message(document.body, "Music Start in 3 seconds", 30);
 					document.getElementById("SongSelecter").parentElement.removeChild(document.getElementById("SongSelecter"));
 					
 					setTimeout(function () {
 						StartMsg.parentElement.removeChild(StartMsg);
 						
-						var Media = new Audio(RTR_this.Song[Selecter.selectedIndex].Music);
+						var Media = new Audio(RTR_this.Song[RTR_this.PlayingID].Music);
 							Media.play();
 							
 						var PlayArea = document.createElement("Div");
@@ -88,8 +95,8 @@ var RTR = function () {
 						
 						var DrawArea = document.createElement("Canvas");
 							DrawArea.id = "DrawArea";
-							DrawArea.width = document.clientWidth;
-							DrawArea.height = document.clientHeight;
+							DrawArea.width = ToneArea.clientWidth;
+							DrawArea.height = ToneArea.clientHeight;
 							
 						ToneArea.appendChild(DrawArea);
 					}, 3000);
@@ -97,6 +104,13 @@ var RTR = function () {
 				
 			document.getElementById("SongSelecter").appendChild(Selecter);
 			document.getElementById("SongSelecter").appendChild(Accept);
+			
+			window.onresize = function () {
+				DrawArea.width = ToneArea.clientWidth;
+				DrawArea.height = ToneArea.clientHeight;
+			}
+			
+			RTR_this.Util.ShowInfo(Selecter.selectedIndex);
 		},
 		
 		SongMaker: function () {
@@ -109,30 +123,6 @@ var RTR = function () {
 	}
 	
 	this.Util = {
-		Draw: {
-			Cvs: null,
-			Ctx: null,
-			
-			Init: function (Elem) {
-				var Cvs = document.createElement("Canvas");
-					Cvs.id = "ToneCanvas";
-					
-				Elem.appendChild(Cvs);
-				
-				this.Cvs = Cvs;
-				this.Ctx = Cvs.getContext("2d");
-			},
-			
-			Tone: function (ID, Left, Type) {
-				var Img = new Image();
-					Img.src = "Image/Tone" + Type + ".png";
-					
-					Img.onload = function () {
-						RTR_this.Util.Draw.Ctx.drawImage(Img, 0, 0, document.getElementById("Btn1").clientWidth, document.getElementById("Btn1").clientHeight);
-					}
-			}
-		},
-		
 		Message: function (Elem, Text, Angle) {
 			var Msg = document.createElement("Span");
 				Msg.className = "Message";
@@ -143,6 +133,37 @@ var RTR = function () {
 			Elem.appendChild(Msg);
 			
 			return Msg;
+		},
+		
+		ShowInfo: function (ID) {
+			if (document.getElementById("SongInfo")) {
+				document.getElementById("SongInfo").parentElement.removeChild(document.getElementById("SongInfo"));
+			}
+			
+			var Info = document.createElement("Table");
+				Info.id = "SongInfo";
+				Info.frame = "border";
+				Info.rules = "all"
+				
+			for (var i = 0; i < 5; i++) {
+				var Row = Info.insertRow();
+					Row.insertCell().innerHTML = "<B>" + (i == 0 ? "楽曲名" : i == 1 ? "BPM" : i == 2 ? "難易度" : i == 3 ? "作者" : i == 4 ? "カバー画像" : "") + "</B>";
+					Row.insertCell().innerHTML = i == 0 ? RTR_this.Song[ID].Name : i == 1 ? RTR_this.Song[ID].BPM : i == 2 ? RTR_this.Song[ID].Difficulty : i == 3 ? RTR_this.Song[ID].Author : i == 4 ? "<Img ID = 'CoverImage' Src = '" + RTR_this.Song[ID].CoverImage + "' Alt = 'カバー'></Img>" : "";
+			}
+			
+			document.getElementById("SongSelecter").appendChild(Info);
+		},
+		
+		Tone: function (Line, Type, Pos) {
+			setTimeout(function () {
+				var Img = new Image();
+					Img.src = "Image/Tone" + Type + ".png";
+					
+					Img.onload = function () {
+						var Ctx = document.getElementById("DrawArea").getContext("2d");
+							Ctx.drawImage(Img, document.getElementById("DrawArea").clientWidth - document.getElementById("Btn1").clientWidth, Line != 0 ? (document.getElementById("Btn1").clientHeight + 5) * Line : 0, document.getElementById("Btn1").clientWidth, document.getElementById("Btn1").clientHeight);
+					}
+			}, (60 / RTR_this.Song[RTR_this.PlayingID].BPM) * 1000 * Pos);
 		}
 	}
 }

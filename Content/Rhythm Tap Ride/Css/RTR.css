@@ -70,6 +70,15 @@ Button {
 	
 }
 
+#SongInfo {
+	Width: 100%;
+}
+
+#CoverImage {
+	Width: 10%;
+	Margin-Bottom: -10px;
+}
+
 .Message {
 	Display: Block;
 	Margin: Auto;
