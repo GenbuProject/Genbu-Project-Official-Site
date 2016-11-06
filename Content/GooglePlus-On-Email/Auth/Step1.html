@@ -10,7 +10,7 @@
 				var Token = location.search.split("&")[0].replace("?code=", "");
 				
 				var TokenGetter = new XMLHttpRequest();
-					TokenGetter.open("POST", "https://www.googleapis.com/oauth2/v4/token?client_id=561405874807-tc32h0o88d880gqdt1ofa5qhtfqqq4j8.apps.googleusercontent.com&client_secret=sYFFO7yBzyveLEJflhQwc2Dn&redirect_uri=https://genbuproject.github.io/Genbu-Project-Official-Site/Content/GooglePlus-on-Email/Auth/Step1.html&access_type=offline&grant_type=authorization_code&code=" + Token, false);
+					TokenGetter.open("POST", "https://www.googleapis.com/oauth2/v4/token?client_id=561405874807-tc32h0o88d880gqdt1ofa5qhtfqqq4j8.apps.googleusercontent.com&client_secret=sYFFO7yBzyveLEJflhQwc2Dn&redirect_uri=https://genbuproject.github.io/Genbu-Project-Official-Site/Content/GooglePlus-On-Email/Auth/Step1.html&access_type=offline&grant_type=authorization_code&code=" + Token, false);
 					TokenGetter.send(null);
 					
 				var SheetUpdater = new XMLHttpRequest();
