@@ -64,6 +64,8 @@ function TMTInit() {
 		Collapsible[i].innerHTML = "<Span> " + Collapsible[i].attributes["Name"].value + "</Span><Div>" + Collapsible[i].innerHTML + "</Div>";
 		
 		Collapsible[i].attributes["Value"].value.toLowerCase() == "true" ? (function () {
+			Collapsible[i].children[2].style.display = "None";
+			
 			let Switch = document.createElement("Span");
 				Switch.className = "Collapsible-Button";
 				Switch.textContent = "＋";
