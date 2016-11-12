@@ -1,6 +1,6 @@
 /*/
  *============================================================
- *【Too Many Tags Release 2.0】(Last Updated:2016/10/23 [Sun])
+ *【Too Many Tags Release 2.0】(Last Updated:2016/11/12 [Sat])
  *	Copyright (C) 2016 Genbu Hase All Rights Reversed.
  *============================================================
 /*/
@@ -49,6 +49,8 @@ Collapsible Div {
 
 Collapsible > .Collapsible-Button {
 	Border: Thin Solid White;
+	Font-Family: MonoSpace;
+	Cursor: Pointer;
 }
 
 /*Copyrightタグ*/

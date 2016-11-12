@@ -1,18 +1,18 @@
 /*/
  *============================================================
- *【Too Many Tags Release 2.0】(Last Updated:2016/10/23 [Sun])
+ *【Too Many Tags Release 2.0】(Last Updated:2016/11/12 [Sat])
  *	Copyright (C) 2016 Genbu Hase All Rights Reversed.
  *============================================================
 /*/
 const WIDTH = 28;
 const HEIGHT = 14;
 
-var File = document.getElementsByTagName("File");
-var Folder = document.getElementsByTagName("Folder");
-var Collapsible = document.getElementsByTagName("Collapsible");
-var Copyright = document.getElementsByTagName("Copyright");
+let File = document.getElementsByTagName("File");
+let Folder = document.getElementsByTagName("Folder");
+let Collapsible = document.getElementsByTagName("Collapsible");
+let Copyright = document.getElementsByTagName("Copyright");
 
-function TagSetting() {
+function TMTInit() {
 	for (let i = 0; i < File.length; i++) {
 		switch (File[i].attributes["Type"].value.toLowerCase()) {
 			case "text":
@@ -60,11 +60,11 @@ function TagSetting() {
 	}
 	
 	for (let i = 0; i < Collapsible.length; i++) {
-		var Memory = [];
-		Collapsible[i].innerHTML = "<Span>" + Collapsible[i].attributes["Name"].value + "</Span><Div>" + Collapsible[i].innerHTML + "</Div>";
+		let Memory = [];
+		Collapsible[i].innerHTML = "<Span> " + Collapsible[i].attributes["Name"].value + "</Span><Div>" + Collapsible[i].innerHTML + "</Div>";
 		
 		Collapsible[i].attributes["Value"].value.toLowerCase() == "true" ? (function () {
-			var Switch = document.createElement("Span");
+			let Switch = document.createElement("Span");
 				Switch.className = "Collapsible-Button";
 				Switch.textContent = "＋";
 				
@@ -84,7 +84,7 @@ function TagSetting() {
 				
 			Collapsible[i].insertBefore(Switch, Collapsible[i].children[0]);
 		})() : (function () {
-			var Switch = document.createElement("Span");
+			let Switch = document.createElement("Span");
 				Switch.className = "Collapsible-Button";
 				Switch.textContent = "－";
 				
@@ -105,11 +105,15 @@ function TagSetting() {
 			Collapsible[i].insertBefore(Switch, Collapsible[i].children[0]);
 		})();
 		
-		for (var j = 0; j < Collapsible[i].children[2].textContent.split("\n").length; j++) {
+		for (let j = 0; j < Collapsible[i].children[2].textContent.split("\n").length; j++) {
 			Memory[j] = Collapsible[i].children[2].textContent.split("\n")[j].length;
 		}
 		
 		Collapsible[i].children[2].style.width = (14 * Math.max.apply(this, Memory)) + "px";
+		
+		if (Collapsible[i].attributes["Width"]) {
+			Collapsible[i].children[2].style.width = Collapsible[i].attributes["Width"].value + "px";
+		}
 	}
 	
 	for (let i = 0; i < Copyright.length; i++) {
