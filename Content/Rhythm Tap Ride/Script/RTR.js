@@ -3,9 +3,15 @@
 var RTR = function () {
 	RTR_this = this;
 	
+	this.Ctx = null;
 	this.Song = [];
-	this.PlayingID = 0;
 	
+	this.PlayingID = 0;
+	this.Stream = [[], [], [], []];
+	
+	this.ToneImg = new Image();
+		this.ToneImg.src = "Image/Tone.png";
+		
 	this.System = {
 		Load: function (OnLoad) {
 			let SongListGetter = new XMLHttpRequest();
@@ -100,8 +106,23 @@ var RTR = function () {
 							
 						ToneArea.appendChild(DrawArea);
 						
-						for (let i = 0; i < RTR_this.Song[RTR_this.PlayingID].Data.Up.length; i++) {
+						RTR_this.Ctx = document.getElementById("DrawArea").getContext("2d");
+							RTR_this.Ctx.fillStyle = "Transparent";
 							
+						for (let i = 0; i < RTR_this.Song[RTR_this.PlayingID].Data.Up.length; i++) {
+							RTR_this.Util.Tone(0, RTR_this.Song[RTR_this.PlayingID].Data.Up[i]);
+						}
+						
+						for (let i = 0; i < RTR_this.Song[RTR_this.PlayingID].Data.Down.length; i++) {
+							RTR_this.Util.Tone(1, RTR_this.Song[RTR_this.PlayingID].Data.Down[i]);
+						}
+						
+						for (let i = 0; i < RTR_this.Song[RTR_this.PlayingID].Data.Left.length; i++) {
+							RTR_this.Util.Tone(2, RTR_this.Song[RTR_this.PlayingID].Data.Left[i]);
+						}
+						
+						for (let i = 0; i < RTR_this.Song[RTR_this.PlayingID].Data.Right.length; i++) {
+							RTR_this.Util.Tone(3, RTR_this.Song[RTR_this.PlayingID].Data.Right[i]);
 						}
 					}, 3000);
 				}
@@ -158,18 +179,42 @@ var RTR = function () {
 			document.getElementById("SongSelecter").appendChild(Info);
 		},
 		
-		Tone: function (Line, Type, Pos) {
+		Tone: function (Line, Pos) {
 			setTimeout(function () {
-				var Img = new Image();
-					Img.src = "Image/Tone" + Type + ".png";
+				RTR_this.Ctx = document.getElementById("DrawArea").getContext("2d");
+					RTR_this.Ctx.drawImage(RTR_This.ToneImg, document.getElementById("DrawArea").clientWidth - document.getElementById("Btn1").clientWidth, Line != 0 ? (document.getElementById("Btn1").clientHeight + 5) * Line : 0, document.getElementById("Btn1").clientWidth, document.getElementById("Btn1").clientHeight);
 					
-					Img.onload = function () {
-						var Ctx = document.getElementById("DrawArea").getContext("2d");
-							Ctx.drawImage(Img, document.getElementById("DrawArea").clientWidth - document.getElementById("Btn1").clientWidth, Line != 0 ? (document.getElementById("Btn1").clientHeight + 5) * Line : 0, document.getElementById("Btn1").clientWidth, document.getElementById("Btn1").clientHeight);
-					}
-			}, (60 / RTR_this.Song[RTR_this.PlayingID].BPM) * 1000 * Pos);
+				RTR_this.Stream[Line].push(document.getElementById("DrawArea").clientWidth - document.getElementById("Btn1").clientWidth);
+			}, (60 / RTR_this.Song[RTR_this.PlayingID].BPM) * 1000 * (Pos - 4));
 		}
 	}
+	
+	setInterval(function () {
+		if (this.Ctx != null) {
+			for (let i = 0; i < this.Stream[0].length; i++) {
+				this.Ctx.fillRect(this.Stream[0][i], 0, document.getElementById("Btn1").clientWidth, document.getElementById("Btn1").clientHeight);
+				this.Stream[0][i] -= (document.getElementById("DrawArea").clientWidth / 4) / 50;
+				this.Ctx.drawImage(RTR_This.ToneImg, Stream[0][i], 0);
+				
+				if (this.Stream[0][i] == 0) {
+					this.Ctx.fillRect(this.Stream[0][i], 0, document.getElementById("Btn1").clientWidth, document.getElementById("Btn1").clientHeight);
+					this.Stream[0].splice(i, 1);
+				}
+			}
+			
+			for (let i = 0; i < this.Stream[1].length; i++) {
+				
+			}
+			
+			for (let i = 0; i < this.Stream[2].length; i++) {
+				
+			}
+			
+			for (let i = 0; i < this.Stream[3].length; i++) {
+				
+			}
+		}
+	}, 20);
 }
 
 function Init() {
