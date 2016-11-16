@@ -107,7 +107,7 @@ var RTR = function () {
 						ToneArea.appendChild(DrawArea);
 						
 						RTR_this.Ctx = document.getElementById("DrawArea").getContext("2d");
-							RTR_this.Ctx.fillStyle = "Transparent";
+							RTR_this.Ctx.fillStyle = "Gray";
 							
 						for (let i = 0; i < RTR_this.Song[RTR_this.PlayingID].Data.Up.length; i++) {
 							RTR_this.Util.Tone(0, RTR_this.Song[RTR_this.PlayingID].Data.Up[i]);
@@ -124,16 +124,43 @@ var RTR = function () {
 						for (let i = 0; i < RTR_this.Song[RTR_this.PlayingID].Data.Right.length; i++) {
 							RTR_this.Util.Tone(3, RTR_this.Song[RTR_this.PlayingID].Data.Right[i]);
 						}
+						
+						setInterval(function () {
+							if (RTR_this.Ctx != null) {
+								for (let i = 0; i < RTR_this.Stream[0].length; i++) {
+									RTR_this.Ctx.fillRect(RTR_this.Stream[0][i], 0, document.getElementById("Btn1").clientWidth, document.getElementById("Btn1").clientHeight);
+									RTR_this.Stream[0][i] -= (document.getElementById("DrawArea").clientWidth / 4) / 50;
+									RTR_this.Ctx.drawImage(RTR_this.ToneImg, RTR_this.Stream[0][i], 0, document.getElementById("Btn1").clientWidth, document.getElementById("Btn1").clientHeight);
+									
+									if (RTR_this.Stream[0][i] <= 0) {
+										RTR_this.Ctx.fillRect(RTR_this.Stream[0][i], 0, document.getElementById("Btn1").clientWidth, document.getElementById("Btn1").clientHeight);
+										RTR_this.Stream[0].splice(i, 1);
+									}
+								}
+								
+								for (let i = 0; i < RTR_this.Stream[1].length; i++) {
+									
+								}
+								
+								for (let i = 0; i < RTR_this.Stream[2].length; i++) {
+									
+								}
+								
+								for (let i = 0; i < RTR_this.Stream[3].length; i++) {
+									
+								}
+							}
+						}, (60000 / RTR_this.Song[RTR_this.PlayingID].BPM) / 50);
+						
+						window.onresize = function () {
+							DrawArea.width = ToneArea.clientWidth;
+							DrawArea.height = ToneArea.clientHeight;
+						}
 					}, 3000);
 				}
 				
 			document.getElementById("SongSelecter").appendChild(Selecter);
 			document.getElementById("SongSelecter").appendChild(Accept);
-			
-			window.onresize = function () {
-				DrawArea.width = ToneArea.clientWidth;
-				DrawArea.height = ToneArea.clientHeight;
-			}
 			
 			RTR_this.Util.ShowInfo(Selecter.selectedIndex);
 		},
@@ -182,39 +209,12 @@ var RTR = function () {
 		Tone: function (Line, Pos) {
 			setTimeout(function () {
 				RTR_this.Ctx = document.getElementById("DrawArea").getContext("2d");
-					RTR_this.Ctx.drawImage(RTR_This.ToneImg, document.getElementById("DrawArea").clientWidth - document.getElementById("Btn1").clientWidth, Line != 0 ? (document.getElementById("Btn1").clientHeight + 5) * Line : 0, document.getElementById("Btn1").clientWidth, document.getElementById("Btn1").clientHeight);
+					RTR_this.Ctx.drawImage(RTR_this.ToneImg, document.getElementById("DrawArea").clientWidth - document.getElementById("Btn1").clientWidth, Line != 0 ? (document.getElementById("Btn1").clientHeight + 5) * Line : 0, document.getElementById("Btn1").clientWidth, document.getElementById("Btn1").clientHeight);
 					
 				RTR_this.Stream[Line].push(document.getElementById("DrawArea").clientWidth - document.getElementById("Btn1").clientWidth);
-			}, (60 / RTR_this.Song[RTR_this.PlayingID].BPM) * 1000 * (Pos - 4));
+			}, (60000 / RTR_this.Song[RTR_this.PlayingID].BPM) * (Pos - 4));
 		}
 	}
-	
-	setInterval(function () {
-		if (this.Ctx != null) {
-			for (let i = 0; i < this.Stream[0].length; i++) {
-				this.Ctx.fillRect(this.Stream[0][i], 0, document.getElementById("Btn1").clientWidth, document.getElementById("Btn1").clientHeight);
-				this.Stream[0][i] -= (document.getElementById("DrawArea").clientWidth / 4) / 50;
-				this.Ctx.drawImage(RTR_This.ToneImg, Stream[0][i], 0);
-				
-				if (this.Stream[0][i] == 0) {
-					this.Ctx.fillRect(this.Stream[0][i], 0, document.getElementById("Btn1").clientWidth, document.getElementById("Btn1").clientHeight);
-					this.Stream[0].splice(i, 1);
-				}
-			}
-			
-			for (let i = 0; i < this.Stream[1].length; i++) {
-				
-			}
-			
-			for (let i = 0; i < this.Stream[2].length; i++) {
-				
-			}
-			
-			for (let i = 0; i < this.Stream[3].length; i++) {
-				
-			}
-		}
-	}, 20);
 }
 
 function Init() {

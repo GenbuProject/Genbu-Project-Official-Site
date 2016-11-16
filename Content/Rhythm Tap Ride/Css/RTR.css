@@ -67,7 +67,7 @@ Button {
 }
 
 #DrawArea {
-	
+	BackGround: Gray;
 }
 
 #SongInfo {
