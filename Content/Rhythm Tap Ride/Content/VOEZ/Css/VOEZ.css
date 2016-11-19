@@ -1,3 +1,12 @@
+@Font-Face {
+	Font-Family: "Hall Fetica";
+	Src: URL("https://genbuproject.github.io/Genbu-Project-Official-Site/Font/Hall Fetica/Hall Fetica.ttf");
+}
+
+Body {
+	Font-Family: "Hall Fetica", "Meiryo";
+}
+
 Panel {
 	Display: Block;
 	Border: 3px Solid #6C6D8D;
@@ -15,6 +24,7 @@ Panel {
 
 Content {
 	Display: Flex;
+	Text-Align: Center;
 	Transform: Rotate(-45deg);
 }
 
