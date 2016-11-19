@@ -1,0 +1,24 @@
+Panel {
+	Display: Block;
+	Border: 3px Solid #6C6D8D;
+	Transform: Rotate(45deg);
+}
+
+.NormalPanel {
+	Width: 219px;
+	Height: 219px;
+}
+
+.NormalPanel > Content {
+	Margin: 109.5px;
+}
+
+Content {
+	Display: Flex;
+	Transform: Rotate(-45deg);
+}
+
+Content Img {
+	Width: 100%;
+	Transform: Rotate(-45deg);
+}
