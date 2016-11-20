@@ -1,3 +1,4 @@
+/*フォント設定(VOEZ用)開始*/
 @Font-Face {
 	Font-Family: "Hall Fetica";
 	Src: URL("https://genbuproject.github.io/Genbu-Project-Official-Site/Fonts/Hall Fetica/Hall Fetica.ttf");
@@ -6,6 +7,9 @@
 Body {
 	Font-Family: "Hall Fetica", "Meiryo";
 }
+/*フォント設定(VOEZ用)終了*/
+
+
 
 PPanel {
 	Display: Block;
@@ -15,10 +19,10 @@ PPanel {
 
 Panel {
 	Position: Relative;
+	Display: Flex;
 	Margin-Left: -3px;
 	Float: Left;
 	
-	Display: Flex;
 	Color: #6C6D8D;
 	Font-Size: XX-Large;
 	Border: 3px Solid #6C6D8D;

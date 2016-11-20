@@ -3,15 +3,11 @@
 var RTR = function () {
 	RTR_this = this;
 	
-	this.Ctx = null;
 	this.Song = [];
 	
 	this.PlayingID = 0;
 	this.Stream = [[], [], [], []];
 	
-	this.ToneImg = new Image();
-		this.ToneImg.src = "Image/Tone.png";
-		
 	this.System = {
 		Load: function (OnLoad) {
 			let SongListGetter = new XMLHttpRequest();
@@ -77,19 +73,24 @@ var RTR = function () {
 						let Media = new Audio(RTR_this.Song[RTR_this.PlayingID].Music);
 							Media.play();
 							
-						let PlayArea = document.createElement("Div");
-							PlayArea.id = "PlayArea";
+						let Screen = document.createElement("Div");
+							Screen.id = "Screen";
 							
-						document.body.appendChild(PlayArea);
-						
 						let TapArea = document.createElement("Div");
 							TapArea.id = "TapArea";
+							
+						let DeadLine = document.createElement("Div");
+							DeadLine.id = "DeadLine";
 							
 						let ToneArea = document.createElement("Div");
 							ToneArea.id = "ToneArea";
 							
-						PlayArea.appendChild(TapArea);
-						PlayArea.appendChild(ToneArea);
+						document.body.appendChild(Screen);
+						
+						Screen.appendChild(TapArea);
+						Screen.appendChild(ToneArea);
+						
+						ToneArea.appendChild(DeadLine);
 						
 						for (let i = 0; i < 4; i++) {
 							let Btn = document.createElement("Div");
@@ -99,16 +100,6 @@ var RTR = function () {
 							TapArea.appendChild(Btn);
 						}
 						
-						let DrawArea = document.createElement("Canvas");
-							DrawArea.id = "DrawArea";
-							DrawArea.width = ToneArea.clientWidth;
-							DrawArea.height = ToneArea.clientHeight;
-							
-						ToneArea.appendChild(DrawArea);
-						
-						RTR_this.Ctx = document.getElementById("DrawArea").getContext("2d");
-							RTR_this.Ctx.fillStyle = "Gray";
-							
 						for (let i = 0; i < RTR_this.Song[RTR_this.PlayingID].Data.Up.length; i++) {
 							RTR_this.Util.Tone(0, RTR_this.Song[RTR_this.PlayingID].Data.Up[i]);
 						}
@@ -126,36 +117,22 @@ var RTR = function () {
 						}
 						
 						setInterval(function () {
-							if (RTR_this.Ctx != null) {
-								for (let i = 0; i < RTR_this.Stream[0].length; i++) {
-									RTR_this.Ctx.fillRect(RTR_this.Stream[0][i], 0, document.getElementById("Btn1").clientWidth, document.getElementById("Btn1").clientHeight);
-									RTR_this.Stream[0][i] -= (document.getElementById("DrawArea").clientWidth / 4) / 50;
-									RTR_this.Ctx.drawImage(RTR_this.ToneImg, RTR_this.Stream[0][i], 0, document.getElementById("Btn1").clientWidth, document.getElementById("Btn1").clientHeight);
-									
-									if (RTR_this.Stream[0][i] <= 0) {
-										RTR_this.Ctx.fillRect(RTR_this.Stream[0][i], 0, document.getElementById("Btn1").clientWidth, document.getElementById("Btn1").clientHeight);
-										RTR_this.Stream[0].splice(i, 1);
-									}
-								}
+							for (let i = 0; i < RTR_this.Stream[0].length; i++) {
 								
-								for (let i = 0; i < RTR_this.Stream[1].length; i++) {
-									
-								}
+							}
+							
+							for (let i = 0; i < RTR_this.Stream[1].length; i++) {
 								
-								for (let i = 0; i < RTR_this.Stream[2].length; i++) {
-									
-								}
+							}
+							
+							for (let i = 0; i < RTR_this.Stream[2].length; i++) {
 								
-								for (let i = 0; i < RTR_this.Stream[3].length; i++) {
-									
-								}
+							}
+							
+							for (let i = 0; i < RTR_this.Stream[3].length; i++) {
+								
 							}
 						}, (60000 / RTR_this.Song[RTR_this.PlayingID].BPM) / 50);
-						
-						window.onresize = function () {
-							DrawArea.width = ToneArea.clientWidth;
-							DrawArea.height = ToneArea.clientHeight;
-						}
 					}, 3000);
 				}
 				
@@ -208,10 +185,7 @@ var RTR = function () {
 		
 		Tone: function (Line, Pos) {
 			setTimeout(function () {
-				RTR_this.Ctx = document.getElementById("DrawArea").getContext("2d");
-					RTR_this.Ctx.drawImage(RTR_this.ToneImg, document.getElementById("DrawArea").clientWidth - document.getElementById("Btn1").clientWidth, Line != 0 ? (document.getElementById("Btn1").clientHeight + 5) * Line : 0, document.getElementById("Btn1").clientWidth, document.getElementById("Btn1").clientHeight);
-					
-				RTR_this.Stream[Line].push(document.getElementById("DrawArea").clientWidth - document.getElementById("Btn1").clientWidth);
+				let Tone;
 			}, (60000 / RTR_this.Song[RTR_this.PlayingID].BPM) * (Pos - 4));
 		}
 	}

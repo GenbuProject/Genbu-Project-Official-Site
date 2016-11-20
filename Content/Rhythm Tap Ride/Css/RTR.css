@@ -18,7 +18,7 @@ Button {
 	Border-Radius: 10px;
 }
 
-#PlayArea {
+#Screen {
 	Height: 50%;
 	
 	Border: 5px Ridge DarkOrchid;
@@ -66,8 +66,11 @@ Button {
 	Float: Left;
 }
 
-#DrawArea {
-	BackGround: Gray;
+#DeadLine {
+	Width: 5%;
+	Height: 100%;
+	
+	Border-Right: 2px Solid #CCCCCC;
 }
 
 #SongInfo {
