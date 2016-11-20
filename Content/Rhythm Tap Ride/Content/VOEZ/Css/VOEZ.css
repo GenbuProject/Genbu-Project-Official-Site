@@ -8,7 +8,7 @@ Body {
 }
 
 PPanel {
-	Display: Flex;
+	Display: Block;
 	
 	Transform: Rotate(45deg);
 }
@@ -18,7 +18,7 @@ Panel {
 	Margin-Left: -3px;
 	Float: Left;
 	
-	Display: Block;
+	Display: Flex;
 	Color: #6C6D8D;
 	Font-Size: XX-Large;
 	Border: 3px Solid #6C6D8D;
@@ -29,12 +29,8 @@ Panel {
 	Height: 219px;
 }
 
-.NormalPanel > Content {
-	Margin: 109.5px;
-}
-
 Content {
-	Display: Flex;
+	Margin: Auto;
 	Text-Align: Center;
 	White-Space: NoWrap;
 	
