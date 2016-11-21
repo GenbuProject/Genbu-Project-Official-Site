@@ -5,6 +5,7 @@
 }
 
 Body {
+	Height: 100%;
 	Font-Family: "Hall Fetica", "Meiryo";
 }
 /*フォント設定(VOEZ用)終了*/
@@ -18,14 +19,15 @@ PPanel {
 }
 
 Panel {
-	Position: Relative;
 	Display: Flex;
-	Margin-Left: -3px;
+	
+	Position: Relative;
+	Margin: 0px 0px 0px -3px;
+	Border: 3px Solid #6C6D8D;
 	Float: Left;
 	
 	Color: #6C6D8D;
 	Font-Size: XX-Large;
-	Border: 3px Solid #6C6D8D;
 }
 
 .NormalPanel {
@@ -33,13 +35,37 @@ Panel {
 	Height: 219px;
 }
 
+.LargePanel {
+	Width: 630px;
+	Height: 630px;
+}
+
+.Top Content {
+	Margin: 0;
+}
+
+.Bottom {
+	
+}
+
+.Left {
+	
+}
+
+.Right {
+	
+}
+
 Content {
+	Width: 100%;
+	
 	Margin: Auto;
-	Text-Align: Center;
 	White-Space: NoWrap;
+	Text-Align: Center;
 	
 	Transform: Rotate(-45deg);
 }
 
 Content Img {
+	
 }

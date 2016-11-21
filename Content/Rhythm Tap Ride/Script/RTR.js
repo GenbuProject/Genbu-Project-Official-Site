@@ -50,7 +50,7 @@ var RTR = function () {
 		Play: function () {
 			let Selecter = document.createElement("Select");
 				Selecter.onchange = function () {
-					RTR_this.Util.ShowInfo(Selecter.selectedIndex);
+					RTR_this.Node.ShowInfo(Selecter.selectedIndex);
 				}
 				
 			for (let i = 0; i < RTR_this.Song.length; i++) {
@@ -139,7 +139,26 @@ var RTR = function () {
 			document.getElementById("SongSelecter").appendChild(Selecter);
 			document.getElementById("SongSelecter").appendChild(Accept);
 			
-			RTR_this.Util.ShowInfo(Selecter.selectedIndex);
+			RTR_this.Node.ShowInfo(Selecter.selectedIndex);
+		},
+		
+		ShowInfo: function (ID) {
+			if (document.getElementById("SongInfo")) {
+				document.getElementById("SongInfo").parentElement.removeChild(document.getElementById("SongInfo"));
+			}
+			
+			var Info = document.createElement("Table");
+				Info.id = "SongInfo";
+				Info.frame = "border";
+				Info.rules = "all"
+				
+			for (var i = 0; i < 5; i++) {
+				var Row = Info.insertRow();
+					Row.insertCell().innerHTML = "<B>" + (i == 0 ? "楽曲名" : i == 1 ? "BPM" : i == 2 ? "難易度" : i == 3 ? "作者" : i == 4 ? "カバー画像" : "") + "</B>";
+					Row.insertCell().innerHTML = i == 0 ? RTR_this.Song[ID].Name : i == 1 ? RTR_this.Song[ID].BPM : i == 2 ? RTR_this.Song[ID].Difficulty : i == 3 ? RTR_this.Song[ID].Author : i == 4 ? "<Img ID = 'CoverImage' Src = '" + RTR_this.Song[ID].CoverImage + "' Alt = 'カバー'></Img>" : "";
+			}
+			
+			document.getElementById("SongSelecter").appendChild(Info);
 		},
 		
 		SongMaker: function () {
@@ -162,25 +181,6 @@ var RTR = function () {
 			Elem.appendChild(Msg);
 			
 			return Msg;
-		},
-		
-		ShowInfo: function (ID) {
-			if (document.getElementById("SongInfo")) {
-				document.getElementById("SongInfo").parentElement.removeChild(document.getElementById("SongInfo"));
-			}
-			
-			var Info = document.createElement("Table");
-				Info.id = "SongInfo";
-				Info.frame = "border";
-				Info.rules = "all"
-				
-			for (var i = 0; i < 5; i++) {
-				var Row = Info.insertRow();
-					Row.insertCell().innerHTML = "<B>" + (i == 0 ? "楽曲名" : i == 1 ? "BPM" : i == 2 ? "難易度" : i == 3 ? "作者" : i == 4 ? "カバー画像" : "") + "</B>";
-					Row.insertCell().innerHTML = i == 0 ? RTR_this.Song[ID].Name : i == 1 ? RTR_this.Song[ID].BPM : i == 2 ? RTR_this.Song[ID].Difficulty : i == 3 ? RTR_this.Song[ID].Author : i == 4 ? "<Img ID = 'CoverImage' Src = '" + RTR_this.Song[ID].CoverImage + "' Alt = 'カバー'></Img>" : "";
-			}
-			
-			document.getElementById("SongSelecter").appendChild(Info);
 		},
 		
 		Tone: function (Line, Pos) {

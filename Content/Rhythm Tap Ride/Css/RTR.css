@@ -1,3 +1,16 @@
+/*フォント設定開始*/
+@Font-Face {
+	Font-Family: "Hall Fetica";
+	Src: URL("https://genbuproject.github.io/Genbu-Project-Official-Site/Fonts/Hall Fetica/Hall Fetica.ttf");
+}
+
+HTML, Select, Option, Button, Input, Textarea {
+	Font-Family: "Hall Fetica", "メイリオ";
+}
+/*フォント設定終了*/
+
+
+
 HTML {
 	Height: 100%;
 }
@@ -78,8 +91,8 @@ Button {
 }
 
 #CoverImage {
-	Width: 10%;
-	Margin-Bottom: -10px;
+	Width: 128px;
+	Margin-Bottom: -4px;
 }
 
 .Message {
