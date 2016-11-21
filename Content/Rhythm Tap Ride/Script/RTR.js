@@ -79,11 +79,14 @@ var RTR = function () {
 						let TapArea = document.createElement("Div");
 							TapArea.id = "TapArea";
 							
+						let ToneArea = document.createElement("Div");
+							ToneArea.id = "ToneArea";
+							
 						let DeadLine = document.createElement("Div");
 							DeadLine.id = "DeadLine";
 							
-						let ToneArea = document.createElement("Div");
-							ToneArea.id = "ToneArea";
+						let Stream = document.createElement("Div");
+							Stream.id = "Stream";
 							
 						document.body.appendChild(Screen);
 						
@@ -91,6 +94,7 @@ var RTR = function () {
 						Screen.appendChild(ToneArea);
 						
 						ToneArea.appendChild(DeadLine);
+						ToneArea.appendChild(Stream);
 						
 						for (let i = 0; i < 4; i++) {
 							let Btn = document.createElement("Div");
@@ -98,6 +102,13 @@ var RTR = function () {
 								Btn.textContent = i == 0 ? "↑" : i == 1 ? "↓" : i == 2 ? "←" : i == 3 ? "→" : "";
 								
 							TapArea.appendChild(Btn);
+						}
+						
+						for (let i = 0; i < 4; i++) {
+							let StreamColumn = document.createElement("Div");
+								StreamColumn.id = (i == 0 ? "Up" : i == 1 ? "Down" : i == 2 ? "Left" : i == 3 ? "Right" : "") + "Stream";
+								
+							Stream.appendChild(StreamColumn);
 						}
 						
 						for (let i = 0; i < RTR_this.Song[RTR_this.PlayingID].Data.Up.length; i++) {
@@ -118,7 +129,12 @@ var RTR = function () {
 						
 						setInterval(function () {
 							for (let i = 0; i < RTR_this.Stream[0].length; i++) {
+								RTR_this.Stream[0][i].style.left = (RTR_this.Stream[0][i].style.left.replace("px", "") - (document.getElementById("UpStream").clientWidth / 4) / 50) + "px";
 								
+								if (RTR_this.Stream[0][i].style.left.replace("px", "") + 0 <= 0) {
+									RTR_this.Stream[0][i].parentElement.removeChild(RTR_this.Stream[0][i]);
+									RTR_this.Stream[0].splice(i, 1);
+								}
 							}
 							
 							for (let i = 0; i < RTR_this.Stream[1].length; i++) {
@@ -185,7 +201,14 @@ var RTR = function () {
 		
 		Tone: function (Line, Pos) {
 			setTimeout(function () {
-				let Tone;
+				let Tone = document.createElement(Line == 0 ? "UTone" : Line == 1 ? "DTone" : Line == 2 ? "LTone" : Line == 3 ? "UTone" : "Tone");
+					Tone.style.width = document.getElementById((Line == 0 ? "Up" : Line == 1 ? "Down" : Line == 2 ? "Left" : Line == 3 ? "Right" : "Up") + "Stream").clientWidth / 40 + "px";
+					Tone.style.height = document.getElementById((Line == 0 ? "Up" : Line == 1 ? "Down" : Line == 2 ? "Left" : Line == 3 ? "Right" : "Up") + "Stream").clientWidth / 40 + "px";
+					Tone.style.left = document.getElementById((Line == 0 ? "Up" : Line == 1 ? "Down" : Line == 2 ? "Left" : Line == 3 ? "Right" : "Up") + "Stream").clientWidth - document.getElementById((Line == 0 ? "Up" : Line == 1 ? "Down" : Line == 2 ? "Left" : Line == 3 ? "Right" : "Up") + "Stream").clientWidth / 40 + "px";
+					
+				document.getElementById((Line == 0 ? "Up" : Line == 1 ? "Down" : Line == 2 ? "Left" : Line == 3 ? "Right" : "Up") + "Stream").appendChild(Tone);
+				
+				RTR_this.Stream.push(document.getElementById((Line == 0 ? "Up" : Line == 1 ? "Down" : Line == 2 ? "Left" : Line == 3 ? "Right" : "Up") + "Stream").clientWidth / 40);
 			}, (60000 / RTR_this.Song[RTR_this.PlayingID].BPM) * (Pos - 4));
 		}
 	}

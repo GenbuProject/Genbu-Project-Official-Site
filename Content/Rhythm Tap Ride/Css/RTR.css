@@ -11,12 +11,10 @@ HTML, Select, Option, Button, Input, Textarea {
 
 
 
-HTML {
+/*主要スタイル設定開始*/
+HTML, Body {
 	Height: 100%;
-}
-
-Body {
-	Height: 95%;
+	OverFlow: Hidden;
 }
 
 Select {
@@ -30,7 +28,11 @@ Button {
 	Border: 2.5px Outset ActiveBorder;
 	Border-Radius: 10px;
 }
+/*主要スタイル設定終了*/
 
+
+
+/*トーン系設定開始*/
 #Screen {
 	Height: 50%;
 	
@@ -79,6 +81,10 @@ Button {
 	Float: Left;
 }
 
+#ToneArea > Div {
+	Float: Left;
+}
+
 #DeadLine {
 	Width: 5%;
 	Height: 100%;
@@ -86,6 +92,31 @@ Button {
 	Border-Right: 2px Solid #CCCCCC;
 }
 
+#Stream {
+	Width: Calc(95% - 2px);
+	Height: 100%;
+}
+
+#Stream > Div {
+	Display: Flex;
+	Height: 25%;
+	
+	Align-Items: Center;
+}
+
+UTone, DTone, LTone, RTone {
+	Position: Relative;
+	
+	BackGround: #EEEEEE;
+	
+	Transform: Rotate(45deg);
+	Transform-Origin: Left Center;
+}
+/*トーン系設定終了*/
+
+
+
+/*楽曲情報スタイル設定開始*/
 #SongInfo {
 	Width: 100%;
 }
@@ -94,7 +125,11 @@ Button {
 	Width: 128px;
 	Margin-Bottom: -4px;
 }
+/*楽曲情報スタイル設定終了*/
 
+
+
+/*メッセージスタイル設定開始*/
 .Message {
 	Display: Block;
 	Margin: Auto;
@@ -114,3 +149,4 @@ Button {
 		Color: LightGray;
 	}
 }
+/*メッセージスタイル設定終了*/
