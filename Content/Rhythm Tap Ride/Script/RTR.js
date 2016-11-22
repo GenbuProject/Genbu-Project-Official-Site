@@ -208,8 +208,8 @@ var RTR = function () {
 					
 				document.getElementById((Line == 0 ? "Up" : Line == 1 ? "Down" : Line == 2 ? "Left" : Line == 3 ? "Right" : "Up") + "Stream").appendChild(Tone);
 				
-				RTR_this.Stream.push(document.getElementById((Line == 0 ? "Up" : Line == 1 ? "Down" : Line == 2 ? "Left" : Line == 3 ? "Right" : "Up") + "Stream").clientWidth / 40);
-			}, (60000 / RTR_this.Song[RTR_this.PlayingID].BPM) * (Pos - 4));
+				RTR_this.Stream[Line].push(Tone);
+			}, (60000 / RTR_this.Song[RTR_this.PlayingID].BPM) * (Pos - 1));
 		}
 	}
 }
