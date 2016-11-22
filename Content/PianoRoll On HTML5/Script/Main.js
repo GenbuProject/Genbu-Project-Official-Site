@@ -154,6 +154,112 @@ function Init() {
 				}
 				
 				break;
+				
+				
+				
+			case 81:
+				if (!Keys[81]) {
+					Keys[81] = true;
+					Play(81, 64 + 12 * (BaseTone + (IsPressedPageUp == true ? 1 : 0) - (IsPressedPageDown == true ? 1 : 0)), ToneType);
+				}
+				
+				break;
+				
+			case 50:
+				if (!Keys[50]) {
+					Keys[50] = true;
+					Play(50, 65 + 12 * (BaseTone + (IsPressedPageUp == true ? 1 : 0) - (IsPressedPageDown == true ? 1 : 0)), ToneType);
+				}
+				
+				break;
+				
+			case 87:
+				if (!Keys[87]) {
+					Keys[87] = true;
+					Play(87, 66 + 12 * (BaseTone + (IsPressedPageUp == true ? 1 : 0) - (IsPressedPageDown == true ? 1 : 0)), ToneType);
+				}
+				
+				break;
+				
+			case 51:
+				if (!Keys[51]) {
+					Keys[51] = true;
+					Play(51, 67 + 12 * (BaseTone + (IsPressedPageUp == true ? 1 : 0) - (IsPressedPageDown == true ? 1 : 0)), ToneType);
+				}
+				
+				break;
+				
+			case 69:
+				if (!Keys[69]) {
+					Keys[69] = true;
+					Play(69, 68 + 12 * (BaseTone + (IsPressedPageUp == true ? 1 : 0) - (IsPressedPageDown == true ? 1 : 0)), ToneType);
+				}
+				
+				break;
+				
+			case 82:
+				if (!Keys[82]) {
+					Keys[82] = true;
+					Play(82, 69 + 12 * (BaseTone + (IsPressedPageUp == true ? 1 : 0) - (IsPressedPageDown == true ? 1 : 0)), ToneType);
+				}
+				
+				break;
+				
+			case 53:
+				if (!Keys[53]) {
+					Keys[53] = true;
+					Play(53, 70 + 12 * (BaseTone + (IsPressedPageUp == true ? 1 : 0) - (IsPressedPageDown == true ? 1 : 0)), ToneType);
+				}
+				
+				break;
+				
+			case 84:
+				if (!Keys[84]) {
+					Keys[84] = true;
+					Play(84, 71 + 12 * (BaseTone + (IsPressedPageUp == true ? 1 : 0) - (IsPressedPageDown == true ? 1 : 0)), ToneType);
+				}
+				
+				break;
+				
+			case 54:
+				if (!Keys[54]) {
+					Keys[54] = true;
+					Play(54, 72 + 12 * (BaseTone + (IsPressedPageUp == true ? 1 : 0) - (IsPressedPageDown == true ? 1 : 0)), ToneType);
+				}
+				
+				break;
+				
+			case 89:
+				if (!Keys[89]) {
+					Keys[89] = true;
+					Play(89, 73 + 12 * (BaseTone + (IsPressedPageUp == true ? 1 : 0) - (IsPressedPageDown == true ? 1 : 0)), ToneType);
+				}
+				
+				break;
+				
+			case 55:
+				if (!Keys[55]) {
+					Keys[55] = true;
+					Play(55, 74 + 12 * (BaseTone + (IsPressedPageUp == true ? 1 : 0) - (IsPressedPageDown == true ? 1 : 0)), ToneType);
+				}
+				
+				break;
+				
+			case 85:
+				if (!Keys[85]) {
+					Keys[85] = true;
+					Play(85, 75 + 12 * (BaseTone + (IsPressedPageUp == true ? 1 : 0) - (IsPressedPageDown == true ? 1 : 0)), ToneType);
+				}
+				
+				break;
+				
+			case 73:
+				if (!Keys[73]) {
+					Keys[73] = true;
+					Play(73, 76 + 12 * (BaseTone + (IsPressedPageUp == true ? 1 : 0) - (IsPressedPageDown == true ? 1 : 0)), ToneType);
+				}
+				
+				break;
 		}
 	});
 	
@@ -242,6 +348,86 @@ function Init() {
 			case 188:
 				Keys[188] = false;
 				Sounds[188].stop();
+				
+				break;
+				
+				
+				
+			case 81:
+				Keys[81] = false;
+				Sounds[81].stop();
+				
+				break;
+				
+			case 50:
+				Keys[50] = false;
+				Sounds[50].stop();
+				
+				break;
+				
+			case 87:
+				Keys[87] = false;
+				Sounds[87].stop();
+				
+				break;
+				
+			case 51:
+				Keys[51] = false;
+				Sounds[51].stop();
+				
+				break;
+				
+			case 69:
+				Keys[69] = false;
+				Sounds[69].stop();
+				
+				break;
+				
+			case 82:
+				Keys[82] = false;
+				Sounds[82].stop();
+				
+				break;
+				
+			case 53:
+				Keys[53] = false;
+				Sounds[53].stop();
+				
+				break;
+				
+			case 84:
+				Keys[84] = false;
+				Sounds[84].stop();
+				
+				break;
+				
+			case 54:
+				Keys[54] = false;
+				Sounds[54].stop();
+				
+				break;
+				
+			case 89:
+				Keys[89] = false;
+				Sounds[89].stop();
+				
+				break;
+				
+			case 55:
+				Keys[55] = false;
+				Sounds[55].stop();
+				
+				break;
+				
+			case 85:
+				Keys[85] = false;
+				Sounds[85].stop();
+				
+				break;
+				
+			case 73:
+				Keys[73] = false;
+				Sounds[73].stop();
 				
 				break;
 		}
