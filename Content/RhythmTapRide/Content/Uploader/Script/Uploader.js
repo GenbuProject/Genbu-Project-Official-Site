@@ -77,3 +77,10 @@ function Init() {
 			Getter.send(null);
 	}
 }
+
+document.addEventListener("resize", function () {
+	if (document.getElementsByClassName("DialogBack")[0] && document.getElementsByClassName("DialogFront")[0]) {
+		DialogFront.style.top = (document.documentElement.clientHeight - DialogFront.clientHeight) / 2 + "px";
+		DialogFront.style.left = (document.documentElement.clientWidth - DialogFront.clientWidth) / 2 + "px";
+	}
+}
