@@ -1,4 +1,5 @@
 //アクセストークン：atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw==")
+//取得URL：https://www.googleapis.com/plus/v1/people/me
 var Token = "";
 
 const ID = "568561761665-fgnn7jvnf1rt5pb8r275o8uagkjfusjf.apps.googleusercontent.com";
