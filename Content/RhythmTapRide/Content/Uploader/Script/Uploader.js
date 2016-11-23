@@ -62,7 +62,7 @@ function Init() {
 	var Query = Util.QuerySort();
 	
 	if (!Query.CODE) {
-		Util.CreateDialog("Googleにログインして下さい", "Rhythm Tap Ride(RTR)のアップローダーをご利用頂くため<Br>Googleにログインして下さい。", "<Button OnClick = 'Net.LoginWithGoogle();'>Sign in with Google+</Button><Button>キャンセル</Button>");
+		Util.CreateDialog("Googleにログインして下さい", "Rhythm Tap Ride(RTR)のアップローダーをご利用頂くため<Br>Googleにログインして下さい。", "<Button OnClick = 'Net.LoginWithGoogle();'>Sign in with Google+</Button><Button OnClick = 'Util.DismissDialog();'>キャンセル</Button>");
 	} else {
 		var Getter = new XMLHttpRequest();
 			Getter.open("POST", "https://www.googleapis.com/oauth2/v4/token?client_id=" + ID + "&client_secret=" + SecretID + "&redirect_uri=https://genbuproject.github.io/Genbu-Project-Official-Site/Content/RhythmTapRide/Content/Uploader/&access_type=offline&grant_type=authorization_code&code=" + Query.CODE, true);
