@@ -83,4 +83,4 @@ document.addEventListener("resize", function () {
 		DialogFront.style.top = (document.documentElement.clientHeight - DialogFront.clientHeight) / 2 + "px";
 		DialogFront.style.left = (document.documentElement.clientWidth - DialogFront.clientWidth) / 2 + "px";
 	}
-}
+});
