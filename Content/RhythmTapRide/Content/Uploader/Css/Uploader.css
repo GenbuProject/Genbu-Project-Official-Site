@@ -3,6 +3,9 @@ HTML, Body {
 	Margin: 0;
 }
 
+
+
+/*ダイアログ設定開始*/
 .DialogBack {
 	Position: Fixed;
 	Top: 0;
@@ -56,4 +59,36 @@ HTML, Body {
 	Align-Items: Stretch;
 	
 	Border-Top: Thin Solid Black;
+}
+/*ダイアログ設定終了*/
+
+
+
+.Back {
+	BackGround: Linear-Gradient(Orange, DarkOrange, DarkRed);
+}
+
+#Menubar {
+	Display: Flex;
+	Flex-Direction: Row;
+	
+	BackGround: URL("https://genbuproject.github.io/Genbu-Project-Official-Site/Too%20Many%20Tags/Back.jpg");
+}
+
+#Menubar > Span {
+	Border: Thin Solid White;
+	Flex: 1;
+	
+	Cursor: Pointer;
+}
+
+#Menubar > Span:Hover {
+	BackGround: Linear-Gradient(LightGray, DarkOrange);
+}
+
+.Title {
+	Margin-Left: 10px;
+	Padding-Left: 5px;
+	
+	Border-Left: 10px Solid Green;
 }
