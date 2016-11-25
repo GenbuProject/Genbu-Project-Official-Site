@@ -78,9 +78,9 @@ function Init() {
 	}
 }
 
-document.addEventListener("resize", function () {
+window.addEventListener("resize", function () {
 	if (document.getElementsByClassName("DialogBack")[0] && document.getElementsByClassName("DialogFront")[0]) {
-		document.getElementsByClassName("DialogFront")[0].style.top = (document.documentElement.clientHeight - DialogFront.clientHeight) / 2 + "px";
-		document.getElementsByClassName("DialogFront")[0].style.left = (document.documentElement.clientWidth - DialogFront.clientWidth) / 2 + "px";
+		document.getElementsByClassName("DialogFront")[0].style.top = (document.documentElement.clientHeight - document.getElementsByClassName("DialogFront")[0].clientHeight) / 2 + "px";
+		document.getElementsByClassName("DialogFront")[0].style.left = (document.documentElement.clientWidth - document.getElementsByClassName("DialogFront")[0].clientWidth) / 2 + "px";
 	}
 });
