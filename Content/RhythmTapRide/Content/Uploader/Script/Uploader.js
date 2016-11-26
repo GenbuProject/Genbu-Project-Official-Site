@@ -70,6 +70,7 @@ function Init() {
 			
 			Getter.onload = function () {
 				Token = JSON.parse(Getter.response).access_token;
+				document.getElementsByClassName("Back")[0].style.display = "Block";
 				
 				Util.CreateDialog("ログイン成功", "Googleアカウントのログインに成功しました。", "<Button OnClick = 'Util.DismissDialog();'>閉じる</Button>");
 			}

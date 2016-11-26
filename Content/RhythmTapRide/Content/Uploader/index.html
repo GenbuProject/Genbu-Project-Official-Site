@@ -24,19 +24,37 @@
 		<H1 Align = "Center" Style = "Color: Cyan;">Rhythm Tap Ride(RTR) ＜楽曲アップローダ＞</H1>
 		<Hr>
 		
-		<Div Class = "Back">
-			<Div ID = "Menubar">
-				<Span>楽曲新規登録</Span>
-				<Span>楽曲更新</Span>
-				<Span>楽曲削除</Span>
-			</Div>
-			
-			<Div ID = "Content">
+		<Div Class = "Back" Style = "Display: None;">
+			<Div ID = "Register">
+				<Hr>
 				<H2 Class = "Title">楽曲新規登録</H2>
 				<Hr>
 				
-				登録する楽曲ファイル：<Input Type = "File" /><Br>
+				登録する楽曲ファイル：<Input ID = "FileChooser" Type = "File" /><Br>
 				<Button Style = "Width: 100%;">登録する</Button>
+			</Div>
+		</Div>
+		
+		<Div Class = "Back" Style = "Display: None;">
+			<Div ID = "Updater">
+				<Hr>
+				<H2 Class = "Title">楽曲更新</H2>
+				<Hr>
+				
+				更新する楽曲：<Br>
+				上書きする楽曲ファイル：<Select Class = "OwnFile"></Select><Br>
+				<Button Style = "Width: 100%;">更新する</Button>
+			</Div>
+		</Div>
+		
+		<Div Class = "Back" Style = "Display: None;">
+			<Div ID = "Deleter">
+				<Hr>
+				<H2 Class = "Title">楽曲削除</H2>
+				<Hr>
+				
+				削除する楽曲：<Select Class = "OwnFile"></Select><Br>
+				<Button Style = "Width: 100%;">削除する</Button>
 			</Div>
 		</Div>
 	</Body>
