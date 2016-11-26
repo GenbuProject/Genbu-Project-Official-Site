@@ -14,7 +14,6 @@ HTML, Select, Option, Button, Input, Textarea {
 /*主要スタイル設定開始*/
 HTML, Body {
 	Height: 100%;
-	OverFlow: Hidden;
 }
 
 Select {
@@ -34,29 +33,30 @@ Button {
 
 /*トーン系設定開始*/
 #Screen {
+	Display: Flex;
 	Height: 50%;
 	
 	Border: 5px Ridge DarkOrchid;
 }
 
 #TapArea {
+	Display: Flex;
+	Flex-Direction: Column;
+	
 	Width: 5%;
 	Height: 100%;
 	
-	Border: 5px Ridge DarkOrchid;
 	Margin: -5px;
-	
-	Float: Left;
+	Border: 5px Ridge DarkOrchid;
 }
 
 #TapArea > Div {
-	Height: 23.75%;
+	Height: 25%;
 	
+	Margin: -5px -5px 0 -5px;
 	Border: 5px Ridge DarkOrchid;
-	Margin: -5px;
 	
 	Text-Align: Center;
-	Line-Height: 500%;
 	
 	User-Select: None;
 	-Ms-User-Select: None;
@@ -69,7 +69,8 @@ Button {
 }
 
 #ToneArea {
-	Width: Calc(95% - 5px);
+	Display: Flex;
+	Width: 95%;
 	Height: 100%;
 	
 	Position: Relative;
@@ -77,12 +78,6 @@ Button {
 	
 	Border: 5px Ridge DarkOrchid;
 	Margin: -5px;
-	
-	Float: Left;
-}
-
-#ToneArea > Div {
-	Float: Left;
 }
 
 #DeadLine {
@@ -93,7 +88,7 @@ Button {
 }
 
 #Stream {
-	Width: Calc(95% - 2px);
+	Width: 95%;
 	Height: 100%;
 }
 
