@@ -1,6 +1,8 @@
-//アクセストークン：atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw==")
-//取得URL：https://www.googleapis.com/plus/v1/people/me
-var Token = "";
+//Githubアクセストークン：atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw==")
+var Token = "",
+	Tag = "";
+
+var UploadedFile = null;
 
 const ID = "568561761665-fgnn7jvnf1rt5pb8r275o8uagkjfusjf.apps.googleusercontent.com";
 const SecretID = atob("Z05EREFjdDdYQXZHMW9iR3Y1NFZtanRu");
@@ -65,17 +67,29 @@ function Init() {
 	if (!Query.CODE) {
 		Util.CreateDialog("Googleにログインして下さい", "Rhythm Tap Ride(RTR)のアップローダーをご利用頂くため<Br>Googleにログインして下さい。", "<Button OnClick = 'Net.LoginWithGoogle();'>Sign in with Google+</Button><Button OnClick = 'Util.DismissDialog();'>キャンセル</Button>");
 	} else {
-		var Getter = new XMLHttpRequest();
-			Getter.open("POST", "https://www.googleapis.com/oauth2/v4/token?client_id=" + ID + "&client_secret=" + SecretID + "&redirect_uri=https://genbuproject.github.io/Genbu-Project-Official-Site/Content/RhythmTapRide/Content/Uploader/&access_type=offline&grant_type=authorization_code&code=" + Query.CODE, true);
+		var TokenGetter = new XMLHttpRequest();
+			TokenGetter.open("POST", "https://www.googleapis.com/oauth2/v4/token?client_id=" + ID + "&client_secret=" + SecretID + "&redirect_uri=https://genbuproject.github.io/Genbu-Project-Official-Site/Content/RhythmTapRide/Content/Uploader/&access_type=offline&grant_type=authorization_code&code=" + Query.CODE, true);
 			
-			Getter.onload = function () {
-				Token = JSON.parse(Getter.response).access_token;
-				document.getElementsByClassName("Back")[0].style.display = "Block";
+			TokenGetter.onload = function () {
+				Token = JSON.parse(TokenGetter.response).access_token;
+				
+				for (var i = 0; i < document.getElementsByClassName("Back").length; i++) {
+					document.getElementsByClassName("Back")[i].style.display = "Block";
+				}
 				
 				Util.CreateDialog("ログイン成功", "Googleアカウントのログインに成功しました。", "<Button OnClick = 'Util.DismissDialog();'>閉じる</Button>");
+				
+				var TagGetter = new XMLHttpRequest();
+					TagGetter.open("GET", "https://www.googleapis.com/plus/v1/people/me?access_token=" + Token, true);
+					
+					TagGetter.onload = function () {
+						Tag = JSON.parse(TagGetter.response).etag;
+					}
+					
+					TagGetter.send(null);
 			}
 			
-			Getter.send(null);
+			TokenGetter.send(null);
 	}
 }
 
