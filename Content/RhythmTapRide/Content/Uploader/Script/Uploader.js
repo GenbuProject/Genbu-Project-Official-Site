@@ -2,7 +2,8 @@
 var Token = "",
 	Tag = "";
 	
-var UploadedFile = null;
+var UploadedFiles = [[], []];
+var SongList = [];
 
 const ID = "568561761665-fgnn7jvnf1rt5pb8r275o8uagkjfusjf.apps.googleusercontent.com";
 const SecretID = atob("Z05EREFjdDdYQXZHMW9iR3Y1NFZtanRu");
@@ -58,6 +59,39 @@ var Util = {
 var Net = {
 	LoginWithGoogle: function () {
 		location.href = "https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=https://genbuproject.github.io/Genbu-Project-Official-Site/Content/RhythmTapRide/Content/Uploader/&scope=https://www.googleapis.com/auth/plus.login+https://www.googleapis.com/auth/plus.me&response_type=code&client_id=" + ID + "&key=AIzaSyDdyecB-0e1qMwYDd46w4p5Iki-TVf3_HM&access_type=offline&approval_prompt=force";
+	},
+	
+	UploadWithGithub: function () {
+		var ListGetter = new XMLHttpRequest();
+			ListGetter.open("GET", "https://api.github.com/repos/GenbuProject/RhythmTapRide/contents/Songs/?access_token=" + atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw=="), true);
+			
+			ListGetter.onload = function () {
+				SongList = JSON.parse(ListGetter.response);
+				
+				var Matches = 0;
+				
+				for (var i = 0; i < SongList.length; i++) {
+					if (SongList[i].name === UploadedFiles[0][0]) {
+						Matches++;
+					}
+				}
+				
+				if (Matches > 0) {
+					Util.CreateDialog("[エラー] アップロード失敗", "そのファイル名は既に使用されています。<Br>お手数お掛けしますが、ファイル名を変更後再度アップロードして下さい。", "<Button OnClick = 'Util.DismissDialog();'>閉じる</Button>");
+				} else {
+					
+				}
+			}
+			
+			ListGetter.send(null);
+	},
+	
+	ReplaceWithGithub: function () {
+		
+	},
+	
+	DeleteWithGithub: function () {
+		
 	}
 }
 
@@ -90,6 +124,18 @@ function Init() {
 			}
 			
 			TokenGetter.send(null);
+	}
+	
+	for (let i = 0; i < document.getElementsByClassName("FileChooser").length; i++) {
+		document.getElementsByClassName("FileChooser")[i].addEventListener("change", function (Event) {
+			var Reader = new FileReader();
+				Reader.readAsText(Event.target.files[0]);
+				
+				Reader.onload = function () {
+					UploadedFiles[i][0] = Event.target.files[0].name;
+					UploadedFiles[i][1] = Reader.result;
+				}
+		});
 	}
 }
 

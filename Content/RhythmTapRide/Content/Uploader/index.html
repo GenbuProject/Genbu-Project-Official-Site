@@ -30,8 +30,8 @@
 				<H2 Class = "Title">楽曲新規登録</H2>
 				<Hr>
 				
-				登録する楽曲ファイル：<Input ID = "FileChooser" Type = "File" /><Br>
-				<Button Style = "Width: 100%;">登録する</Button>
+				登録する楽曲ファイル：<Input Class = "FileChooser" Type = "File" /><Br>
+				<Button OnClick = "Net.UploadWithGithub();" Style = "Width: 100%;">登録する</Button>
 			</Div>
 		</Div>
 		
@@ -41,8 +41,8 @@
 				<H2 Class = "Title">楽曲更新</H2>
 				<Hr>
 				
-				更新する楽曲：<Br>
-				上書きする楽曲ファイル：<Select Class = "OwnFile"></Select><Br>
+				更新する楽曲：<Select Class = "OwnFile"></Select><Br>
+				上書きする楽曲ファイル：<Input Class = "FileChooser" Type = "File" /><Br>
 				<Button Style = "Width: 100%;">更新する</Button>
 			</Div>
 		</Div>
