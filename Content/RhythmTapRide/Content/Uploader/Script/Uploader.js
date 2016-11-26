@@ -3,7 +3,7 @@ var Token = "",
 	Tag = "";
 	
 var UploadedFiles = [[], []];
-var SongList = [];
+var OwnSongList = [];
 
 const ID = "568561761665-fgnn7jvnf1rt5pb8r275o8uagkjfusjf.apps.googleusercontent.com";
 const SecretID = atob("Z05EREFjdDdYQXZHMW9iR3Y1NFZtanRu");
@@ -62,28 +62,19 @@ var Net = {
 	},
 	
 	UploadWithGithub: function () {
-		var ListGetter = new XMLHttpRequest();
-			ListGetter.open("GET", "https://api.github.com/repos/GenbuProject/RhythmTapRide/contents/Songs/?access_token=" + atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw=="), true);
+		var Sender = new XMLHttpRequest();
+			Sender.open("PUT", "https://api.github.com/repos/GenbuProject/RhythmTapRide/contents/Songs/" + JSON.parse(UploadedFiles[0][1]).Name + " By " + JSON.parse(UploadedFiles[0][1]).Author + " < " + Tag + ".Json?access_token=" + atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw=="), true);
 			
-			ListGetter.onload = function () {
-				SongList = JSON.parse(ListGetter.response);
-				
-				var Matches = 0;
-				
-				for (var i = 0; i < SongList.length; i++) {
-					if (SongList[i].name === UploadedFiles[0][0]) {
-						Matches++;
-					}
-				}
-				
-				if (Matches > 0) {
-					Util.CreateDialog("[エラー] アップロード失敗", "そのファイル名は既に使用されています。<Br>お手数お掛けしますが、ファイル名を変更後再度アップロードして下さい。", "<Button OnClick = 'Util.DismissDialog();'>閉じる</Button>");
-				} else {
-					
-				}
+			Sender.onload = function () {
+				alert(UploadedFiles[0][0] + "のアップロードが完了しました。");
 			}
 			
-			ListGetter.send(null);
+			Sender.send(
+				JSON.stringify({
+					message: "ファイル追加日：" + new Date().toLocaleString(),
+					content: btoa(UploadedFiles[0][1])
+				})
+			);
 	},
 	
 	ReplaceWithGithub: function () {
