@@ -136,7 +136,7 @@ function Init() {
 					InfoGetter.open("GET", "https://www.googleapis.com/plus/v1/people/me?access_token=" + Token, true);
 					
 					InfoGetter.onload = function () {
-						Tag = JSON.parse(InfoGetter.response).etag.replace(/"/g, "").replace(/[/]/g, "#");
+						Tag = JSON.parse(InfoGetter.response).etag.replace(/"/g, "").replace(/[/]/g, "$");
 						Name = JSON.parse(InfoGetter.response).displayName;
 					}
 					
