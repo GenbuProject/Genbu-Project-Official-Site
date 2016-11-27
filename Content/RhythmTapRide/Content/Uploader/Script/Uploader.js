@@ -145,7 +145,7 @@ var Net = {
 					},
 					
 					message: "楽曲削除日：" + new Date().toLocaleString(),
-					sha: OwnSongList[document.getElementsByClassName("OwnFile")[0].selectedIndex - 1].sha
+					sha: OwnSongList[document.getElementsByClassName("OwnFile")[1].selectedIndex - 1].sha
 				})
 			);
 	}
