@@ -123,7 +123,7 @@ function Init() {
 		Util.CreateDialog("Googleにログインして下さい", "Rhythm Tap Ride(RTR)のアップローダーをご利用頂くため<Br>Googleにログインして下さい。", "<Button OnClick = 'Net.LoginWithGoogle();'>Sign in with Google+</Button><Button OnClick = 'Util.DismissDialog();'>キャンセル</Button>");
 	} else {
 		var TokenGetter = new XMLHttpRequest();
-			TokenGetter.open("POST", "https://www.googleapis.com/oauth2/v4/token?client_id=" + ID + "&client_secret=" + SecretID + "&redirect_uri=https://genbuproject.github.io/Genbu-Project-Official-Site/Content/RhythmTapRide/Content/Uploader/&access_type=offline&grant_type=authorization_code&code=" + Query.CODE, true);
+			TokenGetter.open("POST", "https://www.googleapis.com/oauth2/v4/token?client_id=" + ID + "&client_secret=" + SecretID + "&redirect_uri=https://genbuproject.github.io/Genbu-Project-Official-Site/Content/RhythmTapRide/Content/Uploader/&access_type=offline&grant_type=authorization_code&code=" + Query.CODE, false);
 			
 			TokenGetter.onload = function () {
 				Token = JSON.parse(TokenGetter.response).access_token;
@@ -135,7 +135,7 @@ function Init() {
 				Util.CreateDialog("ログイン成功", "Googleアカウントのログインに成功しました。", "<Button OnClick = 'Util.DismissDialog();'>閉じる</Button>");
 				
 				var InfoGetter = new XMLHttpRequest();
-					InfoGetter.open("GET", "https://www.googleapis.com/plus/v1/people/me?access_token=" + Token, true);
+					InfoGetter.open("GET", "https://www.googleapis.com/plus/v1/people/me?access_token=" + Token, false);
 					
 					InfoGetter.onload = function () {
 						Tag = JSON.parse(InfoGetter.response).etag.replace(/"/g, "").replace(/[/]/g, "@"),
