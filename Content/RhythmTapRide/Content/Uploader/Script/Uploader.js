@@ -162,7 +162,7 @@ function Init() {
 	}
 	
 	Net.GetSongList(function () {
-		for (var i = 0; i < document.getElementsByClassName("OwnFile").length; i++) {
+		for (let i = 0; i < document.getElementsByClassName("OwnFile").length; i++) {
 			for (var j = 0; j < OwnSongList.length; j++) {
 				var NameGetter = new XMLHttpRequest();
 					NameGetter.open("GET", OwnSongList[j].git_url + "?access_token=" + atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw=="), true);
