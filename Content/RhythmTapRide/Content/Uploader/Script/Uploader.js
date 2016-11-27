@@ -170,6 +170,8 @@ function Init() {
 					NameGetter.onload = function () {
 						document.getElementsByClassName("OwnFile")[i].add(new Option(JSON.parse(atob(JSON.parse(NameGetter.response).content)).Name));
 					}
+					
+					NameGetter.send(null);
 			}
 		}
 	});
