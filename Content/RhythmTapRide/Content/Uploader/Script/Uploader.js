@@ -96,6 +96,10 @@ var Net = {
 			Sender.send(
 				JSON.stringify({
 					message: "ファイル追加日：" + new Date().toLocaleString(),
+					committer: {
+						name: Name
+					},
+					
 					content: btoa(UploadedFiles[0][1])
 				})
 			);
