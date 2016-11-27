@@ -131,7 +131,7 @@ function Init() {
 					TagGetter.open("GET", "https://www.googleapis.com/plus/v1/people/me?access_token=" + Token, true);
 					
 					TagGetter.onload = function () {
-						Tag = JSON.parse(TagGetter.response).etag;
+						Tag = JSON.parse(TagGetter.response).etag.replace(/"/g, "");
 					}
 					
 					TagGetter.send(null);
