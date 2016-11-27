@@ -96,19 +96,37 @@ var Net = {
 			
 			Sender.send(
 				JSON.stringify({
-					message: "ファイル追加日：" + new Date().toLocaleString(),
 					committer: {
 						name: Name,
 						email: Email
 					},
 					
+					message: "ファイル追加日：" + new Date().toLocaleString(),
 					content: btoa(UploadedFiles[0][1])
 				})
 			);
 	},
 	
 	ReplaceWithGithub: function () {
-		
+		var Sender = new XMLHttpRequest();
+			Sender.open("PUT", "https://api.github.com/repos/GenbuProject/RhythmTapRide/contents/Songs/" + OwnSongList[document.getElementsByClassName("OwnFile")[0].selectedIndex].name + "?access_token=" + atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw=="), true);
+			
+			Sender.onload = function () {
+				alert(UploadedFiles[1][0] + "を更新しました。");
+			}
+			
+			Sender.send(
+				JSON.stringify({
+					committer: {
+						name: Name,
+						email: Email
+					},
+					
+					message: "ファイル追加日：" + new Date().toLocaleString(),
+					content: btoa(UploadedFiles[1][1]),
+					sha: OwnSongList[document.getElementsByClassName("OwnFile")[0].selectedIndex].sha
+				})
+			);
 	},
 	
 	DeleteWithGithub: function () {
@@ -149,19 +167,19 @@ function Init() {
 			TokenGetter.send(null);
 	}
 	
-	for (let i = 0; i < document.getElementsByClassName("FileChooser").length; i++) {
-		document.getElementsByClassName("FileChooser")[i].addEventListener("change", function (Event) {
-			var Reader = new FileReader();
-				Reader.readAsText(Event.target.files[0]);
-				
-				Reader.onload = function () {
-					UploadedFiles[i][0] = Event.target.files[0].name;
-					UploadedFiles[i][1] = Reader.result;
-				}
-		});
-	}
-	
 	Net.GetSongList(function () {
+		for (let i = 0; i < document.getElementsByClassName("FileChooser").length; i++) {
+			document.getElementsByClassName("FileChooser")[i].addEventListener("change", function (Event) {
+				var Reader = new FileReader();
+					Reader.readAsText(Event.target.files[0]);
+					
+					Reader.onload = function () {
+						UploadedFiles[i][0] = Event.target.files[0].name;
+						UploadedFiles[i][1] = Reader.result;
+					}
+			});
+		}
+		
 		for (let i = 0; i < OwnSongList.length; i++) {
 			var NameGetter = new XMLHttpRequest();
 				NameGetter.open("GET", OwnSongList[i].git_url + "?access_token=" + atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw=="), false);
