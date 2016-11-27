@@ -161,18 +161,18 @@ function Init() {
 		});
 	}
 	
-	for (var i = 0; i < document.getElementsByClassName("OwnFile").length; i++) {
-		Net.GetSongList(function () {
+	Net.GetSongList(function () {
+		for (var i = 0; i < document.getElementsByClassName("OwnFile").length; i++) {
 			for (var j = 0; j < OwnSongList.length; j++) {
 				var NameGetter = new XMLHttpRequest();
-					NameGetter.open("GET", OwnSongList[j].git_url, false);
+					NameGetter.open("GET", OwnSongList[j].git_url, true);
 					
 					NameGetter.onload = function () {
 						document.getElementsByClassName("OwnFile")[i].add(new Option(JSON.parse(atob(JSON.parse(NameGetter.response).content)).Name));
 					}
 			}
-		});
-	}
+		}
+	});
 }
 
 window.addEventListener("resize", function () {
