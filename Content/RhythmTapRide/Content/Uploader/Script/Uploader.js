@@ -2,8 +2,10 @@
 var Token = "",
 	Tag = "";
 	
+var GlobalSongList = [],
+	OwnSongList = [];
+	
 var UploadedFiles = [[], []];
-var OwnSongList = [];
 
 const ID = "568561761665-fgnn7jvnf1rt5pb8r275o8uagkjfusjf.apps.googleusercontent.com";
 const SecretID = atob("Z05EREFjdDdYQXZHMW9iR3Y1NFZtanRu");
@@ -61,9 +63,30 @@ var Net = {
 		location.href = "https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=https://genbuproject.github.io/Genbu-Project-Official-Site/Content/RhythmTapRide/Content/Uploader/&scope=https://www.googleapis.com/auth/plus.login+https://www.googleapis.com/auth/plus.me&response_type=code&client_id=" + ID + "&key=AIzaSyDdyecB-0e1qMwYDd46w4p5Iki-TVf3_HM&access_type=offline&approval_prompt=force";
 	},
 	
+	GetSongList: function (OnLoad) {
+		var Getter = new XMLHttpRequest();
+			Getter.open("GET", "https://api.github.com/repos/GenbuProject/RhythmTapRide/contents/Songs/?access_token=" + atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw=="), true);
+			
+			Getter.onload = function () {
+				GlobalSongList = JSON.parse(Getter.response);
+				
+				for (var i = 0; i < GlobalSongList.length; i++) {
+					if (GlobalSongList[i].name.split(" <()> ").length != 1) {
+						if (GlobalSongList[i].name.split(" <()> ")[1].split(".")[0] == Tag) {
+							OwnSongList.push(GlobalSongList[i]);
+						}
+					}
+				}
+				
+				OnLoad();
+			}
+			
+			Getter.send(null);
+	},
+	
 	UploadWithGithub: function () {
 		var Sender = new XMLHttpRequest();
-			Sender.open("PUT", "https://api.github.com/repos/GenbuProject/RhythmTapRide/contents/Songs/" + JSON.parse(UploadedFiles[0][1]).Name + " By " + JSON.parse(UploadedFiles[0][1]).Author + " < " + Tag + ".Json?access_token=" + atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw=="), true);
+			Sender.open("PUT", "https://api.github.com/repos/GenbuProject/RhythmTapRide/contents/Songs/" + JSON.parse(UploadedFiles[0][1]).Name + " By " + JSON.parse(UploadedFiles[0][1]).Author + " <()> " + Tag + ".Json?access_token=" + atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw=="), true);
 			
 			Sender.onload = function () {
 				alert(UploadedFiles[0][0] + "のアップロードが完了しました。");
@@ -126,6 +149,19 @@ function Init() {
 					UploadedFiles[i][0] = Event.target.files[0].name;
 					UploadedFiles[i][1] = Reader.result;
 				}
+		});
+	}
+	
+	for (var i = 0; i < document.getElementsByClassName("OwnFile").length; i++) {
+		Net.GetSongList(function () {
+			for (var j = 0; j < OwnSongList.length; j++) {
+				var NameGetter = new XMLHttpRequest();
+					NameGetter.open("GET", OwnSongList[j].git_url, false);
+					
+					NameGetter.onload = function () {
+						document.getElementsByClassName("OwnFile")[i].add(new Option(JSON.parse(atob(JSON.parse(NameGetter.response).content)).Name));
+					}
+			}
 		});
 	}
 }
