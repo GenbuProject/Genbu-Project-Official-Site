@@ -101,7 +101,7 @@ var Net = {
 						email: Email
 					},
 					
-					message: "ファイル追加日：" + new Date().toLocaleString(),
+					message: "楽曲追加日：" + new Date().toLocaleString(),
 					content: btoa(UploadedFiles[0][1])
 				})
 			);
@@ -109,7 +109,7 @@ var Net = {
 	
 	ReplaceWithGithub: function () {
 		var Sender = new XMLHttpRequest();
-			Sender.open("PUT", "https://api.github.com/repos/GenbuProject/RhythmTapRide/contents/Songs/" + OwnSongList[document.getElementsByClassName("OwnFile")[0].selectedIndex].name + "?access_token=" + atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw=="), true);
+			Sender.open("PUT", "https://api.github.com/repos/GenbuProject/RhythmTapRide/contents/Songs/" + OwnSongList[document.getElementsByClassName("OwnFile")[0].selectedIndex - 1].name + "?access_token=" + atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw=="), true);
 			
 			Sender.onload = function () {
 				alert(UploadedFiles[1][0] + "を更新しました。");
@@ -122,15 +122,32 @@ var Net = {
 						email: Email
 					},
 					
-					message: "ファイル追加日：" + new Date().toLocaleString(),
+					message: "楽曲更新日：" + new Date().toLocaleString(),
 					content: btoa(UploadedFiles[1][1]),
-					sha: OwnSongList[document.getElementsByClassName("OwnFile")[0].selectedIndex].sha
+					sha: OwnSongList[document.getElementsByClassName("OwnFile")[0].selectedIndex - 1].sha
 				})
 			);
 	},
 	
 	DeleteWithGithub: function () {
-		
+		var Sender = new XMLHttpRequest();
+			Sender.open("DELETE", "https://api.github.com/repos/GenbuProject/RhythmTapRide/contents/Songs/" + OwnSongList[document.getElementsByClassName("OwnFile")[1].selectedIndex - 1].name + "?access_token=" + atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw=="), true);
+			
+			Sender.onload = function () {
+				alert(OwnSongList[document.getElementsByClassName("OwnFile")[1].selectedIndex - 1].name + "を削除しました。");
+			}
+			
+			Sender.send(
+				JSON.stringify({
+					committer: {
+						name: Name,
+						email: Email
+					},
+					
+					message: "楽曲削除日：" + new Date().toLocaleString(),
+					sha: OwnSongList[document.getElementsByClassName("OwnFile")[0].selectedIndex - 1].sha
+				})
+			);
 	}
 }
 
