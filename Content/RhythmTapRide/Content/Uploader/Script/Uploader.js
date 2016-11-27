@@ -1,6 +1,6 @@
 //Githubアクセストークン：atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw==")
 var Token = "",
-	Tag = "",
+	AccountID = "",
 	Name = "",
 	Email = "";
 	
@@ -74,7 +74,7 @@ var Net = {
 				
 				for (var i = 0; i < GlobalSongList.length; i++) {
 					if (GlobalSongList[i].name.split(" [()] ").length != 1) {
-						if (GlobalSongList[i].name.split(" [()] ")[1].split(".")[0] == Tag) {
+						if (GlobalSongList[i].name.split(" [()] ")[1].split(".")[0] == AccountID) {
 							OwnSongList.push(GlobalSongList[i]);
 						}
 					}
@@ -88,7 +88,7 @@ var Net = {
 	
 	UploadWithGithub: function () {
 		var Sender = new XMLHttpRequest();
-			Sender.open("PUT", "https://api.github.com/repos/GenbuProject/RhythmTapRide/contents/Songs/" + JSON.parse(UploadedFiles[0][1]).Name + " By " + JSON.parse(UploadedFiles[0][1]).Author + " [()] " + Tag + ".Json?access_token=" + atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw=="), true);
+			Sender.open("PUT", "https://api.github.com/repos/GenbuProject/RhythmTapRide/contents/Songs/" + JSON.parse(UploadedFiles[0][1]).Name + " By " + JSON.parse(UploadedFiles[0][1]).Author + " [()] " + AccountID + ".Json?access_token=" + atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw=="), true);
 			
 			Sender.onload = function () {
 				alert(UploadedFiles[0][0] + "のアップロードが完了しました。");
@@ -156,7 +156,7 @@ function Init() {
 					InfoGetter.open("GET", "https://www.googleapis.com/plus/v1/people/me?access_token=" + Token, false);
 					
 					InfoGetter.onload = function () {
-						Tag = JSON.parse(InfoGetter.response).etag.replace(/"/g, "").replace(/[/]/g, "@"),
+						AccountID = JSON.parse(InfoGetter.response).id,
 						Name = JSON.parse(InfoGetter.response).displayName,
 						Email = JSON.parse(InfoGetter.response).emails[0].value;
 					}
