@@ -1,6 +1,7 @@
 //Githubアクセストークン：atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw==")
 var Token = "",
-	Tag = "";
+	Tag = "",
+	Name = "";
 	
 var GlobalSongList = [],
 	OwnSongList = [];
@@ -127,14 +128,15 @@ function Init() {
 				
 				Util.CreateDialog("ログイン成功", "Googleアカウントのログインに成功しました。", "<Button OnClick = 'Util.DismissDialog();'>閉じる</Button>");
 				
-				var TagGetter = new XMLHttpRequest();
-					TagGetter.open("GET", "https://www.googleapis.com/plus/v1/people/me?access_token=" + Token, true);
+				var InfoGetter = new XMLHttpRequest();
+					InfoGetter.open("GET", "https://www.googleapis.com/plus/v1/people/me?access_token=" + Token, true);
 					
-					TagGetter.onload = function () {
-						Tag = JSON.parse(TagGetter.response).etag.replace(/"/g, "").replace(/[/]/g, "#");
+					InfoGetter.onload = function () {
+						Tag = JSON.parse(InfoGetter.response).etag.replace(/"/g, "").replace(/[/]/g, "#");
+						Name = JSON.parse(InfoGetter.response).displayName;
 					}
 					
-					TagGetter.send(null);
+					InfoGetter.send(null);
 			}
 			
 			TokenGetter.send(null);
