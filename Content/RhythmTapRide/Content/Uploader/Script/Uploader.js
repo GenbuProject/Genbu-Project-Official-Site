@@ -164,7 +164,7 @@ function Init() {
 	Net.GetSongList(function () {
 		for (let i = 0; i < OwnSongList.length; i++) {
 			var NameGetter = new XMLHttpRequest();
-				NameGetter.open("GET", OwnSongList[i].git_url + "?access_token=" + atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw=="), true);
+				NameGetter.open("GET", OwnSongList[i].git_url + "?access_token=" + atob("YWUzY2I0YTU0ZDdkMTJiMDMzODRiODk2YThiOWZlZGZhMGIwMTZiMw=="), false);
 				
 				NameGetter.onload = function () {
 					for (let j = 0; j < document.getElementsByClassName("OwnFile").length; j++) {
