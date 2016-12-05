@@ -81,9 +81,21 @@ var GitAPI = function (Token) {
 				}
 			},
 			
+			Read: function (Path, Branch) {
+				var FileGetter = new XMLHttpRequest();
+					FileGetter.open("GET", "https://api.github.com/repos/" + Gitthis.Repo.RepoURL + "/contents/" + Path + "?ref=" + (Branch ? Branch : "master") + "&access_token=" + Gitthis.Token, false);
+					FileGetter.send(null);
+					
+				var ContentGetter = new XMLHttpRequest();
+					ContentGetter.open("GET", JSON.parse(FileGetter.responseText).git_url + "?access_token=" + Gitthis.Token, false);
+					ContentGetter.send(null);
+					
+				return atob(JSON.parse(ContentGetter.responseText).content);
+			},
+			
 			IsVaild: function (Path, Branch) {
 				var VaildChecker = new XMLHttpRequest();
-					VaildChecker.open("GET", "https://api.github.com/repos/" + Gitthis.Repo.RepoURL + "/contents/" + Path + "?access_token=" + Gitthis.Token + "&ref=" + (Branch ? Branch : "master"), false);
+					VaildChecker.open("GET", "https://api.github.com/repos/" + Gitthis.Repo.RepoURL + "/contents/" + Path + "?ref=" + (Branch ? Branch : "master") + "&access_token=" + Gitthis.Token, false);
 					VaildChecker.send(null);
 					
 				return VaildChecker.status == 404 ? false : true;
@@ -91,7 +103,7 @@ var GitAPI = function (Token) {
 			
 			ShaGetter: function (Path, Branch) {
 				var FileGetter = new XMLHttpRequest();
-					FileGetter.open("GET", "https://api.github.com/repos/" + Gitthis.Repo.RepoURL + "/contents/" + Path + "?access_token=" + Gitthis.Token + "&ref=" + (Branch ? Branch : "master"), false);
+					FileGetter.open("GET", "https://api.github.com/repos/" + Gitthis.Repo.RepoURL + "/contents/" + Path + "?ref=" + (Branch ? Branch : "master") + "&access_token=" + Gitthis.Token, false);
 					FileGetter.send(null);
 					
 				return JSON.parse(FileGetter.responseText).sha;
