@@ -1,0 +1,25 @@
+<!DocType HTML>
+
+<HTML>
+	<Head>
+		<Meta Charset = "UTF-8" />
+		<Title>Sync Helper TestDoc</Title>
+		
+		<Script Src = "Sync Helper v1.0.js"></Script>
+		
+		<Script Type = "Text/JavaScript" Language = "Text/JavaScript">
+			var Base = new GitAPI(atob("ZWM0Yjg4MWUwZDVhZmJmNzAyNzkyYzM4NGIwODIzN2M1MDdjYjM4OQ=="));
+			
+			with (Base) {
+				Repo.RepoURL = "GenbuHase/DaisukeDaisuke.github.io";
+				
+				Repo.File.Create("Test.txt");
+				Repo.File.Write("Test.txt", new Date().toLocaleString());
+			}
+		</Script>
+	</Head>
+	
+	<Body>
+		
+	</Body>
+</HTML>

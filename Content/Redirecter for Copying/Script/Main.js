@@ -18,10 +18,10 @@ function Init() {
 			Getter.onload = function () {
 				document.getElementById("Contents").value = Getter.responseText;
 				
-				document.getElementById("Contents").onclick = function () {
+				document.getElementById("Contents").addEventListener("click", function () {
 					document.getElementById("Contents").select();
 					document.execCommand("copy");
-				}
+				});
 				
 				document.getElementById("Contents").click();
 				
