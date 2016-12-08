@@ -13,6 +13,14 @@ var GitAPI = function (Token) {
 		RepoURL: "",
 		
 		File: {
+			Get: function (Path, Branch) {
+				var FileGetter = new XMLHttpRequest();
+					FileGetter.open("GET", "https://api.github.com/repos/" + Gitthis.Repo.RepoURL + "/contents/" + Path + "?ref=" + (Branch ? Branch : "master") + "&access_token=" + Gitthis.Token, false);
+					FileGetter.send(null);
+					
+				return JSON.parse(FileGetter.responseText);
+			},
+			
 			Create: function (Path, Branch, Message) {
 				if (Gitthis.Repo.File.IsVaild(Path, Branch) == false) {
 					var FileCreator = new XMLHttpRequest();
@@ -50,7 +58,7 @@ var GitAPI = function (Token) {
 									message: Message ? Message : "",
 									
 									branch: Branch ? Branch : "master",
-									sha: Gitthis.Repo.File.ShaGetter(Path, Branch)
+									sha: Gitthis.Repo.File.Get(Path, Branch).sha
 								}
 							)
 						);
@@ -74,7 +82,7 @@ var GitAPI = function (Token) {
 									content: btoa(unescape(encodeURIComponent(Content))),
 									branch: Branch ? Branch : "master",
 									
-									sha: Gitthis.Repo.File.ShaGetter(Path, Branch)
+									sha: Gitthis.Repo.File.Get(Path, Branch).sha
 								}
 							)
 						);
@@ -93,29 +101,53 @@ var GitAPI = function (Token) {
 				return atob(JSON.parse(ContentGetter.responseText).content);
 			},
 			
+			Download: function (Path, Branch) {
+				var Data = new Blob([Gitthis.Repo.File.Read(Path, Branch)], {
+					type: "Text/Plain"
+				});
+				
+				if (window.navigator.msSaveBlob) {
+					window.navigator.msSaveBlob(Data, Gitthis.Repo.File.Get(Path, Branch).name);
+				} else {
+					Link = document.createElement("A");
+					Link.href = URL.createObjectURL(Data);
+					Link.download = Gitthis.Repo.File.Get(Path, Branch).name;
+					Link.target = "_blank";
+					
+					var Click = document.createEvent("MouseEvents");
+						Click.initEvent("click", false, true);
+						
+					Link.dispatchEvent(Click);
+					
+					URL.revokeObjectURL(Data);
+				}
+			},
+			
 			IsVaild: function (Path, Branch) {
 				var VaildChecker = new XMLHttpRequest();
 					VaildChecker.open("GET", "https://api.github.com/repos/" + Gitthis.Repo.RepoURL + "/contents/" + Path + "?ref=" + (Branch ? Branch : "master") + "&access_token=" + Gitthis.Token, false);
 					VaildChecker.send(null);
 					
 				return VaildChecker.status == 404 ? false : true;
-			},
-			
-			ShaGetter: function (Path, Branch) {
-				var FileGetter = new XMLHttpRequest();
-					FileGetter.open("GET", "https://api.github.com/repos/" + Gitthis.Repo.RepoURL + "/contents/" + Path + "?ref=" + (Branch ? Branch : "master") + "&access_token=" + Gitthis.Token, false);
-					FileGetter.send(null);
-					
-				return JSON.parse(FileGetter.responseText).sha;
 			}
 		}
 	}
 }
 
-var GoogleAPI = function (ClientID) {
+var GoogleAPI = function (ClientID, RedirectURL, Scope) {
 	Googlethis = this;
 	
-	this.ClientID = ClientID;
+	this.ClientID = ClientID,
+	this.RedirectURL = RedirectURL,
+	this.Scope = Scope;
+	
+	this.Token = "";
+	
+	this.Login = function () {
+		window.open("https://accounts.google.com/o/oauth2/v2/auth?response_type=code&redirect_uri=" + Googlethis.RedirectURL + "&scope=" + Googlethis.Scope + "&client_id=" + Googlethis.ClientID, "Googleアカウントでログイン", "width=" + window.outerWidth / 3 + ", height=" + window.outerHeight / 2 + ", left=" + (window.outerWidth - window.outerWidth / 3) / 2 + ", top=" + (window.outerHeight - window.outerHeight / 2) / 2);
+	}
+	
+	Googlethis.Login();
 }
 
 var TwitterAPI = function () {
